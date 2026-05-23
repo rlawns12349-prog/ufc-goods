@@ -364,15 +364,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);background:
     <div class="hgfx"><div class="hgfx-inner">🥊</div></div>
   </div>
   <div class="rb" onclick="go('schedule');nav(document.querySelectorAll('.nl')[3])">
-    <div class="rb-top"><span style="background:var(--red);color:#fff;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;">방금 종료</span><span style="font-size:13px;color:var(--t2);">UFC 298 · 2025.05.17</span></div>
+    <div class="rb-top"><span style="background:var(--red);color:#fff;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;">방금 종료</span><span style="font-size:13px;color:var(--t2);">UFC Fight Night · 2025.05.17</span></div>
     <div class="rb-main">
-      <div class="rf win"><div class="rn">홍길동</div><div class="ro">UFC · 웰터급 챔피언</div></div>
+      <div class="rf win"><div class="rn">박준용</div><div class="ro">UFC · 미들급</div></div>
       <div class="rc"><div class="rm">KO 승</div><div class="rd">1라운드 2분 34초</div><div style="font-size:20px;color:var(--t3);margin:6px 0;">VS</div></div>
-      <div class="rf"><div class="rn">맥스 홀로웨이</div><div class="ro">UFC · 웰터급</div></div>
+      <div class="rf"><div class="rn">챌린저</div><div class="ro">UFC · 미들급</div></div>
     </div>
     <div class="rb-cta">
-      <button class="br" onclick="event.stopPropagation();go('product')">연계 굿즈 바로구매 →</button>
-      <button class="bo" onclick="event.stopPropagation();go('fighter-detail')">홍길동 선수 스토리 보기</button>
+      <button class="bo" onclick="event.stopPropagation();go('fighter-detail')">선수 스토리 보기</button>
+      <button class="br" onclick="event.stopPropagation();go('fighters');nav(document.querySelectorAll('.nl')[2])">계약 선수 굿즈 보기 →</button>
     </div>
   </div>
   <div class="sec">
@@ -442,37 +442,42 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);background:
 
 <!-- FIGHTER DETAIL -->
 <div class="pw" id="p-fighter-detail">
-  <div class="bc"><span onclick="go('fighters');nav(document.querySelectorAll('.nl')[2])">선수 정보</span><span class="sep">›</span><span style="color:var(--t2);">홍길동</span></div>
+  <div class="bc"><span onclick="go('fighters');nav(document.querySelectorAll('.nl')[2])">선수 정보</span><span class="sep">›</span><span style="color:var(--t2);">박준용</span></div>
   <div class="fdh">
     <div class="fdtop">
       <div class="fdav">🥊</div>
       <div>
-        <div class="fdnm">홍길동</div>
-        <div style="font-size:13px;color:var(--t3);margin-bottom:14px;">UFC · 웰터급 챔피언 · 데뷔 2019.03.15</div>
+        <div class="fdnm">박준용</div>
+        <div style="font-size:13px;color:var(--t3);margin-bottom:14px;">UFC · 미들급 · 데뷔 2019.10.05</div>
         <div class="srow2">
           <div class="sbox"><div class="sv2">12</div><div class="slb">승</div></div>
           <div class="sbox"><div class="sv2">3</div><div class="slb">패</div></div>
           <div class="sbox"><div class="sv2">0</div><div class="slb">무</div></div>
           <div class="sbox"><div class="sv2">77%</div><div class="slb">피니시율</div></div>
         </div>
-        <button class="br" onclick="go('product')">관련 굿즈 바로가기 →</button>
+        <div style="font-size:12px;background:rgba(255,255,255,0.05);border:1px solid var(--bd2);border-radius:8px;padding:10px 14px;color:var(--t3);">ℹ️ 이 선수는 정보 제공 선수입니다. 굿즈 계약 선수는 <span style="color:var(--red);cursor:pointer;" onclick="go('fighters')">선수 목록</span>에서 확인하세요.</div>
       </div>
     </div>
   </div>
   <div class="fdb">
     <div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:22px;">성장 타임라인</div>
-      <div class="tl-item"><div class="tl-dot"></div><div><div style="font-size:11px;color:var(--t3);">2019</div><div style="font-size:15px;font-weight:500;margin:3px 0 5px;">데뷔 · 무명 시절</div><div style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:7px;">아무도 주목하지 않던 지방 팀 소속. 연속 KO로 이름을 알리기 시작했다.</div><span style="font-size:12px;color:var(--red);cursor:pointer;" onclick="go('product')">이 스토리의 굿즈 보기 →</span></div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div><div style="font-size:11px;color:var(--t3);">2021</div><div style="font-size:15px;font-weight:500;margin:3px 0 5px;">체급 조절 도전</div><div style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:7px;">웰터급으로 체급을 올리며 고비를 맞았지만 6개월 재활 후 복귀했다.</div><span style="font-size:12px;color:var(--red);cursor:pointer;" onclick="go('product')">이 스토리의 굿즈 보기 →</span></div></div>
-      <div class="tl-item"><div class="tl-dot hi"></div><div><div style="font-size:11px;color:var(--t3);">2023 🏆</div><div style="font-size:15px;font-weight:500;margin:3px 0 5px;">챔피언 등극</div><div style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:7px;">UFC 298에서 KO 1라운드 피니시. 한국 MMA 역사상 첫 UFC 웰터급 챔피언.</div><span style="font-size:12px;color:var(--red);cursor:pointer;" onclick="go('product')">이 스토리의 굿즈 보기 →</span></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div style="font-size:11px;color:var(--t3);">2019</div><div style="font-size:15px;font-weight:500;margin:3px 0 5px;">UFC 데뷔</div><div style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:7px;">2019년 10월 UFC 무대에 올라 꾸준한 경기력으로 이름을 알리기 시작했다.</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div style="font-size:11px;color:var(--t3);">2022</div><div style="font-size:15px;font-weight:500;margin:3px 0 5px;">연속 승리 행진</div><div style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:7px;">미들급에서 꾸준히 연승을 이어가며 UFC 랭킹 진입을 노리기 시작했다.</div></div></div>
+      <div class="tl-item"><div class="tl-dot hi"></div><div><div style="font-size:11px;color:var(--t3);">2025 🏆</div><div style="font-size:15px;font-weight:500;margin:3px 0 5px;">UFC 10승 달성</div><div style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:7px;">한국 선수 최다승을 향해 달려가는 아이언 터틀. UFC 랭킹 진입이 코앞이다.</div></div></div>
     </div>
     <div>
       <div class="gbox">
-        <div style="font-size:14px;font-weight:700;margin-bottom:14px;">홍길동 관련 굿즈</div>
-        <div class="mprod" onclick="go('product')"><div class="mpimg">👕</div><div><div class="mpn">챔피언 등극 기념 티셔츠</div><div class="mpp">₩45,000</div></div></div>
-        <div class="mprod" onclick="go('product')"><div class="mpimg">🖼️</div><div><div class="mpn">챔피언 벨트 아트 포스터</div><div class="mpp">₩18,000</div></div></div>
-        <div class="mprod" onclick="go('product')"><div class="mpimg">📸</div><div><div class="mpn">등극 순간 포토카드 세트</div><div class="mpp">₩12,000</div></div></div>
-        <button class="br" style="width:100%;margin-top:14px;" onclick="go('product')">굿즈 전체 보기</button>
+        <div style="font-size:14px;font-weight:700;margin-bottom:14px;">박준용 선수 정보</div>
+        <div style="font-size:12px;color:var(--t3);line-height:1.8;margin-bottom:14px;">
+          현재 IP 계약이 체결되지 않은 선수입니다.<br>
+          굿즈는 계약 완료 선수에 한해 판매됩니다.
+        </div>
+        <div style="height:1px;background:var(--bd);margin-bottom:14px;"></div>
+        <div style="font-size:13px;font-weight:700;margin-bottom:10px;color:var(--red);">🛒 계약 선수 굿즈 보기</div>
+        <div class="mprod" onclick="go('product')"><div class="mpimg">💥</div><div><div class="mpn">김상욱 프로그맨 시그니처 티셔츠</div><div class="mpp">₩45,000</div></div></div>
+        <div class="mprod" onclick="go('product')"><div class="mpimg">⚡</div><div><div class="mpn">윤창민 빅하트 기념 후디</div><div class="mpp">₩68,000</div></div></div>
+        <button class="br" style="width:100%;margin-top:14px;" onclick="go('fighters');nav(document.querySelectorAll('.nl')[2])">계약 선수 전체 보기</button>
       </div>
     </div>
   </div>
@@ -498,13 +503,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);background:
     </div>
     <div id="st-res" style="display:none;">
       <div class="rb" style="margin:0 0 14px;" onclick="go('fighter-detail')">
-        <div class="rb-top"><span style="background:var(--red);color:#fff;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;">방금 종료</span><span style="font-size:13px;color:var(--t2);">UFC 298 · 2025.05.17</span></div>
+        <div class="rb-top"><span style="background:var(--red);color:#fff;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;">방금 종료</span><span style="font-size:13px;color:var(--t2);">UFC Fight Night · 2025.05.17</span></div>
         <div class="rb-main">
-          <div class="rf win"><div class="rn">홍길동</div><div class="ro">UFC 웰터급</div></div>
+          <div class="rf win"><div class="rn">박준용</div><div class="ro">UFC 웰터급</div></div>
           <div class="rc"><div class="rm">KO 승</div><div class="rd">1R 2:34</div><div style="font-size:18px;color:var(--t3);margin:4px 0;">VS</div></div>
-          <div class="rf"><div class="rn">맥스 홀로웨이</div><div class="ro">UFC 웰터급</div></div>
+          <div class="rf"><div class="rn">챌린저</div><div class="ro">UFC 웰터급</div></div>
         </div>
-        <div class="rb-cta"><button class="br" onclick="event.stopPropagation();go('product')">연계 굿즈 바로구매 →</button></div>
+        <div class="rb-cta"><button class="bo" onclick="event.stopPropagation();go('fighter-detail')">선수 스토리 보기</button><button class="br" onclick="event.stopPropagation();go('fighters')">계약 선수 굿즈 보기 →</button></div>
       </div>
       <div style="background:var(--bg3);border:1px solid var(--bd);border-radius:12px;padding:16px 22px;cursor:pointer;">
         <div style="font-size:11px;color:var(--t3);margin-bottom:7px;">ZFN 38 · 2025.05.10</div>
@@ -515,11 +520,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);background:
       <div style="background:linear-gradient(135deg,#1a0608,#110305);border:1px solid rgba(230,57,70,.3);border-radius:14px;padding:26px;">
         <div style="font-size:11px;color:var(--red);font-weight:700;margin-bottom:14px;">UFC 308 · D-14 예정</div>
         <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:22px;margin-bottom:18px;">
-          <div style="text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:30px;">홍길동</div><div style="font-size:12px;color:var(--t3);">12W 3L · 챔피언</div><div style="display:flex;gap:5px;justify-content:center;margin-top:7px;"><span style="font-size:11px;padding:2px 7px;background:var(--bg4);border:1px solid var(--bd);border-radius:10px;color:var(--t3);">KO 전문</span><span style="font-size:11px;padding:2px 7px;background:var(--bg4);border:1px solid var(--bd);border-radius:10px;color:var(--t3);">강한 턱</span></div></div>
+          <div style="text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:30px;">박준용</div><div style="font-size:12px;color:var(--t3);">12W 3L · 챔피언</div><div style="display:flex;gap:5px;justify-content:center;margin-top:7px;"><span style="font-size:11px;padding:2px 7px;background:var(--bg4);border:1px solid var(--bd);border-radius:10px;color:var(--t3);">KO 전문</span><span style="font-size:11px;padding:2px 7px;background:var(--bg4);border:1px solid var(--bd);border-radius:10px;color:var(--t3);">강한 턱</span></div></div>
           <div style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--t3);">VS</div>
           <div style="text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:30px;">볼코노프스키</div><div style="font-size:12px;color:var(--t3);">26W 3L · 전 챔피언</div><div style="display:flex;gap:5px;justify-content:center;margin-top:7px;"><span style="font-size:11px;padding:2px 7px;background:var(--bg4);border:1px solid var(--bd);border-radius:10px;color:var(--t3);">레슬링</span><span style="font-size:11px;padding:2px 7px;background:var(--bg4);border:1px solid var(--bd);border-radius:10px;color:var(--t3);">스태미나</span></div></div>
         </div>
-        <div style="display:flex;gap:10px;"><button class="br sm" onclick="go('product')">홍길동 예고 굿즈 →</button><button class="bo sm" onclick="toast('✓ 경기 알림이 신청되었습니다')">경기 알림 신청</button></div>
+        <div style="display:flex;gap:10px;"><button class="br sm" onclick="go('product')">박준용 예고 굿즈 →</button><button class="bo sm" onclick="toast('✓ 경기 알림이 신청되었습니다')">경기 알림 신청</button></div>
       </div>
     </div>
     <div id="st-hi" style="display:none;">
@@ -533,7 +538,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);background:
 
 <!-- PRODUCT DETAIL -->
 <div class="pw" id="p-product">
-  <div class="bc"><span onclick="go('home');nav(document.querySelectorAll('.nl')[0])">굿즈 홈</span><span class="sep">›</span><span onclick="go('fighter-detail')">홍길동</span><span class="sep">›</span><span style="color:var(--t2);">챔피언 등극 기념 티셔츠</span></div>
+  <div class="bc"><span onclick="go('home');nav(document.querySelectorAll('.nl')[0])">굿즈 홈</span><span class="sep">›</span><span onclick="go('fighter-detail')">박준용</span><span class="sep">›</span><span style="color:var(--t2);">챔피언 등극 기념 티셔츠</span></div>
   <div class="dl">
     <div class="dimg">
       <div class="mi" id="mimg">👕</div>
@@ -545,8 +550,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);background:
       </div>
     </div>
     <div>
-      <div class="dtag" onclick="go('fighter-detail')">🥊 홍길동 · UFC 웰터급 챔피언</div>
-      <div class="dnm">홍길동 챔피언 등극 기념 티셔츠</div>
+      <div class="dtag" onclick="go('fighter-detail')">🐸 김상욱 · 계약 선수</div>
+      <div class="dnm">김상욱 프로그맨 시그니처 티셔츠</div>
       <div class="dpr" id="dpr">₩45,000</div>
       <div class="drev"><span style="color:#f4a261;font-size:14px;">★★★★★</span><span style="font-size:14px;font-weight:700;">4.8</span><span style="font-size:13px;color:var(--t3);">(23개 리뷰)</span></div>
       <div class="divr"></div>
@@ -698,8 +703,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);background:
         <div style="background:var(--bg3);border:1px solid var(--bd);border-radius:14px;padding:20px;">
           <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;">이벤트</div>
           <div style="font-size:15px;font-weight:700;margin-bottom:5px;">선수 Q&A</div>
-          <div style="font-size:12px;color:var(--t3);line-height:1.7;margin-bottom:13px;">홍길동 선수에게 질문을 남겨보세요.<br>접수: ~2025.06.15</div>
-          <div style="background:var(--bg4);border:1px solid var(--bd);border-radius:9px;padding:11px 13px;margin-bottom:8px;"><div style="font-size:13px;margin-bottom:5px;">"챔피언 벨트 따고 제일 먼저 한 일?"</div><div style="display:flex;justify-content:space-between;"><span style="font-size:11px;color:var(--t3);">fan_kim</span><button style="font-size:11px;color:var(--red);background:none;border:none;cursor:pointer;" onclick="toast('❤️ 좋아요!')">❤️ 142</button></div></div>
+          <div style="font-size:12px;color:var(--t3);line-height:1.7;margin-bottom:13px;">김민수 선수에게 질문을 남겨보세요.<br>접수: ~2025.06.15</div>
+          <div style="background:var(--bg4);border:1px solid var(--bd);border-radius:9px;padding:11px 13px;margin-bottom:8px;"><div style="font-size:13px;margin-bottom:5px;">"Road to UFC 결승 올라갔을 때 기분이 어땠나요?"</div><div style="display:flex;justify-content:space-between;"><span style="font-size:11px;color:var(--t3);">fan_kim</span><button style="font-size:11px;color:var(--red);background:none;border:none;cursor:pointer;" onclick="toast('❤️ 좋아요!')">❤️ 142</button></div></div>
           <button class="bo full sm" onclick="toast('✓ 질문이 접수되었습니다 (+30P)')">질문 남기기 (+30P)</button>
         </div>
         <div style="background:var(--bg3);border:1px solid var(--bd);border-radius:14px;padding:20px;">
@@ -712,10 +717,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);background:
         <div style="background:var(--bg3);border:1px solid var(--bd);border-radius:14px;padding:20px;">
           <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;">승부 예측 · +100P</div>
           <div style="font-size:14px;font-weight:700;margin-bottom:3px;">UFC 308 메인이벤트</div>
-          <div style="font-size:11px;color:var(--t3);margin-bottom:13px;">홍길동 vs 볼코노프스키</div>
+          <div style="font-size:11px;color:var(--t3);margin-bottom:13px;">박준용 vs 샤바지안</div>
           <div style="display:flex;gap:8px;">
             <button class="pmb" id="pa" onclick="predict('홍길동')">홍길동 승</button>
-            <button class="pmb" id="pb" onclick="predict('볼코노프스키')">볼코노프스키 승</button>
+            <button class="pmb" id="pb" onclick="predict('샤바지안')">볼코노프스키 승</button>
           </div>
         </div>
       </div>
@@ -768,23 +773,37 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);background:
 
 <script>
 const PRODS=[
-  {id:1,n:'홍길동 챔피언 등극 기념 티셔츠',f:'홍길동 · UFC 웰터급',p:45000,ic:'👕',b:'h',s:'재고 12개',c:'티셔츠'},
-  {id:2,n:'챔피언 벨트 아트 포스터',f:'홍길동 · UFC 웰터급',p:18000,ic:'🖼️',b:'l',s:'한정 50개',c:'포스터'},
-  {id:3,n:'등극 순간 포토카드 세트',f:'홍길동 · UFC 웰터급',p:12000,ic:'📸',b:'n',s:'재고 있음',c:'포토카드'},
-  {id:4,n:'이철수 부상 극복 기념 후디',f:'이철수 · 블랙컴뱃 헤비급',p:68000,ic:'🎽',b:'',s:'재고 5개',c:'후디'},
-  {id:5,n:'박영희 무패 스트릭 머그컵',f:'박영희 · ZFN 밴텀급',p:16000,ic:'☕',b:'n',s:'재고 30개',c:'포토카드'},
+  {id:1,n:'김상욱 프로그맨 시그니처 티셔츠',f:'박준용 · UFC 미들급',p:45000,ic:'👕',b:'h',s:'재고 12개',c:'티셔츠'},
+  {id:2,n:'정찬성 코리안 좀비 아트 포스터',f:'박준용 · UFC 미들급',p:18000,ic:'🖼️',b:'l',s:'한정 50개',c:'포스터'},
+  {id:3,n:'박준용 10승 달성 포토카드 세트',f:'박준용 · UFC 미들급',p:12000,ic:'📸',b:'n',s:'재고 있음',c:'포토카드'},
+  {id:4,n:'정찬성 UFC 복귀 기념 후디',f:'정찬성 · UFC 페더급',p:68000,ic:'🎽',b:'',s:'재고 5개',c:'후디'},
+  {id:5,n:'조성빈 연승 스트릭 머그컵',f:'조성빈 · UFC 페더급',p:16000,ic:'☕',b:'n',s:'재고 30개',c:'포토카드'},
 ];
 const FIGHTERS=[
-  {ic:'🥊',n:'홍길동',m:'웰터급 · UFC · 데뷔 2019',w:12,l:3,fp:'77%',tags:['챔피언 등극','체급 조절'],g:3,org:'UFC',cls:'웰터급'},
-  {ic:'💪',n:'이철수',m:'헤비급 · 블랙컴뱃 · 데뷔 2020',w:8,l:1,fp:'62%',tags:['부상 극복','무명 시절'],g:1,org:'블랙컴뱃',cls:'헤비급'},
-  {ic:'⚡',n:'박영희',m:'밴텀급 · ZFN · 데뷔 2022',w:6,l:0,fp:'83%',tags:['신인왕','연승 스트릭'],g:2,org:'ZFN',cls:'밴텀급'},
+  // contract:true = IP 계약 완료 선수 (굿즈 판매 가능)
+  // contract:false = 정보 제공만
+  {ic:'🐸',n:'김상욱',m:'라이트급 · 무소속 · 데뷔 2020',w:11,l:3,fp:'55%',
+   tags:['프로그맨','UDT 출신','Road to UFC'],g:4,org:'무소속',cls:'라이트급',contract:true,
+   story:'UDT 복무 후 용접으로 생계를 유지하며 격투기 도전. 강철부대 출연 후 팬덤 폭발. 김동현의 제자로 UFC 문을 두드리는 중.'},
+  {ic:'🦊',n:'박재현',m:'라이트급 · 무소속 · 데뷔 2022',w:7,l:3,fp:'57%',
+   tags:['천재 1호','Road to UFC'],g:2,org:'무소속',cls:'라이트급',contract:true,
+   story:'23세 최연소 Road to UFC 출전. 2연패 후 재도전해 4강까지 오른 멘탈의 선수. UFC 계약까지 한 걸음.'},
+  {ic:'🦁',n:'윤창민',m:'페더급 · 무소속 · 데뷔 2020',w:9,l:2,fp:'66%',
+   tags:['빅하트','Road to UFC'],g:2,org:'무소속',cls:'페더급',contract:true,
+   story:'빅하트라는 별명처럼 압도적인 투지로 경기마다 팬을 만들어가는 선수. UFC 진출을 향한 여정 중.'},
+  {ic:'🐢',n:'박준용',m:'미들급 · UFC · 데뷔 2019',w:10,l:4,fp:'40%',
+   tags:['아이언 터틀','한국 최다승'],g:0,org:'UFC',cls:'미들급',contract:false,
+   story:'한국인 UFC 최다승 도전 중. 끈질긴 경기 운영과 맷집으로 팬들의 사랑을 받는 선수.'},
+  {ic:'🦅',n:'정찬성',m:'페더급 · UFC · 데뷔 2011',w:7,l:5,fp:'71%',
+   tags:['코리안 좀비','KO 스페셜리스트'],g:0,org:'UFC',cls:'페더급',contract:false,
+   story:'한국 MMA의 레전드. 코리안 좀비라는 별명과 함께 전 세계 팬을 보유한 불굴의 파이터.'},
 ];
 const RNKS=[
-  {r:1,ch:'up',n:'챔피언 등극 기념 티셔츠',f:'홍길동',s:1284,p:45000},
-  {r:2,ch:'eq',n:'챔피언 벨트 아트 포스터',f:'홍길동',s:893,p:18000},
-  {r:3,ch:'up',n:'등극 순간 포토카드 세트',f:'홍길동',s:712,p:12000},
-  {r:4,ch:'dn',n:'이철수 부상 극복 기념 후디',f:'이철수',s:445,p:68000},
-  {r:5,ch:'up',n:'박영희 무패 스트릭 머그컵',f:'박영희',s:321,p:16000},
+  {r:1,ch:'up',n:'김상욱 프로그맨 시그니처 티셔츠',f:'박준용',s:1284,p:45000},
+  {r:2,ch:'eq',n:'정찬성 코리안 좀비 아트 포스터',f:'홍길동',s:893,p:18000},
+  {r:3,ch:'up',n:'박준용 10승 달성 포토카드 세트',f:'홍길동',s:712,p:12000},
+  {r:4,ch:'dn',n:'정찬성 UFC 복귀 기념 후디',f:'이철수',s:445,p:68000},
+  {r:5,ch:'up',n:'조성빈 연승 스트릭 머그컵',f:'박영희',s:321,p:16000},
 ];
 const FAQS=[
   {c:'배송',q:'배송은 얼마나 걸리나요?',a:'결제 완료 후 영업일 2~3일 이내 발송됩니다.'},
@@ -943,7 +962,10 @@ function filterP(btn){
 
 // ── FIGHTERS ──
 function fighterHTML(f){
-  return`<div class="fc" onclick="go('fighter-detail')"><div class="fav">${f.ic}</div><div class="fi2"><div class="fn">${f.n}</div><div class="fm">${f.m}</div><div class="frec"><div class="frs"><div class="frv">${f.w}</div><div class="frl">승</div></div><div class="frs"><div class="frv">${f.l}</div><div class="frl">패</div></div><div class="frs"><div class="frv">${f.fp}</div><div class="frl">피니시율</div></div></div><div class="ftags">${f.tags.map(t=>`<span class="ftag">${t}</span>`).join('')}</div><div class="fg-cnt">관련 굿즈 ${f.g}개</div></div></div>`;
+  const goodsBadge = f.contract
+    ? `<div class="fg-cnt" style="color:var(--red);">🛒 계약 선수 · 굿즈 ${f.g}개</div>`
+    : `<div class="fg-cnt">📋 정보 제공 선수</div>`;
+  return`<div class="fc" onclick="go('fighter-detail')"><div class="fav">${f.ic}</div><div class="fi2"><div class="fn">${f.n}</div><div class="fm">${f.m}</div><div class="frec"><div class="frs"><div class="frv">${f.w}</div><div class="frl">승</div></div><div class="frs"><div class="frv">${f.l}</div><div class="frl">패</div></div><div class="frs"><div class="frv">${f.fp}</div><div class="frl">피니시율</div></div></div><div class="ftags">${f.tags.map(t=>`<span class="ftag">${t}</span>`).join('')}</div>${goodsBadge}</div></div>`;
 }
 function renderFighters(list){
   const e=document.getElementById('fgrid'); if(!e) return;
@@ -1001,7 +1023,7 @@ function addCart(){
   const sz=document.querySelector('#so .ob.on')?.textContent||'M';
   const cl=document.querySelector('#co .ob.on')?.textContent||'블랙';
   const ex=cartItems.find(i=>i.sz===sz&&i.cl===cl);
-  if(ex) ex.qty+=qty; else cartItems.push({id:1,n:'홍길동 챔피언 등극 기념 티셔츠',ic:'👕',p:45000,sz,cl,qty});
+  if(ex) ex.qty+=qty; else cartItems.push({id:1,n:'김상욱 프로그맨 시그니처 티셔츠',ic:'👕',p:45000,sz,cl,qty});
   updateCC(); toast('✓ 장바구니에 담겼습니다');
 }
 function updateCC(){ document.getElementById('cc').textContent=cartItems.reduce((s,i)=>s+i.qty,0); }
@@ -1056,7 +1078,7 @@ function applyCpn(){
 
 // ── PAYMENT ──
 function renderPayment(){
-  const items=cartItems.length?cartItems:[{ic:'👕',n:'홍길동 챔피언 등극 기념 티셔츠',sz:'M',cl:'블랙',qty:1,p:45000}];
+  const items=cartItems.length?cartItems:[{ic:'👕',n:'김상욱 프로그맨 시그니처 티셔츠',sz:'M',cl:'블랙',qty:1,p:45000}];
   const sub=items.reduce((s,i)=>s+i.p*i.qty,0);
   document.getElementById('pitems').innerHTML=items.map(i=>`
     <div class="osi"><div class="osimg">${i.ic}</div><div style="flex:1;"><div style="font-size:13px;margin-bottom:2px;">${i.n}</div><div style="font-size:11px;color:var(--t3);">${i.sz} · ${i.cl} · ${i.qty}개</div></div><div style="font-size:13px;font-weight:700;color:var(--red);">₩${(i.p*i.qty).toLocaleString()}</div></div>`).join('');
@@ -1075,7 +1097,7 @@ function doConfirm(){
   const dd=new Date(); dd.setDate(dd.getDate()+3);
   document.getElementById('cdet').innerHTML=`
     <div class="crow"><span class="ck">주문번호</span><span>${num}</span></div>
-    <div class="crow"><span class="ck">상품</span><span>홍길동 챔피언 기념 티셔츠 (M) ×1</span></div>
+    <div class="crow"><span class="ck">상품</span><span>김상욱 프로그맨 시그니처 티셔츠 (M) ×1</span></div>
     <div class="crow"><span class="ck">결제금액</span><span style="color:var(--red);">₩48,000</span></div>
     <div class="crow"><span class="ck">결제수단</span><span>${method}</span></div>
     <div class="crow"><span class="ck">예상 배송일</span><span>${dd.getMonth()+1}월 ${dd.getDate()}일</span></div>`;
@@ -1083,7 +1105,7 @@ function doConfirm(){
     try{
       let us=JSON.parse(localStorage.getItem('fg_users')||'[]');
       const u=us.find(x=>x.email===currentUser.email);
-      if(u){ u.orders=u.orders||[]; u.orders.unshift({num,name:'홍길동 챔피언 기념 티셔츠 (M)',price:48000,status:'배송 준비 중',date:new Date().toLocaleDateString('ko-KR')}); u.point=(u.point||0)+480; localStorage.setItem('fg_users',JSON.stringify(us)); currentUser=u; localStorage.setItem('fg_user',JSON.stringify(u)); }
+      if(u){ u.orders=u.orders||[]; u.orders.unshift({num,name:'김상욱 프로그맨 시그니처 티셔츠 (M)',price:48000,status:'배송 준비 중',date:new Date().toLocaleDateString('ko-KR')}); u.point=(u.point||0)+480; localStorage.setItem('fg_users',JSON.stringify(us)); currentUser=u; localStorage.setItem('fg_user',JSON.stringify(u)); }
     }catch(ex){}
   }
   cartItems=[]; couponApplied=false; cartDisc=0; updateCC();
