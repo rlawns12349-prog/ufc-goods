@@ -806,7 +806,7 @@ const VOTES=[{l:'챔피언 후드 집업',v:48},{l:'등극 기념 키링',v:31},
 // STATE
 let qty=1,cartItems=[],couponApplied=false,cartDisc=0;
 let recentViewed=[],posts=[...DPOST],nxtPid=4;
-let calY=2025,calM=4,voted=false,predicted=false;
+let calY=2025,calMonth=4,voted=false,predicted=false;
 let currentUser=null;
 
 // ── UTILS ──
@@ -1173,20 +1173,19 @@ function closeSrch(){ document.getElementById('sdd').classList.remove('on'); }
 
 // ── CALENDAR ──
 function renderCal(){
-  const ml=document.getElementById('cml'); if(ml) ml.textContent=calY+'년 '+(calM+1)+'월';
+  const ml=document.getElementById('cml'); if(ml) ml.textContent=calY+'년 '+(calMonth+1)+'월';
   const g=document.getElementById('cg'); if(!g) return;
   const days=['일','월','화','수','목','금','토'];
   let h=days.map(d=>`<div style="text-align:center;padding:7px;font-size:11px;color:var(--t3);font-weight:700;">${d}</div>`).join('');
-  const first=new Date(calY,calM,1).getDay(),tot=new Date(calY,calM+1,0).getDate();
+  const first=new Date(calY,calMonth,1).getDay(),tot=new Date(calY,calMonth+1,0).getDate();
   for(let i=0;i<first;i++) h+='<div></div>';
   for(let d=1;d<=tot;d++){
-    const k=calY+'-'+(calM+1)+'-'+d,ev=CEVENTS[k];
+    const k=calY+'-'+(calMonth+1)+'-'+d,ev=CEVENTS[k];
     h+=`<div class="cal-cell ${ev?'ev':''}" ${ev?`onclick="toast('${ev} 알림 신청됨')"`:''}><div class="cal-d">${d}</div>${ev?`<div class="cal-e">${ev}</div>`:''}</div>`;
   }
   g.innerHTML=h;
 }
-function calM2(d){ calM+=d; if(calM<0){calM=11;calY--;} if(calM>11){calM=0;calY++;} renderCal(); }
-function calM(d){ calM2(d); }
+function calM(d){ calMonth+=d; if(calMonth<0){calMonth=11;calY--;} if(calMonth>11){calMonth=0;calY++;} renderCal(); }
 function schTab(t){
   ['cal','res','pre','hi'].forEach(x=>{ const e=document.getElementById('st-'+x); if(e) e.style.display=x===t?'block':'none'; });
 }
