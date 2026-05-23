@@ -501,12 +501,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);background:
       <input id="fsrch" placeholder="🔍 선수 이름 검색" oninput="filterF()" style="padding:8px 12px;background:var(--bg3);border:1px solid var(--bd2);border-radius:8px;color:var(--t);font-size:13px;font-family:inherit;outline:none;width:190px;">
       <div style="display:flex;gap:6px;flex-wrap:wrap;" id="ff">
         <button class="chip on" data-f="전체" onclick="chipOn(this,'#ff .chip');filterF()">전체</button>
-        <button class="chip" data-f="웰터급" onclick="chipOn(this,'#ff .chip');filterF()">웰터급</button>
-        <button class="chip" data-f="헤비급" onclick="chipOn(this,'#ff .chip');filterF()">헤비급</button>
+        <button class="chip" data-f="플라이급" onclick="chipOn(this,'#ff .chip');filterF()">플라이급</button>
         <button class="chip" data-f="밴텀급" onclick="chipOn(this,'#ff .chip');filterF()">밴텀급</button>
+        <button class="chip" data-f="페더급" onclick="chipOn(this,'#ff .chip');filterF()">페더급</button>
+        <button class="chip" data-f="라이트급" onclick="chipOn(this,'#ff .chip');filterF()">라이트급</button>
+        <button class="chip" data-f="웰터급" onclick="chipOn(this,'#ff .chip');filterF()">웰터급</button>
+        <button class="chip" data-f="미들급" onclick="chipOn(this,'#ff .chip');filterF()">미들급</button>
+        <button class="chip" data-f="헤비급" onclick="chipOn(this,'#ff .chip');filterF()">헤비급</button>
         <button class="chip" data-f="UFC" onclick="chipOn(this,'#ff .chip');filterF()">UFC</button>
         <button class="chip" data-f="블랙컴뱃" onclick="chipOn(this,'#ff .chip');filterF()">블랙컴뱃</button>
         <button class="chip" data-f="ZFN" onclick="chipOn(this,'#ff .chip');filterF()">ZFN</button>
+        <button class="chip" data-f="로드FC" onclick="chipOn(this,'#ff .chip');filterF()">로드FC</button>
+        <button class="chip" data-f="무소속" onclick="chipOn(this,'#ff .chip');filterF()">무소속</button>
       </div>
     </div>
     <div class="fg-grid" id="fgrid"></div>
@@ -893,23 +899,77 @@ const PRODS=[
   {id:5,n:'조성빈 연승 스트릭 머그컵',f:'조성빈 · UFC 페더급',p:16000,ic:'☕',b:'n',s:'재고 30개',c:'포토카드'},
 ];
 const FIGHTERS=[
-  // contract:true = IP 계약 완료 선수 (굿즈 판매 가능)
-  // contract:false = 정보 제공만
-  {ic:'🐸',n:'김상욱',m:'라이트급 · 무소속 · 데뷔 2020',w:11,l:3,fp:'55%',
-   tags:['프로그맨','UDT 출신','Road to UFC'],g:4,org:'무소속',cls:'라이트급',contract:true,
-   story:'UDT 복무 후 용접으로 생계를 유지하며 격투기 도전. 강철부대 출연 후 팬덤 폭발. 김동현의 제자로 UFC 문을 두드리는 중.'},
-  {ic:'🦊',n:'박재현',m:'라이트급 · 무소속 · 데뷔 2022',w:7,l:3,fp:'57%',
-   tags:['천재 1호','Road to UFC'],g:2,org:'무소속',cls:'라이트급',contract:true,
-   story:'23세 최연소 Road to UFC 출전. 2연패 후 재도전해 4강까지 오른 멘탈의 선수. UFC 계약까지 한 걸음.'},
-  {ic:'🦁',n:'윤창민',m:'페더급 · 무소속 · 데뷔 2020',w:9,l:2,fp:'66%',
-   tags:['빅하트','Road to UFC'],g:2,org:'무소속',cls:'페더급',contract:true,
-   story:'빅하트라는 별명처럼 압도적인 투지로 경기마다 팬을 만들어가는 선수. UFC 진출을 향한 여정 중.'},
-  {ic:'🐢',n:'박준용',m:'미들급 · UFC · 데뷔 2019',w:10,l:4,fp:'40%',
-   tags:['아이언 터틀','한국 최다승'],g:0,org:'UFC',cls:'미들급',contract:false,
-   story:'한국인 UFC 최다승 도전 중. 끈질긴 경기 운영과 맷집으로 팬들의 사랑을 받는 선수.'},
-  {ic:'🦅',n:'정찬성',m:'페더급 · UFC · 데뷔 2011',w:7,l:5,fp:'71%',
-   tags:['코리안 좀비','KO 스페셜리스트'],g:0,org:'UFC',cls:'페더급',contract:false,
-   story:'한국 MMA의 레전드. 코리안 좀비라는 별명과 함께 전 세계 팬을 보유한 불굴의 파이터.'},
+  {ic:'🦋',n:'박현성',m:'플라이급 · UFC · 데뷔 2018',w:10,l:2,fp:'90%',tags:['마음의 평화','RTU 시즌1 우승'],g:0,org:'UFC',cls:'플라이급',contract:false,story:'Road to UFC 시즌1 우승 후 UFC 정식 계약.'},
+  {ic:'🐯',n:'최동훈',m:'플라이급 · 블랙컴뱃 · 데뷔 2019',w:7,l:1,fp:'71%',tags:['타이거','더블지FC 챔프'],g:2,org:'블랙컴뱃',cls:'플라이급',contract:true,story:'더블지FC 플라이급 챔피언 출신. 블랙컴뱃에서 4연승 중.'},
+  {ic:'😈',n:'이준영',m:'플라이급 · 블랙컴뱃 · 데뷔 2020',w:6,l:2,fp:'75%',tags:['배드가이','초대 챔프'],g:2,org:'블랙컴뱃',cls:'플라이급',contract:true,story:'블랙컴뱃 초대 플라이급 챔피언. 공격적인 스트라이킹으로 팬덤 형성 중.'},
+  {ic:'🐂',n:'최승국',m:'플라이급 · 로드FC · 데뷔 2018',w:8,l:3,fp:'62%',tags:['황소','RTU 결승'],g:0,org:'로드FC',cls:'플라이급',contract:false,story:'Road to UFC 시즌1 결승 진출.'},
+  {ic:'🔥',n:'이정현',m:'플라이급 · 로드FC · 데뷔 2019',w:9,l:1,fp:'77%',tags:['불꽃','RTU 출전'],g:2,org:'로드FC',cls:'플라이급',contract:true,story:'Road to UFC 시즌1 출전. 화끈한 타격으로 KO승을 쌓아가는 파이터.'},
+  {ic:'🤖',n:'이승철',m:'플라이급 · 블랙컴뱃 · 데뷔 2020',w:7,l:1,fp:'85%',tags:['아이언맨','6연승'],g:2,org:'블랙컴뱃',cls:'플라이급',contract:true,story:'6연승 기록 보유. 킥으로 상대를 무너뜨리는 스타일.'},
+  {ic:'🐍',n:'김성웅',m:'플라이급 · 블랙컴뱃 · 데뷔 2018',w:6,l:4,fp:'66%',tags:['바이퍼','2대 챔프'],g:2,org:'블랙컴뱃',cls:'플라이급',contract:true,story:'블랙컴뱃 2대 플라이급 챔피언 출신. 재기를 노리는 파이터.'},
+  {ic:'🦈',n:'김주환',m:'플라이급 · 로드FC · 데뷔 2019',w:7,l:4,fp:'57%',tags:['샤크','서브미션'],g:2,org:'로드FC',cls:'플라이급',contract:true,story:'더블지FC 타이틀전 경험 보유. 퍼펙트한 서브미션 타이밍이 강점.'},
+  {ic:'⚡',n:'이영웅',m:'플라이급 · 블랙컴뱃 · 데뷔 2019',w:11,l:2,fp:'81%',tags:['영웅','두 체급 석권'],g:3,org:'블랙컴뱃',cls:'플라이급',contract:true,story:'KMMA 플라이급 챔피언 2차 방어 후 밴텀급으로 두 체급 석권. 블랙컴뱃 4연승.'},
+  {ic:'🌪',n:'강민구',m:'플라이급 · ZFN · 데뷔 2021',w:5,l:1,fp:'80%',tags:['워리어','ZFN 신예'],g:2,org:'ZFN',cls:'플라이급',contract:true,story:'ZFN 등장 이후 화려한 타격으로 주목받는 신예.'},
+  {ic:'🔥',n:'강경호',m:'밴텀급 · UFC · 데뷔 2012',w:19,l:10,fp:'52%',tags:['더 불','로드FC 챔프'],g:0,org:'UFC',cls:'밴텀급',contract:false,story:'로드FC 챔피언 출신 UFC 13전 베테랑. 한국 MMA의 살아있는 역사.'},
+  {ic:'🥋',n:'유수영',m:'밴텀급 · UFC · 데뷔 2018',w:12,l:3,fp:'66%',tags:['유짓수','3체급 챔프'],g:0,org:'UFC',cls:'밴텀급',contract:false,story:'Road to UFC 시즌3 우승 후 UFC 데뷔. 블랙컴뱃 3체급 챔피언 출신.'},
+  {ic:'💥',n:'이창호',m:'밴텀급 · UFC · 데뷔 2019',w:10,l:1,fp:'90%',tags:['클라이맥스','RTU 시즌2 우승'],g:0,org:'UFC',cls:'밴텀급',contract:false,story:'Road to UFC 시즌2 우승 후 UFC 정식 계약.'},
+  {ic:'💣',n:'황영진',m:'밴텀급 · 블랙컴뱃 · 데뷔 2018',w:8,l:5,fp:'62%',tags:['폭격기','더블지FC 챔프'],g:3,org:'블랙컴뱃',cls:'밴텀급',contract:true,story:'더블지FC 챔피언 출신. 폭발적인 KO 능력을 갖춘 파이터.'},
+  {ic:'⚡',n:'이송하',m:'밴텀급 · 블랙컴뱃 · 데뷔 2021',w:5,l:2,fp:'71%',tags:['스위프트','블랙컴뱃 챔프'],g:2,org:'블랙컴뱃',cls:'밴텀급',contract:true,story:'블랙컴뱃 챔피언. 빠른 발과 정교한 콤비네이션이 강점.'},
+  {ic:'🦅',n:'박재현',m:'밴텀급 · 블랙컴뱃 · 데뷔 2021',w:6,l:3,fp:'66%',tags:['피닉스','AFC 챔프'],g:2,org:'블랙컴뱃',cls:'밴텀급',contract:true,story:'AFC 챔피언 출신, RTU 1라운드 경험. 두 번의 패배 후 재기에 성공 중인 서사 보유.'},
+  {ic:'🕷',n:'전영준',m:'밴텀급 · 블랙컴뱃 · 데뷔 2020',w:6,l:2,fp:'75%',tags:['스파이더','그래플러'],g:2,org:'블랙컴뱃',cls:'밴텀급',contract:true,story:'거미처럼 붙잡고 놓지 않는 그래플링 스타일.'},
+  {ic:'🎯',n:'강지훈',m:'밴텀급 · ZFN · 데뷔 2020',w:7,l:3,fp:'57%',tags:['카운터킹','ZFN'],g:2,org:'ZFN',cls:'밴텀급',contract:true,story:'ZFN에서 활약하는 카운터 펀처. 상대의 공격을 역이용하는 전술가.'},
+  {ic:'🌊',n:'하준영',m:'밴텀급 · ZFN · 데뷔 2022',w:4,l:0,fp:'100%',tags:['무패','ZFN ORIGIN'],g:2,org:'ZFN',cls:'밴텀급',contract:true,story:'ZFN ORIGIN 4연승 무패. UFC 행을 꿈꾸는 기대주.'},
+  {ic:'🥊',n:'신준우',m:'밴텀급 · 블랙컴뱃 · 데뷔 2020',w:6,l:2,fp:'66%',tags:['탑독','챔피언스리그'],g:2,org:'블랙컴뱃',cls:'밴텀급',contract:true,story:'블랙컴뱃 챔피언스리그 출신. 정상을 향해 달려가는 파이터.'},
+  {ic:'🧟',n:'정찬성',m:'페더급 · UFC/ZFN · 데뷔 2007',w:17,l:8,fp:'70%',tags:['코리안 좀비','ZFN 창설'],g:0,org:'UFC',cls:'페더급',contract:false,story:'두 차례 UFC 페더급 타이틀매치 도전. ZFN을 창설한 한국 MMA의 전설.'},
+  {ic:'🦸',n:'최두호',m:'페더급 · UFC · 데뷔 2013',w:16,l:4,fp:'75%',tags:['슈퍼보이','최고랭킹 11위'],g:0,org:'UFC',cls:'페더급',contract:false,story:'UFC 페더급 최고랭킹 11위 경력. 화려한 KO로 세계 팬들을 매료시킨 스타.'},
+  {ic:'👑',n:'최승우',m:'페더급 · UFC · 데뷔 2019',w:10,l:3,fp:'69%',tags:['더 챔프','RTU 출전'],g:0,org:'UFC',cls:'페더급',contract:false,story:'Road to UFC 출전 후 UFC 정식 계약. 한국 페더급 차세대 에이스.'},
+  {ic:'🐸',n:'김상욱',m:'페더급 · 무소속 · 데뷔 2020',w:4,l:1,fp:'80%',tags:['UDT파이터','강철부대'],g:4,org:'무소속',cls:'페더급',contract:true,story:'UDT 출신, 강철부대 출연. 용접으로 생계 유지하며 UFC 도전 중인 서사의 주인공.'},
+  {ic:'🐉',n:'조성빈',m:'페더급 · Road to UFC · 데뷔 2021',w:5,l:1,fp:'80%',tags:['코리안 호크','RTU 출전'],g:2,org:'무소속',cls:'페더급',contract:true,story:'Road to UFC 출전 경험. 예리한 타격과 빠른 발이 특기인 신예.'},
+  {ic:'⚗',n:'김지경',m:'페더급 · 글래디에이터 · 데뷔 2025',w:1,l:0,fp:'100%',tags:['약사파이터','일본원정 TKO'],g:2,org:'글래디에이터',cls:'페더급',contract:true,story:'약사 출신 파이터로 일본 원정 데뷔전 TKO승. 독특한 서사로 팬덤 형성 중.'},
+  {ic:'🌊',n:'오재현',m:'페더급 · 블랙컴뱃 · 데뷔 2021',w:6,l:2,fp:'75%',tags:['헌터','블랙컴뱃'],g:2,org:'블랙컴뱃',cls:'페더급',contract:true,story:'상대를 사냥하듯 압박하는 스타일. 블랙컴뱃에서 빠르게 성장 중.'},
+  {ic:'🦅',n:'윤태준',m:'페더급 · ZFN · 데뷔 2021',w:5,l:1,fp:'80%',tags:['이글','ZFN'],g:2,org:'ZFN',cls:'페더급',contract:true,story:'ZFN 주목받는 파이터. 독수리처럼 날카로운 킥이 특기.'},
+  {ic:'🌑',n:'박승현',m:'페더급 · 블랙컴뱃 · 데뷔 2022',w:4,l:0,fp:'100%',tags:['다크호스','무패'],g:2,org:'블랙컴뱃',cls:'페더급',contract:true,story:'블랙컴뱃 4연승 무패 신예.'},
+  {ic:'🌋',n:'홍민준',m:'페더급 · ZFN · 데뷔 2022',w:3,l:0,fp:'100%',tags:['마그마','ZFN ORIGIN'],g:2,org:'ZFN',cls:'페더급',contract:true,story:'ZFN ORIGIN 3연승. 폭발하기 직전의 용암 같은 에너지를 가진 신예.'},
+  {ic:'💪',n:'옥래윤',m:'라이트급 · 원챔피언십 · 데뷔 2013',w:17,l:4,fp:'76%',tags:['힘파이터','3단체 챔프'],g:0,org:'원챔피언십',cls:'라이트급',contract:false,story:'HEAT·더블지·원챔피언십 챔피언. 국제 무대 경험이 풍부한 라이트급 최강자.'},
+  {ic:'🌩',n:'기원빈',m:'라이트급 · 로드FC · 데뷔 2017',w:10,l:4,fp:'71%',tags:['선더','로드FC'],g:0,org:'로드FC',cls:'라이트급',contract:false,story:'로드FC 라이트급 상위권. 천둥 같은 타격으로 상대를 압박.'},
+  {ic:'🐸',n:'김상욱',m:'라이트급 · 무소속 · 데뷔 2020',w:4,l:1,fp:'80%',tags:['프로그맨','UDT 출신','Road to UFC'],g:4,org:'무소속',cls:'라이트급',contract:true,story:'UDT 복무 후 용접으로 생계를 유지하며 격투기 도전. 강철부대 출연 후 팬덤 폭발.'},
+  {ic:'🦊',n:'박재현_L',m:'라이트급 · 무소속 · 데뷔 2022',w:7,l:3,fp:'57%',tags:['천재 1호','Road to UFC'],g:2,org:'무소속',cls:'라이트급',contract:true,story:'23세 최연소 Road to UFC 출전. 2연패 후 재도전해 4강까지 오른 멘탈의 선수.'},
+  {ic:'🌪',n:'이준혁',m:'라이트급 · 블랙컴뱃 · 데뷔 2020',w:7,l:2,fp:'71%',tags:['폭풍','블랙컴뱃'],g:2,org:'블랙컴뱃',cls:'라이트급',contract:true,story:'블랙컴뱃 라이트급 상승세 파이터. UFC를 향한 서사를 쌓아가는 중.'},
+  {ic:'💨',n:'유성민',m:'라이트급 · 블랙컴뱃 · 데뷔 2021',w:6,l:2,fp:'75%',tags:['빠른손','복싱베이스'],g:2,org:'블랙컴뱃',cls:'라이트급',contract:true,story:'아마추어 복싱 베이스. 눈에 보이지 않는 빠른 손이 무기.'},
+  {ic:'🐲',n:'한상민',m:'라이트급 · ZFN · 데뷔 2022',w:5,l:0,fp:'100%',tags:['드래곤','ZFN 무패'],g:2,org:'ZFN',cls:'라이트급',contract:true,story:'ZFN 라이트급 5연승 무패.'},
+  {ic:'🎭',n:'박진호',m:'라이트급 · 블랙컴뱃 · 데뷔 2020',w:7,l:4,fp:'57%',tags:['조커','서브미션'],g:2,org:'블랙컴뱃',cls:'라이트급',contract:true,story:'예측 불허한 서브미션 트랩으로 상대를 무너뜨림.'},
+  {ic:'⚡',n:'권혁준',m:'라이트급 · ZFN · 데뷔 2023',w:3,l:0,fp:'100%',tags:['스파크','ZFN ORIGIN'],g:2,org:'ZFN',cls:'라이트급',contract:true,story:'ZFN ORIGIN 3연승. 전기처럼 빠른 반응속도로 주목받는 신예.'},
+  {ic:'🔥',n:'조현우',m:'라이트급 · 블랙컴뱃 · 데뷔 2021',w:5,l:2,fp:'71%',tags:['헬파이어','공격형'],g:2,org:'블랙컴뱃',cls:'라이트급',contract:true,story:'지옥불처럼 뜨거운 공격 일변도 스타일.'},
+  {ic:'🔫',n:'김동현',m:'웰터급 · 전 UFC · 데뷔 2002',w:22,l:11,fp:'54%',tags:['스턴건','레전드'],g:0,org:'전 UFC',cls:'웰터급',contract:false,story:'한국 MMA의 전설. UFC 레전드 선수로 지금도 후배들의 롤모델.'},
+  {ic:'🥋',n:'고석현',m:'웰터급 · 로드FC · 데뷔 2016',w:9,l:2,fp:'72%',tags:['불꽃호랑이','AFC 챔프'],g:0,org:'로드FC',cls:'웰터급',contract:false,story:'AFC 챔피언. 불꽃처럼 타오르는 투지로 상대를 압도.'},
+  {ic:'🦁',n:'윤창민',m:'웰터급 · 무소속 · 데뷔 2020',w:9,l:2,fp:'66%',tags:['빅하트','Road to UFC'],g:2,org:'무소속',cls:'웰터급',contract:true,story:'빅하트라는 별명처럼 압도적인 투지로 경기마다 팬을 만들어가는 선수.'},
+  {ic:'👹',n:'최준서',m:'웰터급 · 블랙컴뱃 · 데뷔 2019',w:8,l:3,fp:'72%',tags:['야차','초대 챔프'],g:2,org:'블랙컴뱃',cls:'웰터급',contract:true,story:'블랙컴뱃 초대 웰터급 챔피언. 부상 후 재기를 준비 중인 전 챔프.'},
+  {ic:'🚀',n:'박재봉',m:'웰터급 · ZFN · 데뷔 2021',w:6,l:2,fp:'75%',tags:['전진','ZFN'],g:2,org:'ZFN',cls:'웰터급',contract:true,story:'전진 압박 스타일로 상대를 코너로 몰아붙임.'},
+  {ic:'🌊',n:'서동현',m:'웰터급 · 블랙컴뱃 · 데뷔 2022',w:5,l:1,fp:'80%',tags:['불꽃권','복싱베이스'],g:2,org:'블랙컴뱃',cls:'웰터급',contract:true,story:'복싱 베이스에서 출발해 MMA에 적응 중인 잠재 강자.'},
+  {ic:'🌀',n:'나경민',m:'웰터급 · ZFN · 데뷔 2022',w:4,l:0,fp:'100%',tags:['서울파이터','무패'],g:2,org:'ZFN',cls:'웰터급',contract:true,story:'ZFN ORIGIN 4연승 무패 기대주.'},
+  {ic:'🎸',n:'안성빈',m:'웰터급 · 블랙컴뱃 · 데뷔 2021',w:6,l:3,fp:'66%',tags:['록스타','퍼포머'],g:2,org:'블랙컴뱃',cls:'웰터급',contract:true,story:'화려한 퍼포먼스로 관중을 흥분시키는 엔터테이너형 파이터.'},
+  {ic:'🐂',n:'한기석',m:'웰터급 · ZFN · 데뷔 2022',w:4,l:1,fp:'80%',tags:['황소파이터','ZFN'],g:2,org:'ZFN',cls:'웰터급',contract:true,story:'황소처럼 돌진하는 강력한 압박 레슬링 스타일.'},
+  {ic:'⛓',n:'임태규',m:'웰터급 · 블랙컴뱃 · 데뷔 2021',w:6,l:2,fp:'75%',tags:['저거너트','블랙컴뱃'],g:2,org:'블랙컴뱃',cls:'웰터급',contract:true,story:'멈출 수 없는 저거너트처럼 전진하는 파이터.'},
+  {ic:'🐢',n:'박준용',m:'미들급 · UFC · 데뷔 2019',w:10,l:4,fp:'40%',tags:['아이언 터틀','한국 최다승'],g:0,org:'UFC',cls:'미들급',contract:false,story:'한국인 UFC 최다승 도전 중. 끈질긴 경기 운영과 맷집으로 팬들의 사랑을 받는 선수.'},
+  {ic:'🥊',n:'황인수',m:'미들급 · 로드FC · 데뷔 2017',w:8,l:1,fp:'87%',tags:['한국의 맥그레거','로드FC 챔프'],g:0,org:'로드FC',cls:'미들급',contract:false,story:'로드FC 미들급 챔피언. UFC 진출을 목전에 둔 파이터.'},
+  {ic:'🖤',n:'오일학',m:'미들급 · 블랙컴뱃 · 데뷔 2015',w:12,l:4,fp:'75%',tags:['블랙컴뱃 에이스','파이트매트릭스 2위'],g:0,org:'블랙컴뱃',cls:'미들급',contract:false,story:'한국 MMA 미들급 파이트 매트릭스 2위. 블랙컴뱃 대표 미들급 파이터.'},
+  {ic:'💪',n:'최원준',m:'미들급 · 블랙컴뱃 · 데뷔 2018',w:7,l:5,fp:'57%',tags:['블랙챔프','타격'],g:2,org:'블랙컴뱃',cls:'미들급',contract:true,story:'블랙컴뱃 미들급 챔피언. 파워풀한 타격으로 상대를 압도.'},
+  {ic:'🌩',n:'강인규',m:'미들급 · 블랙컴뱃 · 데뷔 2020',w:6,l:2,fp:'75%',tags:['불꽃미들','교타전'],g:2,org:'블랙컴뱃',cls:'미들급',contract:true,story:'화끈한 교타전을 즐기는 팬 친화적 파이터.'},
+  {ic:'🌪',n:'황성민',m:'미들급 · ZFN · 데뷔 2022',w:4,l:0,fp:'100%',tags:['스톰킹','ZFN 무패'],g:2,org:'ZFN',cls:'미들급',contract:true,story:'ZFN 미들급 4연승 무패 기대주.'},
+  {ic:'👻',n:'신현욱',m:'미들급 · 블랙컴뱃 · 데뷔 2021',w:5,l:2,fp:'71%',tags:['팬텀','서브미션'],g:2,org:'블랙컴뱃',cls:'미들급',contract:true,story:'유령처럼 슬며시 다가와 서브미션으로 마무리.'},
+  {ic:'⚔',n:'한재원',m:'미들급 · 블랙컴뱃 · 데뷔 2020',w:6,l:3,fp:'66%',tags:['엑스칼리버','블랙컴뱃'],g:2,org:'블랙컴뱃',cls:'미들급',contract:true,story:'예리하게 상대의 빈틈을 노리는 전사.'},
+  {ic:'🔨',n:'서형민',m:'미들급 · 로드FC · 데뷔 2019',w:8,l:4,fp:'62%',tags:['벽돌주먹','복싱베이스'],g:2,org:'로드FC',cls:'미들급',contract:true,story:'복싱 기반의 무거운 주먹으로 쓰러뜨리는 파워파이터.'},
+  {ic:'🛡',n:'조태민',m:'미들급 · ZFN · 데뷔 2022',w:4,l:1,fp:'80%',tags:['거인의 발걸음','ZFN'],g:2,org:'ZFN',cls:'미들급',contract:true,story:'묵직한 발걸음으로 상대를 짓밟는 압박 레슬러.'},
+  {ic:'🏔',n:'정다운',m:'헤비급 · 전 UFC · 데뷔 2010',w:15,l:5,fp:'73%',tags:['코리안헤비킹','UFC 6전'],g:0,org:'전 UFC',cls:'헤비급',contract:false,story:'HEAT 챔피언, UFC 6전 경험. 한국 헤비급의 상징.'},
+  {ic:'🦏',n:'양해준',m:'헤비급 · 블랙컴뱃 · 데뷔 2014',w:15,l:6,fp:'66%',tags:['빅가이','초대 중량급 챔프'],g:0,org:'블랙컴뱃',cls:'헤비급',contract:false,story:'블랙컴뱃 초대 중량급 챔피언, 로드FC 7대 미들급 챔피언.'},
+  {ic:'💥',n:'김태인',m:'헤비급 · 로드FC · 데뷔 2020',w:5,l:0,fp:'100%',tags:['빅뱅','로드FC 챔프'],g:0,org:'로드FC',cls:'헤비급',contract:false,story:'로드FC 헤비급 챔피언. 무패 행진.'},
+  {ic:'👑',n:'이동빈',m:'헤비급 · 블랙컴뱃 · 데뷔 2019',w:6,l:3,fp:'66%',tags:['킹스맨','블랙컴뱃'],g:2,org:'블랙컴뱃',cls:'헤비급',contract:true,story:'블랙컴뱃 중량급. 킹스맨처럼 품격 있는 파이팅 스타일.'},
+  {ic:'🚛',n:'박철민',m:'헤비급 · 로드FC · 데뷔 2020',w:5,l:2,fp:'71%',tags:['트럭','레슬링'],g:2,org:'로드FC',cls:'헤비급',contract:true,story:'트럭처럼 돌진해 테이크다운을 성공시키는 힘 좋은 파이터.'},
+  {ic:'💣',n:'오상준',m:'헤비급 · ZFN · 데뷔 2021',w:4,l:1,fp:'80%',tags:['빅샷','ZFN'],g:2,org:'ZFN',cls:'헤비급',contract:true,story:'한 방에 경기를 끝낼 수 있는 폭발적인 파워 보유.'},
+  {ic:'🪨',n:'서민준',m:'헤비급 · 블랙컴뱃 · 데뷔 2022',w:3,l:0,fp:'100%',tags:['거인전사','무패'],g:2,org:'블랙컴뱃',cls:'헤비급',contract:true,story:'블랙컴뱃 헤비급 3연승 무패. 군 복무 중 체력을 기른 후 격투기에 뛰어든 이야기.'},
+  {ic:'🔨',n:'이진우',m:'헤비급 · 블랙컴뱃 · 데뷔 2020',w:5,l:3,fp:'62%',tags:['해머','오버핸드'],g:2,org:'블랙컴뱃',cls:'헤비급',contract:true,story:'망치처럼 내려치는 오버핸드 라이트가 필살기.'},
+  {ic:'⛰',n:'유민석',m:'헤비급 · 로드FC · 데뷔 2022',w:3,l:1,fp:'75%',tags:['마운틴','로드FC'],g:2,org:'로드FC',cls:'헤비급',contract:true,story:'산처럼 움직이지 않는 수비와 압박이 강점.'},
+  {ic:'🌋',n:'강태규',m:'헤비급 · ZFN · 데뷔 2021',w:4,l:2,fp:'66%',tags:['불도저','ZFN'],g:2,org:'ZFN',cls:'헤비급',contract:true,story:'멈출 줄 모르는 전진과 강력한 힘으로 상대를 밀어붙임.'},
+  {ic:'🏛',n:'신우진',m:'헤비급 · 블랙컴뱃 · 데뷔 2022',w:3,l:0,fp:'100%',tags:['타이탄','무패'],g:2,org:'블랙컴뱃',cls:'헤비급',contract:true,story:'블랙컴뱃 헤비급 3연승. 타이탄처럼 강력한 체급 피지컬이 무기.'},
 ];
 const RNKS=[
   {r:1,ch:'up',n:'김상욱 프로그맨 시그니처 티셔츠',f:'박준용',s:1284,p:45000},
