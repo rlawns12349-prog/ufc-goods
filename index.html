@@ -1101,10 +1101,17 @@ function renderMp(){
 function mpTab(t){
   ['orders','profile','delivery','withdraw'].forEach(x=>{ const e=document.getElementById('mm-'+x); if(e) e.classList.toggle('on',x===t); });
   const c=document.getElementById('mpc'); if(!c) return;
-  if(!currentUser){ c.innerHTML='<div style="text-align:center;padding:56px;color:var(--t3);"><div style="font-size:40px;margin-bottom:14px;">🔐</div><div style="margin-bottom:14px;">로그인 후 이용 가능합니다</div><button class="br" onclick="openAuth('login')">로그인</button></div>'; return; }
+  if(!currentUser){
+    c.innerHTML=`<div style="text-align:center;padding:56px;color:var(--t3);"><div style="font-size:40px;margin-bottom:14px;">🔐</div><div style="margin-bottom:14px;">로그인 후 이용 가능합니다</div><button class="br" onclick="openAuth('login')">로그인</button></div>`;
+    return;
+  }
   if(t==='orders'){
     const ords=currentUser.orders||[];
-    c.innerHTML='<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:18px;">구매 내역</div>'+(ords.length?ords.map(o=>`
+    if(!ords.length){
+      c.innerHTML=`<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:18px;">구매 내역</div><div style="text-align:center;padding:40px;color:var(--t3);"><div style="font-size:36px;margin-bottom:10px;">📦</div>구매 내역이 없습니다</div>`;
+      return;
+    }
+    c.innerHTML=`<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:18px;">구매 내역</div>`+ords.map(o=>`
       <div style="background:var(--bg3);border:1px solid var(--bd);border-radius:12px;padding:18px 22px;margin-bottom:11px;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;padding-bottom:11px;border-bottom:1px solid var(--bd);">
           <div style="font-size:12px;color:var(--t3);">${o.num} · ${o.date}</div>
@@ -1118,9 +1125,9 @@ function mpTab(t){
         <div style="display:flex;gap:7px;margin-top:12px;">
           <button class="bo sm" onclick="toast('배송 조회')">배송 조회</button>
           <button class="bo sm" onclick="toast('교환/반품 신청 접수됨')">교환/반품</button>
-          <button style="padding:9px 14px;border-radius:8px;background:transparent;color:var(--red);font-size:13px;border:1px solid var(--red);cursor:pointer;font-family:inherit;" onclick="this.closest('div[style]').remove();toast('주문이 취소되었습니다')">주문 취소</button>
+          <button style="padding:9px 14px;border-radius:8px;background:transparent;color:var(--red);font-size:13px;border:1px solid var(--red);cursor:pointer;font-family:inherit;" onclick="this.closest('div').remove();toast('주문이 취소되었습니다')">주문 취소</button>
         </div>
-      </div>`).join(''):'<div style="text-align:center;padding:40px;color:var(--t3);"><div style="font-size:36px;margin-bottom:10px;">📦</div>구매 내역이 없습니다</div>');
+      </div>`).join('');
   } else if(t==='profile'){
     c.innerHTML=`<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:18px;">정보 수정</div>
       <div style="background:var(--bg3);border:1px solid var(--bd);border-radius:14px;padding:26px;max-width:460px;">
@@ -1131,7 +1138,9 @@ function mpTab(t){
   } else if(t==='delivery'){
     c.innerHTML=`<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:18px;">배송 조회</div>
       <div style="background:var(--bg3);border:1px solid var(--bd);border-radius:14px;padding:26px;max-width:460px;">
-        <div class="fg"><div class="fl">운송장 번호</div><div style="display:flex;gap:8px;"><input class="fi" id="trk" placeholder="운송장 번호 입력"><button class="cbtn" onclick="trackDel()">조회</button></div></div>
+        <div class="fg"><div class="fl">운송장 번호</div>
+          <div style="display:flex;gap:8px;"><input class="fi" id="trk" placeholder="운송장 번호 입력"><button class="cbtn" onclick="trackDel()">조회</button></div>
+        </div>
         <div id="trres"></div>
       </div>`;
   } else if(t==='withdraw'){
@@ -1143,6 +1152,7 @@ function mpTab(t){
       </div>`;
   }
 }
+
 function savePrf(){
   const n=document.getElementById('enick').value.trim();
   if(!n||n.length<2){toast('올바른 닉네임을 입력해주세요');return;}
