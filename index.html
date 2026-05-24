@@ -448,7 +448,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 </div><!-- MOBILE NAV -->
 <div class="mobile-nav"><div class="mni on" id="mni-home" onclick="go('home');mNav(this)"><div class="mni-icon">🏠</div>홈</div><div class="mni" id="mni-goods" onclick="go('goods');mNav(this)"><div class="mni-icon">🛒</div>굿즈</div><div class="mni" id="mni-fighters" onclick="go('fighters');mNav(this)"><div class="mni-icon">🥊</div>선수</div><div class="mni" id="mni-schedule" onclick="go('schedule');mNav(this)"><div class="mni-icon">📅</div>경기</div><div class="mni" id="mni-mypage" onclick="go('mypage');mNav(this)"><div class="mni-icon">👤</div>마이</div>
 </div><!-- FOOTER -->
-<footer style="border-top:1px solid var(--bd);padding:40px 64px;background:var(--bg2);"><div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;"><div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;margin-bottom:8px;">FIGHT<em style="color:var(--red);font-style:normal;">GOODS</em></div><div style="font-size:12px;color:var(--t3);line-height:1.8;">MMA 선수의 서사를 담은 굿즈 플랫폼</div></div><div style="display:flex;gap:20px;font-size:12px;color:var(--t3);"><span style="cursor:pointer;" onclick="go('terms')">이용약관</span><span style="cursor:pointer;" onclick="go('terms')">개인정보처리방침</span><span style="cursor:pointer;" onclick="go('terms')">환불정책</span></div></div><div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--bd);font-size:11px;color:var(--t4);">© 2025 FIGHTGOODS. All rights reserved.</div></footer><!-- FIND PW MODAL -->
+<footer style="border-top:1px solid var(--bd);padding:40px 64px;background:var(--bg2);"><div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;"><div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;margin-bottom:8px;">FIGHT<em style="color:var(--red);font-style:normal;">GOODS</em></div><div style="font-size:12px;color:var(--t3);line-height:1.8;">MMA 선수의 서사를 담은 굿즈 플랫폼</div></div><div style="display:flex;gap:20px;font-size:12px;color:var(--t3);"><span style="cursor:pointer;" onclick="go('terms')">이용약관</span><span style="cursor:pointer;" onclick="go('terms')">개인정보처리방침</span><span style="cursor:pointer;" onclick="go('terms')">환불정책</span></div></div><div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--bd);font-size:11px;color:var(--t4);">© 2025 FIGHTGOODS. All rights reserved. &nbsp;·&nbsp; v1.4</div></footer><!-- FIND PW MODAL -->
 <div class="ov" id="findpw-modal"><div class="modal"><button class="mc" onclick="document.getElementById('findpw-modal').classList.remove('on')">&#x2715;</button><div style="font-size:22px;font-weight:700;margin-bottom:6px;">비밀번호 재설정</div><div style="font-size:13px;color:var(--t3);margin-bottom:22px;">가입한 이메일로 재설정 링크를 발송합니다.</div><div class="fg"><div class="fl">이메일</div><input class="fi" id="fpw-email" type="email" placeholder="가입 이메일 입력"></div><div id="fpw-msg" class="fh" style="margin-bottom:12px;"></div><button class="br full" onclick="doFindPw()">재설정 링크 발송</button></div>
 </div><div class="toast" id="tst"></div><script>const OV_CSS='position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:400;display:flex;align-items:center;justify-content:center;';
 const PRODS=[
@@ -666,7 +666,7 @@ function go(name, pushState){
   if(name==='community'){ renderVote(); renderBoardPosts(); }
   if(name==='upcoming') renderUpcoming();
   if(name==='goods') renderGoods();
-  if(name==='fighters'){renderFighters(FIGHTERS);setTimeout(function(){_delegateFighterClick('fgrid');},50);}
+  if(name==='fighters'){renderFighters(FIGHTERS);}
   if(name==='terms') showTermsTab('terms');
   if(name==='notice') renderNotices();
   if(name==='product'){ addRV(PRODS[0]); }
@@ -821,6 +821,7 @@ function filterP(btn){
 }
 function fighterHTML(f){
   var displayN=f.n.replace('_라이트','').replace('_W','');
+  var idx=FIGHTERS.indexOf(f);
   var goodsBadge=f.contract
     ?'<div class="fg-cnt" style="color:var(--red);">🛒 굿즈 '+f.g+'개</div>'
     :'<div class="fg-cnt">📋 정보 제공</div>';
@@ -829,7 +830,7 @@ function fighterHTML(f){
       +'<img src="'+f.photos[0].url+'" style="width:100%;height:100%;object-fit:cover;" loading="lazy">'
       +'</div>'
     :'<div class="fav">'+f.ic+'</div>';
-  return'<div class="fc" data-fighter="'+f.n+'" style="cursor:pointer;">'
+  return'<div class="fc" onclick="openFighterByIdx('+idx+')">'
     +avatarHtml
     +'<div class="fi2">'
       +'<div class="fn">'+displayN+'</div>'
@@ -843,6 +844,10 @@ function fighterHTML(f){
       +goodsBadge
     +'</div>'
   +'</div>';
+}
+function openFighterByIdx(idx){
+  var f=FIGHTERS[idx];
+  if(f) openFighter(f.n);
 }
 
 function openFighter(name){
@@ -1056,7 +1061,7 @@ function filterF(){
   return mq&&mf;
   });
   renderFighters(res);
-  const hf=document.getElementById('hfg'); if(hf){ hf.innerHTML=FIGHTERS.map(fighterHTML).join(''); _delegateFighterClick('hfg'); }
+  const hf=document.getElementById('hfg'); if(hf){ hf.innerHTML=FIGHTERS.map(fighterHTML).join(''); }
 }
 function mpTab(t){
   ['orders','profile','delivery','withdraw'].forEach(x=>{ const e=document.getElementById('mm-'+x); if(e) e.classList.toggle('on',x===t); });
@@ -1094,15 +1099,6 @@ function renderCart(){
 function renderFighters(list){
   const e=document.getElementById('fgrid'); if(!e) return;
   e.innerHTML=list.length?list.map(fighterHTML).join(''):'<div style="grid-column:span 3;text-align:center;padding:40px;color:var(--t2);">검색 결과가 없습니다</div>';
-}
-function _delegateFighterClick(containerId){
-  var el=document.getElementById(containerId);
-  if(!el||el._hasFighterDelegate) return;
-  el._hasFighterDelegate=true;
-  el.addEventListener('click',function(e){
-    var card=e.target.closest('[data-fighter]');
-    if(card) openFighter(card.dataset.fighter);
-  });
 }
 function renderMp(){
   const av=document.getElementById('mpav'),nm=document.getElementById('mpnm'),em=document.getElementById('mpem'),pt=document.getElementById('mppt');
@@ -1442,10 +1438,8 @@ if(upPrev){
   }).join('');
 }
 const _hfgEl=document.getElementById('hfg');
-if(_hfgEl){_hfgEl.innerHTML=FIGHTERS.filter(f=>f.contract).slice(0,6).map(fighterHTML).join('');_delegateFighterClick('hfg');}
+if(_hfgEl){_hfgEl.innerHTML=FIGHTERS.filter(f=>f.contract).slice(0,6).map(fighterHTML).join('');}
 renderFighters(FIGHTERS);
-_delegateFighterClick('fgrid');
-_delegateFighterClick('hfg');
 renderRank();
 renderCal();
 renderFaq(FAQS);
