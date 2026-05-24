@@ -1094,11 +1094,14 @@ function renderSports(){
 }
 function _initSportsGrid(){
   var g=document.getElementById('sports-grid');
-  if(!g||g._sdel) return; g._sdel=true;
-  g.addEventListener('click',function(e){
-    var card=e.target.closest('[data-sid]');
-    if(card&&!e.target.closest('button')) toast('🛒 '+card.dataset.sid+' 상세 준비 중');
-  });
+  if(!g) return;
+  if(!g._sdel){
+    g._sdel=true;
+    g.addEventListener('click',function(e){
+      var card=e.target.closest('[data-sid]');
+      if(card&&!e.target.closest('button')) toast('🛒 상세 페이지 준비 중');
+    });
+  }
 }
 function addSportsCart(id){
   var s=SPORTS_DATA.find(function(x){return x.id===id;}); if(!s) return;
@@ -1755,47 +1758,7 @@ function schTab(t){
   ['cal','res','pre','hi'].forEach(x=>{ const e=document.getElementById('st-'+x); if(e) e.style.display=x===t?'block':'none'; });
   if(t==='res') renderMatches();
 }
-function renderPosts(list){
-  var el=document.getElementById('posts');if(!el)return;
-  var arr=list||posts;
-  if(!arr.length){el.innerHTML='<div style="text-align:center;padding:48px;color:var(--t2);">게시글이 없습니다.</div>';return;}
-  var catColor={'자유게시판':'var(--t2)','구매 후기':'var(--gl)','굿즈 자랑':'#ff9f43','경기 토론':'var(--red)'};
-  var catBg={'구매 후기':'rgba(76,175,125,.1)','굿즈 자랑':'rgba(255,159,67,.1)','경기 토론':'var(--rg)','자유게시판':'var(--bg5)'};
-  el.innerHTML=arr.map(function(p){
-    var cc=catColor[p.cat]||'var(--t2)';
-    var cb=catBg[p.cat]||'var(--bg5)';
-    var catBadge=p.cat?'<span style="padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600;color:'+cc+';background:'+cb+';">'+p.cat+'</span>':'';
-    return'<div class="board-post">'
-      +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">'+catBadge+'<span style="font-size:12px;color:var(--t2);margin-left:auto;">'+p.tm+'</span></div>'
-      +'<div style="font-size:14px;font-weight:500;margin-bottom:5px;line-height:1.4;">'+p.t+'</div>'
-      +'<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-bottom:10px;">'+p.b.slice(0,80)+(p.b.length>80?'...':'')+'</div>'
-      +'<div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--t2);">'
-        +'<span style="font-weight:600;font-size:12px;color:var(--t);">'+p.a+'</span>'
-        +'<span style="margin-left:auto;">❤️ '+p.l+'</span><span>💬 '+(p.cm||0)+'</span>'
-      +'</div>'
-    +'</div>';
-  }).join('');
-}
 function likeP(e,id){ e.stopPropagation(); if(!currentUser){toast('로그인이 필요합니다');return;} const p=posts.find(x=>x.id===id); if(p){p.l++;renderPosts();} }
-function toggleWrite(){ if(!currentUser){openAuth('login');toast('로그인이 필요합니다');return;} const f=document.getElementById('wf'); f.style.display=f.style.display==='none'?'block':'none'; }
-function submitPost(){
-  var _wt=document.getElementById('wt'),_wb=document.getElementById('wb');
-  if(!_wt){toast('글쓰기 폼 오류');return;}
-  const t=_wt.value.trim(),b=_wb?_wb.value.trim():'';
-  if(!t){toast('제목을 입력해주세요');return;}
-  posts.unshift({id:nxtPid++,t,b:b||'내용 없음',a:(currentUser&&currentUser.nick)||'익명',l:0,cm:0,tm:'방금',cat:currentBoard||'자유게시판'});
-  renderPosts(); if(_wt) _wt.value=''; if(_wb) _wb.value=''; document.getElementById('wf').style.display='none'; toast('✓ 게시글이 등록되었습니다');
-}
-function sortP(type,btn){ chipOn(btn,'#p-community .chip'); renderBoardPosts(type); }
-let currentBoard='자유게시판';
-function setBoard(cat){
-  currentBoard=cat;
-  renderBoardPosts();
-}
-
-/* ══════════════════════════════
-   커뮤니티 - 게시판
-══════════════════════════════ */
 function renderBoardPosts(sortType){
   if(sortType) postSortMode=sortType;
   var filtered = currentBoard==='전체'
@@ -2024,7 +1987,7 @@ function doFindPw(){
   var _fpw=document.getElementById('fpw-email'); if(!_fpw) return;
   var email=_fpw.value.trim();
   if(!email){toast('이메일을 입력해주세요');return;}
-  if(!chkEmail(email)){toast('이메일 형식을 확인해주세요');return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){toast('이메일 형식을 확인해주세요');return;}
   var users=[]; try{users=JSON.parse(localStorage.getItem('fg_users')||'[]');}catch(e){}
   if(!users.find(function(u){return u.email===email;})){
     toast('등록되지 않은 이메일입니다');return;
@@ -2627,13 +2590,7 @@ function castVote(el){
 
 function renderNotices(){
   var el=document.getElementById('notice-list');
-  if(!el){ setTimeout(renderNotices, 50); return; }
-  if(!NOTICES||!NOTICES.length){
-    el.innerHTML='<div class="empty-msg"><span class="ei">📢</span><p>공지사항이 없습니다.</p></div>';
-    return;
-  }
-  var pinned=NOTICES.filter(function(n){return n.pin;});
-  var normal=NOTICES.filter(function(n){return !n.pin;});
+  if(!el) return;
   var makeRow=function(n){
     return '<div class="ni" onclick="openNotice('+n.id+')">'
       +(n.pin
@@ -2646,6 +2603,8 @@ function renderNotices(){
       +'<span style="font-size:16px;color:var(--t2);flex-shrink:0;">›</span>'
     +'</div>';
   };
+  var pinned=NOTICES.filter(function(n){return n.pin;});
+  var normal=NOTICES.filter(function(n){return !n.pin;});
   el.innerHTML=pinned.concat(normal).map(makeRow).join('');
 }
 
@@ -2780,25 +2739,33 @@ function showTermsTab(t){
 }
 
 // 초기 렌더링
-loadAuth();
-renderProds('hpg', PRODS.slice(0,8));
-var _hfgEl=document.getElementById('hfg');
-if(_hfgEl) _hfgEl.innerHTML=FIGHTERS.filter(function(f){return f.contract;}).slice(0,6).map(fighterHTML).join('');
-renderFighters(FIGHTERS);
-renderRank();
-renderCal();
-renderFaq(FAQS);
-renderNotices();
-renderUpcoming();
-renderSports();
-renderBoardPosts();
-renderVote();
-renderCommMatches();
-initHeroCarousel();
-renderHomeStoryGrid();
+function _initAll(){
+  loadAuth();
+  renderProds('hpg', PRODS.slice(0,8));
+  var _hfgEl=document.getElementById('hfg');
+  if(_hfgEl) _hfgEl.innerHTML=FIGHTERS.filter(function(f){return f.contract;}).slice(0,6).map(fighterHTML).join('');
+  renderFighters(FIGHTERS);
+  var _fcnt=document.getElementById('fighter-count');
+  if(_fcnt) _fcnt.textContent='총 '+FIGHTERS.length+'명 (계약 '+FIGHTERS.filter(function(f){return f.contract;}).length+'명)';
+  renderRank();
+  renderCal();
+  renderFaq(FAQS);
+  renderNotices();
+  renderUpcoming();
+  renderSports();
+  renderBoardPosts();
+  renderVote();
+  renderCommMatches();
+  initHeroCarousel();
+  renderHomeStoryGrid();
+  go(initPage, false);
+}
 
-// 초기 페이지 이동
-go(initPage, false);
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', _initAll);
+} else {
+  _initAll();
+}
 </script>
 </body>
 </html>
