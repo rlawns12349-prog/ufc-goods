@@ -596,6 +596,322 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .faq-search-input { flex:1; background:none; border:none; outline:none; color:var(--t); font-size:14px; font-family:inherit; }
 .qa-input { margin-bottom:8px; }
 
+
+/* ══════════════════════════
+   UPCOMING CARDS
+══════════════════════════ */
+.upc-card {
+  background:var(--bg3); border:1px solid var(--bd); border-radius:16px;
+  overflow:hidden; cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s;
+}
+.upc-card:hover { transform:translateY(-5px); box-shadow:0 18px 44px rgba(0,0,0,.55); border-color:rgba(230,57,70,.3); }
+.upc-card:hover .upc-img img { transform:scale(1.07); }
+.upc-img { position:relative; height:220px; overflow:hidden; background:#111; }
+.upc-img img { width:100%; height:100%; object-fit:cover; transition:transform .4s ease; display:block; }
+.upc-overlay { position:absolute; inset:0; background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.75) 100%); pointer-events:none; }
+.upc-dday {
+  position:absolute; top:12px; left:12px; z-index:3;
+  padding:6px 11px; border-radius:10px; border:1px solid; text-align:center;
+  backdrop-filter:blur(8px);
+}
+.upc-dday-num { display:block; font-family:var(--font-bebas); font-size:24px; line-height:1; }
+.upc-dday-label { display:block; font-size:9px; color:rgba(255,255,255,.5); letter-spacing:.8px; text-transform:uppercase; margin-top:1px; }
+.upc-hot-badge {
+  position:absolute; top:12px; right:12px; z-index:3;
+  background:var(--red); color:#fff; font-size:10px; font-weight:800;
+  padding:3px 9px; border-radius:100px; letter-spacing:.5px;
+}
+.upc-fighter {
+  position:absolute; bottom:10px; left:12px; z-index:3;
+  font-size:11px; font-weight:700; color:#fff;
+  text-shadow:0 1px 4px rgba(0,0,0,.9);
+}
+.upc-body { padding:14px 14px 15px; }
+.upc-cat { font-size:10px; font-weight:700; color:var(--red); text-transform:uppercase; letter-spacing:1px; margin-bottom:5px; opacity:.8; }
+.upc-name { font-size:13px; font-weight:600; line-height:1.4; margin-bottom:10px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.upc-foot { display:flex; align-items:center; justify-content:space-between; gap:6px; }
+.upc-price { font-size:15px; font-weight:800; }
+.upc-alarm-btn {
+  padding:6px 12px; border-radius:8px; border:1px solid var(--bd);
+  background:transparent; color:var(--t2); font-size:11px; font-weight:600;
+  cursor:pointer; font-family:inherit; transition:all .15s; flex-shrink:0;
+}
+.upc-alarm-btn:hover { border-color:var(--red); color:var(--red); background:var(--rg); }
+
+/* ══════════════════════════
+   MATCH BANNER
+══════════════════════════ */
+.match-banner {
+  position:relative; border-radius:20px; overflow:hidden;
+  background:var(--bg3); border:1px solid var(--bd);
+  cursor:pointer; transition:border-color .2s;
+}
+.match-banner:hover { border-color:rgba(230,57,70,.3); }
+.match-banner-bg {
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse 70% 100% at 50% 0%, rgba(230,57,70,.08) 0%, transparent 70%);
+  pointer-events:none;
+}
+.match-banner-inner { position:relative; z-index:2; padding:28px 32px; }
+.match-banner-meta { display:flex; align-items:center; gap:10px; margin-bottom:24px; }
+.match-live-dot { width:7px; height:7px; border-radius:50%; background:var(--red); animation:pulse 1.6s ease-in-out infinite; flex-shrink:0; }
+.match-live-label { font-size:11px; font-weight:800; color:var(--red); text-transform:uppercase; letter-spacing:1px; }
+.match-event-name { font-size:12px; color:var(--t2); }
+.match-banner-vs { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:24px; margin-bottom:24px; }
+.match-fighter { display:flex; flex-direction:column; align-items:center; gap:10px; }
+.match-fighter-win .match-fighter-name { color:var(--red); }
+.match-fighter-img { width:80px; height:80px; border-radius:50%; overflow:hidden; border:2px solid var(--bd2); background:var(--bg4); }
+.match-fighter-img img { width:100%; height:100%; object-fit:cover; }
+.match-fighter-img-dim { opacity:.55; border-color:var(--bd); }
+.match-fighter-name { font-family:var(--font-bebas); font-size:26px; letter-spacing:1px; line-height:1.1; }
+.match-fighter-info { font-size:11px; color:var(--t2); }
+.match-result-center { text-align:center; }
+.match-method-badge { background:var(--red); color:#fff; font-size:12px; font-weight:800; padding:4px 14px; border-radius:100px; margin-bottom:8px; display:inline-block; }
+.match-vs-text { font-family:var(--font-bebas); font-size:22px; color:var(--t3); margin:6px 0; }
+.match-round { font-size:11px; color:var(--t2); }
+.match-banner-actions { display:flex; gap:8px; justify-content:center; padding-top:20px; border-top:1px solid var(--bd); }
+
+/* ══════════════════════════
+   HOME FIGHTER SCROLL
+══════════════════════════ */
+.fighter-scroll {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+}
+.hfc { border-radius:16px; overflow:hidden; cursor:pointer; }
+.hfc-img {
+  position:relative; aspect-ratio:3/4; background:var(--bg3);
+  border:1px solid var(--bd); border-radius:16px; overflow:hidden;
+  transition:transform .2s, box-shadow .2s, border-color .2s;
+}
+.hfc:hover .hfc-img { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.55); border-color:rgba(230,57,70,.3); }
+.hfc:hover .hfc-img img { transform:scale(1.06); }
+.hfc-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
+.hfc-emoji { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:56px; }
+.hfc-overlay { position:absolute; inset:0; background:linear-gradient(180deg, transparent 30%, rgba(0,0,0,.85) 100%); pointer-events:none; }
+.hfc-body { position:absolute; bottom:0; left:0; right:0; padding:18px 16px; }
+.hfc-org { font-size:10px; color:var(--red); font-weight:800; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:4px; }
+.hfc-name { font-family:var(--font-bebas); font-size:24px; letter-spacing:1px; color:#fff; line-height:1.1; margin-bottom:6px; }
+.hfc-tags { display:flex; gap:4px; flex-wrap:wrap; margin-bottom:5px; }
+.hfc-tag { font-size:10px; padding:2px 7px; border-radius:100px; background:rgba(230,57,70,.2); border:1px solid rgba(230,57,70,.35); color:#fff; }
+.hfc-goods { font-size:11px; font-weight:700; color:var(--red); }
+
+@media(max-width:768px){
+  .upc-img { height:160px; }
+  .upc-dday-num { font-size:20px; }
+  .match-banner-inner { padding:20px 16px; }
+  .match-fighter-img { width:60px; height:60px; }
+  .match-fighter-name { font-size:20px; }
+  .match-banner-vs { gap:12px; }
+  .fighter-scroll { grid-template-columns:repeat(2,1fr); gap:10px; }
+  .hfc-name { font-size:20px; }
+}
+@media(min-width:769px) and (max-width:1024px){
+  .fighter-scroll { grid-template-columns:repeat(3,1fr); }
+}
+
+
+/* ══════════════════════════════
+   PAGE COMPONENT CLASSES
+══════════════════════════════ */
+
+/* Match Results (경기 결과) */
+.mr-card { background:var(--bg3); border:1px solid var(--bd); border-radius:16px; overflow:hidden; margin-bottom:14px; transition:border-color .15s; }
+.mr-card:hover { border-color:var(--bd2); }
+.mr-header { display:flex; align-items:center; gap:10px; padding:14px 18px 0; }
+.mr-status { font-size:11px; font-weight:800; color:var(--t2); text-transform:uppercase; letter-spacing:.5px; padding:3px 9px; border-radius:100px; background:var(--bg4); border:1px solid var(--bd); }
+.mr-status-live { color:var(--red); background:var(--rg); border-color:rgba(230,57,70,.25); }
+.mr-event { font-size:12px; color:var(--t2); }
+.mr-vs { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:16px; padding:16px 18px; }
+.mr-fighter { display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; }
+.mr-fighter-win .mr-fighter-name { color:var(--red); }
+.mr-fighter-photo { width:64px; height:64px; border-radius:50%; overflow:hidden; border:2px solid var(--bd2); background:var(--bg4); flex-shrink:0; }
+.mr-fighter-photo img { width:100%; height:100%; object-fit:cover; }
+.mr-fighter-photo-dim { opacity:.45; border-color:var(--bd); }
+.mr-fighter-name { font-family:var(--font-bebas); font-size:20px; letter-spacing:.5px; line-height:1.1; }
+.mr-fighter-name-dim { color:var(--t2); }
+.mr-fighter-info { font-size:11px; color:var(--t2); }
+.mr-center { text-align:center; }
+.mr-method { background:var(--red); color:#fff; font-size:11px; font-weight:800; padding:3px 11px; border-radius:100px; margin-bottom:6px; display:inline-block; }
+.mr-vs-txt { font-family:var(--font-bebas); font-size:20px; color:var(--t3); margin:4px 0; }
+.mr-round { font-size:11px; color:var(--t2); }
+.mr-goods { padding:14px 18px; border-top:1px solid var(--bd); }
+.mr-goods-label { font-size:10px; color:var(--red); font-weight:800; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px; }
+.mr-goods-grid { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+.mr-goods-item { flex:1; min-width:80px; background:var(--bg4); border:1px solid var(--bd); border-radius:10px; padding:10px 8px; text-align:center; cursor:pointer; transition:border-color .15s; }
+.mr-goods-item:hover { border-color:rgba(230,57,70,.4); }
+.mr-goods-img { font-size:22px; margin-bottom:4px; }
+.mr-goods-name { font-size:11px; font-weight:600; line-height:1.4; margin-bottom:3px; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
+.mr-goods-price { font-size:12px; color:var(--red); font-weight:700; }
+.mr-goods-actions { display:flex; gap:8px; }
+.mr-story-link { display:flex; align-items:center; gap:10px; padding:12px 18px; border-top:1px solid var(--bd); cursor:pointer; transition:background .1s; }
+.mr-story-link:hover { background:var(--bg4); }
+.mr-story-ic { font-size:20px; }
+.mr-story-txt { flex:1; font-size:13px; color:var(--t2); }
+.mr-story-arr { color:var(--t3); }
+
+/* 마이페이지 */
+.order-card { background:var(--bg3); border:1px solid var(--bd); border-radius:14px; padding:18px; margin-bottom:10px; }
+.order-card-head { display:flex; align-items:center; gap:8px; padding-bottom:12px; border-bottom:1px solid var(--bd); margin-bottom:12px; }
+.order-num { font-size:12px; color:var(--t2); flex:1; }
+.order-date { font-size:12px; color:var(--t2); }
+.order-status { font-size:11px; font-weight:700; padding:2px 9px; border-radius:100px; background:var(--rg); color:var(--red); border:1px solid rgba(230,57,70,.2); }
+.order-card-body { display:flex; gap:12px; align-items:center; margin-bottom:12px; }
+.order-img { width:56px; height:56px; border-radius:10px; background:var(--bg4); display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; border:1px solid var(--bd); }
+.order-info { flex:1; }
+.order-name { font-size:14px; font-weight:600; margin-bottom:4px; line-height:1.4; }
+.order-price { font-size:14px; font-weight:700; color:var(--red); }
+.order-actions { display:flex; gap:7px; }
+.profile-form { background:var(--bg3); border:1px solid var(--bd); border-radius:14px; padding:22px; max-width:460px; }
+.withdraw-form { border-color:rgba(230,57,70,.2); }
+.withdraw-warn { font-size:13px; color:var(--t2); line-height:1.8; margin-bottom:16px; }
+
+/* 게시글 상세 */
+.post-detail-head { display:flex; align-items:center; gap:8px; margin-bottom:12px; }
+.post-cat-badge { font-size:11px; font-weight:700; padding:3px 9px; border-radius:4px; }
+.post-time { font-size:12px; color:var(--t2); margin-left:auto; }
+.post-title { font-size:18px; font-weight:700; margin-bottom:10px; line-height:1.4; }
+.post-body { font-size:14px; color:var(--t); line-height:1.85; margin-bottom:16px; white-space:pre-wrap; }
+.post-footer { display:flex; align-items:center; gap:12px; padding-top:14px; border-top:1px solid var(--bd); }
+.post-author { font-size:13px; font-weight:600; }
+.post-like-btn { display:flex; align-items:center; gap:5px; margin-left:auto; padding:6px 14px; border-radius:100px; border:1px solid var(--bd); background:transparent; color:var(--t2); font-size:13px; cursor:pointer; font-family:inherit; transition:all .15s; }
+.post-like-btn.liked { border-color:var(--red); color:var(--red); background:var(--rg); }
+.post-comments-title { font-size:14px; font-weight:700; margin-bottom:14px; }
+.comment-input-row { display:flex; gap:8px; margin-top:16px; }
+
+/* 선수 상세 페이지 */
+.fd-org { font-size:11px; color:var(--t2); letter-spacing:.5px; text-transform:uppercase; margin-bottom:8px; font-weight:600; }
+.fd-subtitle { font-size:14px; color:var(--t2); margin-bottom:14px; font-weight:300; line-height:1.5; }
+.fd-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:12px; }
+.fd-info { flex:1; }
+.fd-sticky-bar { position:sticky; top:var(--nh); z-index:100; background:rgba(8,8,8,.93); backdrop-filter:blur(12px); padding:10px 24px; border-bottom:1px solid var(--bd); display:flex; align-items:center; justify-content:space-between; }
+.fd-sticky-label { font-size:13px; color:var(--t2); }
+.fd-content { padding:24px 40px 52px; }
+.fdav-img { width:100px; height:100px; border-radius:14px; overflow:hidden; flex-shrink:0; border:1px solid var(--bd2); background:var(--bg4); }
+.fdav-img img { width:100%; height:100%; object-fit:cover; }
+.fd-photos-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.fd-photo-item { position:relative; aspect-ratio:4/3; border-radius:8px; overflow:hidden; background:var(--bg4); border:1px solid var(--bd); }
+.fd-photo-item img { width:100%; height:100%; object-fit:cover; }
+.fd-photo-cap { position:absolute; bottom:0; left:0; right:0; padding:5px 8px; background:linear-gradient(transparent,rgba(0,0,0,.7)); font-size:11px; color:#fff; }
+
+/* 타임라인 */
+.tl-row { display:flex; gap:16px; padding-bottom:20px; position:relative; }
+.tl-row-last { padding-bottom:0; }
+.tl-line { position:absolute; left:8px; top:22px; bottom:0; width:1px; background:var(--bd); }
+.tl-dot { width:18px; height:18px; border-radius:50%; border:2px solid var(--bd2); background:var(--bg); flex-shrink:0; margin-top:3px; z-index:1; }
+.tl-dot-active { border-color:var(--red); background:var(--red); }
+.tl-content { flex:1; }
+.tl-year { font-size:11px; color:var(--t2); margin-bottom:3px; }
+.tl-event { font-size:14px; font-weight:600; margin-bottom:2px; }
+.tl-event-active { color:var(--red); }
+.tl-desc { font-size:13px; color:var(--t2); line-height:1.6; margin-top:2px; }
+
+/* FAQ */
+.faq-search-bar { display:flex; align-items:center; gap:9px; background:var(--bg3); border:1px solid var(--bd2); border-radius:10px; padding:11px 16px; margin-bottom:14px; }
+.faq-select { margin-bottom:9px; }
+.fighter-search-bar { display:flex; gap:10px; margin-bottom:22px; flex-wrap:wrap; align-items:center; }
+
+@media(max-width:768px){
+  .mr-vs { gap:10px; padding:12px 14px; }
+  .mr-fighter-photo { width:50px; height:50px; }
+  .mr-fighter-name { font-size:16px; }
+  .fd-sticky-bar { padding:8px 14px; }
+  .fd-content { padding:14px 14px 40px; }
+  .fdav-img { width:80px; height:80px; }
+  .fd-photos-grid { gap:6px; }
+  .order-card { padding:14px; }
+}
+
+
+/* ═══════════════════════════════════
+   FINAL COMPONENT CSS
+═══════════════════════════════════ */
+
+/* 공지 */
+.ni { display:flex; align-items:center; gap:12px; padding:14px 4px; border-bottom:1px solid var(--bd); cursor:pointer; transition:background .1s; border-radius:6px; }
+.ni:hover { background:var(--bg3); padding:14px 8px; }
+.ni:hover .ntit { color:var(--red); }
+.ntype { width:40px; flex-shrink:0; font-size:11px; color:var(--t2); text-align:center; }
+.ni-body { flex:1; min-width:0; }
+.ntit { font-size:13.5px; font-weight:600; line-height:1.5; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; transition:color .15s; }
+.ni-date { font-size:11.5px; color:var(--t2); margin-top:2px; }
+.ni-arr { color:var(--t3); font-size:16px; flex-shrink:0; }
+
+/* 공지 모달 */
+.notice-modal { max-width:520px; }
+.notice-modal-cat { font-size:10px; font-weight:800; color:var(--red); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:10px; }
+.notice-modal-title { font-size:18px; font-weight:700; line-height:1.4; margin-bottom:6px; }
+.notice-modal-date { font-size:12px; color:var(--t2); }
+.notice-modal-divider { height:1px; background:var(--bd); margin:16px 0; }
+.notice-modal-body { font-size:14px; color:var(--t2); line-height:1.9; white-space:pre-wrap; }
+
+/* 투표 */
+.vote-row { margin-bottom:12px; }
+.vote-label-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; font-size:12.5px; }
+.vote-label { font-weight:500; }
+.vote-pct { font-weight:700; color:var(--t2); }
+.vote-pct-lead { color:var(--red); }
+.vote-bar-bg { height:6px; background:var(--bg5); border-radius:3px; overflow:hidden; }
+.vote-bar { height:100%; background:var(--bd2); border-radius:3px; transition:width .4s ease; }
+.vote-bar-lead { background:var(--red); }
+.vote-cast-btn { margin-top:12px; }
+
+/* 게시판 포스트 */
+.bp-head { display:flex; align-items:center; gap:7px; margin-bottom:7px; }
+.bp-cat { font-size:10px; font-weight:700; padding:2px 8px; border-radius:4px; flex-shrink:0; }
+.bp-time { font-size:11px; color:var(--t2); margin-left:auto; }
+.bp-title { font-size:14px; font-weight:700; line-height:1.4; margin-bottom:4px; }
+.bp-preview { font-size:12.5px; color:var(--t2); line-height:1.55; margin-bottom:10px; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
+.bp-footer { display:flex; align-items:center; gap:10px; font-size:12px; color:var(--t2); }
+.bp-author { font-weight:600; color:var(--t); }
+.bp-stat { cursor:pointer; }
+.bp-like.liked { color:var(--red); }
+
+/* 장바구니 */
+.cart-item-info { flex:1; min-width:0; }
+.cart-item-name { font-size:14px; font-weight:600; margin-bottom:3px; line-height:1.4; }
+.cart-item-opt { font-size:12px; color:var(--t2); margin-bottom:10px; }
+.cart-item-qrow { display:flex; align-items:center; gap:10px; }
+.cart-item-price { font-size:14px; font-weight:700; }
+.cart-item-del { background:none; border:none; color:var(--t2); cursor:pointer; font-size:14px; padding:4px; transition:color .15s; }
+.cart-item-del:hover { color:var(--red); }
+
+/* 결제 */
+.pay-item { display:flex; gap:10px; align-items:center; padding:12px 0; border-bottom:1px solid var(--bd); }
+.pay-item:last-child { border-bottom:none; }
+.pay-item-img { width:46px; height:46px; border-radius:10px; background:var(--bg5); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; border:1px solid var(--bd); }
+.pay-item-info { flex:1; min-width:0; }
+.pay-item-name { font-size:13px; font-weight:600; margin-bottom:2px; line-height:1.4; }
+.pay-item-sub { font-size:11px; color:var(--t2); }
+.pay-item-price { font-size:14px; font-weight:700; flex-shrink:0; }
+.pay-tot-row { display:flex; justify-content:space-between; font-size:13px; padding:6px 0; color:var(--t2); }
+.pay-tot-row:first-child { margin-top:12px; border-top:1px solid var(--bd); padding-top:14px; }
+.pay-tot-disc { color:var(--gl); }
+.pay-tot-final { font-size:15px; font-weight:800; color:var(--t); padding-top:10px; margin-top:4px; border-top:1px solid var(--bd); }
+
+/* 히어로 스토리카드 */
+.hsc-card { width:100%; max-width:340px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:22px; backdrop-filter:blur(12px); cursor:pointer; transition:border-color .2s, background .2s; }
+.hsc-card:hover { background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.2); }
+.hsc-ic { font-size:48px; margin-bottom:10px; }
+.hsc-sub { font-size:10px; color:var(--red); font-weight:800; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:5px; }
+.hsc-name { font-family:var(--font-bebas); font-size:26px; letter-spacing:1px; margin-bottom:8px; }
+.hsc-story { font-size:12px; color:var(--t2); line-height:1.65; margin-bottom:12px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.hsc-btns { display:flex; gap:7px; margin-bottom:12px; }
+.hsc-dots { display:flex; gap:5px; }
+
+/* 공유 */
+.share-sheet { background:var(--bg3); border:1px solid var(--bd2); border-radius:16px; padding:22px; }
+.share-title { font-size:15px; font-weight:700; margin-bottom:5px; }
+.share-sub { font-size:13px; color:var(--t2); margin-bottom:16px; }
+.share-btns { display:flex; gap:10px; flex-wrap:wrap; }
+
+/* 디자인 콘테스트 */
+.contest-info-box { background:var(--rg); border:1px solid rgba(230,57,70,.2); border-radius:12px; padding:14px 16px; margin-bottom:14px; }
+.contest-info-sub { font-size:12px; color:var(--t2); }
+
+/* 공통 유틸 */
+.pay-tot-row:first-child { margin-top:12px; }
+
 </style>
 </head>
 <body><!-- NAVBAR -->
@@ -603,7 +919,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 </nav><!-- AUTH MODAL -->
 <div class="ov" id="aov"><div class="modal"><button class="mc" onclick="closeAuth()">&#x2715;</button><div style="font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;margin-bottom:3px;">FIGHTGOODS</div><div style="font-size:13px;color:var(--t3);margin-bottom:22px;">MMA 서사 기반 굿즈 플랫폼</div><div class="mtabs"><button class="mt on" id="tlog" onclick="atab('login')">로그인</button><button class="mt" id="tsig" onclick="atab('signup')">회원가입</button></div><!-- LOGIN --><div id="flog"><div class="fg"><div class="fl">이메일</div><input class="fi" id="le" type="email" placeholder="이메일 입력"></div><div class="fg"><div class="fl">비밀번호</div><input class="fi" id="lp" type="password" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')doLogin()"><div id="lerr" class="fh err" style="display:none;"></div></div><div style="display:flex;justify-content:space-between;margin-bottom:14px;"><label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--t3);cursor:pointer;"><input type="checkbox"> 로그인 상태 유지</label><span style="font-size:12px;color:var(--t3);cursor:pointer;" onclick="showFindPw()">비밀번호 찾기</span></div><button class="br full" onclick="doLogin()">로그인</button><div class="mdiv">소셜 로그인</div><div class="social-row"><button class="sb" onclick="socialLogin('카카오')">카카오</button><button class="sb" onclick="socialLogin('구글')">구글</button><button class="sb" onclick="socialLogin('네이버')">네이버</button></div></div><!-- SIGNUP --><div id="fsig" style="display:none;"><div class="fg"><div class="fl">이메일</div><input class="fi" id="se" type="email" placeholder="이메일 입력" oninput="chkEmail(this.value)"><div id="seh" class="fh"></div></div><div class="fg"><div class="fl">닉네임</div><input class="fi" id="sn" placeholder="닉네임 (2~10자)" oninput="chkNick(this.value)"><div id="snh" class="fh"></div></div><div class="fg"><div class="fl">비밀번호</div><input class="fi" id="sp" type="password" placeholder="영문+숫자+특수문자 8자 이상" oninput="chkPw(this.value)"><div id="pwbar" style="height:4px;border-radius:2px;margin-top:5px;width:0;transition:width .3s,background .3s;"></div><div id="sph" class="fh"></div></div><div class="fg"><div class="fl">비밀번호 확인</div><input class="fi" id="sp2" type="password" placeholder="비밀번호 재입력" oninput="chkPw2(this.value)"><div id="sp2h" class="fh"></div></div><div style="margin-bottom:13px;"><label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;margin-bottom:7px;"><input type="checkbox" id="agr"> 이용약관 및 개인정보처리방침 동의 <span style="color:var(--red);">(필수)</span> <span style="color:var(--red);cursor:pointer;font-size:11px;" onclick="closeAuth();go('terms')">내용 보기</span></label><label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;"><input type="checkbox"> 마케팅 수신 동의 (선택)</label></div><div id="serr" class="fh err" style="display:none;margin-bottom:9px;"></div><button class="br full" onclick="doSignup()">회원가입</button></div></div>
 </div><!-- HOME -->
-<div class="pw on" id="p-home"><!-- ① 히어로: 굿즈 중심 --><div class="hero"><div class="hero-bg"></div><div class="hero-content"><div class="hero-badge"><div class="hero-dot"></div><span id="hero-badge-text">계약 선수 신규 굿즈 출시</span></div><div class="hero-title">선수의<br><span class="accent">서사를</span><br>입어라</div><div class="hero-sub">경기 뒤에 남는 건 기록이 아니라 감동.<br>그 순간을 담은 굿즈, 지금 바로 만나보세요.</div><div class="hero-btns"><button class="br" onclick="go('goods');navTo('굿즈 전체')">굿즈 전체 보기</button><button class="bo" onclick="go('upcoming');navTo('출시 예정')">출시 예정 보기</button><button class="bo" onclick="go('sports');navTo('스포츠용품')">🥊 스포츠용품</button></div></div><div class="hero-visual"><div id="hero-story-card" style="width:100%;max-width:340px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;backdrop-filter:blur(10px);cursor:pointer;" onclick="heroCardClick()"><div id="hsc-ic" style="font-size:52px;margin-bottom:12px;">🐸</div><div id="hsc-sub" style="font-size:11px;color:var(--red);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">계약 선수</div><div id="hsc-name" style="font-family:var(--font-bebas,serif);font-size:28px;letter-spacing:1px;margin-bottom:8px;">김상욱</div><div id="hsc-story" style="font-size:12px;color:var(--t2);line-height:1.65;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;"></div><div style="display:flex;align-items:center;gap:8px;"><button style="padding:6px 14px;border-radius:6px;background:var(--red);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;" onclick="event.stopPropagation();heroCardGoGoods()">굿즈 보기</button><button style="padding:6px 14px;border-radius:6px;background:transparent;color:var(--t2);font-size:12px;border:1px solid var(--bd2);cursor:pointer;font-family:inherit;" onclick="event.stopPropagation();heroCardGoFighter()">선수 서사 →</button></div><div style="display:flex;gap:5px;margin-top:14px;" id="hsc-dots"></div></div></div></div><!-- ⓪ 선수 서사 섹션 -->
+<div class="pw on" id="p-home"><!-- ① 히어로: 굿즈 중심 --><div class="hero"><div class="hero-bg"></div><div class="hero-content"><div class="hero-badge"><div class="hero-dot"></div><span id="hero-badge-text">계약 선수 신규 굿즈 출시</span></div><div class="hero-title">선수의<br><span class="accent">서사를</span><br>입어라</div><div class="hero-sub">경기 뒤에 남는 건 기록이 아니라 감동.<br>그 순간을 담은 굿즈, 지금 바로 만나보세요.</div><div class="hero-btns"><button class="br" onclick="go('goods');navTo('굿즈 전체')">굿즈 전체 보기</button><button class="bo" onclick="go('upcoming');navTo('출시 예정')">출시 예정 보기</button><button class="bo" onclick="go('sports');navTo('스포츠용품')">🥊 스포츠용품</button></div></div><div class="hero-visual"><div id="hero-story-card" class="hsc-card" onclick="heroCardClick()">
+  <div id="hsc-ic" class="hsc-ic">🐸</div>
+  <div id="hsc-sub" class="hsc-sub">계약 선수</div>
+  <div id="hsc-name" class="hsc-name">김상욱</div>
+  <div id="hsc-story" class="hsc-story"></div>
+  <div class="hsc-btns">
+    <button class="br sm" onclick="event.stopPropagation();heroCardGoGoods()">굿즈 보기</button>
+    <button class="bo sm" onclick="event.stopPropagation();heroCardGoFighter()">서사 →</button>
+  </div>
+  <div class="hsc-dots" id="hsc-dots"></div>
+</div></div></div><!-- ⓪ 선수 서사 섹션 -->
 <div class="sec sec-nt">
   <div class="sh">
     <div class="sl">파이터 서사</div>
@@ -612,17 +938,59 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
   </div>
   <div class="story-grid" id="home-story-grid"></div>
 </div>
-<!-- ② 인기 굿즈 --><div class="sec"><div class="sh"><div class="sl">인기 굿즈</div><div class="st">지금 가장 핫한 굿즈</div><button class="sm" onclick="go('goods');navTo('굿즈 전체')">전체 보기 →</button></div><div style="display:flex;gap:8px;margin-bottom:18px;" id="pf"><button class="chip on" data-c="전체" onclick="filterP(this)">전체</button><button class="chip" data-c="티셔츠" onclick="filterP(this)">티셔츠</button><button class="chip" data-c="포스터" onclick="filterP(this)">포스터</button><button class="chip" data-c="포토카드" onclick="filterP(this)">포토카드</button><button class="chip" data-c="후디" onclick="filterP(this)">후디</button></div><div class="pg" id="hpg"></div></div><!-- ③ 출시 예정 미리보기 --><div class="sec sec-nt"><div class="sh"><div class="sl">출시 예정</div><div class="st">곧 만나볼 굿즈</div><button class="sm" onclick="go('upcoming');navTo('출시 예정')">전체 보기 →</button></div><div class="pg" id="h-upcoming-preview"></div></div><!-- ④ 최근 경기 결과 배너 --><div class="sec sec-nt"><div class="sh"><div class="sl">최근 경기</div><div class="st">방금 끝난 경기</div><button class="sm" onclick="go('schedule');navTo('경기 정보');setTimeout(()=>{tabOn(document.querySelectorAll('#p-schedule .tab')[1],document.querySelector('#p-schedule .tabs'));schTab('res');},50)">전체 결과 →</button></div><div class="rb" onclick="go('schedule');navTo('경기 정보');setTimeout(()=>{tabOn(document.querySelectorAll('#p-schedule .tab')[1],document.querySelector('#p-schedule .tabs'));schTab('res');},50)" style="margin:0 0 0;"><div class="rb-top"><span class="rb-badge">방금 종료</span><span style="font-size:13px;color:var(--t2);">Road to UFC 결승 · 2026.01.31</span></div><div class="rb-main"><div class="rf win"><div class="rn">김상욱</div><div class="ro">라이트급 · 무소속</div></div><div class="rc"><div class="rm">KO 승</div><div class="rd">1라운드 2분 34초</div><div style="font-size:20px;color:var(--t3);margin:6px 0;">VS</div></div><div class="rf"><div class="rn">돔 마르 판</div><div class="ro">라이트급</div></div></div><div class="rb-cta"><button class="bo" onclick="event.stopPropagation();openFighter('김상욱')">선수 스토리 보기</button><button class="br" onclick="event.stopPropagation();openProduct(1)">🛒 김상욱 굿즈 보기 →</button></div></div></div><!-- ⑤ 선수 서사 --><div class="sec sec-nt"><div class="sh"><div class="sl">선수 서사</div><div class="st">그들의 이야기</div><button class="sm" onclick="go('fighters');navTo('선수 정보')">전체 보기 →</button></div><div class="fg-grid" id="hfg"></div></div><!-- ⑥ 최근 본 상품 --><div class="sec sec-nt"><div class="sh"><div class="sl">최근 본 상품</div><div class="st">다시 보기</div></div><div id="rv"><div style="text-align:center;padding:36px;color:var(--t3);"><div style="font-size:36px;margin-bottom:8px;">👀</div>아직 본 상품이 없어요</div></div></div></div><!-- GOODS ALL -->
+<!-- ② 인기 굿즈 --><div class="sec"><div class="sh"><div class="sl">인기 굿즈</div><div class="st">지금 가장 핫한 굿즈</div><button class="sm" onclick="go('goods');navTo('굿즈 전체')">전체 보기 →</button></div><div style="display:flex;gap:8px;margin-bottom:18px;" id="pf"><button class="chip on" data-c="전체" onclick="filterP(this)">전체</button><button class="chip" data-c="티셔츠" onclick="filterP(this)">티셔츠</button><button class="chip" data-c="포스터" onclick="filterP(this)">포스터</button><button class="chip" data-c="포토카드" onclick="filterP(this)">포토카드</button><button class="chip" data-c="후디" onclick="filterP(this)">후디</button></div><div class="pg" id="hpg"></div></div><!-- ③ 출시 예정 미리보기 --><div class="sec sec-nt"><div class="sh"><div class="sl">출시 예정</div><div class="st">곧 만나볼 굿즈</div><button class="sm" onclick="go('upcoming');navTo('출시 예정')">전체 보기 →</button></div><div class="pg" id="h-upcoming-preview"></div></div><!-- ④ 최근 경기 결과 배너 -->
+<div class="sec sec-nt">
+  <div class="sh"><div class="sl">최근 경기</div><div class="st">방금 끝난 경기</div><button class="sm" onclick="go('schedule')">전체 결과 →</button></div>
+  <div class="match-banner" onclick="go('schedule')">
+    <div class="match-banner-bg"></div>
+    <div class="match-banner-inner">
+      <div class="match-banner-meta">
+        <span class="match-live-dot"></span>
+        <span class="match-live-label">방금 종료</span>
+        <span class="match-event-name">Road to UFC 결승 · 2026.01.31</span>
+      </div>
+      <div class="match-banner-vs">
+        <div class="match-fighter match-fighter-win">
+          <div class="match-fighter-img">
+            <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=300&h=300&fit=crop&q=80" alt="김상욱" loading="lazy">
+          </div>
+          <div class="match-fighter-name">김상욱</div>
+          <div class="match-fighter-info">라이트급 · 무소속</div>
+        </div>
+        <div class="match-result-center">
+          <div class="match-method-badge">KO 승</div>
+          <div class="match-vs-text">VS</div>
+          <div class="match-round">1R 2:34</div>
+        </div>
+        <div class="match-fighter">
+          <div class="match-fighter-img match-fighter-img-dim">
+            <img src="https://images.unsplash.com/photo-1549476464-37392f717541?w=300&h=300&fit=crop&q=80" alt="돔 마르 판" loading="lazy">
+          </div>
+          <div class="match-fighter-name">돔 마르 판</div>
+          <div class="match-fighter-info">라이트급</div>
+        </div>
+      </div>
+      <div class="match-banner-actions">
+        <button class="bo sm" onclick="event.stopPropagation();openFighter('김상욱')">선수 스토리</button>
+        <button class="br sm" onclick="event.stopPropagation();openProduct(1)">🛒 굿즈 보기</button>
+      </div>
+    </div>
+  </div>
+</div><!-- ⑤ 선수 서사 -->
+<div class="sec sec-nt">
+  <div class="sh"><div class="sl">선수 서사</div><div class="st">그들의 이야기</div><button class="sm" onclick="go('fighters')">전체 보기 →</button></div>
+  <div class="fighter-scroll" id="hfg"></div>
+</div><!-- ⑥ 최근 본 상품 --><div class="sec sec-nt"><div class="sh"><div class="sl">최근 본 상품</div><div class="st">다시 보기</div></div><div id="rv"><div style="text-align:center;padding:36px;color:var(--t3);"><div style="font-size:36px;margin-bottom:8px;">👀</div>아직 본 상품이 없어요</div></div></div></div><!-- GOODS ALL -->
 <div class="pw" id="p-goods"><div class="sec"><div class="sh"><div class="sl">굿즈 전체</div><div class="st">카테고리별 굿즈</div><button class="sm" onclick="go('ranking');navTo('종합 랭킹')">종합 랭킹 보기 →</button></div><!-- 카테고리 필터 --><div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;" id="goods-cats"><button class="chip on" data-g="전체" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">전체</button><button class="chip" data-g="티셔츠" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">👕 티셔츠</button><button class="chip" data-g="후디" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">🎽 후디</button><button class="chip" data-g="포스터" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">🖼️ 포스터</button><button class="chip" data-g="포토카드" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">📸 포토카드</button><button class="chip" data-g="소품" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">☕ 소품</button><button class="chip" data-g="포토북" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">📖 포토북</button></div><!-- 정렬 + 검색 --><div style="display:flex;gap:10px;align-items:center;margin-bottom:22px;flex-wrap:wrap;"><input id="goods-srch" class="search-input" placeholder="🔍 상품명 · 선수명 검색" oninput="renderGoods()"><div class="tabs"><button class="tab on" onclick="tabOn(this,this.parentNode);goodsSort='newest';renderGoods()">최신순</button><button class="tab" onclick="tabOn(this,this.parentNode);goodsSort='price_asc';renderGoods()">낮은가격</button><button class="tab" onclick="tabOn(this,this.parentNode);goodsSort='price_desc';renderGoods()">높은가격</button></div><span id="goods-count" class="result-count"></span></div><div class="pg" id="goods-grid"></div></div>
 </div><!-- UPCOMING -->
-<div class="pw" id="p-upcoming"><div class="sec"><div class="sh"><div class="sl">출시 예정</div><div class="st">곧 만나볼 굿즈</div></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;" id="upcoming-grid"></div></div>
+<div class="pw" id="p-upcoming"><div class="sec"><div class="sh"><div class="sl">출시 예정</div><div class="st">곧 만나볼 굿즈</div></div><div class="pg" id="upcoming-grid"></div></div>
 </div><!-- RANKING -->
 <div class="pw" id="p-ranking"><div class="sec"><div class="sh"><div class="sl">종합 랭킹</div><div class="st">인기 굿즈 순위</div><button class="sm" onclick="go('goods');navTo('굿즈 전체')">굿즈 전체 보기 →</button></div><div style="display:flex;gap:12px;margin-bottom:18px;align-items:center;"><div class="tabs"><button class="tab on" onclick="tabOn(this,this.parentNode);rankSort='sales';renderRank()">판매량순</button><button class="tab" onclick="tabOn(this,this.parentNode);rankSort='views';renderRank()">조회수순</button></div><div style="display:flex;gap:6px;"><button class="chip on" onclick="chipOn(this,'.pchip');rankPeriod='daily';renderRank()">일간</button><button class="chip pchip" onclick="chipOn(this,'.pchip');rankPeriod='weekly';renderRank()">주간</button><button class="chip pchip" onclick="chipOn(this,'.pchip');rankPeriod='monthly';renderRank()">월간</button></div></div><div id="rtb"></div></div>
 </div><!-- FIGHTERS -->
 <div class="pw" id="p-fighters"><div class="sec"><div class="sh"><div class="sl">선수 정보</div><div class="st">전체 선수 정보</div></div><div class="fighter-legend">
   <span class="legend-item legend-contract">🛒 계약 선수</span>
   <span class="legend-item legend-info">📋 정보 제공</span>
-</div><div style="display:flex;gap:10px;margin-bottom:22px;flex-wrap:wrap;align-items:center;"><input id="fsrch" class="search-input" placeholder="🔍 선수 이름 검색" oninput="filterF()"><div style="display:flex;gap:6px;flex-wrap:wrap;" id="ff"><button class="chip on" data-f="전체" onclick="chipOn(this,'#ff .chip');filterF()">전체</button><button class="chip" data-f="플라이급" onclick="chipOn(this,'#ff .chip');filterF()">플라이급</button><button class="chip" data-f="밴텀급" onclick="chipOn(this,'#ff .chip');filterF()">밴텀급</button><button class="chip" data-f="페더급" onclick="chipOn(this,'#ff .chip');filterF()">페더급</button><button class="chip" data-f="라이트급" onclick="chipOn(this,'#ff .chip');filterF()">라이트급</button><button class="chip" data-f="웰터급" onclick="chipOn(this,'#ff .chip');filterF()">웰터급</button><button class="chip" data-f="미들급" onclick="chipOn(this,'#ff .chip');filterF()">미들급</button><button class="chip" data-f="헤비급" onclick="chipOn(this,'#ff .chip');filterF()">헤비급</button><button class="chip" data-f="UFC" onclick="chipOn(this,'#ff .chip');filterF()">UFC</button><button class="chip" data-f="블랙컴뱃" onclick="chipOn(this,'#ff .chip');filterF()">블랙컴뱃</button><button class="chip" data-f="ZFN" onclick="chipOn(this,'#ff .chip');filterF()">ZFN</button><button class="chip" data-f="로드FC" onclick="chipOn(this,'#ff .chip');filterF()">로드FC</button><button class="chip" data-f="무소속" onclick="chipOn(this,'#ff .chip');filterF()">무소속</button></div></div><div class="fg-grid" id="fgrid"></div></div>
+</div><div class="fighter-search-bar"><input id="fsrch" class="search-input" placeholder="🔍 선수 이름 검색" oninput="filterF()"><div style="display:flex;gap:6px;flex-wrap:wrap;" id="ff"><button class="chip on" data-f="전체" onclick="chipOn(this,'#ff .chip');filterF()">전체</button><button class="chip" data-f="플라이급" onclick="chipOn(this,'#ff .chip');filterF()">플라이급</button><button class="chip" data-f="밴텀급" onclick="chipOn(this,'#ff .chip');filterF()">밴텀급</button><button class="chip" data-f="페더급" onclick="chipOn(this,'#ff .chip');filterF()">페더급</button><button class="chip" data-f="라이트급" onclick="chipOn(this,'#ff .chip');filterF()">라이트급</button><button class="chip" data-f="웰터급" onclick="chipOn(this,'#ff .chip');filterF()">웰터급</button><button class="chip" data-f="미들급" onclick="chipOn(this,'#ff .chip');filterF()">미들급</button><button class="chip" data-f="헤비급" onclick="chipOn(this,'#ff .chip');filterF()">헤비급</button><button class="chip" data-f="UFC" onclick="chipOn(this,'#ff .chip');filterF()">UFC</button><button class="chip" data-f="블랙컴뱃" onclick="chipOn(this,'#ff .chip');filterF()">블랙컴뱃</button><button class="chip" data-f="ZFN" onclick="chipOn(this,'#ff .chip');filterF()">ZFN</button><button class="chip" data-f="로드FC" onclick="chipOn(this,'#ff .chip');filterF()">로드FC</button><button class="chip" data-f="무소속" onclick="chipOn(this,'#ff .chip');filterF()">무소속</button></div></div><div class="fg-grid" id="fgrid"></div></div>
 </div><!-- FIGHTER DETAIL -->
 <div class="pw" id="p-fighter-detail"><div class="bc"><span onclick="go('fighters');navTo('선수 정보')">선수 정보</span><span class="sep">›</span><span style="color:var(--t2);">박준용</span></div><div class="fdh"><div class="fdtop"><div class="fdav">🥊</div><div><div class="fdnm">박준용</div><div style="font-size:13px;color:var(--t3);margin-bottom:14px;">UFC · 미들급 · 데뷔 2019.10.05</div><div class="srow2"><div class="sbox"><div class="sv2">12</div><div class="slb">승</div></div><div class="sbox"><div class="sv2">3</div><div class="slb">패</div></div><div class="sbox"><div class="sv2">0</div><div class="slb">무</div></div><div class="sbox"><div class="sv2">77%</div><div class="slb">피니시율</div></div></div><div style="font-size:12px;background:rgba(255,255,255,0.05);border:1px solid var(--bd2);border-radius:8px;padding:10px 14px;color:var(--t3);">ℹ️ 이 선수는 정보 제공 선수입니다. 굿즈 계약 선수는 <span style="color:var(--red);cursor:pointer;" onclick="go('fighters')">선수 목록</span>에서 확인하세요.</div></div></div></div><div class="fdb"><div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:22px;">성장 타임라인</div><div class="tl-item"><div class="tl-dot"></div><div><div style="font-size:11px;color:var(--t3);">2019</div><div style="font-size:15px;font-weight:500;margin:3px 0 5px;">UFC 데뷔</div><div style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:7px;">2019년 10월 UFC 무대에 올라 꾸준한 경기력으로 이름을 알리기 시작했다.</div></div></div><div class="tl-item"><div class="tl-dot"></div><div><div style="font-size:11px;color:var(--t3);">2022</div><div style="font-size:15px;font-weight:500;margin:3px 0 5px;">연속 승리 행진</div><div style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:7px;">미들급에서 꾸준히 연승을 이어가며 UFC 랭킹 진입을 노리기 시작했다.</div></div></div><div class="tl-item"><div class="tl-dot hi"></div><div><div style="font-size:11px;color:var(--t3);">2025 🏆</div><div style="font-size:15px;font-weight:500;margin:3px 0 5px;">UFC 10승 달성</div><div style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:7px;">한국 선수 최다승을 향해 달려가는 아이언 터틀. UFC 랭킹 진입이 코앞이다.</div></div></div></div><div><div class="gbox"><div class="sec-title">박준용 선수 정보</div><div style="font-size:12px;color:var(--t3);line-height:1.8;margin-bottom:14px;">
           현재 IP 계약이 체결되지 않은 선수입니다.<br>
@@ -916,11 +1284,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 
 <!-- TERMS -->
 </div>
-<div class="pw" id="p-terms"><div class="sec" style="max-width:800px;"><div class="sh"><div class="sl">법적 고지</div><div class="st">이용약관 &amp; 정책</div></div><div class="tabs" style="margin-bottom:28px;"><button class="tab on" onclick="tabOn(this,this.parentNode);showTermsTab('terms')">이용약관</button><button class="tab" onclick="tabOn(this,this.parentNode);showTermsTab('privacy')">개인정보처리방침</button><button class="tab" onclick="tabOn(this,this.parentNode);showTermsTab('refund')">환불/교환정책</button></div><div id="terms-content"></div></div>
+<div class="pw" id="p-terms"><div class="sec" style="max-width:800px;"><div class="sh"><div class="sl">법적 고지</div><div class="st">이용약관 &amp; 정책</div></div><div class="tabs"><button class="tab on" onclick="tabOn(this,this.parentNode);showTermsTab('terms')">이용약관</button><button class="tab" onclick="tabOn(this,this.parentNode);showTermsTab('privacy')">개인정보처리방침</button><button class="tab" onclick="tabOn(this,this.parentNode);showTermsTab('refund')">환불/교환정책</button></div><div id="terms-content"></div></div>
 </div><!-- NOTICE -->
 <div class="pw" id="p-notice"><div class="sec"><div class="sh"><div class="sl">공지사항</div><div class="st">공지사항</div></div><div style="max-width:760px;" id="notice-list"></div></div>
 </div><!-- FAQ -->
-<div class="pw" id="p-faq"><div class="sec"><div class="sh"><div class="sl">고객지원</div><div class="st">FAQ &amp; 1:1 문의</div></div><div style="display:grid;grid-template-columns:1fr 320px;gap:36px;align-items:start;"><div><div style="display:flex;align-items:center;gap:9px;background:var(--bg3);border:1px solid var(--bd2);border-radius:10px;padding:11px 16px;margin-bottom:14px;"><span>🔍</span><input id="fqs" class="faq-search-input" placeholder="궁금한 점을 검색하세요" oninput="filterFaq()"></div><div style="display:flex;gap:7px;margin-bottom:18px;" id="fqcats"><button class="chip on" data-c="전체" onclick="chipOn(this,'#fqcats .chip');filterFaq()">전체</button><button class="chip" data-c="배송" onclick="chipOn(this,'#fqcats .chip');filterFaq()">배송</button><button class="chip" data-c="교환반품" onclick="chipOn(this,'#fqcats .chip');filterFaq()">교환/반품</button><button class="chip" data-c="결제" onclick="chipOn(this,'#fqcats .chip');filterFaq()">결제</button><button class="chip" data-c="굿즈" onclick="chipOn(this,'#fqcats .chip');filterFaq()">굿즈</button></div><div id="fql"></div></div><div style="background:var(--bg3);border:1px solid var(--bd);border-radius:14px;padding:22px;"><div class="sec-title">1:1 문의 접수</div><div style="font-size:12px;color:var(--t3);margin-bottom:14px;line-height:1.7;">운영시간: 평일 10:00~18:00<br>운영시간 외 챗봇 자동 응답</div><select class="fi-full" style="margin-bottom:9px;"><option>문의 유형 선택</option><option>상품 불량</option><option>오배송</option><option>미배송</option><option>결제 오류</option><option>기타</option></select><textarea placeholder="문의 내용을 입력해주세요" style="width:100%;padding:10px 13px;background:var(--bg4);border:1px solid var(--bd2);border-radius:8px;color:var(--t);font-size:13px;font-family:inherit;resize:vertical;min-height:90px;margin-bottom:9px;outline:none;"></textarea><button class="br full" onclick="toast(\'✓ 문의가 접수되었습니다. 접수번호: #20250517-CS042\')">문의 접수</button></div></div></div>
+<div class="pw" id="p-faq"><div class="sec"><div class="sh"><div class="sl">고객지원</div><div class="st">FAQ &amp; 1:1 문의</div></div><div style="display:grid;grid-template-columns:1fr 320px;gap:36px;align-items:start;"><div><div class="faq-search-bar"><span>🔍</span><input id="fqs" class="faq-search-input" placeholder="궁금한 점을 검색하세요" oninput="filterFaq()"></div><div style="display:flex;gap:7px;margin-bottom:18px;" id="fqcats"><button class="chip on" data-c="전체" onclick="chipOn(this,'#fqcats .chip');filterFaq()">전체</button><button class="chip" data-c="배송" onclick="chipOn(this,'#fqcats .chip');filterFaq()">배송</button><button class="chip" data-c="교환반품" onclick="chipOn(this,'#fqcats .chip');filterFaq()">교환/반품</button><button class="chip" data-c="결제" onclick="chipOn(this,'#fqcats .chip');filterFaq()">결제</button><button class="chip" data-c="굿즈" onclick="chipOn(this,'#fqcats .chip');filterFaq()">굿즈</button></div><div id="fql"></div></div><div style="background:var(--bg3);border:1px solid var(--bd);border-radius:14px;padding:22px;"><div class="sec-title">1:1 문의 접수</div><div style="font-size:12px;color:var(--t3);margin-bottom:14px;line-height:1.7;">운영시간: 평일 10:00~18:00<br>운영시간 외 챗봇 자동 응답</div><select class="fi-full faq-select"><option>문의 유형 선택</option><option>상품 불량</option><option>오배송</option><option>미배송</option><option>결제 오류</option><option>기타</option></select><textarea placeholder="문의 내용을 입력해주세요" style="width:100%;padding:10px 13px;background:var(--bg4);border:1px solid var(--bd2);border-radius:8px;color:var(--t);font-size:13px;font-family:inherit;resize:vertical;min-height:90px;margin-bottom:9px;outline:none;"></textarea><button class="br full" onclick="toast(\'✓ 문의가 접수되었습니다. 접수번호: #20250517-CS042\')">문의 접수</button></div></div></div>
 </div><!-- SPORTS -->
 <div class="pw" id="p-sports">
   <div class="sec">
@@ -1107,15 +1475,26 @@ const NOTICES=[
    b:'안녕하세요, FIGHTGOODS입니다.\n\nMMA 선수의 서사를 담은 굿즈 플랫폼, FIGHTGOODS가 정식 오픈하였습니다!\n\n■ 주요 서비스\n- 계약 선수 서사 굿즈 판매\n- MMA 경기 정보 제공\n- 팬 커뮤니티\n- 선수 Q&A\n\n앞으로도 다양한 선수들과 함께 더욱 풍성한 콘텐츠로 찾아뵙겠습니다.\n많은 관심과 성원 부탁드립니다. 감사합니다.'},
 ];
 function openNotice(id){
-  const n = NOTICES.find(x=>x.id===id);
+  var n=NOTICES.find(function(x){return x.id===id;});
   if(!n) return;
-  const ov = document.createElement('div');
-  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:400;display:flex;align-items:center;justify-content:center;padding:20px;';
-  ov.innerHTML=`<div style="background:var(--bg3);border:1px solid var(--bd2);border-radius:16px;padding:32px;width:100%;max-width:580px;max-height:80vh;overflow-y:auto;position:relative;"><button onclick="closeModal(this)" style="position:absolute;top:14px;right:16px;background:var(--bg5);border:none;border-radius:50%;color:var(--t2);font-size:15px;cursor:pointer;width:30px;height:30px;display:flex;align-items:center;justify-content:center;">✕</button>
-  ${n.pin?'<span style="background:var(--rg);color:var(--red);border:1px solid rgba(230,57,70,.3);font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px;display:inline-block;margin-bottom:12px;">공지</span>':''}
-  <div style="font-size:18px;font-weight:700;margin-bottom:8px;line-height:1.4;">${n.t}</div><div style="font-size:12px;color:var(--t2);margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--bd);">${n.date}</div><div style="font-size:14px;color:var(--t2);line-height:1.9;white-space:pre-line;">${n.b}</div><button onclick="closeModal(this)" class="bo full" style="margin-top:24px;">닫기</button></div>`;
-  ov.addEventListener('click',e=>{if(e.target===ov)ov.remove();});
-  document.body.appendChild(ov);
+  var ov=document.getElementById('notice-ov');
+  if(!ov){
+    ov=document.createElement('div');
+    ov.id='notice-ov';
+    ov.className='ov';
+    ov.onclick=function(e){if(e.target===ov)ov.classList.remove('on');};
+    document.body.appendChild(ov);
+  }
+  ov.innerHTML=''
+    +'<div class="modal notice-modal">'
+      +'<button class="mc" onclick="document.getElementById(\'notice-ov\').classList.remove(\'on\')">✕</button>'
+      +'<div class="notice-modal-cat">'+(n.pin?'📌 공지':'일반')+'</div>'
+      +'<div class="notice-modal-title">'+n.t+'</div>'
+      +'<div class="notice-modal-date">'+n.date+'</div>'
+      +'<div class="notice-modal-divider"></div>'
+      +'<div class="notice-modal-body">'+n.body+'</div>'
+    +'</div>';
+  ov.classList.add('on');
 }
 const FAQS=[
   {c:'배송',q:'배송은 얼마나 걸리나요?',a:'결제 완료 후 영업일 2~3일 이내 발송됩니다.'},
@@ -1141,54 +1520,71 @@ const MATCHES=[
 ];
 function renderMatches(){
   var el=document.getElementById('match-results'); if(!el) return;
+  var FIGHTER_IMGS={
+    '김상욱':'https://images.unsplash.com/photo-1555597673-b21d5c935865?w=200&h=200&fit=crop&q=80',
+    '박준용':'https://images.unsplash.com/photo-1549476464-37392f717541?w=200&h=200&fit=crop&q=80',
+    '최두호':'https://images.unsplash.com/photo-1517438476312-10d79c077509?w=200&h=200&fit=crop&q=80',
+    '윤창민':'https://images.unsplash.com/photo-1519058082700-08a0b56da9b4?w=200&h=200&fit=crop&q=80',
+  };
   el.innerHTML=MATCHES.map(function(m){
-    // 승리 선수 FIGHTERS에서 찾기
-    var winner=FIGHTERS.find(function(f){ return f.n===m.w||f.n.replace('_라이트','')===m.w; });
+    var winner=FIGHTERS.find(function(f){return f.n===m.w||f.n.replace('_라이트','')===m.w;});
     var widx=winner?FIGHTERS.indexOf(winner):-1;
-    // 계약 선수면 굿즈 연결, 아니면 선수 서사 연결
-    var ctaHtml='';
-    if(m.contractWinner&&winner&&winner.contract){
-      var wProds=PRODS.filter(function(p){
-        var fn=p.f.replace(' · 계약 선수','').replace(' · 무소속','').trim();
-        return fn===m.w||fn===m.w.replace('_라이트','');
-      });
-      ctaHtml='<div style="padding:14px 0 2px;margin-top:12px;border-top:1px solid rgba(255,255,255,.07);">'
-        +'<div style="font-size:11px;color:var(--red);font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px;">🔥 경기 직후 — 승리 기념 굿즈</div>'
-        +'<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">'
+    var wImg=FIGHTER_IMGS[m.w]||'';
+    var lImg='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200&h=200&fit=crop&q=80';
+    var wProds=m.contractWinner&&winner&&winner.contract?PRODS.filter(function(p){
+      var fn=p.f.replace(' · 계약 선수','').replace(' · 무소속','').trim();
+      return fn===m.w||fn===m.w.replace('_라이트','');
+    }):[];
+
+    var goodsHtml='';
+    if(wProds.length>0){
+      goodsHtml='<div class="mr-goods">'
+        +'<div class="mr-goods-label">🔥 승리 기념 굿즈</div>'
+        +'<div class="mr-goods-grid">'
         +wProds.slice(0,3).map(function(p){
-          return '<div onclick="openProduct('+p.id+')" class="match-goods-item">' 
-            +'<div style="font-size:24px;margin-bottom:4px;">'+p.ic+'</div>'
-            +'<div style="font-size:11px;font-weight:600;line-height:1.4;margin-bottom:3px;">'+p.n.replace(m.w+' ','').slice(0,14)+'</div>'
-            +'<div style="font-size:12px;color:var(--red);font-weight:700;">₩'+p.p.toLocaleString()+'</div>'
+          return '<div class="mr-goods-item" onclick="openProduct('+p.id+')">'
+            +'<div class="mr-goods-img">'+p.ic+'</div>'
+            +'<div class="mr-goods-name">'+p.n.slice(0,12)+'</div>'
+            +'<div class="mr-goods-price">₩'+p.p.toLocaleString()+'</div>'
           +'</div>';
         }).join('')
-        +(wProds.length===0?'<div style="font-size:13px;color:var(--t2);padding:8px 0;">굿즈 준비 중</div>':'')
         +'</div>'
-        +'<div style="display:flex;gap:8px;">'
-          +(wProds.length>0?'<button class="br sm" onclick="openGoods()">전체 굿즈 →</button>':'')
-          +(widx>=0?'<button class="bo sm" onclick="openFighterByIdx('+widx+')">'+m.w+' 서사 보기</button>':'')
+        +'<div class="mr-goods-actions">'
+          +(wProds.length>0?'<button class="br sm" onclick="openGoods()">전체 굿즈</button>':'')
+          +(widx>=0?'<button class="bo sm" onclick="openFighterByIdx('+widx+')">'+m.w+' 서사</button>':'')
         +'</div>'
       +'</div>';
-    } else if(widx>=0){
-      ctaHtml='<div style="padding:12px 0 2px;margin-top:10px;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:10px;">'
-        +'<span style="font-size:22px;">'+winner.ic+'</span>'
-        +'<div style="flex:1;">'
-          +'<div style="font-size:11px;color:var(--t2);">'+winner.subtitle+'</div>'
-        +'</div>'
-        +'<button class="bo sm" onclick="openFighterByIdx('+widx+')">서사 보기</button>'
+    } else if(widx>=0) {
+      goodsHtml='<div class="mr-story-link" onclick="openFighterByIdx('+widx+')">'
+        +(winner?'<span class="mr-story-ic">'+winner.ic+'</span>':'')
+        +'<span class="mr-story-txt">'+m.w+' 선수 서사 보기</span>'
+        +'<span class="mr-story-arr">→</span>'
       +'</div>';
     }
-    return '<div class="rb" style="margin:0 0 14px;">'
-      +'<div class="rb-top">'
-        +'<span style="background:'+(m.fresh?'var(--red)':'var(--bg4)')+';color:'+(m.fresh?'#fff':'var(--t2)')+';padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;">'+(m.fresh?'방금 종료':'종료')+'</span>'
-        +'<span style="font-size:12px;color:var(--t2);">'+m.org+' · '+m.event+' · '+m.date+'</span>'
+
+    return '<div class="mr-card">'
+      +'<div class="mr-header">'
+        +'<span class="mr-status'+(m.fresh?' mr-status-live':'')+'">'+(m.fresh?'● 방금 종료':'종료')+'</span>'
+        +'<span class="mr-event">'+m.org+' · '+m.date+'</span>'
       +'</div>'
-      +'<div class="rb-main">'
-        +'<div class="rf win"><div class="rn" style="font-size:28px;">'+m.w+'</div><div class="ro">'+m.winfo+'</div></div>'
-        +'<div class="rc"><div class="rm">'+m.method+'</div><div class="rd">'+m.round+'</div><div style="font-size:18px;color:var(--t2);margin:4px 0;">VS</div></div>'
-        +'<div class="rf"><div class="rn" style="font-size:28px;color:var(--t2);">'+m.l+'</div><div class="ro">'+m.linfo+'</div></div>'
+      +'<div class="mr-vs">'
+        +'<div class="mr-fighter mr-fighter-win">'
+          +'<div class="mr-fighter-photo">'+(wImg?'<img src="'+wImg+'" alt="'+m.w+'" loading="lazy">':'<span>🥊</span>')+'</div>'
+          +'<div class="mr-fighter-name">'+m.w+'</div>'
+          +'<div class="mr-fighter-info">'+m.winfo+'</div>'
+        +'</div>'
+        +'<div class="mr-center">'
+          +'<div class="mr-method">'+m.method+'</div>'
+          +'<div class="mr-vs-txt">VS</div>'
+          +'<div class="mr-round">'+m.round+'</div>'
+        +'</div>'
+        +'<div class="mr-fighter">'
+          +'<div class="mr-fighter-photo mr-fighter-photo-dim"><img src="'+lImg+'" alt="'+m.l+'" loading="lazy"></div>'
+          +'<div class="mr-fighter-name mr-fighter-name-dim">'+m.l+'</div>'
+          +'<div class="mr-fighter-info">'+m.linfo+'</div>'
+        +'</div>'
       +'</div>'
-      +ctaHtml
+      +goodsHtml
     +'</div>';
   }).join('');
 }
@@ -1559,6 +1955,26 @@ function filterP(btn){
   const c=btn.dataset.c;
   renderProds('hpg',c==='전체'?PRODS:PRODS.filter(p=>p.c===c));
 }
+function homeFighterCard(f){
+  var dn=f.n.replace('_라이트','').replace('_W','');
+  var idx=FIGHTERS.indexOf(f);
+  var ph=f.photos&&f.photos[0]?f.photos[0].url:'';
+  return '<div class="hfc" onclick="openFighterByIdx('+idx+')">'
+    +'<div class="hfc-img">'
+      +(ph?'<img src="'+ph+'" alt="'+dn+'" loading="lazy">':'<div class="hfc-emoji">'+f.ic+'</div>')
+      +'<div class="hfc-overlay"></div>'
+      +'<div class="hfc-body">'
+        +'<div class="hfc-org">'+f.org+'</div>'
+        +'<div class="hfc-name">'+dn+'</div>'
+        +'<div class="hfc-tags">'
+          +f.tags.slice(0,2).map(function(t){return '<span class="hfc-tag">'+t+'</span>';}).join('')
+        +'</div>'
+        +(f.contract?'<div class="hfc-goods">🛒 굿즈 '+f.g+'개</div>':'')
+      +'</div>'
+    +'</div>'
+  +'</div>';
+}
+
 function fighterHTML(f){
   var displayN=f.n.replace('_라이트','').replace('_W','');
   var idx=FIGHTERS.indexOf(f);
@@ -1655,12 +2071,12 @@ function openFighter(name){
   for(var ti=0;ti<f.timeline.length;ti++){
     var t=f.timeline[ti];
     var isLast=ti===f.timeline.length-1;
-    tlHtml+='<div style="display:flex;gap:16px;padding-bottom:'+(isLast?'0':'20px')+';position:relative;">'
-  +(isLast?'':'<div style="position:absolute;left:8px;top:22px;bottom:0;width:1px;background:var(--bd);"></div>')
-  +'<div style="width:18px;height:18px;border-radius:50%;border:2px solid '+(isLast?'var(--red)':'var(--bd2)')+';background:'+(isLast?'var(--red)':'var(--bg)')+';flex-shrink:0;margin-top:3px;z-index:1;"></div>'
-  +'<div style="flex:1"><div style="font-size:12px;color:var(--t2);margin-bottom:3px;">'+t[0]+'</div>'
-  +'<div style="font-size:14px;font-weight:600;color:'+(isLast?'var(--red)':'var(--t)')+';margin-bottom:2px;">'+t[1]+'</div>'
-  +'<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-top:2px;">'+t[2]+'</div>'
+    tlHtml+='<div class="tl-row'+(isLast?' tl-row-last':'')+'">'
+  +(isLast?'':'<div class="tl-line"></div>')
+  +'<div class="tl-dot'+(isLast?' tl-dot-active':'')+'"></div>'
+  +'<div class="tl-content"><div class="tl-year">'+t[0]+'</div>'
+  +'<div class="tl-event'+(isLast?' tl-event-active':'')+'">'+t[1]+'</div>'
+  +'<div class="tl-desc">'+t[2]+'</div>'
         +(t[3]&&PRODS.find(function(p){return p.id===t[3];})?'<div style="margin-top:7px;"><span class="tl-goods-btn" onclick="openProduct('+t[3]+')">🛒 이 스토리의 굿즈 보기 →</span></div>':'')
         +'</div></div>';
   }
@@ -1670,12 +2086,12 @@ function openFighter(name){
   if(f.photos&&f.photos.length){
   photosHtml='<div style="margin-bottom:32px;">'
     +'<div class="sec-label">사진</div>'
-    +'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">';
+    +'<div class="fd-photos-grid">';
   for(var pi=0;pi<f.photos.length;pi++){
     var ph=f.photos[pi];
-    photosHtml+='<div style="position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:var(--bg4);border:1px solid var(--bd);">'
-  +'<img src="'+(ph.url||ph.url)+'" style="width:100%;height:100%;object-fit:cover;" loading="lazy">'
-  +'<div style="position:absolute;bottom:0;left:0;right:0;padding:5px 8px;background:linear-gradient(transparent,rgba(0,0,0,.7));font-size:11px;color:#fff;">'+(ph.caption||ph.cap||'')+'</div>'
+    photosHtml+='<div class="fd-photo-item">'
+  +'<img src="'+(ph.url||ph.url)+'" loading="lazy">'
+  +'<div class="fd-photo-cap">'+(ph.caption||ph.cap||'')+'</div>'
   +'</div>';
   }
   photosHtml+='</div></div>';
@@ -1695,9 +2111,9 @@ function openFighter(name){
   ?'<div class="fdav-img" style="width:110px;height:110px;border-radius:12px;overflow:hidden;flex-shrink:0;border:1px solid var(--bd2);background:var(--bg4);">'
     +'<img src="'+f.photos[0].url+'" style="width:100%;height:100%;object-fit:cover;" loading="lazy">'
     +'</div>'
-  :'<div class="fdav" style="font-size:52px;">'+f.ic+'</div>')
-  +'<div style="flex:1;">'
-  +'<div style="font-size:12px;color:var(--t2);letter-spacing:.3px;text-transform:uppercase;margin-bottom:8px;font-weight:500;">'+f.org+' · '+f.cls+'</div>'
+  :'<div class="fdav">'+f.ic+'</div>')
+  +'<div class="fd-info">'
+  +'<div class="fd-org">'+f.org+' · '+f.cls+'</div>'
   +'<div class="fdnm">'+displayName+'</div>'
   +(f.subtitle?'<div style="font-size:14px;color:var(--t2);margin-bottom:14px;font-weight:300;letter-spacing:.2px;">'+f.subtitle+'</div>':'')
   +'<div class="srow2">'
@@ -1706,7 +2122,7 @@ function openFighter(name){
   +'<div class="sbox"><div class="sv2">0</div><div class="slb">무</div></div>'
   +'<div class="sbox"><div class="sv2">'+f.fp+'</div><div class="slb">피니시율</div></div>'
   +'</div>'
-  +'<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;">'+tagsHtml+'</div>'
+  +'<div class="fd-tags">'+tagsHtml+'</div>'
   +contractBox
   +shareBtn
   +snsHtml
@@ -1717,7 +2133,7 @@ function openFighter(name){
     +'</div>':'')
 +(gbox
   ?'<div class="fdb"><div>'+profileHtml+ytHtml+storyHtml+tlHtml+photosHtml+'</div>'+gbox+'</div>'
-  :'<div style="padding:24px 40px 52px;">'+profileHtml+ytHtml+storyHtml+tlHtml+photosHtml+'</div>');
+  :'<div class="fd-content">'+profileHtml+ytHtml+storyHtml+tlHtml+photosHtml+'</div>');
   go('fighter-detail');
 }
 function goSrchItem(i){
@@ -1815,81 +2231,87 @@ function filterF(){
 }
 function mpTab(t){
   ['orders','profile','delivery','withdraw'].forEach(function(x){
-    var e=document.getElementById('mm-'+x); if(e) e.classList.toggle('on',x===t);
+    var el=document.getElementById('mm-'+x); if(el) el.classList.toggle('on',x===t);
   });
   var c=document.getElementById('mpc'); if(!c) return;
   if(!currentUser){
-    c.innerHTML='<div style="text-align:center;padding:56px;color:var(--t2);"><div style="font-size:36px;margin-bottom:14px;">🔐</div><div style="font-size:14px;margin-bottom:14px;">로그인 후 이용 가능합니다</div><button class="br" onclick="openAuth()">로그인</button></div>';
+    c.innerHTML='<div class="empty-msg"><span class="ei">🔐</span><p>로그인 후 이용 가능합니다</p><br><button class="br" onclick="openAuth()">로그인</button></div>';
     return;
   }
-  var H='<div class="page-heading">';
   if(t==='orders'){
     var ords=currentUser.orders||[];
     if(!ords.length){
-      c.innerHTML=H+'구매 내역</div><div class="empty-msg"><span class="ei">📦</span><p>아직 구매 내역이 없습니다.<br>마음에 드는 굿즈를 구매해보세요!</p><br><button class="br" onclick="go(\'goods\')">굿즈 보러 가기</button></div>';
+      c.innerHTML='<div class="empty-msg"><span class="ei">📦</span><p>아직 구매 내역이 없습니다</p><br><button class="br" onclick="go(\'goods\')">굿즈 보러 가기</button></div>';
       return;
     }
-    c.innerHTML=H+'구매 내역</div>'+ords.map(function(o){
-      return '<div style="background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r10);padding:18px 22px;margin-bottom:11px;">'
-        +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;padding-bottom:11px;border-bottom:1px solid var(--bd);">'
-          +'<div style="font-size:12px;color:var(--t2);">'+o.num+' · '+o.date+'</div>'
-          +'<span style="font-size:12px;font-weight:700;padding:3px 9px;border-radius:6px;background:rgba(230,57,70,.12);color:var(--red);">'+o.status+'</span>'
-        +'</div>'
-        +'<div style="display:flex;gap:12px;align-items:center;">'
-          +'<div style="width:56px;height:56px;border-radius:var(--r6);background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:26px;">👕</div>'
-          +'<div style="flex:1;">'
-            +'<div style="font-size:14px;font-weight:600;margin-bottom:4px;line-height:1.4;">'+o.name+'</div>'
-            +'<div style="font-size:12px;color:var(--t2);">1개</div>'
+    c.innerHTML='<div class="page-heading">구매 내역</div>'
+      +ords.map(function(o){
+        return '<div class="order-card">'
+          +'<div class="order-card-head">'
+            +'<span class="order-num">'+o.num+'</span>'
+            +'<span class="order-date">'+o.date+'</span>'
+            +'<span class="order-status">'+o.status+'</span>'
           +'</div>'
-          +'<div style="font-size:14px;font-weight:700;color:var(--red);">₩'+o.price.toLocaleString()+'</div>'
-        +'</div>'
-        +'<div style="display:flex;gap:7px;margin-top:12px;">'
-          +'<button class="bo sm" onclick="mpTab(&quot;delivery&quot;)">배송 조회</button>'
-          +'<button class="bo sm" onclick="showReturnModal(this)">교환/반품</button>'
-          +'<button style="padding:6px 14px;border-radius:var(--r6);background:transparent;color:var(--red);font-size:11px;border:1px solid var(--red);cursor:pointer;font-family:inherit;" onclick="showCancelModal(this)">주문 취소</button>'
-        +'</div>'
-      +'</div>';
-    }).join('');
+          +'<div class="order-card-body">'
+            +'<div class="order-img">👕</div>'
+            +'<div class="order-info">'
+              +'<div class="order-name">'+o.name+'</div>'
+              +'<div class="order-price">₩'+o.price.toLocaleString()+'</div>'
+            +'</div>'
+          +'</div>'
+          +'<div class="order-actions">'
+            +'<button class="bo sm" onclick=\"mpTab(\'\1\')\">배송조회</button>'
+            +'<button class="bo sm" onclick="showReturnModal(this)">교환/반품</button>'
+          +'</div>'
+        +'</div>';
+      }).join('');
   } else if(t==='profile'){
-    c.innerHTML=H+'정보 수정</div><div style="background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r14);padding:26px;max-width:460px;">'
-      +'<div class="fg"><div class="fl">닉네임</div><input class="fi" id="enick" value="'+currentUser.nick+'"></div>'
-      +'<div class="fg"><div class="fl">이메일</div><input class="fi" value="'+currentUser.email+'" disabled style="opacity:.5;"></div>'
-      +'<button class="br" style="margin-top:6px;" onclick="savePrf()">저장</button></div>';
+    c.innerHTML='<div class="page-heading">정보 수정</div>'
+      +'<div class="profile-form">'
+        +'<div class="fg"><div class="fl">닉네임</div><input class="fi" id="enick" value="'+currentUser.nick+'"></div>'
+        +'<div class="fg"><div class="fl">이메일</div><input class="fi" value="'+currentUser.email+'" disabled style="opacity:.4;"></div>'
+        +'<button class="br" onclick="savePrf()">저장</button>'
+      +'</div>';
   } else if(t==='delivery'){
-    c.innerHTML=H+'배송 조회</div><div style="background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r14);padding:26px;max-width:460px;">'
-      +'<div class="fg"><div class="fl">운송장 번호</div><div style="display:flex;gap:8px;">'
-      +'<input class="fi" id="trk" placeholder="운송장 번호 입력"><button class="cbtn" onclick="trackDel()">조회</button>'
-      +'</div></div><div id="trres"></div></div>';
+    c.innerHTML='<div class="page-heading">배송 조회</div>'
+      +'<div class="profile-form">'
+        +'<div class="fg"><div class="fl">운송장 번호</div>'
+          +'<div style="display:flex;gap:8px;">'
+            +'<input class="fi" id="trk" placeholder="운송장 번호 입력"><button class="cbtn" onclick="trackDel()">조회</button>'
+          +'</div>'
+        +'</div>'
+        +'<div id="trres"></div>'
+      +'</div>';
   } else if(t==='withdraw'){
-    c.innerHTML=H+'계정 탈퇴</div><div style="background:var(--bg3);border:1px solid rgba(230,57,70,.3);border-radius:var(--r14);padding:26px;max-width:460px;">'
-      +'<div style="font-size:14px;color:var(--t2);line-height:1.9;margin-bottom:18px;">탈퇴 시 모든 구매 내역 및 적립금이 삭제됩니다.</div>'
-      +'<select style="width:100%;padding:10px 13px;background:var(--bg4);border:1px solid var(--bd2);border-radius:var(--r6);color:var(--t);font-size:13px;font-family:inherit;margin-bottom:14px;outline:none;">'
-        +'<option>서비스 불만족</option><option>개인정보 우려</option><option>이용 빈도 낮음</option><option>기타</option>'
-      +'</select>'
-      +'<button class="bo full" style="border-color:var(--red);color:var(--red);" onclick="doWtdr()">탈퇴하기</button>'
+    c.innerHTML='<div class="page-heading">계정 탈퇴</div>'
+      +'<div class="profile-form withdraw-form">'
+        +'<p class="withdraw-warn">탈퇴 시 모든 구매 내역 및 적립금이 삭제됩니다.</p>'
+        +'<select class="fi" style="margin-bottom:14px;"><option>서비스 불만족</option><option>개인정보 우려</option><option>이용 빈도 낮음</option><option>기타</option></select>'
+        +'<button class="bo full" style="border-color:var(--red);color:var(--red);" onclick="doWtdr()">탈퇴하기</button>'
       +'</div>';
   }
 }
 function renderCart(){
-  const w=document.getElementById('citems');
+  var w=document.getElementById('citems');
   if(!cartItems.length){
-  w.innerHTML='<div class="empty-msg"><span class="ei">🛒</span><p>장바구니가 비어있습니다.<br>마음에 드는 굿즈를 담아보세요!</p></div>';
-  updCartTot(); return;
+    w.innerHTML='<div class="empty-msg"><span class="ei">🛒</span><p>장바구니가 비어있습니다.</p></div>';
+    updCartTot(); return;
   }
   w.innerHTML=cartItems.map(function(it,i){
-    return '<div class="cart-item"><div class="cimg">'+it.ic+'</div>'
-      +'<div style="flex:1;">'
-        +'<div style="font-size:14px;font-weight:600;margin-bottom:4px;line-height:1.4;">'+it.n+'</div>'
-        +'<div style="font-size:12px;color:var(--t2);margin-bottom:10px;">'+it.sz+' · '+it.cl+'</div>'
-        +'<div style="display:flex;align-items:center;justify-content:space-between;">'
-          +'<div style="display:flex;border:1px solid var(--bd2);border-radius:var(--r6);overflow:hidden;">'
+    return '<div class="cart-item">'
+      +'<div class="cimg">'+it.ic+'</div>'
+      +'<div class="cart-item-info">'
+        +'<div class="cart-item-name">'+it.n+'</div>'
+        +'<div class="cart-item-opt">'+it.sz+' · '+it.cl+'</div>'
+        +'<div class="cart-item-qrow">'
+          +'<div class="qc">'
             +'<button class="qb" onclick="cqty('+i+',-1)">−</button>'
-            +'<div class="qv" style="width:40px;height:36px;line-height:36px;">'+it.qty+'</div>'
+            +'<div class="qv">'+it.qty+'</div>'
             +'<button class="qb" onclick="cqty('+i+',1)">+</button>'
           +'</div>'
-          +'<div style="font-size:15px;font-weight:700;color:var(--red);">₩'+(it.p*it.qty).toLocaleString()+'</div>'
+          +'<div class="cart-item-price">₩'+(it.p*it.qty).toLocaleString()+'</div>'
+          +'<button class="cart-item-del" onclick="rmCart('+i+')">✕</button>'
         +'</div>'
-        +'<button onclick="rmCart('+i+')" style="font-size:12px;color:var(--t2);background:none;border:none;cursor:pointer;margin-top:7px;font-family:inherit;">삭제</button>'
       +'</div>'
     +'</div>';
   }).join('');
@@ -1965,22 +2387,21 @@ function renderPosts(list){
     el.innerHTML='<div class="empty-msg"><span class="ei">💬</span><p>게시글이 없습니다.<br>첫 글을 작성해보세요!</p></div>';
     return;
   }
-  var catColor={'자유게시판':'var(--t2)','구매 후기':'var(--gl)','굿즈 자랑':'#ff9f43','경기 토론':'var(--red)'};
-  var catBg={'구매 후기':'rgba(76,175,125,.12)','굿즈 자랑':'rgba(255,159,67,.12)','경기 토론':'rgba(230,57,70,.10)','자유게시판':'rgba(255,255,255,.04)'};
+  var CAT_COLOR={'자유게시판':'var(--t2)','구매 후기':'var(--gl)','굿즈 자랑':'#ff9f43','경기 토론':'var(--red)'};
+  var CAT_BG={'구매 후기':'rgba(76,175,125,.1)','굿즈 자랑':'rgba(255,159,67,.1)','경기 토론':'rgba(230,57,70,.08)','자유게시판':'rgba(255,255,255,.04)'};
   el.innerHTML=arr.map(function(p){
-    var cc=catColor[p.cat]||'var(--t2)', cb=catBg[p.cat]||'rgba(255,255,255,.04)';
-    var isLiked=p.liked||false;
-    return '<div class="board-post" onclick="openPost('+p.id+')" style="cursor:pointer;">'
-      +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">'
-        +'<span style="padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600;color:'+cc+';background:'+cb+';">'+p.cat+'</span>'
-        +'<span style="font-size:12px;color:var(--t2);margin-left:auto;">'+p.tm+'</span>'
+    var cc=CAT_COLOR[p.cat]||'var(--t2)', cb=CAT_BG[p.cat]||'rgba(255,255,255,.04)';
+    return '<div class="board-post" onclick="openPost('+p.id+')">'
+      +'<div class="bp-head">'
+        +'<span class="bp-cat" style="color:'+cc+';background:'+cb+';">'+p.cat+'</span>'
+        +'<span class="bp-time">'+p.tm+'</span>'
       +'</div>'
-      +'<div style="font-size:14px;font-weight:600;margin-bottom:5px;line-height:1.4;">'+p.t+'</div>'
-      +'<div style="font-size:13px;color:var(--t2);line-height:1.6;margin-bottom:10px;">'+p.b.slice(0,100)+(p.b.length>100?'…':'')+'</div>'
-      +'<div style="display:flex;align-items:center;gap:12px;font-size:12px;color:var(--t2);">'
-        +'<span style="font-weight:600;color:var(--t);">'+p.a+'</span>'
-        +'<span>💬 '+(p.comments?p.comments.length:p.cm)+'</span>'
-        +'<span onclick="event.stopPropagation();likePost('+p.id+',this)" style="cursor:pointer;color:'+(isLiked?'var(--red)':'var(--t2)')+';">❤️ '+p.l+'</span>'
+      +'<div class="bp-title">'+p.t+'</div>'
+      +'<div class="bp-preview">'+p.b.slice(0,80)+(p.b.length>80?'…':'')+'</div>'
+      +'<div class="bp-footer">'
+        +'<span class="bp-author">'+p.a+'</span>'
+        +'<span class="bp-stat">💬 '+(p.comments?p.comments.length:p.cm)+'</span>'
+        +'<span class="bp-stat bp-like'+(p.liked?' liked':'')+'" onclick="event.stopPropagation();likePost('+p.id+',this)">❤️ '+p.l+'</span>'
       +'</div>'
     +'</div>';
   }).join('');
@@ -2009,39 +2430,40 @@ function closePost(){
 function renderPostDetail(p){
   var el=document.getElementById('post-detail'); if(!el) return;
   var catColor={'자유게시판':'var(--t2)','구매 후기':'var(--gl)','굿즈 자랑':'#ff9f43','경기 토론':'var(--red)'};
-  var catBg={'구매 후기':'rgba(76,175,125,.12)','굿즈 자랑':'rgba(255,159,67,.12)','경기 토론':'rgba(230,57,70,.10)','자유게시판':'rgba(255,255,255,.04)'};
+  var catBg={'구매 후기':'rgba(76,175,125,.1)','굿즈 자랑':'rgba(255,159,67,.1)','경기 토론':'rgba(230,57,70,.08)','자유게시판':'rgba(255,255,255,.04)'};
   var cc=catColor[p.cat]||'var(--t2)', cb=catBg[p.cat]||'rgba(255,255,255,.04)';
   var comments=p.comments||[];
-   var cmHtml=comments.length
-     ? comments.map(function(c){
-         return '<div class="comment-item">'
-           +'<div class="comment-head">'
-             +'<span class="comment-author">'+c.a+'</span>'
-             +'<span class="comment-time">'+c.tm+'</span>'
-             +'<span onclick="likeComment('+p.id+','+c.id+',this)" class="comment-like'+(c.liked?' liked':'')+'">❤️ '+c.l+'</span>'
-           +'</div>'
-           +'<div class="comment-body">'+c.t+'</div>'
-         +'</div>';
-       }).join('')
-     : '<div class="empty-msg" style="padding:20px;"><p>첫 댓글을 남겨보세요 👋</p></div>';
+  var cmHtml=comments.length
+    ? comments.map(function(c){
+        return '<div class="comment-item">'
+          +'<div class="comment-head">'
+            +'<span class="comment-author">'+c.a+'</span>'
+            +'<span class="comment-time">'+c.tm+'</span>'
+            +'<button onclick="likeComment('+p.id+','+c.id+',this)" class="comment-like'+(c.liked?' liked':'')+'" >❤️ '+c.l+'</button>'
+          +'</div>'
+          +'<div class="comment-body">'+c.t+'</div>'
+        +'</div>';
+      }).join('')
+    : '<div class="empty-msg" style="padding:20px;"><p>첫 댓글을 남겨보세요 👋</p></div>';
+
   el.innerHTML=''
     +'<button onclick="closePost()" class="back-btn">← 목록으로</button>'
     +'<div class="post-detail-card">'
-      +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">'
-        +'<span style="padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600;color:'+cc+';background:'+cb+';">'+p.cat+'</span>'
-        +'<span style="font-size:12px;color:var(--t2);">'+p.tm+'</span>'
+      +'<div class="post-detail-head">'
+        +'<span class="post-cat-badge" style="color:'+cc+';background:'+cb+';">'+p.cat+'</span>'
+        +'<span class="post-time">'+p.tm+'</span>'
       +'</div>'
-      +'<div style="font-size:18px;font-weight:700;margin-bottom:10px;line-height:1.4;">'+p.t+'</div>'
-      +'<div style="font-size:13px;color:var(--t);line-height:1.8;margin-bottom:16px;white-space:pre-wrap;">'+p.b+'</div>'
-      +'<div style="display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px solid var(--bd);font-size:13px;">'
-        +'<span style="font-weight:600;">'+p.a+'</span>'
-        +'<button onclick="likePost('+p.id+',this,true)" style="display:flex;align-items:center;gap:5px;padding:6px 14px;border-radius:100px;border:1px solid '+(p.liked?'var(--red)':'var(--bd2)')+';background:'+(p.liked?'var(--rg)':'transparent')+';color:'+(p.liked?'var(--red)':'var(--t2)')+';font-size:13px;cursor:pointer;font-family:inherit;margin-left:auto;">❤️ '+p.l+'</button>'
+      +'<div class="post-title">'+p.t+'</div>'
+      +'<div class="post-body">'+p.b+'</div>'
+      +'<div class="post-footer">'
+        +'<span class="post-author">'+p.a+'</span>'
+        +'<button onclick="likePost('+p.id+',this,true)" class="post-like-btn'+(p.liked?' liked':'')+'">❤️ '+p.l+'</button>'
       +'</div>'
     +'</div>'
     +'<div class="post-detail-card">'
-      +'<div style="font-size:14px;font-weight:600;margin-bottom:14px;">댓글 '+comments.length+'개</div>'
+      +'<div class="post-comments-title">댓글 '+comments.length+'개</div>'
       +'<div id="comment-list">'+cmHtml+'</div>'
-      +'<div style="margin-top:16px;display:flex;gap:8px;">'
+      +'<div class="comment-input-row">'
         +'<input id="cm-input" class="fi" placeholder="댓글을 입력하세요">'
         +'<button class="br sm" onclick="submitComment()">등록</button>'
       +'</div>'
@@ -2433,7 +2855,7 @@ function shareContent(type, id, name){
     return '<button data-plat="'+it.id+'" data-url="'+encodeURIComponent(url)+'" data-text="'+encodeURIComponent(text)+'" class="share-btn" style="background:'+it.bg+';">'+it.ic+'<span>'+it.label+'</span></button>';
   }).join('');
   sheet.innerHTML='<div style="background:var(--bg3);border:1px solid var(--bd2);border-radius:16px 16px 0 0;padding:24px;width:100%;max-width:480px;">'
-    +'<div style="font-size:15px;font-weight:700;margin-bottom:6px;">공유하기</div>'
+    +'<div class="share-title">공유하기</div>'
     +'<div style="font-size:13px;color:var(--t2);margin-bottom:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+text+'</div>'
     +'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px;">'+btnsHtml+'</div>'
     +'<button class="bo full" id="share-close">닫기</button>'
@@ -2678,36 +3100,44 @@ function renderGoods(){
 
 function renderUpcoming(){
   var upcoming=[
-    {ic:'🔥',img:'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&h=600&fit=crop&q=80',n:'윤창민 RTU4 결승 기념 티셔츠',f:'윤창민',p:48000,dday:7},
-    {ic:'📸',img:'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=600&fit=crop&q=80',n:'김상욱 UFC 데뷔 기념 포토북',f:'김상욱',p:42000,dday:14},
-    {ic:'🖼️',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop&q=80',n:'조성빈 코리안 호크 한정판 포스터',f:'조성빈',p:25000,dday:21},
-    {ic:'🎽',img:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=600&fit=crop&q=80',n:'박재현 피닉스 라이즈 후디',f:'박재현',p:68000,dday:3},
-    {ic:'📖',img:'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=600&fit=crop&q=80',n:'김상욱 UDT 스토리 포토북 2집',f:'김상욱',p:38000,dday:30},
-    {ic:'👕',img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop&q=80',n:'윤창민 빅하트 시즌2 티셔츠',f:'윤창민',p:44000,dday:45},
+    {img:'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&h=600&fit=crop&q=80',n:'윤창민 RTU4 결승 기념 티셔츠',f:'윤창민',p:48000,dday:7,cat:'티셔츠'},
+    {img:'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=600&fit=crop&q=80',n:'김상욱 UFC 데뷔 기념 포토북',f:'김상욱',p:42000,dday:14,cat:'포토북'},
+    {img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop&q=80',n:'조성빈 코리안 호크 한정판 포스터',f:'조성빈',p:25000,dday:21,cat:'포스터'},
+    {img:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=600&fit=crop&q=80',n:'박재현 피닉스 라이즈 후디',f:'박재현',p:68000,dday:3,cat:'후디'},
+    {img:'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=600&fit=crop&q=80',n:'김상욱 UDT 스토리 포토북 2집',f:'김상욱',p:38000,dday:30,cat:'포토북'},
+    {img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop&q=80',n:'윤창민 빅하트 시즌2 티셔츠',f:'윤창민',p:44000,dday:45,cat:'티셔츠'},
   ];
-  var makeCard=function(u){
-    var urgency=u.dday<=7?'var(--red)':u.dday<=14?'var(--gold)':'var(--t2)';
-    return '<div class="pc">'
-      +'<div class="pi">'
-        +'<img class="pi-img" src="'+u.img+'" alt="'+u.n+'" loading="lazy">'
-        +'<div class="pi-overlay"></div>'
-        +'<div style="position:absolute;top:10px;left:10px;z-index:3;background:rgba(0,0,0,.75);border:1px solid '+urgency+';border-radius:8px;padding:5px 10px;text-align:center;backdrop-filter:blur(4px);">'
-          +'<div style="font-family:var(--font-bebas);font-size:22px;color:'+urgency+';line-height:1;">D-'+u.dday+'</div>'
-          +'<div style="font-size:9px;color:rgba(255,255,255,.5);letter-spacing:.5px;text-transform:uppercase;">days left</div>'
+  var makeCard=function(u,big){
+    var urgent=u.dday<=7;
+    var soon=u.dday<=14;
+    var dcolor=urgent?'#e63946':soon?'#c9a84c':'rgba(255,255,255,.5)';
+    var dbg=urgent?'rgba(230,57,70,.15)':soon?'rgba(201,168,76,.12)':'rgba(0,0,0,.5)';
+    var dborder=urgent?'rgba(230,57,70,.5)':soon?'rgba(201,168,76,.4)':'rgba(255,255,255,.15)';
+    return '<div class="upc-card'+(big?' upc-card-big':'')+'">'
+      +'<div class="upc-img">'
+        +'<img src="'+u.img+'" alt="'+u.n+'" loading="lazy">'
+        +'<div class="upc-overlay"></div>'
+        +'<div class="upc-dday" style="background:'+dbg+';border-color:'+dborder+';">'
+          +'<span class="upc-dday-num" style="color:'+dcolor+';">D-'+u.dday+'</span>'
+          +'<span class="upc-dday-label">출시</span>'
         +'</div>'
-        +'<div class="pi-fighter"><div class="pi-fighter-nm">'+u.f+'</div></div>'
+        +(urgent?'<div class="upc-hot-badge">🔥 SOON</div>':'')
+        +'<div class="upc-fighter">'+u.f+'</div>'
       +'</div>'
-      +'<div class="pb">'
-        +'<div class="pn">'+u.n+'</div>'
-        +'<div class="pp">'
-          +'<div class="pr">₩'+u.p.toLocaleString()+'</div>'
-          '<button class="pc-cart-btn" onclick="toast(\'🔔 알림 신청됨\')">알림</button>'
+      +'<div class="upc-body">'
+        +'<div class="upc-cat">'+u.cat+'</div>'
+        +'<div class="upc-name">'+u.n+'</div>'
+        +'<div class="upc-foot">'
+          +'<div class="upc-price">₩'+u.p.toLocaleString()+'</div>'
+          +'<button class="upc-alarm-btn" onclick="toast(\'🔔 알림이 신청되었습니다\')">알림 신청</button>'
         +'</div>'
       +'</div>'
     +'</div>';
   };
-  var el=document.getElementById('upcoming-grid'); if(el) el.innerHTML=upcoming.map(makeCard).join('');
-  var prev=document.getElementById('h-upcoming-preview'); if(prev) prev.innerHTML=upcoming.slice(0,4).map(makeCard).join('');
+  var el=document.getElementById('upcoming-grid');
+  if(el) el.innerHTML=upcoming.map(function(u,i){ return makeCard(u, false); }).join('');
+  var prev=document.getElementById('h-upcoming-preview');
+  if(prev) prev.innerHTML=upcoming.slice(0,4).map(function(u){ return makeCard(u, false); }).join('');
 }
 
 function renderRank(){
@@ -2744,17 +3174,19 @@ function renderVote(){
   var el=document.getElementById('votearea'); if(!el) return;
   var total=VOTES.reduce(function(s,v){return s+v.v;},0);
   el.innerHTML=VOTES.map(function(v,i){
-    var pct=Math.round(v.v/total*100);
-    return '<div style="margin-bottom:10px;">'
-      +'<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;">'
-        +'<span>'+v.l+'</span><span style="font-weight:700;">'+pct+'%</span>'
+    var pct=total?Math.round(v.v/total*100):0;
+    var leading=i===VOTES.reduce(function(mx,x,xi){return x.v>VOTES[mx].v?xi:mx;},0);
+    return '<div class="vote-row">'
+      +'<div class="vote-label-row">'
+        +'<span class="vote-label">'+v.l+'</span>'
+        +'<span class="vote-pct'+(leading?' vote-pct-lead':'')+'">'+pct+'%</span>'
       +'</div>'
-      +'<div style="height:6px;background:var(--bg5);border-radius:3px;overflow:hidden;">'
-        +'<div style="height:100%;width:'+pct+'%;background:var(--red);border-radius:3px;transition:width .5s;"></div>'
+      +'<div class="vote-bar-bg">'
+        +'<div class="vote-bar'+(leading?' vote-bar-lead':'')+'" style="width:'+pct+'%"></div>'
       +'</div>'
     +'</div>';
   }).join('')
-  +'<button class="bo full" style="margin-top:10px;" onclick="castVote(this)">투표하기</button>';
+  +'<button class="bo full vote-cast-btn" onclick="castVote()">투표하기</button>';
 }
 
 function castVote(el){
@@ -2767,23 +3199,17 @@ function castVote(el){
 }
 
 function renderNotices(){
-  var el=document.getElementById('notice-list');
-  if(!el) return;
-  var makeRow=function(n){
+  var el=document.getElementById('notice-list'); if(!el) return;
+  el.innerHTML=NOTICES.map(function(n){
     return '<div class="ni" onclick="openNotice('+n.id+')">'
-      +(n.pin
-        ?'<span class="npin">📌 공지</span>'
-        :'<span style="width:44px;flex-shrink:0;font-size:12px;color:var(--t2);text-align:center;">일반</span>')
-      +'<div style="flex:1;min-width:0;">'
-        +'<div class="ntit" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+n.t+'</div>'
-        +'<div style="font-size:12px;color:var(--t2);margin-top:2px;">'+n.date+'</div>'
+      +'<span class="'+(n.pin?'npin':'ntype')+'">'+(n.pin?'📌 공지':'일반')+'</span>'
+      +'<div class="ni-body">'
+        +'<div class="ntit">'+n.t+'</div>'
+        +'<div class="ni-date">'+n.date+'</div>'
       +'</div>'
-      +'<span style="font-size:16px;color:var(--t2);flex-shrink:0;">›</span>'
+      +'<span class="ni-arr">›</span>'
     +'</div>';
-  };
-  var pinned=NOTICES.filter(function(n){return n.pin;});
-  var normal=NOTICES.filter(function(n){return !n.pin;});
-  el.innerHTML=pinned.concat(normal).map(makeRow).join('');
+  }).join('');
 }
 
 function renderFaq(list){
@@ -2883,27 +3309,22 @@ function renderPayment(){
   var totEl=document.getElementById('ptotals');
   var sub=cartItems.reduce(function(s,i){return s+i.p*i.qty;},0);
   var ship=sub>0?3000:0;
-  if(!cartItems.length && currentProduct){
-    el.innerHTML='<div style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd);">'
-      +'<div style="width:46px;height:46px;border-radius:var(--r6);background:var(--bg5);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">'+currentProduct.ic+'</div>'
-      +'<div style="flex:1;"><div style="font-size:13px;font-weight:500;">'+currentProduct.n+'</div><div style="font-size:12px;color:var(--t2);">수량: '+qty+'</div></div>'
-      +'<div style="font-size:14px;font-weight:700;color:var(--red);">₩'+(currentProduct.p*qty).toLocaleString()+'</div>'
+  var items=cartItems.length?cartItems:(currentProduct?[{...currentProduct,qty:1}]:[]);
+  el.innerHTML=items.map(function(it){
+    return '<div class="pay-item">'
+      +'<div class="pay-item-img">'+it.ic+'</div>'
+      +'<div class="pay-item-info">'
+        +'<div class="pay-item-name">'+it.n+'</div>'
+        +'<div class="pay-item-sub">'+(it.sz||'')+(it.cl?' · '+it.cl:'')+(it.qty>1?' × '+it.qty:'')+'</div>'
+      +'</div>'
+      +'<div class="pay-item-price">₩'+(it.p*(it.qty||1)).toLocaleString()+'</div>'
     +'</div>';
-    sub=currentProduct.p*qty; ship=3000;
-  } else {
-    el.innerHTML=cartItems.map(function(it){
-      return '<div style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd);">'
-        +'<div style="width:46px;height:46px;border-radius:var(--r6);background:var(--bg5);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">'+it.ic+'</div>'
-        +'<div style="flex:1;"><div style="font-size:13px;font-weight:500;">'+it.n+'</div><div style="font-size:12px;color:var(--t2);">'+it.sz+' · '+it.cl+' · '+it.qty+'개</div></div>'
-        +'<div style="font-size:14px;font-weight:700;color:var(--red);">₩'+(it.p*it.qty).toLocaleString()+'</div>'
-      +'</div>';
-    }).join('');
-  }
-  if(totEl) totEl.innerHTML='<div style="display:flex;justify-content:space-between;font-size:13px;padding:5px 0;"><span style="color:var(--t2);">상품금액</span><span>₩'+sub.toLocaleString()+'</span></div>'
-    +'<div style="display:flex;justify-content:space-between;font-size:13px;padding:5px 0;"><span style="color:var(--t2);">배송비</span><span>₩'+ship.toLocaleString()+'</span></div>'
-    +'<div style="height:1px;background:var(--bd);margin:8px 0;"></div>'
-    +'<div style="display:flex;justify-content:space-between;font-size:16px;font-weight:700;padding:5px 0;"><span>총 결제금액</span><span style="color:var(--red);">₩'+(sub+ship).toLocaleString()+'</span></div>';
-  var pptEl=document.getElementById('ppt'); if(pptEl) pptEl.textContent=(currentUser&&currentUser.point?currentUser.point:0)+' P';
+  }).join('');
+  if(totEl) totEl.innerHTML=''
+    +'<div class="pay-tot-row"><span>상품금액</span><span>₩'+sub.toLocaleString()+'</span></div>'
+    +'<div class="pay-tot-row"><span>배송비</span><span>₩'+ship.toLocaleString()+'</span></div>'
+    +(cartDisc>0?'<div class="pay-tot-row pay-tot-disc"><span>할인</span><span>-₩'+cartDisc.toLocaleString()+'</span></div>':'')
+    +'<div class="pay-tot-row pay-tot-final"><span>총 결제금액</span><span>₩'+(sub+ship-cartDisc).toLocaleString()+'</span></div>';
 }
 
 function showTermsTab(t){
@@ -2927,7 +3348,7 @@ function _initAll(){
   _safeCall(function(){ renderProds('hpg', PRODS.slice(0,8)); }, 'renderProds');
   _safeCall(function(){
     var _hfgEl=document.getElementById('hfg');
-    if(_hfgEl) _hfgEl.innerHTML=FIGHTERS.filter(function(f){return f.contract;}).slice(0,6).map(fighterHTML).join('');
+    if(_hfgEl) _hfgEl.innerHTML=FIGHTERS.filter(function(f){return f.contract;}).slice(0,6).map(homeFighterCard).join('');
   }, 'hfg');
   _safeCall(function(){ renderFighters(FIGHTERS); }, 'renderFighters');
   _safeCall(function(){
