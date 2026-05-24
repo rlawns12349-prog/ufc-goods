@@ -10,9 +10,9 @@
 
 :root{
   --red:#e63946;
-  --bg:#0a0a0a;--bg2:#111;--bg3:#161616;--bg4:#1c1c1c;--bg5:#222;
-  --bd:rgba(255,255,255,.08);--bd2:rgba(255,255,255,.14);
-  --t:#f0f0f0;--t2:#888;--t3:#444;
+  --bg:#0a0a0a;--bg2:#101010;--bg3:#171717;--bg4:#1e1e1e;--bg5:#242424;
+  --bd:rgba(255,255,255,.09);--bd2:rgba(255,255,255,.16);
+  --t:#f4f4f2;--t2:#b0b0a8;--t3:#777;
   --gl:#4caf7d;--gold:#c9a84c;
   --rg:rgba(230,57,70,.08);
   --nh:56px;
@@ -20,7 +20,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--t);min-height:100vh;-webkit-font-smoothing:antialiased;}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--t);min-height:100vh;-webkit-font-smoothing:antialiased;font-size:14px;line-height:1.7;}
 ::selection{background:rgba(230,57,70,.18);}
 ::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-thumb{background:#333;}
 
@@ -30,9 +30,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .logo em{color:var(--red);font-style:normal;}
 .nav-links{display:flex;flex:1;overflow-x:auto;scrollbar-width:none;}
 .nav-links::-webkit-scrollbar{display:none;}
-.nl{padding:5px 10px;font-size:11px;color:var(--t3);cursor:pointer;border:none;background:none;font-family:inherit;white-space:nowrap;transition:color .15s;letter-spacing:.3px;}
+.nl{padding:5px 10px;font-size:11px;color:var(--t2);cursor:pointer;border:none;background:none;font-family:inherit;white-space:nowrap;transition:color .15s;letter-spacing:.2px;}
 .nl:hover{color:var(--t2);}
-.nl.on{color:var(--t);font-weight:500;}
+.nl.on{color:var(--t);font-weight:600;}
 .nav-r{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
 
 /* SEARCH */
@@ -40,27 +40,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .srch-box{display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r6);padding:6px 12px;width:150px;transition:width .25s,border-color .15s;}
 .srch-box:focus-within{border-color:var(--bd2);width:190px;}
 .srch-box input{background:none;border:none;outline:none;color:var(--t);font-size:12px;font-family:inherit;width:100%;}
-.srch-box input::placeholder{color:var(--t3);}
+.srch-box input::placeholder{color:var(--t2);}
 .srch-dd{position:absolute;top:calc(100%+4px);left:0;right:0;background:var(--bg3);border:1px solid var(--bd2);border-radius:var(--r10);overflow:hidden;display:none;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,.5);}
 .srch-dd.on{display:block;}
-.si{padding:9px 13px;font-size:12px;cursor:pointer;border-bottom:1px solid var(--bd);transition:background .1s;}
+.si{padding:11px 14px;font-size:13px;color:var(--t);cursor:pointer;border-bottom:1px solid var(--bd);transition:background .1s;}
 .si:last-child{border-bottom:none;}
 .si:hover{background:var(--bg4);}
 
 /* CART BTN */
 .cart-btn{cursor:pointer;background:transparent;border:1px solid var(--bd);border-radius:var(--r6);padding:6px 12px;font-size:12px;color:var(--t2);display:flex;align-items:center;gap:6px;transition:border-color .15s,color .15s;}
 .cart-btn:hover{border-color:var(--bd2);color:var(--t);}
-.cb{background:var(--red);color:#fff;width:16px;height:16px;border-radius:50%;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.cb{background:var(--red);color:#fff;width:16px;height:16px;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;}
 
 /* PAGE */
 .pw{margin-top:var(--nh);display:none;}
 .pw.on{display:block;animation:pageIn .2s ease;}
-@keyframes pageIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 
 /* OVERLAY */
 .ov{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:400;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
 .ov.on{display:flex;}
-.modal{background:var(--bg3);border:1px solid var(--bd2);border-radius:var(--r14);padding:32px;width:100%;max-width:380px;position:relative;}
+.modal{background:var(--bg3);border:1px solid var(--bd2);border-radius:var(--r14);padding:36px;width:100%;max-width:390px;position:relative;}
 .mc{position:absolute;top:12px;right:14px;background:var(--bg4);border:none;border-radius:50%;color:var(--t2);font-size:14px;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;transition:background .15s;}
 .mc:hover{background:var(--bg5);color:var(--t);}
 .mtabs{display:flex;background:var(--bg4);border-radius:var(--r6);padding:3px;margin-bottom:20px;gap:2px;}
@@ -69,7 +69,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 
 /* FORM */
 .fg{margin-bottom:12px;}
-.fl{font-size:10px;color:var(--t3);margin-bottom:4px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;}
+.fl{font-size:11px;color:var(--t3);margin-bottom:5px;font-weight:500;letter-spacing:.4px;text-transform:uppercase;}
 .fi{width:100%;padding:9px 12px;background:var(--bg4);border:1px solid var(--bd);border-radius:var(--r6);color:var(--t);font-size:13px;font-family:inherit;outline:none;transition:border-color .15s;}
 .fi:focus{border-color:var(--red);}
 .fi-full{width:100%;padding:9px 12px;background:var(--bg4);border:1px solid var(--bd);border-radius:var(--r6);color:var(--t);font-size:13px;font-family:inherit;outline:none;transition:border-color .15s;}
@@ -80,7 +80,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .social-row{display:flex;gap:6px;margin-top:10px;}
 .sb{flex:1;padding:8px;border-radius:var(--r6);border:1px solid var(--bd);background:var(--bg4);color:var(--t2);font-size:11px;cursor:pointer;font-family:inherit;transition:all .15s;}
 .sb:hover{border-color:var(--bd2);color:var(--t);}
-.mdiv{display:flex;align-items:center;gap:8px;margin:12px 0;font-size:10px;color:var(--t3);}
+.mdiv{display:flex;align-items:center;gap:8px;margin:12px 0;font-size:11px;color:var(--t3);}
 .mdiv::before,.mdiv::after{content:'';flex:1;height:1px;background:var(--bd);}
 
 /* BUTTONS */
@@ -97,13 +97,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .lbtn:hover{opacity:.88;}
 .sns-btn{display:inline-flex;align-items:center;gap:4px;padding:5px 11px;border-radius:var(--r6);background:var(--bg4);border:1px solid var(--bd);color:var(--t2);font-size:11px;text-decoration:none;transition:all .15s;}
 .sns-btn:hover{border-color:var(--bd2);color:var(--t);}
-.tl-goods-btn{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;background:var(--rg);border:1px solid rgba(230,57,70,.2);border-radius:4px;font-size:10px;color:var(--red);cursor:pointer;transition:background .15s;}
+.tl-goods-btn{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:var(--rg);border:1px solid rgba(230,57,70,.2);border-radius:4px;font-size:11px;color:var(--red);cursor:pointer;transition:background .15s;}
 .tl-goods-btn:hover{background:rgba(230,57,70,.14);}
 
 /* SECTION */
 .sec{padding:48px 40px;}
-.sh{display:flex;align-items:center;gap:10px;margin-bottom:24px;}
-.sl{font-size:10px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:1.5px;}
+.sh{display:flex;align-items:center;gap:12px;margin-bottom:30px;}
+.sl{font-size:11px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:1px;}
 .st{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;color:var(--t);}
 .sm{margin-left:auto;font-size:11px;color:var(--t3);cursor:pointer;border:none;background:none;font-family:inherit;transition:color .15s;}
 .sm:hover{color:var(--t2);}
@@ -113,12 +113,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .hero{position:relative;min-height:520px;background:var(--bg2);overflow:hidden;display:flex;align-items:center;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 75% 50%,rgba(230,57,70,.06) 0%,transparent 60%);}
 .hero-content{position:relative;z-index:2;padding:80px 40px;max-width:600px;}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(230,57,70,.25);border-radius:100px;padding:4px 12px;font-size:10px;color:var(--red);letter-spacing:.5px;margin-bottom:24px;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(230,57,70,.35);border-radius:100px;padding:5px 14px;font-size:11px;color:var(--red);letter-spacing:.4px;margin-bottom:24px;}
 .hero-dot{width:5px;height:5px;border-radius:50%;background:var(--red);animation:pulse 1.6s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
-.hero-title{font-family:'Bebas Neue',sans-serif;font-size:80px;line-height:.9;letter-spacing:2px;margin-bottom:16px;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:84px;line-height:.88;letter-spacing:2px;margin-bottom:18px;}
 .hero-title .accent{color:var(--red);}
-.hero-sub{font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:28px;font-weight:300;max-width:400px;}
+.hero-sub{font-size:15px;color:var(--t2);line-height:1.9;margin-bottom:28px;font-weight:300;max-width:420px;}
 .hero-btns{display:flex;gap:8px;flex-wrap:wrap;}
 .hero-visual{position:absolute;right:0;top:0;bottom:0;width:40%;display:flex;align-items:center;justify-content:center;}
 .hero-gfx{position:relative;width:320px;height:320px;display:flex;align-items:center;justify-content:center;}
@@ -134,15 +134,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .rb{margin:0 40px;background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r14);padding:20px 24px;cursor:pointer;transition:border-color .15s;}
 .rb:hover{border-color:var(--bd2);}
 .rb-top{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
-.rb-badge{background:var(--red);color:#fff;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
+.rb-badge{background:var(--red);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
 .rb-main{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;}
 .rf{text-align:center;}
-.rf .rn{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:1px;line-height:1;}
-.rf.win .rn{color:var(--red);}
-.rf .ro{font-size:10px;color:var(--t3);margin-top:2px;}
+.rf .rn{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:1px;line-height:1;}
+.rf.win .rn{color:var(--red);letter-spacing:.5px;}
+.rf .ro{font-size:11px;color:var(--t2);margin-top:3px;}
 .rc{text-align:center;}
 .rm{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--red);}
-.rd{font-size:10px;color:var(--t3);margin-top:2px;}
+.rd{font-size:11px;color:var(--t2);margin-top:3px;}
 .rb-cta{display:flex;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--bd);}
 
 /* PRODUCT GRID */
@@ -151,16 +151,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .pc:hover{border-color:var(--bd2);transform:translateY(-3px);}
 .pc:hover .pi{transform:scale(1.03);}
 .pi{height:180px;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:56px;position:relative;overflow:hidden;transition:transform .35s ease;}
-.pbadge{position:absolute;top:8px;right:8px;z-index:1;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;}
+.pi::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.3) 100%);pointer-events:none;}
+.pbadge{position:absolute;top:8px;right:8px;z-index:1;padding:2px 7px;border-radius:4px;font-size:11px;font-weight:700;text-transform:uppercase;}
 .bh{background:var(--red);color:#fff;}
 .bl{background:var(--gold);color:#000;}
 .bn{background:var(--gl);color:#000;}
-.pb{padding:12px 13px;}
-.pn{font-size:12px;font-weight:500;margin-bottom:3px;line-height:1.4;color:var(--t);}
-.pf{font-size:10px;color:var(--red);margin-bottom:6px;}
+.pb{padding:14px 15px;}
+.pn{font-size:13px;font-weight:500;margin-bottom:4px;line-height:1.5;color:var(--t);}
+.pf{font-size:11px;color:var(--red);margin-bottom:6px;}
 .pp{display:flex;align-items:center;justify-content:space-between;}
-.pr{font-size:14px;font-weight:700;color:var(--t);}
-.ps{font-size:10px;color:var(--t3);}
+.pr{font-size:15px;font-weight:700;color:var(--t);}
+.ps{font-size:11px;color:var(--t3);}
 
 /* stagger */
 .pg .pc{opacity:0;animation:cardIn .3s ease forwards;}
@@ -171,23 +172,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .fg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 .fc{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r10);padding:16px;cursor:pointer;transition:border-color .15s,background .15s;display:flex;gap:12px;position:relative;overflow:hidden;}
 .fc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--red);transition:width .15s;}
-.fc:hover{border-color:var(--bd2);background:var(--bg4);}
+.fc:hover{border-color:rgba(255,255,255,.18);background:var(--bg4);}
 .fc:hover::before{width:2px;}
 .fav{width:52px;height:52px;border-radius:50%;background:var(--bg5);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
 .fi2{flex:1;}
-.fn{font-size:13px;font-weight:600;margin-bottom:2px;}
-.fm{font-size:10px;color:var(--t3);margin-bottom:6px;}
-.frec{display:flex;gap:8px;margin-bottom:6px;}
+.fn{font-size:14px;font-weight:600;margin-bottom:3px;line-height:1.4;}
+.fm{font-size:11px;color:var(--t2);margin-bottom:6px;line-height:1.5;}
+.frec{display:flex;gap:10px;margin-bottom:7px;}
 .frs{text-align:center;}
-.frv{font-size:14px;font-weight:700;}
-.frl{font-size:8px;color:var(--t3);text-transform:uppercase;letter-spacing:.3px;}
+.frv{font-size:15px;font-weight:700;line-height:1.2;}
+.frl{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.3px;}
 .ftags{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:5px;}
-.ftag{padding:2px 7px;border-radius:100px;background:var(--rg);border:1px solid rgba(230,57,70,.15);color:var(--red);font-size:9px;}
-.fg-cnt{font-size:10px;color:var(--t3);}
+.ftag{padding:2px 7px;border-radius:100px;background:var(--rg);border:1px solid rgba(230,57,70,.15);color:var(--red);font-size:11px;}
+.fg-cnt{font-size:11px;color:var(--t3);margin-top:2px;}
 
 /* TABS */
 .tabs{display:flex;background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r6);padding:2px;width:fit-content;margin-bottom:16px;gap:2px;}
-.tab{padding:5px 13px;border-radius:5px;font-size:11px;cursor:pointer;background:none;border:none;color:var(--t3);font-family:inherit;transition:all .15s;}
+.tab{padding:7px 15px;border-radius:5px;font-size:12px;cursor:pointer;background:none;border:none;color:var(--t2);font-family:inherit;transition:all .15s;}
 .tab.on{background:var(--red);color:#fff;font-weight:600;}
 
 /* RANKING */
@@ -196,7 +197,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .rank-row:last-child{border-bottom:none;}
 .rank-num{width:40px;flex-shrink:0;text-align:center;font-weight:700;}
 .rank-img{width:56px;height:56px;border-radius:var(--r6);background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;border:1px solid var(--bd);margin:0 12px;}
-.rank-info{flex:1;min-width:0;}
+.rank-info{flex:1;min-width:0;line-height:1.5;}
 .rank-stat{flex-shrink:0;text-align:right;margin-left:8px;}
 
 /* PRODUCT DETAIL */
@@ -207,13 +208,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .th{width:54px;height:54px;border-radius:var(--r6);background:var(--bg3);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:border-color .15s;}
 .th.on{border-color:var(--red);}
 .dtag{display:inline-flex;align-items:center;gap:4px;background:var(--rg);border:1px solid rgba(230,57,70,.2);border-radius:4px;padding:3px 9px;font-size:10px;color:var(--red);font-weight:600;margin-bottom:10px;cursor:pointer;}
-.dnm{font-size:20px;font-weight:700;line-height:1.3;margin-bottom:6px;}
-.dpr{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--t);margin-bottom:5px;letter-spacing:1px;}
+.dnm{font-size:21px;font-weight:700;line-height:1.35;margin-bottom:8px;}
+.dpr{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--t);margin-bottom:7px;letter-spacing:1px;line-height:1;}
 .drev{display:flex;align-items:center;gap:6px;margin-bottom:16px;}
 .divr{height:1px;background:var(--bd);margin:16px 0;}
 .ol{font-size:10px;color:var(--t2);margin-bottom:7px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;}
 .or{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;}
-.ob{padding:6px 13px;border-radius:var(--r6);border:1px solid var(--bd);background:var(--bg3);color:var(--t3);font-size:12px;cursor:pointer;font-family:inherit;transition:all .15s;}
+.ob{padding:7px 14px;border-radius:var(--r6);border:1px solid var(--bd);background:var(--bg3);color:var(--t2);font-size:12px;cursor:pointer;font-family:inherit;transition:all .15s;}
 .ob:hover,.ob.on{border-color:var(--red);color:var(--red);}
 .qr{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
 .ql{font-size:10px;color:var(--t2);font-weight:500;letter-spacing:.5px;text-transform:uppercase;width:40px;}
@@ -222,7 +223,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .qb:hover{background:var(--bg5);}
 .qv{width:40px;text-align:center;font-size:13px;font-weight:700;background:var(--bg3);color:var(--t);line-height:32px;border-left:1px solid var(--bd);border-right:1px solid var(--bd);}
 .ps2{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r6);padding:12px 14px;margin-bottom:14px;}
-.pr2{display:flex;justify-content:space-between;font-size:12px;padding:3px 0;}
+.pr2{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;line-height:1.5;}
 .pr2 .pl{color:var(--t3);}
 .pr2.tot{font-size:14px;font-weight:700;padding-top:8px;margin-top:5px;border-top:1px solid var(--bd);}
 .brow{display:flex;gap:7px;}
@@ -239,7 +240,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .srow{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;}
 .srow .sl2{color:var(--t3);}
 .sdiv{height:1px;background:var(--bd);margin:8px 0;}
-.stot{display:flex;justify-content:space-between;font-size:15px;font-weight:700;margin-bottom:14px;}
+.stot{display:flex;justify-content:space-between;font-size:16px;font-weight:700;margin-bottom:16px;}
 .ci2{flex:1;padding:7px 10px;background:var(--bg4);border:1px solid var(--bd);border-radius:var(--r6);color:var(--t);font-size:12px;font-family:inherit;outline:none;transition:border-color .15s;}
 .ci2:focus{border-color:var(--red);}
 .cbtn{padding:7px 11px;border-radius:var(--r6);background:var(--bg4);border:1px solid var(--bd);color:var(--t);font-size:12px;cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap;}
@@ -248,7 +249,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 /* PAYMENT */
 .payl{display:grid;grid-template-columns:1fr 320px;gap:32px;padding:32px 40px 48px;}
 .pm{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
-.pmb{padding:10px 5px;border-radius:var(--r6);border:1px solid var(--bd);background:var(--bg3);text-align:center;font-size:11px;cursor:pointer;font-family:inherit;color:var(--t2);transition:all .15s;}
+.pmb{padding:11px 5px;border-radius:var(--r6);border:1px solid var(--bd);background:var(--bg3);text-align:center;font-size:12px;cursor:pointer;font-family:inherit;color:var(--t2);transition:all .15s;}
 .pmb:hover,.pmb.on{border-color:var(--red);color:var(--red);}
 .abox{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r6);padding:12px 14px;}
 .osc{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r14);padding:20px;position:sticky;top:calc(var(--nh)+12px);}
@@ -267,16 +268,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 /* MYPAGE */
 .mpl{display:grid;grid-template-columns:160px 1fr;gap:16px;padding:32px 40px 48px;}
 .mpside{position:sticky;top:calc(var(--nh)+12px);height:fit-content;}
-.mpprof{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r10);padding:16px;margin-bottom:8px;text-align:center;}
+.mpprof{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r10);padding:20px 16px;margin-bottom:8px;text-align:center;}
 .mpav{width:52px;height:52px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#fff;margin:0 auto 7px;}
 .mpmenu{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r10);overflow:hidden;}
-.mmi{padding:10px 13px;font-size:11px;cursor:pointer;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:6px;transition:background .1s;color:var(--t3);}
+.mmi{padding:11px 14px;font-size:12px;cursor:pointer;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:6px;transition:background .1s;color:var(--t2);}
 .mmi:last-child{border-bottom:none;}
 .mmi:hover{background:var(--bg4);}
 .mmi.on{color:var(--red);font-weight:600;}
 
 /* COMMUNITY */
-.board-post{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r6);padding:13px 14px;margin-bottom:6px;cursor:pointer;transition:border-color .15s,background .15s;position:relative;overflow:hidden;}
+.board-post{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r6);padding:15px 16px;margin-bottom:6px;cursor:pointer;transition:border-color .15s,background .15s;position:relative;overflow:hidden;}
 .board-post::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--red);transition:width .15s;}
 .board-post:hover{border-color:var(--bd2);background:var(--bg4);}
 .board-post:hover::before{width:2px;}
@@ -284,10 +285,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 /* FAQ */
 .faq-item{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r6);margin-bottom:4px;overflow:hidden;transition:border-color .15s;}
 .faq-item:hover{border-color:var(--bd2);}
-.faq-q{padding:12px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:500;transition:background .1s;}
+.faq-q{padding:14px 17px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:500;transition:background .1s;}
 .faq-q:hover{background:var(--bg4);}
-.faq-a{padding:0 14px;max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s;font-size:12px;color:var(--t2);line-height:1.8;}
-.faq-a.on{max-height:200px;padding:8px 14px 13px;}
+.faq-a{padding:0 14px;max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s;font-size:13px;color:var(--t2);line-height:1.9;}
+.faq-a.on{max-height:200px;padding:10px 17px 16px;}
 .fch{transition:transform .25s;color:var(--t3);font-size:10px;}
 .fch.on{transform:rotate(180deg);}
 
@@ -297,40 +298,40 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .cal-cell:hover{border-color:var(--bd2);}
 .cal-cell.ev{border-color:rgba(230,57,70,.25);}
 .cal-d{font-size:10px;color:var(--t3);margin-bottom:2px;}
-.cal-e{font-size:8px;background:var(--rg);color:var(--red);padding:1px 4px;border-radius:3px;font-weight:500;}
+.cal-e{font-size:10px;background:var(--rg);color:var(--red);padding:1px 4px;border-radius:3px;font-weight:500;}
 
 /* CHIP */
-.chip{padding:4px 11px;border-radius:100px;font-size:10px;border:1px solid var(--bd);color:var(--t3);background:var(--bg3);cursor:pointer;font-family:inherit;transition:all .15s;}
+.chip{padding:5px 12px;border-radius:100px;font-size:11px;border:1px solid var(--bd);color:var(--t2);background:var(--bg3);cursor:pointer;font-family:inherit;transition:all .15s;}
 .chip.on{border-color:var(--red);color:var(--red);}
-.chip:hover:not(.on){border-color:var(--bd2);color:var(--t2);}
+.chip:hover:not(.on){border-color:var(--bd2);color:var(--t);}
 
 /* NOTICE */
-.ni{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--bd);cursor:pointer;align-items:center;}
+.ni{display:flex;gap:10px;padding:14px 0;border-bottom:1px solid var(--bd);cursor:pointer;align-items:center;}
 .ni:hover .ntit{color:var(--red);}
-.npin{background:var(--rg);color:var(--red);font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;flex-shrink:0;text-transform:uppercase;}
-.ntit{font-size:12px;font-weight:500;margin-bottom:2px;transition:color .15s;}
+.npin{background:var(--rg);color:var(--red);font-size:11px;font-weight:700;padding:2px 6px;border-radius:3px;flex-shrink:0;text-transform:uppercase;}
+.ntit{font-size:13px;font-weight:500;margin-bottom:4px;line-height:1.5;transition:color .15s;}
 
 /* TOAST */
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--bg4);border:1px solid var(--bd2);border-radius:var(--r6);padding:9px 18px;font-size:12px;z-index:999;opacity:0;transition:transform .25s,opacity .25s;white-space:nowrap;pointer-events:none;}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--bg4);border:1px solid var(--bd2);border-radius:var(--r6);padding:10px 20px;font-size:13px;z-index:999;opacity:0;transition:transform .25s,opacity .25s;white-space:nowrap;pointer-events:none;}
 .toast.on{transform:translateX(-50%) translateY(0);opacity:1;}
 
 /* BREADCRUMB */
-.bc{padding:16px 40px 0;display:flex;align-items:center;gap:6px;font-size:10px;color:var(--t3);}
+.bc{padding:18px 40px 0;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--t2);}
 .bc span{cursor:pointer;transition:color .15s;}
 .bc span:hover{color:var(--t);}
 .bc .sep{color:var(--bd2);}
 
 /* FIGHTER DETAIL */
-.fdh{padding:40px 40px 28px;border-bottom:1px solid var(--bd);}
+.fdh{padding:44px 40px 30px;border-bottom:1px solid var(--bd);background:var(--bg2);}
 .fdtop{display:flex;gap:28px;align-items:flex-start;}
 .fdav{width:96px;height:96px;border-radius:50%;background:var(--bg4);border:1px solid var(--bd2);display:flex;align-items:center;justify-content:center;font-size:48px;flex-shrink:0;}
-.fdnm{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:2px;line-height:1;margin-bottom:4px;}
+.fdnm{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:2px;line-height:1;margin-bottom:6px;}
 .srow2{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
-.sbox{background:var(--bg4);border:1px solid var(--bd);border-radius:var(--r6);padding:9px 13px;text-align:center;min-width:64px;}
-.sv2{font-size:20px;font-weight:700;}
-.slb{font-size:8px;color:var(--t3);margin-top:1px;text-transform:uppercase;letter-spacing:.3px;}
+.sbox{background:var(--bg4);border:1px solid var(--bd);border-radius:var(--r6);padding:11px 16px;text-align:center;min-width:72px;}
+.sv2{font-size:22px;font-weight:700;line-height:1.1;}
+.slb{font-size:10px;color:var(--t3);margin-top:1px;text-transform:uppercase;letter-spacing:.3px;}
 .fdb{padding:24px 40px 48px;display:grid;grid-template-columns:1fr 260px;gap:28px;}
-.gbox{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r10);padding:16px;position:sticky;top:calc(var(--nh)+12px);}
+.gbox{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r10);padding:18px;position:sticky;top:calc(var(--nh)+12px);}
 .mprod{display:flex;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid var(--bd);cursor:pointer;transition:border-color .15s;}
 .mprod:last-of-type{border-bottom:none;}
 .mprod:hover .mpn{color:var(--red);}
@@ -339,13 +340,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .mpp{font-size:12px;font-weight:700;color:var(--red);}
 
 /* REVIEW */
-.rev-item{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r6);padding:12px 13px;margin-bottom:6px;}
+.rev-item{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r6);padding:14px 15px;margin-bottom:8px;}
 .rev-top{display:flex;align-items:center;gap:7px;margin-bottom:5px;}
 
 /* USER BTN */
 .ubtn{display:flex;align-items:center;gap:5px;padding:5px 11px;border-radius:var(--r6);background:var(--bg3);border:1px solid var(--bd);cursor:pointer;font-size:11px;font-family:inherit;transition:border-color .15s;}
 .ubtn:hover{border-color:var(--bd2);}
-.uav{width:20px;height:20px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;}
+.uav{width:20px;height:20px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;}
 
 /* UPCOMING */
 .dday-num{font-family:'Bebas Neue',sans-serif;font-size:28px;line-height:1;}
@@ -353,8 +354,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 
 /* UTILS */
 .sec-label{font-size:10px;font-weight:600;color:var(--red);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
-.card-box{background:var(--bg4);border:1px solid var(--bd);border-radius:var(--r6);padding:14px 16px;}
-.sec-title{font-size:14px;font-weight:600;margin-bottom:10px;}
+.card-box{background:var(--bg4);border:1px solid var(--bd);border-radius:var(--r6);padding:16px 18px;}
+.sec-title{font-size:15px;font-weight:600;margin-bottom:12px;color:var(--t);}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .txt-xs{font-size:10px;}
 .txt-muted{color:var(--t3);}
@@ -370,7 +371,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
   .nav-links{display:none;}
   .srch-wrap{display:none;}
   .mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,.97);border-top:1px solid var(--bd);z-index:200;height:52px;}
-  .mni{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;color:var(--t3);font-size:9px;transition:color .15s;}
+  .mni{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;color:var(--t3);font-size:11px;transition:color .15s;}
   .mni.on{color:var(--red);}
   .mni-icon{font-size:18px;}
   .pw{margin-bottom:52px;}
@@ -427,7 +428,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 </div><!-- SCHEDULE -->
 <div class="pw" id="p-schedule"><div class="sec"><div class="sh"><div class="sl">경기 정보</div><div class="st">경기 일정 &amp; 결과</div></div><div class="tabs" style="margin-bottom:24px;"><button class="tab on" onclick="tabOn(this,this.parentNode);schTab('cal')">캘린더</button><button class="tab" onclick="tabOn(this,this.parentNode);schTab('res')">경기 결과</button><button class="tab" onclick="tabOn(this,this.parentNode);schTab('pre')">대결 프리뷰</button><button class="tab" onclick="tabOn(this,this.parentNode);schTab('hi')">하이라이트</button></div><div id="st-cal"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;"><button class="bo sm" onclick="calM(-1)">← 이전달</button><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;" id="cml"></div><button class="bo sm" onclick="calM(1)">다음달 →</button></div><div class="cal-grid" id="cg"></div></div><div id="st-res" style="display:none;"><div id="match-results"></div></div><div id="st-pre" style="display:none;"><div style="background:linear-gradient(135deg,#1a0608,#110305);border:1px solid rgba(230,57,70,.3);border-radius:14px;padding:26px;"><div style="font-size:11px;color:var(--red);font-weight:700;margin-bottom:14px;">UFC 308 · D-14 예정</div><div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:22px;margin-bottom:18px;"><div style="text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:30px;">박준용</div><div style="font-size:12px;color:var(--t3);">12W 3L · 챔피언</div><div style="display:flex;gap:5px;justify-content:center;margin-top:7px;"><span style="font-size:11px;padding:2px 7px;background:var(--bg4);border:1px solid var(--bd);border-radius:10px;color:var(--t3);">KO 전문</span><span style="font-size:11px;padding:2px 7px;background:var(--bg4);border:1px solid var(--bd);border-radius:10px;color:var(--t3);">강한 턱</span></div></div><div style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--t3);">VS</div><div style="text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:30px;">볼코노프스키</div><div style="font-size:12px;color:var(--t3);">26W 3L · 전 챔피언</div><div style="display:flex;gap:5px;justify-content:center;margin-top:7px;"><span style="font-size:11px;padding:2px 7px;background:var(--bg4);border:1px solid var(--bd);border-radius:10px;color:var(--t3);">레슬링</span><span style="font-size:11px;padding:2px 7px;background:var(--bg4);border:1px solid var(--bd);border-radius:10px;color:var(--t3);">스태미나</span></div></div></div><div style="display:flex;gap:10px;"><button class="br sm" onclick="go('product')">김상욱 예고 굿즈 →</button><button class="bo sm" id="match-alarm-btn" onclick="toggleMatchAlarm(this)">경기 알림 신청</button></div></div></div><div id="st-hi" style="display:none;"><div style="background:var(--bg3);border:1px solid var(--bd);border-radius:14px;overflow:hidden;margin-bottom:14px;"><div style="height:190px;background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center;font-size:52px;position:relative;cursor:pointer;" onclick="window.open('https://www.youtube.com/@UFC','_blank')">🎬<div style="position:absolute;width:56px;height:56px;border-radius:50%;background:rgba(230,57,70,.9);display:flex;align-items:center;justify-content:center;font-size:22px;">▶</div></div><div style="padding:13px 16px;"><div style="font-size:14px;font-weight:500;margin-bottom:3px;">Road to UFC 시즌4 김상욱 경기 하이라이트</div><div style="font-size:12px;color:var(--t3);margin-bottom:9px;">공식 UFC 유튜브 · 2025.05.17</div><button class="br sm" onclick="go('product')">관련 굿즈 보기 →</button></div></div></div></div>
 </div><!-- PRODUCT DETAIL -->
-<div class="pw" id="p-product"><div class="bc"><span onclick="go('home');navTo('굿즈 홈')">굿즈 홈</span><span class="sep">›</span><span onclick="go('fighter-detail')">박준용</span><span class="sep">›</span><span style="color:var(--t2);">챔피언 등극 기념 티셔츠</span></div><div class="dl"><div class="dimg"><div class="mi" id="mimg">👕</div><div class="tr"><div class="th on" onclick="selThumb(this,'👕')">👕</div><div class="th" onclick="selThumb(this,'📐')">📐</div><div class="th" onclick="selThumb(this,'🏷️')">🏷️</div><div class="th" onclick="selThumb(this,'📦')">📦</div></div></div><div><div class="dtag" onclick="go('fighter-detail')">🐸 김상욱 · 계약 선수</div><div class="dnm">김상욱 프로그맨 시그니처 티셔츠</div><div class="dpr" id="dpr">₩45,000</div><div class="drev"><span style="color:#f4a261;font-size:14px;">★★★★★</span><span style="font-size:14px;font-weight:700;">4.8</span><span style="font-size:13px;color:var(--t3);">(23개 리뷰)</span></div><div class="divr"></div><div class="ol">사이즈</div><div class="or" id="so"><button class="ob" onclick="selOpt(this,'so')">S</button><button class="ob on" onclick="selOpt(this,'so')">M</button><button class="ob" onclick="selOpt(this,'so')">L</button><button class="ob" onclick="selOpt(this,'so')">XL</button></div><div class="ol">색상</div><div class="or" id="co"><button class="ob on" onclick="selOpt(this,'co')">블랙</button><button class="ob" onclick="selOpt(this,'co')">화이트</button><button class="ob" onclick="selOpt(this,'co')">레드</button></div><div class="qr"><div class="ql">수량</div><div class="qc"><button class="qb" onclick="chgQ(-1)">−</button><div class="qv" id="qv">1</div><button class="qb" onclick="chgQ(1)">+</button></div></div><div class="ps2"><div class="pr2"><span class="pl">상품금액</span><span id="psub">₩45,000</span></div><div class="pr2"><span class="pl">배송비</span><span>₩3,000</span></div><div class="pr2 tot"><span>총 결제금액</span><span class="pv" id="ptot">₩48,000</span></div></div><div class="brow"><button class="bbuy" onclick="buyNow()">바로구매</button><button class="bcart" onclick="addCart()">장바구니 담기</button></div><div class="divr"></div><div style="font-size:13px;color:var(--t3);line-height:1.8;">소재: 코튼 100% · 제조국: 한국<br>배송: 영업일 기준 2~3일 소요<br>교환/반품: 수령 후 7일 이내 가능</div><div class="divr"></div><div class="sec-title">구매 후기</div><div class="rev-item"><div class="rev-top"><div style="width:30px;height:30px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;">👤</div><span style="font-size:13px;font-weight:500;">fight_fan92</span><span style="color:#f4a261;font-size:12px;">★★★★★</span><span style="font-size:11px;color:var(--t3);margin-left:auto;">2025.05.18</span></div><div style="font-size:13px;color:var(--t2);line-height:1.6;">퀄리티 대박이에요. 챔피언 등극 순간이 프린트되어 있어서 감동이 두 배입니다.</div></div><div class="rev-item"><div class="rev-top"><div style="width:30px;height:30px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;">👤</div><span style="font-size:13px;font-weight:500;">goods_collector</span><span style="color:#f4a261;font-size:12px;">★★★★★</span><span style="font-size:11px;color:var(--t3);margin-left:auto;">2025.05.17</span></div><div style="font-size:13px;color:var(--t2);line-height:1.6;">배송도 빠르고 원단이 부드러워요. 사이즈 딱 맞게 왔습니다.</div></div><div class="rev-item"><div class="rev-top"><div style="width:30px;height:30px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;">👤</div><span style="font-size:13px;font-weight:500;">ufc_lover</span><span style="color:#f4a261;font-size:12px;">★★★★☆</span><span style="font-size:11px;color:var(--t3);margin-left:auto;">2025.05.15</span></div><div style="font-size:13px;color:var(--t2);line-height:1.6;">디자인은 정말 마음에 드는데 배송이 하루 늦었어요. 재구매 의사 있습니다!</div></div></div></div>
+<div class="pw" id="p-product"><div class="bc"><span onclick="go('home');navTo('굿즈 홈')">굿즈 홈</span><span class="sep">›</span><span onclick="go('fighter-detail')">박준용</span><span class="sep">›</span><span style="color:var(--t2);">챔피언 등극 기념 티셔츠</span></div><div class="dl"><div class="dimg"><div class="mi" id="mimg">👕</div><div class="tr"><div class="th on" onclick="selThumb(this,'👕')">👕</div><div class="th" onclick="selThumb(this,'📐')">📐</div><div class="th" onclick="selThumb(this,'🏷️')">🏷️</div><div class="th" onclick="selThumb(this,'📦')">📦</div></div></div><div><div class="dtag" onclick="go('fighter-detail')">🐸 김상욱 · 계약 선수</div><div class="dnm">김상욱 프로그맨 시그니처 티셔츠</div><div class="dpr" id="dpr">₩45,000</div><div class="drev"><span style="color:#f4a261;font-size:14px;">★★★★★</span><span style="font-size:14px;font-weight:700;">4.8</span><span style="font-size:13px;color:var(--t3);">(23개 리뷰)</span></div><div class="divr"></div><div class="ol">사이즈</div><div class="or" id="so"><button class="ob" onclick="selOpt(this,'so')">S</button><button class="ob on" onclick="selOpt(this,'so')">M</button><button class="ob" onclick="selOpt(this,'so')">L</button><button class="ob" onclick="selOpt(this,'so')">XL</button></div><div class="ol">색상</div><div class="or" id="co"><button class="ob on" onclick="selOpt(this,'co')">블랙</button><button class="ob" onclick="selOpt(this,'co')">화이트</button><button class="ob" onclick="selOpt(this,'co')">레드</button></div><div class="qr"><div class="ql">수량</div><div class="qc"><button class="qb" onclick="chgQ(-1)">−</button><div class="qv" id="qv">1</div><button class="qb" onclick="chgQ(1)">+</button></div></div><div class="ps2"><div class="pr2"><span class="pl">상품금액</span><span id="psub">₩45,000</span></div><div class="pr2"><span class="pl">배송비</span><span>₩3,000</span></div><div class="pr2 tot"><span>총 결제금액</span><span class="pv" id="ptot">₩48,000</span></div></div><div class="brow"><button class="bbuy" onclick="buyNow()">바로구매</button><button class="bcart" onclick="addCart()">장바구니 담기</button></div><div class="divr"></div><div style="font-size:13px;color:var(--t2);line-height:1.9;">소재: 코튼 100% · 제조국: 한국<br>배송: 영업일 기준 2~3일 소요<br>교환/반품: 수령 후 7일 이내 가능</div><div class="divr"></div><div class="sec-title">구매 후기</div><div class="rev-item"><div class="rev-top"><div style="width:30px;height:30px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;">👤</div><span style="font-size:13px;font-weight:500;">fight_fan92</span><span style="color:#f4a261;font-size:12px;">★★★★★</span><span style="font-size:11px;color:var(--t3);margin-left:auto;">2025.05.18</span></div><div style="font-size:13px;color:var(--t2);line-height:1.6;">퀄리티 대박이에요. 챔피언 등극 순간이 프린트되어 있어서 감동이 두 배입니다.</div></div><div class="rev-item"><div class="rev-top"><div style="width:30px;height:30px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;">👤</div><span style="font-size:13px;font-weight:500;">goods_collector</span><span style="color:#f4a261;font-size:12px;">★★★★★</span><span style="font-size:11px;color:var(--t3);margin-left:auto;">2025.05.17</span></div><div style="font-size:13px;color:var(--t2);line-height:1.6;">배송도 빠르고 원단이 부드러워요. 사이즈 딱 맞게 왔습니다.</div></div><div class="rev-item"><div class="rev-top"><div style="width:30px;height:30px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;">👤</div><span style="font-size:13px;font-weight:500;">ufc_lover</span><span style="color:#f4a261;font-size:12px;">★★★★☆</span><span style="font-size:11px;color:var(--t3);margin-left:auto;">2025.05.15</span></div><div style="font-size:13px;color:var(--t2);line-height:1.6;">디자인은 정말 마음에 드는데 배송이 하루 늦었어요. 재구매 의사 있습니다!</div></div></div></div>
 </div><!-- CART -->
 <div class="pw" id="p-cart"><div class="cl"><div><div style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;margin-bottom:22px;">장바구니</div><div id="citems"></div></div><div><div class="csum"><div style="font-size:15px;font-weight:700;margin-bottom:18px;">주문 요약</div><div style="display:flex;gap:8px;margin-bottom:14px;"><input class="ci2" placeholder="쿠폰 코드 (FIGHT10)" id="cpn"><button class="cbtn" onclick="applyCpn()">적용</button></div><div class="srow"><span class="sl2">상품금액</span><span id="csub">₩0</span></div><div class="srow" id="disc-row" style="display:none;color:var(--gl);"><span class="sl2">할인</span><span id="disc-amt"></span></div><div class="srow"><span class="sl2">배송비</span><span id="cship">₩3,000</span></div><div class="sdiv"></div><div class="stot"><span>총 결제금액</span><span class="sv" id="ctot">₩0</span></div><button class="br full" onclick="if(!cartItems.length){toast('장바구니가 비어있습니다');return;}go('payment')">결제하기</button></div></div></div>
 </div><!-- PAYMENT -->
@@ -566,7 +567,6 @@ const RNKS_DATA = {
   }
 };
 let rankSort='sales', rankPeriod='weekly';
-const RNKS = RNKS_DATA.sales.weekly;
 const NOTICES=[
   {id:1,pin:true,t:'[필독] 5월 배송 지연 안내',date:'2025.05.15',
    b:'안녕하세요, FIGHTGOODS입니다.\n\n현재 물류 센터 사정으로 인해 일부 상품의 배송이 기존 안내보다 2~3일 추가 소요될 수 있습니다.\n\n불편을 드려 진심으로 사과드리며, 빠른 시일 내에 정상화될 수 있도록 최선을 다하겠습니다.\n\n문의사항은 고객지원 > 1:1 문의를 통해 접수해 주세요.'},
@@ -637,6 +637,7 @@ const DPOST=[
 ];
 const VOTES=[{l:'챔피언 후드 집업',v:48},{l:'등극 기념 키링',v:31},{l:'포토북',v:21}];
 let qty=1,cartItems=[],couponApplied=false,cartDisc=0;
+let srchResults=[];
 let recentViewed=[],posts=[...DPOST],nxtPid=4;
 let calY=2025,calMonth=4,voted=false,predicted=false;
 let currentUser=null;
@@ -654,7 +655,8 @@ function go(name, pushState){
   }
   document.querySelectorAll('.pw').forEach(p=>p.classList.remove('on'));
   const el=document.getElementById('p-'+name);
-  if(el) el.classList.add('on');
+  if(!el){console.warn('Page not found:',name);return;}
+  el.classList.add('on');
   window.scrollTo({top:0,behavior:'smooth'});
   if(name==='mypage') renderMp();
   if(name==='cart') renderCart();
@@ -694,6 +696,7 @@ function chipOn(el,sel){
 let toastT;
 function toast(msg){
   const t=document.getElementById('tst');
+  if(!t) return;
   t.textContent=msg; t.classList.add('on');
   clearTimeout(toastT);
   toastT=setTimeout(()=>t.classList.remove('on'),2500);
@@ -718,10 +721,12 @@ function renderNav(){
 function openAuth(tab){ document.getElementById('aov').classList.add('on'); atab(tab||'login'); }
 function closeAuth(){ document.getElementById('aov').classList.remove('on'); }
 function atab(t){
-  document.getElementById('tlog').classList.toggle('on',t==='login');
-  document.getElementById('tsig').classList.toggle('on',t==='signup');
-  document.getElementById('flog').style.display=t==='login'?'block':'none';
-  document.getElementById('fsig').style.display=t==='signup'?'block':'none';
+  const tl=document.getElementById('tlog'),ts=document.getElementById('tsig');
+  const fl=document.getElementById('flog'),fs=document.getElementById('fsig');
+  if(tl) tl.classList.toggle('on',t==='login');
+  if(ts) ts.classList.toggle('on',t==='signup');
+  if(fl) fl.style.display=t==='login'?'block':'none';
+  if(fs) fs.style.display=t==='signup'?'block':'none';
 }
 document.getElementById('aov').addEventListener('click',function(e){ if(e.target===this) closeAuth(); });
 function doLogin(){
@@ -729,7 +734,7 @@ function doLogin(){
   const err=document.getElementById('lerr');
   if(!e||!p){ err.textContent='이메일과 비밀번호를 입력해주세요.'; err.style.display='block'; return; }
   try{
-  const users=JSON.parse(localStorage.getItem('fg_users')||'[]');
+  let users=[]; try{users=JSON.parse(localStorage.getItem('fg_users')||'[]');}catch(e){}
   const u=users.find(x=>x.email===e&&x.pw===p);
   if(!u){ err.textContent='이메일 또는 비밀번호가 올바르지 않습니다.'; err.style.display='block'; return; }
   saveAuth(u); closeAuth(); toast('✓ 로그인 완료! 환영합니다, '+u.nick+'님'); err.style.display='none';
@@ -740,7 +745,7 @@ function socialLogin(prov){
   const u={email:nick+'@social.com',nick,pw:'',point:500,orders:[]};
   saveAuth(u); closeAuth(); toast('✓ '+prov+' 로그인 완료! 환영합니다, '+nick+'님');
 }
-function doLogout(){ currentUser=null; localStorage.removeItem('fg_user'); renderNav(); toast('로그아웃 되었습니다'); }
+function doLogout(){ currentUser=null; try{localStorage.removeItem('fg_user');}catch(e){} renderNav(); toast('로그아웃 되었습니다'); }
 function chkEmail(v){
   const h=document.getElementById('seh'); if(!v){h.textContent='';return;}
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){h.className='fh err';h.textContent='올바른 이메일 형식이 아닙니다.';return;}
@@ -792,13 +797,16 @@ function openProduct(id){
   currentProduct = PRODS.find(p=>p.id===id)||PRODS[0];
   const p = currentProduct;
   qty = 1;
-  document.querySelector('.dtag').textContent = '🛒 '+p.f;
-  document.querySelector('.dnm').textContent = p.n;
-  document.getElementById('dpr').textContent = '₩'+p.p.toLocaleString();
-  document.getElementById('mimg').textContent = p.ic;
-  document.getElementById('qv').textContent = '1';
-  document.getElementById('psub').textContent = '₩'+p.p.toLocaleString();
-  document.getElementById('ptot').textContent = '₩'+(p.p+3000).toLocaleString();
+  const _dtag=document.querySelector('.dtag'),_dnm=document.querySelector('.dnm');
+  if(_dtag) _dtag.textContent='🛒 '+p.f;
+  if(_dnm) _dnm.textContent=p.n;
+  const _dpr=document.getElementById('dpr'),_mimg=document.getElementById('mimg');
+  const _qv=document.getElementById('qv'),_psub=document.getElementById('psub'),_ptot=document.getElementById('ptot');
+  if(_dpr) _dpr.textContent='₩'+p.p.toLocaleString();
+  if(_mimg) _mimg.textContent=p.ic;
+  if(_qv) _qv.textContent='1';
+  if(_psub) _psub.textContent='₩'+p.p.toLocaleString();
+  if(_ptot) _ptot.textContent='₩'+(p.p+3000).toLocaleString();
   const bc = document.querySelector('#p-product .bc');
   if(bc) bc.innerHTML = `<span onclick="go('home');navTo('굿즈 홈')">굿즈 홈</span><span class="sep">›</span><span style="color:var(--t2);">${p.n}</span>`;
   addRV(p);
@@ -811,11 +819,32 @@ function filterP(btn){
   renderProds('hpg',c==='전체'?PRODS:PRODS.filter(p=>p.c===c));
 }
 function fighterHTML(f){
-  const goodsBadge = f.contract
-  ? `<div class="fg-cnt" style="color:var(--red);">🛒 계약 선수 · 굿즈 ${f.g}개</div>`
-  : `<div class="fg-cnt">📋 정보 제공 선수</div>`;
-  return`<div class="fc" onclick="openFighter('${f.n}')"><div class="fav">${f.ic}</div><div class="fi2"><div class="fn">${f.n}</div><div class="fm">${f.m}</div><div class="frec"><div class="frs"><div class="frv">${f.w}</div><div class="frl">승</div></div><div class="frs"><div class="frv">${f.l}</div><div class="frl">패</div></div><div class="frs"><div class="frv">${f.fp}</div><div class="frl">피니시율</div></div></div><div class="ftags">${f.tags.map(t=>`<span class="ftag">${t}</span>`).join('')}</div>${goodsBadge}</div></div>`;
+  var displayN=f.n.replace('_라이트','').replace('_W','');
+  var goodsBadge=f.contract
+    ?'<div class="fg-cnt" style="color:var(--red);">🛒 굿즈 '+f.g+'개</div>'
+    :'<div class="fg-cnt">📋 정보 제공</div>';
+  var avatarHtml=f.photos&&f.photos.length
+    ?'<div class="fav" style="overflow:hidden;border-radius:50%;background:var(--bg4);">'
+      +'<img src="'+f.photos[0].url+'" style="width:100%;height:100%;object-fit:cover;" loading="lazy">'
+      +'</div>'
+    :'<div class="fav">'+f.ic+'</div>';
+  var n2=displayN.replace(/'/g,"");
+  return'<div class="fc" onclick="openFighter(&quot;'+f.n+'&quot;)">'
+    +avatarHtml
+    +'<div class="fi2">'
+      +'<div class="fn">'+displayN+'</div>'
+      +'<div class="fm">'+f.m+'</div>'
+      +'<div class="frec">'
+        +'<div class="frs"><div class="frv">'+f.w+'</div><div class="frl">승</div></div>'
+        +'<div class="frs"><div class="frv">'+f.l+'</div><div class="frl">패</div></div>'
+        +'<div class="frs"><div class="frv">'+f.fp+'</div><div class="frl">피니시율</div></div>'
+      +'</div>'
+      +'<div class="ftags">'+f.tags.map(function(t){return'<span class="ftag">'+t+'</span>';}).join('')+'</div>'
+      +goodsBadge
+    +'</div>'
+  +'</div>';
 }
+
 function openFighter(name){
   var f=FIGHTERS.find(function(x){return x.n===name;})||FIGHTERS[0];
   var fd=document.getElementById('p-fighter-detail');
@@ -823,7 +852,7 @@ function openFighter(name){
   var displayName=f.n.replace('_라이트','').replace('_W','');
   var contractBox=f.contract
   ?'<div style="display:inline-flex;align-items:center;gap:8px;background:var(--rg);border:1px solid rgba(230,57,70,.3);border-radius:6px;padding:6px 14px;font-size:12px;color:var(--red);font-weight:700;">🛒 IP 계약 완료 · 굿즈 '+f.g+'개 판매 중</div>'
-  :'<div style="font-size:12px;background:rgba(255,255,255,.04);border:1px solid var(--bd2);border-radius:6px;padding:8px 14px;color:var(--t3);">📋 정보 제공 선수</div>';
+  :'<div style="font-size:12px;background:rgba(255,255,255,.04);border:1px solid var(--bd2);border-radius:6px;padding:8px 14px;color:var(--t2);">📋 정보 제공 선수</div>';
   var snsHtml='';
   if(f.sns){
   snsHtml='<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">';
@@ -854,7 +883,7 @@ function openFighter(name){
     +'<div style="position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;border:1px solid var(--bd2);background:var(--bg4);">'
     +'<iframe src="https://www.youtube.com/embed/'+f.youtube+'?rel=0" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe>'+'</div>';
   if(f.ytTitle) ytHtml+='<div style="margin-top:10px;font-size:13px;font-weight:500;">'+f.ytTitle+'</div>';
-  if(f.ytDesc)  ytHtml+='<div style="font-size:11px;color:var(--t3);margin-top:3px;">'+f.ytDesc+'</div>';
+  if(f.ytDesc)  ytHtml+='<div style="font-size:12px;color:var(--t2);margin-top:4px;">'+f.ytDesc+'</div>';
   ytHtml+='</div>';
   }
   var storyHtml='<div style="margin-bottom:32px;">'
@@ -882,7 +911,7 @@ function openFighter(name){
     tlHtml+='<div style="display:flex;gap:16px;padding-bottom:'+(isLast?'0':'20px')+';position:relative;">'
   +(isLast?'':'<div style="position:absolute;left:8px;top:22px;bottom:0;width:1px;background:var(--bd);"></div>')
   +'<div style="width:18px;height:18px;border-radius:50%;border:2px solid '+(isLast?'var(--red)':'var(--bd2)')+';background:'+(isLast?'var(--red)':'var(--bg)')+';flex-shrink:0;margin-top:3px;z-index:1;"></div>'
-  +'<div style="flex:1"><div style="font-size:10px;color:var(--t3);margin-bottom:2px;">'+t[0]+'</div>'
+  +'<div style="flex:1"><div style="font-size:12px;color:var(--t2);margin-bottom:3px;">'+t[0]+'</div>'
   +'<div style="font-size:14px;font-weight:600;color:'+(isLast?'var(--red)':'var(--t)')+';margin-bottom:2px;">'+t[1]+'</div>'
   +'<div style="font-size:12px;color:var(--t3);">'+t[2]+'</div>'
         +(t[3]&&PRODS.find(function(p){return p.id===t[3];})?'<div style="margin-top:7px;"><span class="tl-goods-btn" onclick="openProduct('+t[3]+')">🛒 이 스토리의 굿즈 보기 →</span></div>':'')
@@ -911,21 +940,25 @@ function openFighter(name){
   ?'<div class="gbox"><div style="font-size:13px;font-weight:700;margin-bottom:14px;">🛒 '+displayName+' 굿즈</div>'
     +(myProds.length
   ?myProds.map(function(p){return '<div class="mprod" onclick="openProduct('+p.id+')"><div class="mpimg">'+p.ic+'</div><div><div class="mpn">'+p.n+'</div><div class="mpp">₩'+p.p.toLocaleString()+'</div></div></div>';}).join('')
-  :'<div style="font-size:13px;color:var(--t3);padding:8px 0 14px;">관련 굿즈 준비 중</div>')
+  :'<div style="font-size:13px;color:var(--t2);padding:8px 0 14px;">관련 굿즈 준비 중</div>')
     +'<button class="br" style="width:100%;margin-top:10px;font-size:12px;" onclick="go(\'goods\')">전체 굿즈 보기</button></div>'
   :'<div class="gbox"><div style="font-size:13px;font-weight:700;margin-bottom:10px;">계약 선수 굿즈</div>'
-    +'<div style="font-size:12px;color:var(--t3);line-height:1.8;margin-bottom:14px;">현재 IP 계약이 체결되지 않은 선수입니다.<br>굿즈는 계약 완료 선수에 한해 판매됩니다.</div>'
+    +'<div style="font-size:13px;color:var(--t2);line-height:1.8;margin-bottom:14px;">현재 IP 계약이 체결되지 않은 선수입니다.<br>굿즈는 계약 완료 선수에 한해 판매됩니다.</div>'
     +'<div style="height:1px;background:var(--bd);margin-bottom:14px;"></div>'
     +PRODS.slice(0,2).map(function(p){return '<div class="mprod" onclick="openProduct('+p.id+')"><div class="mpimg">'+p.ic+'</div><div><div class="mpn">'+p.n+'</div><div class="mpp">₩'+p.p.toLocaleString()+'</div></div></div>';}).join('')
     +'<button class="br" style="width:100%;margin-top:10px;font-size:12px;" onclick="go(\'goods\')">굿즈 전체 보기</button></div>';
   fd.innerHTML=
   '<div class="bc"><span onclick="go(\'fighters\')">선수 정보</span><span class="sep">›</span><span style="color:var(--t2);">'+displayName+'</span></div>'
   +'<div class="fdh"><div class="fdtop">'
-  +'<div class="fdav" style="font-size:52px;">'+f.ic+'</div>'
+  +(f.photos&&f.photos.length
+  ?'<div class="fdav-img" style="width:110px;height:110px;border-radius:12px;overflow:hidden;flex-shrink:0;border:1px solid var(--bd2);background:var(--bg4);">'
+    +'<img src="'+f.photos[0].url+'" style="width:100%;height:100%;object-fit:cover;" loading="lazy">'
+    +'</div>'
+  :'<div class="fdav" style="font-size:52px;">'+f.ic+'</div>')
   +'<div style="flex:1;">'
-  +'<div style="font-size:11px;color:var(--t3);letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px;">'+f.org+' · '+f.cls+'</div>'
+  +'<div style="font-size:12px;color:var(--t2);letter-spacing:.3px;text-transform:uppercase;margin-bottom:7px;">'+f.org+' · '+f.cls+'</div>'
   +'<div class="fdnm">'+displayName+'</div>'
-  +(f.subtitle?'<div style="font-size:14px;color:var(--t2);margin-bottom:14px;font-style:italic;">'+f.subtitle+'</div>':'')
+  +(f.subtitle?'<div style="font-size:14px;color:var(--t2);margin-bottom:14px;font-weight:300;letter-spacing:.2px;">'+f.subtitle+'</div>':'')
   +'<div class="srow2">'
   +'<div class="sbox"><div class="sv2">'+f.w+'</div><div class="slb">승</div></div>'
   +'<div class="sbox"><div class="sv2">'+f.l+'</div><div class="slb">패</div></div>'
@@ -946,7 +979,8 @@ function openFighter(name){
 function goSrchItem(i){
   var r=srchResults[i];
   if(!r) return;
-  document.getElementById('si').value='';
+  const si=document.getElementById('si');
+  if(si) si.value='';
   closeSrch();
   if(r.type==='prod') openProduct(r.id);
   else if(r.type==='fighter') openFighter(r.name);
@@ -961,13 +995,16 @@ function addCart(){
 }
 function applyCpn(){
   if(couponApplied){toast('이미 쿠폰이 적용되었습니다');return;}
-  const v=document.getElementById('cpn').value.trim().toUpperCase();
+  const cpnEl=document.getElementById('cpn');
+  if(!cpnEl) return;
+  const v=cpnEl.value.trim().toUpperCase();
   if(v==='FIGHT10'){
   couponApplied=true;
   const sub=cartItems.reduce((s,i)=>s+i.p*i.qty,0);
   cartDisc=Math.floor(sub*.1);
-  document.getElementById('disc-row').style.display='flex';
-  document.getElementById('disc-amt').textContent='-₩'+cartDisc.toLocaleString();
+  const dr=document.getElementById('disc-row'),da=document.getElementById('disc-amt');
+  if(dr) dr.style.display='flex';
+  if(da) da.textContent='-₩'+cartDisc.toLocaleString();
   updCartTot(); toast('🎉 쿠폰 적용! 10% 할인');
   } else toast('유효하지 않은 쿠폰 코드입니다');
 }
@@ -977,18 +1014,21 @@ function buyNow(){
 }
 function chgQ(d){
   qty=Math.max(1,Math.min(99,qty+d));
-  document.getElementById('qv').textContent=qty;
-  const sub=45000*qty;
-  document.getElementById('psub').textContent='₩'+sub.toLocaleString();
-  document.getElementById('ptot').textContent='₩'+(sub+3000).toLocaleString();
+  const qv=document.getElementById('qv');
+  if(qv) qv.textContent=qty;
+  const baseP=(currentProduct&&currentProduct.p)||45000;
+  const sub=baseP*qty;
+  const psub=document.getElementById('psub'),ptot=document.getElementById('ptot');
+  if(psub) psub.textContent='₩'+sub.toLocaleString();
+  if(ptot) ptot.textContent='₩'+(sub+3000).toLocaleString();
 }
 function cqty(i,d){ cartItems[i].qty=Math.max(1,cartItems[i].qty+d); updateCC(); renderCart(); }
 function doConfirm(){
   const method=document.querySelector('#pmethods .pmb.on')?.textContent||'카카오페이';
   const num='#'+new Date().getFullYear()+String(new Date().getMonth()+1).padStart(2,'0')+String(new Date().getDate()).padStart(2,'0')+'-'+(Math.floor(Math.random()*9000)+1000);
   const dd=new Date(); dd.setDate(dd.getDate()+3);
-  document.getElementById('cdet').innerHTML=`
-  <div class="crow"><span class="ck">주문번호</span><span>${num}</span></div><div class="crow"><span class="ck">상품</span><span>${(cartItems.length?cartItems[0].n:(currentProduct||PRODS[0]).n)+' ×'+(cartItems.length||1)}</span></div><div class="crow"><span class="ck">결제금액</span><span style="color:var(--red);">₩48,000</span></div><div class="crow"><span class="ck">결제수단</span><span>${method}</span></div><div class="crow"><span class="ck">예상 배송일</span><span>${dd.getMonth()+1}월 ${dd.getDate()}일</span></div>`;
+  const cdetEl=document.getElementById('cdet');
+  if(cdetEl) cdetEl.innerHTML='<div class="crow"><span class="ck">주문번호</span><span>'+num+'</span></div><div class="crow"><span class="ck">상품</span><span>'+((cartItems.length?cartItems[0].n:(currentProduct||PRODS[0]).n)+' ×'+(cartItems.length||1))+'</span></div><div class="crow"><span class="ck">결제금액</span><span style="color:var(--red);">₩48,000</span></div><div class="crow"><span class="ck">결제수단</span><span>'+method+'</span></div><div class="crow"><span class="ck">예상 배송일</span><span>'+(dd.getMonth()+1)+'월 '+dd.getDate()+'일</span></div>';
   if(currentUser){
   try{
     let us=JSON.parse(localStorage.getItem('fg_users')||'[]');
@@ -1006,7 +1046,8 @@ function doWtdr(){
   doLogout(); toast('탈퇴가 처리되었습니다');
 }
 function filterF(){
-  const q=(document.getElementById('fsrch')||{}).value||'';
+  const fsEl=document.getElementById('fsrch');
+  const q=fsEl?fsEl.value:'';
   const ac=document.querySelector('#ff .chip.on');
   const f=ac?ac.dataset.f:'전체';
   const res=FIGHTERS.filter(x=>{
@@ -1062,7 +1103,7 @@ function renderMp(){
   mpTab('orders');
 }
 function renderPayment(){
-  const items=cartItems.length?cartItems:[{ic:'👕',n:'김상욱 프로그맨 시그니처 티셔츠',sz:'M',cl:'블랙',qty:1,p:45000}];
+  const items=(cartItems&&cartItems.length)?cartItems:[{ic:'👕',n:'김상욱 프로그맨 시그니처 티셔츠',sz:'M',cl:'블랙',qty:1,p:45000}];
   const sub=items.reduce((s,i)=>s+i.p*i.qty,0);
   document.getElementById('pitems').innerHTML=items.map(i=>`
   <div class="osi"><div class="osimg">${i.ic}</div><div style="flex:1;"><div style="font-size:13px;margin-bottom:2px;">${i.n}</div><div style="font-size:11px;color:var(--t3);">${i.sz} · ${i.cl} · ${i.qty}개</div></div><div style="font-size:13px;font-weight:700;color:var(--red);">₩${(i.p*i.qty).toLocaleString()}</div></div>`).join('');
@@ -1090,7 +1131,7 @@ function renderRank(){
     +'<div class="pb">'
   +'<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">'
     +'<span style="font-size:11px;font-weight:700;color:var(--t3)">#'+(i+1)+'</span>'
-    +(i<3?'<span style="font-size:10px;background:var(--rg);color:var(--red);border:1px solid rgba(230,57,70,.3);padding:1px 7px;border-radius:4px;font-weight:700">'+['1위','2위','3위'][i]+'</span>':'')
+    +(i<3?'<span style="font-size:11px;background:var(--rg);color:var(--red);border:1px solid rgba(230,57,70,.3);padding:2px 8px;border-radius:4px;font-weight:700">'+['1위','2위','3위'][i]+'</span>':'')
   +'</div>'
   +'<div class="pn">'+r.n+'</div>'
   +'<div class="pf" style="color:var(--red)">🛒 '+r.f+'</div>'
@@ -1102,7 +1143,9 @@ function renderRank(){
 }
 function rmCart(i){ cartItems.splice(i,1); updateCC(); renderCart(); }
 function savePrf(){
-  const n=document.getElementById('enick').value.trim();
+  const enick=document.getElementById('enick');
+  if(!enick) return;
+  const n=enick.value.trim();
   if(!n||n.length<2){toast('올바른 닉네임을 입력해주세요');return;}
   try{ let us=JSON.parse(localStorage.getItem('fg_users')||'[]'); const u=us.find(x=>x.email===currentUser.email); if(u){u.nick=n;localStorage.setItem('fg_users',JSON.stringify(us));} currentUser.nick=n; localStorage.setItem('fg_user',JSON.stringify(currentUser)); renderNav(); renderMp(); toast('✓ 정보가 수정되었습니다'); }catch(ex){toast('오류가 발생했습니다');}
 }
@@ -1130,15 +1173,17 @@ function srch(v){
   srchResults=res;
   dd.innerHTML=res.map(function(r,i){
   return '<div class="si" onclick="goSrchItem('+i+')">'
-    +'<span style="font-size:10px;color:var(--t3);margin-right:7px;">'+r.t+'</span>'
+    +'<span style="font-size:11px;color:var(--t2);margin-right:8px;">'+r.t+'</span>'
     +'<span>'+r.l+'</span>'
-    +(r.sub?'<span style="font-size:11px;color:var(--t3);margin-left:6px;">'+r.sub+'</span>':'')
+    +(r.sub?'<span style="font-size:12px;color:var(--t2);margin-left:7px;">'+r.sub+'</span>':'')
     +'</div>';
   }).join('');
   dd.classList.add('on');
 }
 function trackDel(){
-  const n=document.getElementById('trk').value.trim(); if(!n){toast('운송장 번호를 입력해주세요');return;}
+  const trkEl=document.getElementById('trk');
+  if(!trkEl){toast('조회 폼을 찾을 수 없습니다');return;}
+  const n=trkEl.value.trim(); if(!n){toast('운송장 번호를 입력해주세요');return;}
   document.getElementById('trres').innerHTML=`<div style="margin-top:14px;"><div style="font-size:13px;font-weight:700;margin-bottom:10px;color:var(--gl);">CJ대한통운 · ${n}</div>${['집화 완료','간선 이동 중','배송 출발','배송 완료'].map((s,i)=>`<div style="display:flex;gap:11px;align-items:center;padding:7px 0;border-bottom:1px solid var(--bd);"><div style="width:9px;height:9px;border-radius:50%;background:${i<3?'var(--red)':'var(--bd2)'};flex-shrink:0;"></div><span style="font-size:13px;${i>=3?'color:var(--t3);':''}">${s}</span>${i<3?`<span style="font-size:11px;color:var(--t3);margin-left:auto;">2025.05.${17+i}</span>`:''}</div>`).join('')}</div>`;
 }
 function updCartTot(){
@@ -1148,15 +1193,15 @@ function updCartTot(){
   document.getElementById('cship').textContent='₩'+ship.toLocaleString();
   document.getElementById('ctot').textContent='₩'+(sub+ship-cartDisc).toLocaleString();
 }
-function updateCC(){ document.getElementById('cc').textContent=cartItems.reduce((s,i)=>s+i.qty,0); }
-function usePoint(){ if(!currentUser){toast('로그인이 필요합니다');return;} const p=parseInt(document.getElementById('puse').value)||0; if(p%100!==0){toast('100P 단위로 입력해주세요');return;} if(p>(currentUser.point||0)){toast('보유 포인트가 부족합니다');return;} toast('✓ '+p+'P 적용되었습니다'); }
+function updateCC(){ const cc=document.getElementById('cc'); if(cc) cc.textContent=cartItems.reduce((s,i)=>s+i.qty,0); }
+function usePoint(){ if(!currentUser){toast('로그인이 필요합니다');return;} const puseEl=document.getElementById('puse'); const p=puseEl?parseInt(puseEl.value)||0:0; if(p%100!==0){toast('100P 단위로 입력해주세요');return;} if(p>(currentUser.point||0)){toast('보유 포인트가 부족합니다');return;} toast('✓ '+p+'P 적용되었습니다'); }
 function goSrch(pg){ document.getElementById('si').value=''; closeSrch(); go(pg); }
 function closeSrch(){ document.getElementById('sdd').classList.remove('on'); }
 function renderCal(){
   const ml=document.getElementById('cml'); if(ml) ml.textContent=calY+'년 '+(calMonth+1)+'월';
   const g=document.getElementById('cg'); if(!g) return;
   const days=['일','월','화','수','목','금','토'];
-  let h=days.map(d=>`<div style="text-align:center;padding:7px;font-size:11px;color:var(--t3);font-weight:700;">${d}</div>`).join('');
+  let h=days.map(d=>`<div style="text-align:center;padding:8px;font-size:12px;color:var(--t2);font-weight:600;">${d}</div>`).join('');
   const first=new Date(calY,calMonth,1).getDay(),tot=new Date(calY,calMonth+1,0).getDate();
   for(let i=0;i<first;i++) h+='<div></div>';
   for(let d=1;d<=tot;d++){
@@ -1180,12 +1225,12 @@ function renderPosts(list){
   el.innerHTML=arr.map(function(p){
     var cc=catColor[p.cat]||'var(--t3)';
     var cb=catBg[p.cat]||'var(--bg5)';
-    var catBadge=p.cat?'<span style="padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;color:'+cc+';background:'+cb+';">'+p.cat+'</span>':'';
+    var catBadge=p.cat?'<span style="padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600;color:'+cc+';background:'+cb+';">'+p.cat+'</span>':'';
     return'<div class="board-post">'
       +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">'+catBadge+'<span style="font-size:11px;color:var(--t3);margin-left:auto;">'+p.tm+'</span></div>'
       +'<div style="font-size:14px;font-weight:500;margin-bottom:5px;line-height:1.4;">'+p.t+'</div>'
       +'<div style="font-size:12px;color:var(--t3);margin-bottom:10px;">'+p.b.slice(0,80)+(p.b.length>80?'...':'')+'</div>'
-      +'<div style="display:flex;align-items:center;gap:10px;font-size:11px;color:var(--t3);">'
+      +'<div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--t2);">'
         +'<span style="font-weight:500;color:var(--t2);">'+p.a+'</span>'
         +'<span style="margin-left:auto;">❤️ '+p.l+'</span><span>💬 '+(p.cm||0)+'</span>'
       +'</div>'
@@ -1197,7 +1242,7 @@ function toggleWrite(){ if(!currentUser){openAuth('login');toast('로그인이 �
 function submitPost(){
   const t=document.getElementById('wt').value.trim(),b=document.getElementById('wb').value.trim();
   if(!t){toast('제목을 입력해주세요');return;}
-  posts.unshift({id:nxtPid++,t,b:b||'내용 없음',a:currentUser?.nick||'익명',l:0,cm:0,tm:'방금',cat:currentBoard});
+  posts.unshift({id:nxtPid++,t,b:b||'내용 없음',a:(currentUser&&currentUser.nick)||'익명',l:0,cm:0,tm:'방금',cat:currentBoard||'자유게시판'});
   renderPosts(); document.getElementById('wt').value=''; document.getElementById('wb').value=''; document.getElementById('wf').style.display='none'; toast('✓ 게시글이 등록되었습니다');
 }
 function sortP(type,btn){ chipOn(btn,'#p-community .chip'); renderBoardPosts(type); }
@@ -1217,8 +1262,10 @@ function renderBoardPosts(sortType){
 }
 function filterBoard(cat){ setBoard(cat); }
 function renderVote(){
+  const el=document.getElementById('votearea');
+  if(!el) return;
   const tot=VOTES.reduce((s,v)=>s+v.v,0);
-  document.getElementById('votearea').innerHTML=VOTES.map((v,i)=>{
+  el.innerHTML=VOTES.map((v,i)=>{
   const pct=Math.round(v.v/tot*100);
   return`<div onclick="castVote(${i})" style="margin-bottom:9px;cursor:pointer;"><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;"><span>${v.l}</span><span id="vp${i}">${pct}%</span></div><div style="height:5px;background:var(--bg4);border-radius:3px;overflow:hidden;"><div id="vb${i}" style="height:100%;width:${pct}%;background:${i===0?'var(--red)':'var(--bd2)'};border-radius:3px;transition:width .4s;"></div></div></div>`;
   }).join('');
@@ -1245,7 +1292,8 @@ function renderFaq(data){
 }
 function toggleFaq(i){ document.getElementById('fa'+i).classList.toggle('on'); document.getElementById('fc'+i).classList.toggle('on'); }
 function filterFaq(){
-  const v=(document.getElementById('fqs')||{}).value||'';
+  const fqsEl=document.getElementById('fqs');
+  const v=fqsEl?fqsEl.value:'';
   const ac=document.querySelector('#fqcats .chip.on'); const cat=ac?ac.dataset.c:'전체';
   renderFaq(FAQS.filter(f=>(cat==='전체'||f.c===cat)&&(!v||f.q.includes(v)||f.a.includes(v))));
 }
@@ -1266,12 +1314,12 @@ function renderUpcoming() {
   el.innerHTML = UPCOMING.map(function(u,i) {
     var ddayLabel = u.dday <= 0 ? 'TODAY' : 'D-'+u.dday;
     var ddayColor = u.dday <= 3 ? 'var(--red)' : u.dday <= 7 ? '#ff9f43' : 'var(--t2)';
-    return '<div class="pc upcoming-card">'
+    return '<div class="pc upcoming-card" style="position:relative;">'
       +'<div class="pi" style="height:200px;flex-direction:column;gap:6px;">'
         +'<span style="font-size:56px;position:relative;z-index:1;">'+u.ic+'</span>'
         +'<div style="position:relative;z-index:1;text-align:center;">'
           +'<div class="dday-num" style="color:'+ddayColor+'">'+ddayLabel+'</div>'
-          +'<div style="font-size:10px;color:var(--t3);letter-spacing:1px;">출시 예정</div>'
+          +'<div style="font-size:11px;color:var(--t2);letter-spacing:.5px;">출시 예정</div>'
         +'</div>'
       +'</div>'
       +'<div class="pb">'
@@ -1329,7 +1377,7 @@ function doFindPw() {
   const msg = document.getElementById('fpw-msg');
   if (!email) { msg.className='fh err'; msg.textContent='이메일을 입력해주세요.'; return; }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.className='fh err'; msg.textContent='올바른 이메일 형식이 아닙니다.'; return; }
-  const users = JSON.parse(localStorage.getItem('fg_users')||'[]');
+  let users=[]; try{users=JSON.parse(localStorage.getItem('fg_users')||'[]');}catch(e){}
   if (!users.find(u=>u.email===email)) { msg.className='fh err'; msg.textContent='등록되지 않은 이메일입니다.'; return; }
   msg.className='fh ok'; msg.textContent='재설정 링크가 발송되었습니다. 이메일을 확인해주세요.';
   setTimeout(()=>{ document.getElementById('findpw-modal').classList.remove('on'); }, 2000);
@@ -1353,7 +1401,9 @@ function doCancelOrder(btn) {
   overlay.remove();
   toast('주문이 취소되었습니다. 사유: ' + reason);
 }
-const initPage = location.hash ? location.hash.replace('#','') : 'home';
+const VALID_PAGES=['home','goods','upcoming','ranking','fighters','fighter-detail','schedule','product','cart','payment','confirm','mypage','community','terms','notice','faq'];
+const _rawPage = location.hash ? location.hash.replace('#','') : 'home';
+const initPage = VALID_PAGES.includes(_rawPage) ? _rawPage : 'home';
 try { history.replaceState({page: initPage}, '', location.hash||'#home'); } catch(e) {}
 // 초기 페이지 상태 등록 (뒤로가기 첫 항목)
 loadAuth();
@@ -1363,12 +1413,12 @@ if(upPrev){
   upPrev.innerHTML=UPCOMING.slice(0,4).map(function(u,i){
     var ddayLabel=u.dday<=0?'TODAY':'D-'+u.dday;
     var ddayColor=u.dday<=3?'var(--red)':u.dday<=7?'#ff9f43':'var(--t2)';
-    return '<div class="pc upcoming-card">'
+    return '<div class="pc upcoming-card" style="position:relative;">'
       +'<div class="pi" style="height:190px;flex-direction:column;gap:6px;">'
         +'<span style="font-size:52px;position:relative;z-index:1;">'+u.ic+'</span>'
         +'<div style="position:relative;z-index:1;text-align:center;">'
           +'<div class="dday-num" style="color:'+ddayColor+'">'+ddayLabel+'</div>'
-          +'<div style="font-size:9px;color:var(--t3);letter-spacing:1px;text-transform:uppercase;margin-top:2px;">출시 예정</div>'
+          +'<div style="font-size:11px;color:var(--t2);letter-spacing:.5px;text-transform:uppercase;margin-top:3px;">출시 예정</div>'
         +'</div>'
       +'</div>'
       +'<div class="pb">'
