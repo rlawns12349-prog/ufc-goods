@@ -424,207 +424,269 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .share-btn:hover{border-color:var(--bd2);}
 
 
-/* ═══════════════════════════════════════
-   STABILITY & READABILITY v2
-═══════════════════════════════════════ */
 
-/* 기본 타이포 */
-body{font-size:14px;line-height:1.75;letter-spacing:-.1px;}
-h1,h2,h3{line-height:1.3;}
+/* ═══════════════════════════
+   DESIGN SYSTEM v3 — CLEAN
+═══════════════════════════ */
 
-/* 네비 */
-.nl{padding:7px 12px;font-size:12.5px;letter-spacing:.1px;}
-.nl:hover{color:var(--t);}
-.nl.on{color:var(--t);font-weight:700;}
+/* 변수 오버라이드 */
+:root {
+  --r6:8px; --r10:12px; --r14:16px;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.3);
+  --shadow-md: 0 8px 24px rgba(0,0,0,.4);
+  --shadow-lg: 0 16px 48px rgba(0,0,0,.5);
+  --transition: .18s ease;
+}
 
-/* 섹션 여백 정리 */
-.sec{padding:52px 40px;}
-.sh{margin-bottom:28px;}
-.sl{font-size:11px;letter-spacing:1.2px;}
-.st{font-size:25px;}
+/* ── 기본 ── */
+body { font-size:14px; line-height:1.7; -webkit-font-smoothing:antialiased; }
 
-/* 버튼 */
-.br{padding:10px 24px;font-size:12.5px;border-radius:8px;}
-.br.sm{padding:7px 15px;font-size:12px;}
-.bo{padding:10px 24px;font-size:12.5px;border-radius:8px;}
-.bo.sm{padding:7px 15px;font-size:12px;}
+/* ── 네비 ── */
+nav { height:56px; padding:0 28px; gap:0; }
+.logo { font-size:18px; letter-spacing:4px; margin-right:24px; }
+.nl { padding:6px 11px; font-size:12px; color:var(--t2); letter-spacing:.2px; }
+.nl:hover { color:var(--t); }
+.nl.on { color:var(--t); font-weight:700; }
+.nl.on::after { content:''; position:absolute; bottom:-1px; left:11px; right:11px; height:2px; background:var(--red); border-radius:1px; }
+.cart-btn { padding:6px 14px; font-size:12px; border-radius:8px; gap:7px; }
 
-/* 인풋 */
-.fi,.fi-full{padding:10px 13px;font-size:13px;border-radius:8px;}
+/* ── 섹션 ── */
+.sec { padding:56px 40px; }
+.sh { margin-bottom:32px; align-items:baseline; }
+.sl { font-size:10px; letter-spacing:2px; font-weight:800; opacity:.7; }
+.st { font-size:22px; letter-spacing:.5px; }
+.sm { font-size:12px; opacity:.5; }
+.sm:hover { opacity:1; color:var(--t) !important; }
 
-/* 탭 */
-.tabs{border-radius:8px;}
-.tab{padding:8px 16px;font-size:12.5px;}
-.tab.on{font-weight:700;}
-
-/* 칩 */
-.chip{padding:6px 15px;font-size:12px;border-radius:100px;}
-
-/* ── 상품 카드 ── */
-.pg{gap:18px;}
-.pb{padding:13px 13px 14px;}
-.pn{font-size:13.5px;font-weight:700;line-height:1.45;margin-bottom:8px;}
-.pr{font-size:16px;font-weight:800;}
-.pc-cart-btn{padding:7px 13px;font-size:11.5px;border-radius:7px;}
+/* ── 상품 그리드 ── */
+.pg { grid-template-columns:repeat(4,1fr); gap:16px; }
+.pc {
+  background:var(--bg3);
+  border:1px solid var(--bd);
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.pc:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); border-color:rgba(230,57,70,.3); }
+.pc:hover .pi-img { transform:scale(1.08); }
+.pi { height:200px; position:relative; overflow:hidden; background:#111; }
+.pi-img { width:100%; height:100%; object-fit:cover; transition:transform .45s ease; display:block; }
+.pi-emoji { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:64px; }
+.pi-overlay { position:absolute; inset:0; background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.7) 100%); pointer-events:none; z-index:1; }
+.pi-fighter { position:absolute; bottom:10px; left:12px; display:flex; align-items:center; gap:5px; z-index:2; }
+.pi-fighter-ic { width:24px; height:24px; border-radius:50%; background:rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.2); display:flex; align-items:center; justify-content:center; font-size:12px; }
+.pi-fighter-nm { font-size:11px; font-weight:700; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,.9); }
+.pbadge { position:absolute; top:10px; right:10px; z-index:3; padding:3px 8px; border-radius:20px; font-size:10px; font-weight:800; letter-spacing:.5px; text-transform:uppercase; }
+.bh { background:var(--red); color:#fff; }
+.bl { background:var(--gold); color:#000; }
+.bn { background:var(--gl); color:#000; }
+.pb { padding:14px 14px 15px; }
+.pn { font-size:13px; font-weight:600; line-height:1.4; margin-bottom:8px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.pf { display:none; }
+.pp { display:flex; align-items:center; justify-content:space-between; gap:6px; }
+.pr { font-size:15px; font-weight:800; }
+.pc-cart-btn { padding:6px 12px; border-radius:8px; background:var(--red); color:#fff; font-size:11px; font-weight:700; border:none; cursor:pointer; font-family:inherit; transition:opacity .15s; flex-shrink:0; }
+.pc-cart-btn:hover { opacity:.8; }
 
 /* ── 선수 카드 ── */
-.fc{padding:15px 16px;border-radius:12px;gap:14px;}
-.fav{width:54px;height:54px;font-size:26px;}
-.fn{font-size:14.5px;font-weight:700;margin-bottom:4px;}
-.fm{font-size:12px;line-height:1.65;margin-bottom:8px;}
-.frv{font-size:16px;font-weight:800;}
-.frl{font-size:10px;letter-spacing:.5px;}
-.ftag{font-size:11px;padding:3px 8px;}
-.fg-cnt{font-size:12px;margin-top:4px;}
+.fg-grid { grid-template-columns:repeat(3,1fr); gap:10px; }
+.fc {
+  background:var(--bg3);
+  border:1px solid var(--bd);
+  border-radius:14px;
+  padding:16px;
+  cursor:pointer;
+  transition:border-color var(--transition), background var(--transition), transform var(--transition);
+  display:flex; gap:14px; position:relative; overflow:hidden;
+}
+.fc::before { content:''; position:absolute; left:0; top:0; bottom:0; width:0; background:var(--red); transition:width .18s; }
+.fc:hover { border-color:rgba(230,57,70,.35); background:var(--bg4); transform:translateX(2px); }
+.fc:hover::before { width:3px; }
+.fav { width:50px; height:50px; border-radius:50%; background:var(--bg5); border:1px solid var(--bd); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.fi2 { flex:1; min-width:0; }
+.fn { font-size:14px; font-weight:700; margin-bottom:2px; }
+.fm { font-size:11px; color:var(--t2); margin-bottom:6px; }
+.frec { display:flex; gap:12px; margin-bottom:6px; }
+.frs { text-align:center; }
+.frv { font-size:15px; font-weight:800; line-height:1.2; }
+.frl { font-size:10px; color:var(--t2); text-transform:uppercase; letter-spacing:.5px; }
+.ftags { display:flex; flex-wrap:wrap; gap:3px; margin-bottom:4px; }
+.ftag { padding:2px 7px; border-radius:100px; background:var(--rg); border:1px solid rgba(230,57,70,.15); color:var(--red); font-size:10px; }
+.fg-cnt { font-size:11px; color:var(--t2); }
+
+/* ── 탭 ── */
+.tabs { background:var(--bg3); border:1px solid var(--bd); border-radius:10px; padding:3px; width:fit-content; margin-bottom:18px; gap:2px; }
+.tab { padding:7px 16px; border-radius:8px; font-size:12px; cursor:pointer; background:none; border:none; color:var(--t2); font-family:inherit; transition:all .15s; }
+.tab.on { background:var(--red); color:#fff; font-weight:700; }
+
+/* ── 칩 ── */
+.chip { padding:6px 14px; border-radius:100px; font-size:12px; border:1px solid var(--bd); color:var(--t2); background:transparent; cursor:pointer; font-family:inherit; transition:all .15s; }
+.chip.on { border-color:var(--red); color:var(--red); background:var(--rg); }
+.chip:hover:not(.on) { border-color:var(--bd2); color:var(--t); }
+
+/* ── 버튼 ── */
+.br { padding:10px 22px; border-radius:10px; font-size:12.5px; font-weight:600; }
+.br.sm { padding:7px 14px; font-size:12px; border-radius:8px; }
+.bo { padding:10px 22px; border-radius:10px; font-size:12.5px; }
+.bo.sm { padding:7px 14px; font-size:12px; border-radius:8px; }
+button:active { transform:scale(.97); }
 
 /* ── 랭킹 ── */
-.rank-row{padding:14px 18px;}
-.rank-num{font-size:15px;}
-.rank-img{width:58px;height:58px;font-size:26px;}
-.rank-info>div:first-child{font-size:14px;font-weight:600;margin-bottom:2px;}
-.rank-info>div:last-child{font-size:12px;color:var(--t2);}
-.rank-stat>div:nth-child(2){font-size:15px;font-weight:700;margin-top:2px;}
-.rank-stat>div:nth-child(3){font-size:11.5px;color:var(--t2);}
-
-/* ── 공지 ── */
-.ni{padding:16px 0;gap:14px;}
-.ntit{font-size:14px;font-weight:600;line-height:1.55;margin-bottom:3px;}
-.npin{font-size:11px;padding:3px 8px;border-radius:4px;font-weight:800;}
-
-/* ── FAQ ── */
-.faq-item{border-radius:8px;margin-bottom:6px;}
-.faq-q{padding:15px 18px;font-size:13.5px;font-weight:600;line-height:1.5;}
-.faq-a{font-size:13px;line-height:1.95;color:var(--t2);}
-.faq-a.on{padding:10px 18px 16px;}
-
-/* ── 게시판 ── */
-.board-post{padding:17px 18px;border-radius:12px;margin-bottom:7px;}
-
-/* ── 선수 디테일 ── */
-.fdh{padding:48px 40px 32px;}
-.fdnm{font-size:44px;}
-.sbox{padding:12px 18px;min-width:78px;}
-.sv2{font-size:24px;font-weight:800;}
-.slb{font-size:10.5px;letter-spacing:.5px;}
-
-/* ── 장바구니 ── */
-.csum{padding:22px;}
-.stot{font-size:17px;margin-bottom:18px;}
-.srow{font-size:13px;padding:6px 0;}
-
-/* ── 결제 ── */
-.pmb{padding:12px 6px;font-size:12.5px;border-radius:8px;}
-.pmb.on{font-weight:700;}
-
-/* ── 마이페이지 ── */
-.mmi{padding:12px 15px;font-size:13px;gap:8px;}
-.mpprof{padding:22px 18px;}
+.rank-row { padding:14px 20px; transition:background .1s; }
+.rank-row:hover { background:var(--bg3); }
+.rank-num { width:36px; font-size:14px; font-weight:800; }
+.rank-img { width:54px; height:54px; border-radius:10px; font-size:22px; margin:0 14px; }
 
 /* ── 히어로 ── */
-.hero-title{font-size:88px;}
-.hero-sub{font-size:15.5px;line-height:1.95;}
+.hero { min-height:540px; }
+.hero-title { font-size:80px; line-height:.9; }
+.hero-sub { font-size:15px; line-height:1.85; color:var(--t2); }
+.hero-badge { font-size:11.5px; padding:5px 14px; margin-bottom:20px; }
+.hero-btns { gap:8px; }
 
 /* ── 경기 배너 ── */
-.rb{padding:22px 26px;border-radius:16px;}
-.rf .rn{font-size:36px;}
-.rm{font-size:20px;}
+.rb { padding:22px 24px; border-radius:16px; margin:0 40px; }
+.rf .rn { font-size:32px; }
+.rm { font-size:18px; }
 
-/* ── 토스트 ── */
-.toast{padding:12px 24px;font-size:13.5px;font-weight:500;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.4);}
+/* ── 공지 ── */
+.ni { padding:16px 4px; gap:14px; }
+.ntit { font-size:14px; font-weight:600; line-height:1.5; }
+.npin { font-size:10px; padding:3px 8px; border-radius:100px; font-weight:800; letter-spacing:.5px; }
 
-/* ── 브레드크럼 ── */
-.bc{padding:20px 40px 0;font-size:12.5px;gap:7px;}
+/* ── FAQ ── */
+.faq-item { border-radius:10px; margin-bottom:6px; overflow:hidden; border:1px solid var(--bd); transition:border-color .15s; }
+.faq-item:hover { border-color:var(--bd2); }
+.faq-q { padding:15px 18px; font-size:13.5px; font-weight:600; }
+.faq-a { font-size:13px; line-height:1.9; }
+.faq-a.on { padding:12px 18px 16px; }
+
+/* ── 게시판 ── */
+.board-post { padding:18px 20px; border-radius:14px; margin-bottom:8px; }
+
+/* ── 선수 디테일 ── */
+.fdh { padding:48px 40px 32px; }
+.fdnm { font-size:42px; letter-spacing:2px; }
+.sbox { padding:12px 16px; min-width:72px; border-radius:10px; }
+.sv2 { font-size:22px; font-weight:800; }
+
+/* ── 장바구니 / 결제 ── */
+.csum { border-radius:16px; padding:22px; }
+.osc { border-radius:16px; padding:22px; }
+.stot { font-size:16px; font-weight:800; }
+.pmb { border-radius:10px; padding:12px 6px; font-size:12.5px; }
+.pmb.on { font-weight:700; }
+
+/* ── 마이페이지 ── */
+.mpprof { border-radius:14px; padding:22px 18px; }
+.mpmenu { border-radius:14px; }
+.mmi { padding:12px 16px; font-size:13px; }
+.mpav { width:54px; height:54px; font-size:24px; }
 
 /* ── 카드박스 ── */
-.card-box{padding:18px 20px;border-radius:8px;}
-.sec-title{font-size:15.5px;font-weight:700;margin-bottom:14px;}
-.sec-label{font-size:11px;letter-spacing:1.2px;margin-bottom:12px;}
-
-/* ── 폼 ── */
-.fl{font-size:11.5px;margin-bottom:6px;letter-spacing:.5px;}
-.fh{font-size:12px;margin-top:4px;}
-.modal{padding:38px;}
-.mtabs{margin-bottom:22px;}
-
-/* ── 빈 상태 공통 ── */
-.empty-msg{text-align:center;padding:52px 24px;color:var(--t2);}
-.empty-msg .ei{font-size:44px;margin-bottom:14px;opacity:.45;display:block;}
-.empty-msg p{font-size:14px;line-height:1.8;}
+.card-box { padding:18px 20px; border-radius:10px; }
+.sec-title { font-size:15px; font-weight:700; margin-bottom:14px; }
+.sec-label { font-size:10px; letter-spacing:1.5px; font-weight:800; margin-bottom:10px; opacity:.7; }
 
 /* ── 리뷰 ── */
-.rev-item{padding:15px 16px;border-radius:8px;margin-bottom:9px;}
-.rev-top{margin-bottom:9px;}
+.rev-item { padding:16px; border-radius:10px; margin-bottom:8px; }
+
+/* ── 토스트 ── */
+.toast { padding:12px 22px; font-size:13px; font-weight:500; border-radius:10px; box-shadow:var(--shadow-md); }
+
+/* ── 브레드크럼 ── */
+.bc { padding:20px 40px 0; font-size:12px; gap:6px; }
+
+/* ── 빈 상태 ── */
+.empty-msg { text-align:center; padding:56px 24px; color:var(--t2); }
+.empty-msg .ei { font-size:40px; margin-bottom:12px; opacity:.4; display:block; }
+.empty-msg p { font-size:14px; line-height:1.8; }
+
+/* ── 스토리카드 ── */
+.story-card { border-radius:16px; padding:20px; }
+
+/* ── 인풋 ── */
+.fi,.fi-full { padding:10px 13px; font-size:13px; border-radius:10px; }
+.fl { font-size:11px; margin-bottom:6px; letter-spacing:.5px; font-weight:600; opacity:.7; }
+.modal { border-radius:20px; padding:36px; }
 
 /* ── 스크롤바 ── */
-::-webkit-scrollbar{width:4px;height:4px;}
-::-webkit-scrollbar-track{background:transparent;}
-::-webkit-scrollbar-thumb{background:var(--bg5);border-radius:2px;}
-::-webkit-scrollbar-thumb:hover{background:#444;}
+::-webkit-scrollbar { width:3px; height:3px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--bg5); border-radius:2px; }
 
-/* ── 포커스 접근성 ── */
-button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:4px;}
+/* ── 페이지 트랜지션 ── */
+.pw.on { animation:pageIn .2s ease; }
+@keyframes pageIn { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
 
-/* ── 링크 호버 ── */
-.sm:hover{color:var(--t)!important;}
+/* ── 카드 스태거 ── */
+.pg .pc { opacity:0; animation:cardIn .3s ease forwards; }
+.pg .pc:nth-child(1){animation-delay:.04s}.pg .pc:nth-child(2){animation-delay:.08s}.pg .pc:nth-child(3){animation-delay:.12s}.pg .pc:nth-child(4){animation-delay:.16s}.pg .pc:nth-child(5){animation-delay:.20s}.pg .pc:nth-child(6){animation-delay:.24s}.pg .pc:nth-child(7){animation-delay:.28s}.pg .pc:nth-child(8){animation-delay:.32s}
+@keyframes cardIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
 
-/* ── 선택 ── */
-::selection{background:rgba(230,57,70,.22);}
-
-/* ── 캘린더 ── */
-.cal-cell{min-height:60px;padding:6px;border-radius:6px;}
-.cal-d{font-size:12px;font-weight:500;}
-.cal-e{font-size:11px;padding:2px 5px;border-radius:4px;}
-
-/* ── 로딩 애니메이션 ── */
-@keyframes shimmer{0%{background-position:-200% 0;}100%{background-position:200% 0;}}
-.loading-skeleton{background:linear-gradient(90deg,var(--bg4) 25%,var(--bg5) 50%,var(--bg4) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;}
-
-/* ══ 모바일 ══ */
+/* ── 모바일 ── */
 @media(max-width:768px){
-  body{font-size:13.5px;}
-  .sec{padding:26px 14px;}
-  .sh{margin-bottom:20px;}
-  .st{font-size:22px;}
-  .hero-title{font-size:54px;}
-  .hero-sub{font-size:14px;}
-  .pg{grid-template-columns:repeat(2,1fr);gap:10px;}
-  .pi{height:160px;}
-  .pn{font-size:12.5px;}
-  .pr{font-size:14.5px;}
-  .pc-cart-btn{font-size:10.5px;padding:5px 10px;}
-  .fg-grid{grid-template-columns:1fr;}
-  .fn{font-size:14px;}
-  .rank-row{padding:11px 14px;}
-  .rank-img{width:50px;height:50px;margin:0 10px;}
-  .ni{padding:13px 0;}
-  .ntit{font-size:13.5px;}
-  .faq-q{padding:13px 15px;font-size:13px;}
-  .board-post{padding:14px 15px;}
-  .bc{padding:12px 14px 0;}
-  .tabs{overflow-x:auto;width:100%;max-width:100%;}
-  .tab{padding:7px 13px;font-size:12px;white-space:nowrap;}
-  .chip{padding:5px 12px;font-size:11.5px;}
-  .rb{padding:16px 16px;}
-  .rf .rn{font-size:26px;}
-  .fdh{padding:26px 14px 22px;}
-  .fdnm{font-size:34px;}
-  .mmi{font-size:12.5px;padding:11px 14px;}
-  .toast{font-size:13px;padding:10px 20px;}
-  .csum{padding:16px;}
-  .stot{font-size:15px;}
+  .sec { padding:28px 16px; }
+  .sh { margin-bottom:20px; }
+  .hero { min-height:auto; }
+  .hero-content { padding:52px 18px 32px; }
+  .hero-title { font-size:52px; }
+  .hero-sub { font-size:14px; }
+  .hero-visual { display:none; }
+  .pg { grid-template-columns:repeat(2,1fr); gap:10px; }
+  .pi { height:150px; }
+  .pi-emoji { font-size:44px; }
+  .pn { font-size:12px; }
+  .pr { font-size:14px; }
+  .pc-cart-btn { font-size:10px; padding:5px 9px; }
+  .fg-grid { grid-template-columns:1fr; }
+  .rb { margin:0; padding:16px 14px; }
+  .rf .rn { font-size:26px; }
+  .dl { grid-template-columns:1fr; gap:20px; padding:14px; }
+  .dimg { position:static; }
+  .cl { grid-template-columns:1fr; padding:14px; }
+  .csum { position:static; }
+  .payl { grid-template-columns:1fr; padding:14px; }
+  .osc { position:static; }
+  .mpl { grid-template-columns:1fr; padding:14px; gap:12px; }
+  .mpside { position:static; }
+  .fdb { grid-template-columns:1fr; padding:0 14px 28px; }
+  .gbox { position:static; }
+  .fdh { padding:24px 14px 20px; }
+  .fdtop { flex-direction:column; gap:12px; }
+  .fdnm { font-size:34px; }
+  .bc { padding:12px 14px 0; }
+  .conf { padding:36px 16px; }
+  .pm { grid-template-columns:repeat(2,1fr); }
+  .tabs { overflow-x:auto; width:100%; }
+  .tab { white-space:nowrap; }
+  .dl .brow { flex-direction:column; }
+  .rank-row { padding:11px 14px; }
+  .rank-img { width:48px; height:48px; margin:0 10px; }
+  .chip { padding:5px 12px; font-size:11.5px; }
+  .board-post { padding:14px 15px; }
+  .ni { padding:13px 0; }
 }
-
-/* ══ 태블릿 ══ */
 @media(min-width:769px) and (max-width:1024px){
-  .pg{grid-template-columns:repeat(3,1fr);}
-  .sec{padding:44px 28px;}
-  .fg-grid{grid-template-columns:repeat(2,1fr);}
-  .dl{gap:32px;padding:32px 28px;}
-  .fdb{padding:20px 28px 40px;}
-  .cl{padding:24px 28px 40px;}
-  .payl{padding:24px 28px 40px;}
-  .mpl{padding:24px 28px 40px;}
+  .pg { grid-template-columns:repeat(3,1fr); }
+  .sec { padding:44px 28px; }
+  .fg-grid { grid-template-columns:repeat(2,1fr); }
+  .dl { gap:32px; padding:28px; }
+  .fdb { padding:20px 28px 40px; }
+  .cl { padding:24px 28px 40px; }
+  .payl { padding:24px 28px 40px; }
+  .mpl { padding:24px 28px 40px; }
+  .rb { margin:0 28px; }
 }
+@media(min-width:769px){ .mobile-nav{display:none;} }
+
+
+/* story fighter card */
+.story-fighter-card{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;aspect-ratio:3/4;background:var(--bg3);border:1px solid var(--bd);transition:transform .2s,box-shadow .2s;}
+.story-fighter-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.5);}
+.story-fighter-card:hover img{transform:scale(1.06);}
+.story-fighter-card img{transition:transform .4s ease;}
 </style>
 </head>
 <body><!-- NAVBAR -->
@@ -632,7 +694,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 </nav><!-- AUTH MODAL -->
 <div class="ov" id="aov"><div class="modal"><button class="mc" onclick="closeAuth()">&#x2715;</button><div style="font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;margin-bottom:3px;">FIGHTGOODS</div><div style="font-size:13px;color:var(--t3);margin-bottom:22px;">MMA 서사 기반 굿즈 플랫폼</div><div class="mtabs"><button class="mt on" id="tlog" onclick="atab('login')">로그인</button><button class="mt" id="tsig" onclick="atab('signup')">회원가입</button></div><!-- LOGIN --><div id="flog"><div class="fg"><div class="fl">이메일</div><input class="fi" id="le" type="email" placeholder="이메일 입력"></div><div class="fg"><div class="fl">비밀번호</div><input class="fi" id="lp" type="password" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')doLogin()"><div id="lerr" class="fh err" style="display:none;"></div></div><div style="display:flex;justify-content:space-between;margin-bottom:14px;"><label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--t3);cursor:pointer;"><input type="checkbox"> 로그인 상태 유지</label><span style="font-size:12px;color:var(--t3);cursor:pointer;" onclick="showFindPw()">비밀번호 찾기</span></div><button class="br full" onclick="doLogin()">로그인</button><div class="mdiv">소셜 로그인</div><div class="social-row"><button class="sb" onclick="socialLogin('카카오')">카카오</button><button class="sb" onclick="socialLogin('구글')">구글</button><button class="sb" onclick="socialLogin('네이버')">네이버</button></div></div><!-- SIGNUP --><div id="fsig" style="display:none;"><div class="fg"><div class="fl">이메일</div><input class="fi" id="se" type="email" placeholder="이메일 입력" oninput="chkEmail(this.value)"><div id="seh" class="fh"></div></div><div class="fg"><div class="fl">닉네임</div><input class="fi" id="sn" placeholder="닉네임 (2~10자)" oninput="chkNick(this.value)"><div id="snh" class="fh"></div></div><div class="fg"><div class="fl">비밀번호</div><input class="fi" id="sp" type="password" placeholder="영문+숫자+특수문자 8자 이상" oninput="chkPw(this.value)"><div id="pwbar" style="height:4px;border-radius:2px;margin-top:5px;width:0;transition:width .3s,background .3s;"></div><div id="sph" class="fh"></div></div><div class="fg"><div class="fl">비밀번호 확인</div><input class="fi" id="sp2" type="password" placeholder="비밀번호 재입력" oninput="chkPw2(this.value)"><div id="sp2h" class="fh"></div></div><div style="margin-bottom:13px;"><label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;margin-bottom:7px;"><input type="checkbox" id="agr"> 이용약관 및 개인정보처리방침 동의 <span style="color:var(--red);">(필수)</span> <span style="color:var(--red);cursor:pointer;font-size:11px;" onclick="closeAuth();go('terms')">내용 보기</span></label><label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;"><input type="checkbox"> 마케팅 수신 동의 (선택)</label></div><div id="serr" class="fh err" style="display:none;margin-bottom:9px;"></div><button class="br full" onclick="doSignup()">회원가입</button></div></div>
 </div><!-- HOME -->
-<div class="pw on" id="p-home"><!-- ① 히어로: 굿즈 중심 --><div class="hero"><div class="hero-bg"></div><div class="hero-content"><div class="hero-badge"><div class="hero-dot"></div><span id="hero-badge-text">계약 선수 신규 굿즈 출시</span></div><div class="hero-title">선수의<br><span class="accent">서사를</span><br>입어라</div><div class="hero-sub">경기 뒤에 남는 건 기록이 아니라 감동.<br>그 순간을 담은 굿즈, 지금 바로 만나보세요.</div><div class="hero-btns"><button class="br" onclick="go('goods');navTo('굿즈 전체')">굿즈 전체 보기</button><button class="bo" onclick="go('upcoming');navTo('출시 예정')">출시 예정 보기</button><button class="bo" onclick="go('sports');navTo('스포츠용품')">🥊 스포츠용품</button></div></div><div class="hero-visual"><div id="hero-story-card" style="width:100%;max-width:340px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;backdrop-filter:blur(10px);cursor:pointer;" onclick="heroCardClick()"><div id="hsc-ic" style="font-size:52px;margin-bottom:12px;">🐸</div><div id="hsc-sub" style="font-size:11px;color:var(--red);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">계약 선수</div><div id="hsc-name" style="font-family:var(--font-bebas,serif);font-size:28px;letter-spacing:1px;margin-bottom:8px;">김상욱</div><div id="hsc-story" style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:14px;"></div><div style="display:flex;align-items:center;gap:8px;"><button style="padding:6px 14px;border-radius:6px;background:var(--red);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;" onclick="event.stopPropagation();heroCardGoGoods()">굿즈 보기</button><button style="padding:6px 14px;border-radius:6px;background:transparent;color:var(--t2);font-size:12px;border:1px solid var(--bd2);cursor:pointer;font-family:inherit;" onclick="event.stopPropagation();heroCardGoFighter()">선수 서사 →</button></div><div style="display:flex;gap:5px;margin-top:14px;" id="hsc-dots"></div></div></div></div><!-- ⓪ 선수 서사 섹션 -->
+<div class="pw on" id="p-home"><!-- ① 히어로: 굿즈 중심 --><div class="hero"><div class="hero-bg"></div><div class="hero-content"><div class="hero-badge"><div class="hero-dot"></div><span id="hero-badge-text">계약 선수 신규 굿즈 출시</span></div><div class="hero-title">선수의<br><span class="accent">서사를</span><br>입어라</div><div class="hero-sub">경기 뒤에 남는 건 기록이 아니라 감동.<br>그 순간을 담은 굿즈, 지금 바로 만나보세요.</div><div class="hero-btns"><button class="br" onclick="go('goods');navTo('굿즈 전체')">굿즈 전체 보기</button><button class="bo" onclick="go('upcoming');navTo('출시 예정')">출시 예정 보기</button><button class="bo" onclick="go('sports');navTo('스포츠용품')">🥊 스포츠용품</button></div></div><div class="hero-visual"><div id="hero-story-card" style="width:100%;max-width:340px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;backdrop-filter:blur(10px);cursor:pointer;" onclick="heroCardClick()"><div id="hsc-ic" style="font-size:52px;margin-bottom:12px;">🐸</div><div id="hsc-sub" style="font-size:11px;color:var(--red);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">계약 선수</div><div id="hsc-name" style="font-family:var(--font-bebas,serif);font-size:28px;letter-spacing:1px;margin-bottom:8px;">김상욱</div><div id="hsc-story" style="font-size:12px;color:var(--t2);line-height:1.65;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;"></div><div style="display:flex;align-items:center;gap:8px;"><button style="padding:6px 14px;border-radius:6px;background:var(--red);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;" onclick="event.stopPropagation();heroCardGoGoods()">굿즈 보기</button><button style="padding:6px 14px;border-radius:6px;background:transparent;color:var(--t2);font-size:12px;border:1px solid var(--bd2);cursor:pointer;font-family:inherit;" onclick="event.stopPropagation();heroCardGoFighter()">선수 서사 →</button></div><div style="display:flex;gap:5px;margin-top:14px;" id="hsc-dots"></div></div></div></div><!-- ⓪ 선수 서사 섹션 -->
 <div class="sec" style="padding-top:0;">
   <div class="sh">
     <div class="sl">파이터 서사</div>
@@ -772,6 +834,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 </div>
 
 <!-- TERMS -->
+</div>
 <div class="pw" id="p-terms"><div class="sec" style="max-width:800px;"><div class="sh"><div class="sl">법적 고지</div><div class="st">이용약관 &amp; 정책</div></div><div class="tabs" style="margin-bottom:28px;"><button class="tab on" onclick="tabOn(this,this.parentNode);showTermsTab('terms')">이용약관</button><button class="tab" onclick="tabOn(this,this.parentNode);showTermsTab('privacy')">개인정보처리방침</button><button class="tab" onclick="tabOn(this,this.parentNode);showTermsTab('refund')">환불/교환정책</button></div><div id="terms-content"></div></div>
 </div><!-- NOTICE -->
 <div class="pw" id="p-notice"><div class="sec"><div class="sh"><div class="sl">공지사항</div><div class="st">공지사항</div></div><div style="max-width:760px;" id="notice-list"></div></div>
@@ -821,6 +884,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   </div>
 </div>
 <!-- MOBILE NAV -->
+
 <div class="mobile-nav"><div class="mni on" id="mni-home" onclick="go('home');mNav(this)"><div class="mni-icon">🏠</div>홈</div><div class="mni" id="mni-goods" onclick="go('goods');mNav(this)"><div class="mni-icon">🛒</div>굿즈</div><div class="mni" id="mni-fighters" onclick="go('fighters');mNav(this)"><div class="mni-icon">🥊</div>선수</div><div class="mni" id="mni-schedule" onclick="go('schedule');mNav(this)"><div class="mni-icon">📅</div>경기</div><div class="mni" id="mni-mypage" onclick="go('mypage');mNav(this)"><div class="mni-icon">👤</div>마이</div>
 </div><!-- FOOTER -->
 <footer style="border-top:1px solid var(--bd);padding:40px 64px;background:var(--bg2);"><div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;"><div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;margin-bottom:8px;">FIGHT<em style="color:var(--red);font-style:normal;">GOODS</em></div><div style="font-size:12px;color:var(--t3);line-height:1.8;">MMA 선수의 서사를 담은 굿즈 플랫폼</div></div><div style="display:flex;gap:20px;font-size:12px;color:var(--t3);"><span style="cursor:pointer;" onclick="go('terms')">이용약관</span><span style="cursor:pointer;" onclick="go('terms')">개인정보처리방침</span><span style="cursor:pointer;" onclick="go('terms')">환불정책</span></div></div><div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--bd);font-size:11px;color:var(--t4);">© 2025 FIGHTGOODS. All rights reserved. &nbsp;·&nbsp; v1.4</div></footer><!-- FIND PW MODAL -->
@@ -1132,6 +1196,7 @@ let srchResults=[];
 let recentViewed=[],posts=[...DPOST],nxtPid=4;
 let calY=2025,calMonth=4,voted=false,predicted=false;
 let currentPost=null, nxtCid=100, postSortMode='r', myPostsOnly=false;
+let currentBoard='자유게시판';
 let currentUser=null;
 const PAGE_NAV={
   'home':'굿즈 홈','ranking':'종합 랭킹','goods':'굿즈 전체',
@@ -1292,7 +1357,28 @@ function doSignup(){
   }catch(ex){err.textContent='오류가 발생했습니다.';err.style.display='block';}
 }
 function prodHTML(p){
-  var PROD_IMGS={1:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop&q=80',6:'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=600&fit=crop&q=80',9:'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600&h=600&fit=crop&q=80',10:'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&h=600&fit=crop&q=80',12:'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop&q=80',4:'https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&h=600&fit=crop&q=80',13:'https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?w=600&h=600&fit=crop&q=80',14:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=600&fit=crop&q=80',15:'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=600&h=600&fit=crop&q=80',2:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop&q=80',16:'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&h=600&fit=crop&q=80',18:'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&h=600&fit=crop&q=80',3:'https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=600&h=600&fit=crop&q=80',19:'https://images.unsplash.com/photo-1612538498456-e861df91d4d0?w=600&h=600&fit=crop&q=80',20:'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=600&h=600&fit=crop&q=80',21:'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=600&fit=crop&q=80',22:'https://images.unsplash.com/photo-1500259783852-0ca9ce8a64dc?w=600&h=600&fit=crop&q=80',23:'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=600&fit=crop&q=80',24:'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=600&fit=crop&q=80',25:'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=600&fit=crop&q=80'};
+  var PROD_IMGS={
+    1:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop&q=80',
+    6:'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=600&fit=crop&q=80',
+    9:'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600&h=600&fit=crop&q=80',
+    10:'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&h=600&fit=crop&q=80',
+    12:'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop&q=80',
+    4:'https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&h=600&fit=crop&q=80',
+    13:'https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?w=600&h=600&fit=crop&q=80',
+    14:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=600&fit=crop&q=80',
+    15:'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=600&h=600&fit=crop&q=80',
+    2:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop&q=80',
+    16:'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&h=600&fit=crop&q=80',
+    18:'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&h=600&fit=crop&q=80',
+    3:'https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=600&h=600&fit=crop&q=80',
+    19:'https://images.unsplash.com/photo-1612538498456-e861df91d4d0?w=600&h=600&fit=crop&q=80',
+    20:'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=600&h=600&fit=crop&q=80',
+    21:'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=600&fit=crop&q=80',
+    22:'https://images.unsplash.com/photo-1500259783852-0ca9ce8a64dc?w=600&h=600&fit=crop&q=80',
+    23:'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=600&fit=crop&q=80',
+    24:'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=600&fit=crop&q=80',
+    25:'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=600&fit=crop&q=80'
+  };
   var CAT_BG={'티셔츠':'linear-gradient(135deg,#1a0a0a,#2d1515)','후디':'linear-gradient(135deg,#0a0f1a,#152030)','포스터':'linear-gradient(135deg,#0f0a1a,#201530)','포토카드':'linear-gradient(135deg,#0a1a0f,#152d1a)','소품':'linear-gradient(135deg,#1a1205,#2d2010)','포토북':'linear-gradient(135deg,#0a0a1a,#15152d)'};
   var bm={h:'<span class="pbadge bh">🔥 HOT</span>',l:'<span class="pbadge bl">한정판</span>',n:'<span class="pbadge bn">NEW</span>'};
   var fname=p.f.replace(' · 계약 선수','').replace(' · 무소속','').trim();
@@ -1377,14 +1463,14 @@ function fighterHTML(f){
   var displayN=f.n.replace('_라이트','').replace('_W','');
   var idx=FIGHTERS.indexOf(f);
   var goodsBadge=f.contract
-    ?'<div class="fg-cnt" style="color:var(--red);">🛒 굿즈 '+f.g+'개</div>'
-    :'<div class="fg-cnt">📋 정보 제공</div>';
+    ?'<div class="fg-cnt" style="color:var(--red);font-weight:700;margin-top:4px;">🛒 굿즈 '+f.g+'개</div>'
+    :'<div class="fg-cnt" style="opacity:.45;margin-top:4px;">정보 제공</div>';
   var avatarHtml=f.photos&&f.photos.length
-    ?'<div class="fav" style="overflow:hidden;border-radius:50%;background:var(--bg4);">'
+    ?'<div class="fav" style="overflow:hidden;border-radius:50%;background:var(--bg4);border:none;flex-shrink:0;">'
       +'<img src="'+f.photos[0].url+'" style="width:100%;height:100%;object-fit:cover;" loading="lazy">'
       +'</div>'
     :'<div class="fav">'+f.ic+'</div>';
-  return'<div class="fc" onclick="openFighterByIdx('+idx+')">'
+  return '<div class="fc" onclick="openFighterByIdx('+idx+')">'
     +avatarHtml
     +'<div class="fi2">'
       +'<div class="fn">'+displayN+'</div>'
@@ -1392,10 +1478,9 @@ function fighterHTML(f){
       +'<div class="frec">'
         +'<div class="frs"><div class="frv">'+f.w+'</div><div class="frl">승</div></div>'
         +'<div class="frs"><div class="frv">'+f.l+'</div><div class="frl">패</div></div>'
-        +'<div class="frs"><div class="frv">'+f.fp+'</div><div class="frl">피니시율</div></div>'
+        +'<div class="frs"><div class="frv">'+f.fp+'</div><div class="frl">피니시</div></div>'
       +'</div>'
-      +(f.subtitle?'<div style="font-size:12px;color:var(--t2);font-style:italic;margin-bottom:5px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;">'+f.subtitle+'</div>':'')
-      +'<div class="ftags">'+f.tags.map(function(t){return'<span class="ftag">'+t+'</span>';}).join('')+'</div>'
+      +'<div class="ftags">'+f.tags.slice(0,2).map(function(t){return'<span class="ftag">'+t+'</span>';}).join('')+'</div>'
       +goodsBadge
     +'</div>'
   +'</div>';
@@ -2216,26 +2301,18 @@ function heroCardGoFighter(){
 
 function renderHomeStoryGrid(){
   var el=document.getElementById('home-story-grid'); if(!el) return;
-  var fighters=FIGHTERS.filter(function(f){ return f.contract&&f.story&&f.subtitle; }).slice(0,4);
+  var fighters=FIGHTERS.filter(function(f){ return f.contract&&f.story; }).slice(0,4);
   el.innerHTML=fighters.map(function(f){
     var fidx=FIGHTERS.indexOf(f);
     var dn=f.n.replace('_라이트','').replace('_W','');
-    var tagsHtml=f.tags.slice(0,2).map(function(t){
-      return '<span style="font-size:11px;padding:2px 8px;border-radius:100px;background:var(--rg);border:1px solid rgba(230,57,70,.2);color:var(--red);">'+t+'</span>';
-    }).join('');
-    return '<div class="story-card" onclick="openFighterByIdx('+fidx+')">'
-      +'<div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;">'
-        +'<div style="font-size:40px;flex-shrink:0;">'+f.ic+'</div>'
-        +'<div style="flex:1;">'
-          +'<div style="font-size:11px;color:var(--red);font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:3px;">'+f.org+' · '+f.cls+'</div>'
-          +'<div style="font-family:var(--font-bebas,serif);font-size:22px;letter-spacing:1px;line-height:1.1;margin-bottom:3px;">'+dn+'</div>'
-          +'<div style="font-size:12px;color:var(--t2);font-style:italic;">'+f.subtitle+'</div>'
-        +'</div>'
-      +'</div>'
-      +'<div style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">'+f.story+'</div>'
-      +'<div style="display:flex;align-items:center;justify-content:space-between;">'
-        +'<div style="display:flex;gap:5px;">'+tagsHtml+'</div>'
-        +'<span style="font-size:12px;color:var(--t2);">서사 보기 →</span>'
+    var PH=f.photos&&f.photos[0]?f.photos[0].url:'';
+    return '<div onclick="openFighterByIdx('+fidx+')" class="story-fighter-card">'
+      +(PH?'<img src="'+PH+'" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">':'<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px;">'+f.ic+'</div>')
+      +'<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.85) 100%);pointer-events:none;"></div>'
+      +'<div style="position:absolute;bottom:0;left:0;right:0;padding:20px 16px;">'
+        +'<div style="font-size:10px;color:var(--red);font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">'+f.org+'</div>'
+        +'<div style="font-family:var(--font-bebas);font-size:26px;letter-spacing:1px;color:#fff;margin-bottom:4px;">'+dn+'</div>'
+        +(f.tags[0]?'<span style="font-size:10px;padding:2px 8px;border-radius:100px;background:rgba(230,57,70,.25);border:1px solid rgba(230,57,70,.4);color:#fff;">'+f.tags[0]+'</span>':'')
       +'</div>'
     +'</div>';
   }).join('');
@@ -2739,25 +2816,34 @@ function showTermsTab(t){
 }
 
 // 초기 렌더링
+function _safeCall(fn, label){
+  try { fn(); }
+  catch(e){ console.warn('Init error ['+label+']:', e.message); }
+}
+
 function _initAll(){
   loadAuth();
-  renderProds('hpg', PRODS.slice(0,8));
-  var _hfgEl=document.getElementById('hfg');
-  if(_hfgEl) _hfgEl.innerHTML=FIGHTERS.filter(function(f){return f.contract;}).slice(0,6).map(fighterHTML).join('');
-  renderFighters(FIGHTERS);
-  var _fcnt=document.getElementById('fighter-count');
-  if(_fcnt) _fcnt.textContent='총 '+FIGHTERS.length+'명 (계약 '+FIGHTERS.filter(function(f){return f.contract;}).length+'명)';
-  renderRank();
-  renderCal();
-  renderFaq(FAQS);
-  renderNotices();
-  renderUpcoming();
-  renderSports();
-  renderBoardPosts();
-  renderVote();
-  renderCommMatches();
-  initHeroCarousel();
-  renderHomeStoryGrid();
+  _safeCall(function(){ renderProds('hpg', PRODS.slice(0,8)); }, 'renderProds');
+  _safeCall(function(){
+    var _hfgEl=document.getElementById('hfg');
+    if(_hfgEl) _hfgEl.innerHTML=FIGHTERS.filter(function(f){return f.contract;}).slice(0,6).map(fighterHTML).join('');
+  }, 'hfg');
+  _safeCall(function(){ renderFighters(FIGHTERS); }, 'renderFighters');
+  _safeCall(function(){
+    var _fcnt=document.getElementById('fighter-count');
+    if(_fcnt) _fcnt.textContent='총 '+FIGHTERS.length+'명 (계약 '+FIGHTERS.filter(function(f){return f.contract;}).length+'명)';
+  }, 'fighter-count');
+  _safeCall(function(){ renderRank(); }, 'renderRank');
+  _safeCall(function(){ renderCal(); }, 'renderCal');
+  _safeCall(function(){ renderFaq(FAQS); }, 'renderFaq');
+  _safeCall(function(){ renderNotices(); }, 'renderNotices');
+  _safeCall(function(){ renderUpcoming(); }, 'renderUpcoming');
+  _safeCall(function(){ renderSports(); }, 'renderSports');
+  _safeCall(function(){ renderBoardPosts(); }, 'renderBoardPosts');
+  _safeCall(function(){ renderVote(); }, 'renderVote');
+  _safeCall(function(){ renderCommMatches(); }, 'renderCommMatches');
+  _safeCall(function(){ initHeroCarousel(); }, 'initHeroCarousel');
+  _safeCall(function(){ renderHomeStoryGrid(); }, 'renderHomeStoryGrid');
   go(initPage, false);
 }
 
