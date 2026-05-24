@@ -32,7 +32,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .nav-links::-webkit-scrollbar{display:none;}
 .nl{padding:5px 10px;font-size:12px;color:var(--t2);cursor:pointer;border:none;background:none;font-family:inherit;white-space:nowrap;transition:color .15s;letter-spacing:.2px;}
 .nl:hover{color:var(--t2);}
-.nl.on{color:var(--t);font-weight:600;}
+.nl.on{color:var(--t);font-weight:700;position:relative;}
+.nl.on::after{content:'';position:absolute;bottom:-1px;left:10px;right:10px;height:2px;background:var(--red);border-radius:1px;}
 .nav-r{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
 
 /* SEARCH */
@@ -54,8 +55,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 
 /* PAGE */
 .pw{margin-top:var(--nh);display:none;}
-.pw.on{display:block;animation:pageIn .2s ease;}
-@keyframes pageIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.pw.on{display:block;animation:pageIn .22s ease;}
+@keyframes pageIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 
 /* OVERLAY */
 .ov{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:400;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
@@ -144,27 +145,34 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .rb-cta{display:flex;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--bd);}
 
 /* PRODUCT GRID */
-.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
-.pc{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r10);overflow:hidden;cursor:pointer;transition:border-color .2s,transform .2s;}
-.pc:hover{border-color:var(--bd2);transform:translateY(-3px);}
-.pc:hover .pi{transform:scale(1.03);}
-.pi{height:180px;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:56px;position:relative;overflow:hidden;transition:transform .35s ease;}
-.pi::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.3) 100%);pointer-events:none;}
-.pbadge{position:absolute;top:8px;right:8px;z-index:1;padding:2px 7px;border-radius:4px;font-size:11px;font-weight:700;text-transform:uppercase;}
-.bh{background:var(--red);color:#fff;}
-.bl{background:var(--gold);color:#000;}
-.bn{background:var(--gl);color:#000;}
-.pb{padding:14px 15px;}
-.pn{font-size:13px;font-weight:500;margin-bottom:4px;line-height:1.5;color:var(--t);}
-.pf{font-size:11px;color:var(--red);margin-bottom:6px;}
-.pp{display:flex;align-items:center;justify-content:space-between;}
-.pr{font-size:15px;font-weight:700;color:var(--t);}
+.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.pc{background:var(--bg3);border:1px solid var(--bd);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .25s,box-shadow .25s;position:relative;}
+.pc:hover{border-color:rgba(230,57,70,.4);transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.5);}
+.pc:hover .pi-img{transform:scale(1.07);}
+.pi{height:220px;background:var(--bg4);position:relative;overflow:hidden;}
+.pi-img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;display:block;}
+.pi-emoji{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:72px;}
+.pi-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.65) 100%);pointer-events:none;z-index:1;}
+.pi-fighter{position:absolute;bottom:10px;left:12px;display:flex;align-items:center;gap:6px;z-index:2;}
+.pi-fighter-ic{width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:13px;backdrop-filter:blur(6px);}
+.pi-fighter-nm{font-size:11px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.9);letter-spacing:.3px;}
+.pbadge{position:absolute;top:10px;right:10px;z-index:3;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;}
+.bh{background:var(--red);color:#fff;box-shadow:0 2px 8px rgba(230,57,70,.5);}
+.bl{background:var(--gold);color:#000;box-shadow:0 2px 8px rgba(201,168,76,.4);}
+.bn{background:var(--gl);color:#000;box-shadow:0 2px 8px rgba(76,175,125,.4);}
+.pb{padding:14px 14px 15px;}
+.pn{font-size:13px;font-weight:600;margin-bottom:7px;line-height:1.45;color:var(--t);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.pf{display:none;}
+.pp{display:flex;align-items:center;justify-content:space-between;gap:6px;}
+.pr{font-size:16px;font-weight:800;color:var(--t);letter-spacing:-.3px;}
 .ps{font-size:11px;color:var(--t2);}
+.pc-cart-btn{padding:6px 11px;border-radius:8px;background:var(--red);color:#fff;font-size:11px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:opacity .15s;white-space:nowrap;flex-shrink:0;}
+.pc-cart-btn:hover{opacity:.85;}
 
 /* stagger */
-.pg .pc{opacity:0;animation:cardIn .3s ease forwards;}
-.pg .pc:nth-child(1){animation-delay:.02s;}.pg .pc:nth-child(2){animation-delay:.06s;}.pg .pc:nth-child(3){animation-delay:.10s;}.pg .pc:nth-child(4){animation-delay:.14s;}.pg .pc:nth-child(5){animation-delay:.18s;}.pg .pc:nth-child(6){animation-delay:.22s;}.pg .pc:nth-child(7){animation-delay:.26s;}.pg .pc:nth-child(8){animation-delay:.30s;}
-@keyframes cardIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.pg .pc{opacity:0;animation:cardIn .35s ease forwards;}
+.pg .pc:nth-child(1){animation-delay:.03s;}.pg .pc:nth-child(2){animation-delay:.07s;}.pg .pc:nth-child(3){animation-delay:.11s;}.pg .pc:nth-child(4){animation-delay:.15s;}.pg .pc:nth-child(5){animation-delay:.19s;}.pg .pc:nth-child(6){animation-delay:.23s;}.pg .pc:nth-child(7){animation-delay:.27s;}.pg .pc:nth-child(8){animation-delay:.31s;}
+@keyframes cardIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 
 /* FIGHTER CARDS */
 .fg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
@@ -381,7 +389,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
   .rb-main{gap:8px;}
   .rf .rn{font-size:24px;}
   .sec{padding:28px 14px;}
-  .pg{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .pg{grid-template-columns:repeat(2,1fr);gap:10px;}.pi{height:170px;}
   .fg-grid{grid-template-columns:1fr;}
   .dl{grid-template-columns:1fr;gap:20px;padding:16px 14px;}
   .dimg{position:static;}
@@ -414,6 +422,209 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 
 .share-btn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 8px;border:1px solid var(--bd);border-radius:10px;cursor:pointer;font-family:inherit;color:var(--t);font-size:12px;font-weight:500;transition:border-color .15s;}
 .share-btn:hover{border-color:var(--bd2);}
+
+
+/* ═══════════════════════════════════════
+   STABILITY & READABILITY v2
+═══════════════════════════════════════ */
+
+/* 기본 타이포 */
+body{font-size:14px;line-height:1.75;letter-spacing:-.1px;}
+h1,h2,h3{line-height:1.3;}
+
+/* 네비 */
+.nl{padding:7px 12px;font-size:12.5px;letter-spacing:.1px;}
+.nl:hover{color:var(--t);}
+.nl.on{color:var(--t);font-weight:700;}
+
+/* 섹션 여백 정리 */
+.sec{padding:52px 40px;}
+.sh{margin-bottom:28px;}
+.sl{font-size:11px;letter-spacing:1.2px;}
+.st{font-size:25px;}
+
+/* 버튼 */
+.br{padding:10px 24px;font-size:12.5px;border-radius:8px;}
+.br.sm{padding:7px 15px;font-size:12px;}
+.bo{padding:10px 24px;font-size:12.5px;border-radius:8px;}
+.bo.sm{padding:7px 15px;font-size:12px;}
+
+/* 인풋 */
+.fi,.fi-full{padding:10px 13px;font-size:13px;border-radius:8px;}
+
+/* 탭 */
+.tabs{border-radius:8px;}
+.tab{padding:8px 16px;font-size:12.5px;}
+.tab.on{font-weight:700;}
+
+/* 칩 */
+.chip{padding:6px 15px;font-size:12px;border-radius:100px;}
+
+/* ── 상품 카드 ── */
+.pg{gap:18px;}
+.pb{padding:13px 13px 14px;}
+.pn{font-size:13.5px;font-weight:700;line-height:1.45;margin-bottom:8px;}
+.pr{font-size:16px;font-weight:800;}
+.pc-cart-btn{padding:7px 13px;font-size:11.5px;border-radius:7px;}
+
+/* ── 선수 카드 ── */
+.fc{padding:15px 16px;border-radius:12px;gap:14px;}
+.fav{width:54px;height:54px;font-size:26px;}
+.fn{font-size:14.5px;font-weight:700;margin-bottom:4px;}
+.fm{font-size:12px;line-height:1.65;margin-bottom:8px;}
+.frv{font-size:16px;font-weight:800;}
+.frl{font-size:10px;letter-spacing:.5px;}
+.ftag{font-size:11px;padding:3px 8px;}
+.fg-cnt{font-size:12px;margin-top:4px;}
+
+/* ── 랭킹 ── */
+.rank-row{padding:14px 18px;}
+.rank-num{font-size:15px;}
+.rank-img{width:58px;height:58px;font-size:26px;}
+.rank-info>div:first-child{font-size:14px;font-weight:600;margin-bottom:2px;}
+.rank-info>div:last-child{font-size:12px;color:var(--t2);}
+.rank-stat>div:nth-child(2){font-size:15px;font-weight:700;margin-top:2px;}
+.rank-stat>div:nth-child(3){font-size:11.5px;color:var(--t2);}
+
+/* ── 공지 ── */
+.ni{padding:16px 0;gap:14px;}
+.ntit{font-size:14px;font-weight:600;line-height:1.55;margin-bottom:3px;}
+.npin{font-size:11px;padding:3px 8px;border-radius:4px;font-weight:800;}
+
+/* ── FAQ ── */
+.faq-item{border-radius:8px;margin-bottom:6px;}
+.faq-q{padding:15px 18px;font-size:13.5px;font-weight:600;line-height:1.5;}
+.faq-a{font-size:13px;line-height:1.95;color:var(--t2);}
+.faq-a.on{padding:10px 18px 16px;}
+
+/* ── 게시판 ── */
+.board-post{padding:17px 18px;border-radius:12px;margin-bottom:7px;}
+
+/* ── 선수 디테일 ── */
+.fdh{padding:48px 40px 32px;}
+.fdnm{font-size:44px;}
+.sbox{padding:12px 18px;min-width:78px;}
+.sv2{font-size:24px;font-weight:800;}
+.slb{font-size:10.5px;letter-spacing:.5px;}
+
+/* ── 장바구니 ── */
+.csum{padding:22px;}
+.stot{font-size:17px;margin-bottom:18px;}
+.srow{font-size:13px;padding:6px 0;}
+
+/* ── 결제 ── */
+.pmb{padding:12px 6px;font-size:12.5px;border-radius:8px;}
+.pmb.on{font-weight:700;}
+
+/* ── 마이페이지 ── */
+.mmi{padding:12px 15px;font-size:13px;gap:8px;}
+.mpprof{padding:22px 18px;}
+
+/* ── 히어로 ── */
+.hero-title{font-size:88px;}
+.hero-sub{font-size:15.5px;line-height:1.95;}
+
+/* ── 경기 배너 ── */
+.rb{padding:22px 26px;border-radius:16px;}
+.rf .rn{font-size:36px;}
+.rm{font-size:20px;}
+
+/* ── 토스트 ── */
+.toast{padding:12px 24px;font-size:13.5px;font-weight:500;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.4);}
+
+/* ── 브레드크럼 ── */
+.bc{padding:20px 40px 0;font-size:12.5px;gap:7px;}
+
+/* ── 카드박스 ── */
+.card-box{padding:18px 20px;border-radius:8px;}
+.sec-title{font-size:15.5px;font-weight:700;margin-bottom:14px;}
+.sec-label{font-size:11px;letter-spacing:1.2px;margin-bottom:12px;}
+
+/* ── 폼 ── */
+.fl{font-size:11.5px;margin-bottom:6px;letter-spacing:.5px;}
+.fh{font-size:12px;margin-top:4px;}
+.modal{padding:38px;}
+.mtabs{margin-bottom:22px;}
+
+/* ── 빈 상태 공통 ── */
+.empty-msg{text-align:center;padding:52px 24px;color:var(--t2);}
+.empty-msg .ei{font-size:44px;margin-bottom:14px;opacity:.45;display:block;}
+.empty-msg p{font-size:14px;line-height:1.8;}
+
+/* ── 리뷰 ── */
+.rev-item{padding:15px 16px;border-radius:8px;margin-bottom:9px;}
+.rev-top{margin-bottom:9px;}
+
+/* ── 스크롤바 ── */
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--bg5);border-radius:2px;}
+::-webkit-scrollbar-thumb:hover{background:#444;}
+
+/* ── 포커스 접근성 ── */
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:4px;}
+
+/* ── 링크 호버 ── */
+.sm:hover{color:var(--t)!important;}
+
+/* ── 선택 ── */
+::selection{background:rgba(230,57,70,.22);}
+
+/* ── 캘린더 ── */
+.cal-cell{min-height:60px;padding:6px;border-radius:6px;}
+.cal-d{font-size:12px;font-weight:500;}
+.cal-e{font-size:11px;padding:2px 5px;border-radius:4px;}
+
+/* ── 로딩 애니메이션 ── */
+@keyframes shimmer{0%{background-position:-200% 0;}100%{background-position:200% 0;}}
+.loading-skeleton{background:linear-gradient(90deg,var(--bg4) 25%,var(--bg5) 50%,var(--bg4) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;}
+
+/* ══ 모바일 ══ */
+@media(max-width:768px){
+  body{font-size:13.5px;}
+  .sec{padding:26px 14px;}
+  .sh{margin-bottom:20px;}
+  .st{font-size:22px;}
+  .hero-title{font-size:54px;}
+  .hero-sub{font-size:14px;}
+  .pg{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .pi{height:160px;}
+  .pn{font-size:12.5px;}
+  .pr{font-size:14.5px;}
+  .pc-cart-btn{font-size:10.5px;padding:5px 10px;}
+  .fg-grid{grid-template-columns:1fr;}
+  .fn{font-size:14px;}
+  .rank-row{padding:11px 14px;}
+  .rank-img{width:50px;height:50px;margin:0 10px;}
+  .ni{padding:13px 0;}
+  .ntit{font-size:13.5px;}
+  .faq-q{padding:13px 15px;font-size:13px;}
+  .board-post{padding:14px 15px;}
+  .bc{padding:12px 14px 0;}
+  .tabs{overflow-x:auto;width:100%;max-width:100%;}
+  .tab{padding:7px 13px;font-size:12px;white-space:nowrap;}
+  .chip{padding:5px 12px;font-size:11.5px;}
+  .rb{padding:16px 16px;}
+  .rf .rn{font-size:26px;}
+  .fdh{padding:26px 14px 22px;}
+  .fdnm{font-size:34px;}
+  .mmi{font-size:12.5px;padding:11px 14px;}
+  .toast{font-size:13px;padding:10px 20px;}
+  .csum{padding:16px;}
+  .stot{font-size:15px;}
+}
+
+/* ══ 태블릿 ══ */
+@media(min-width:769px) and (max-width:1024px){
+  .pg{grid-template-columns:repeat(3,1fr);}
+  .sec{padding:44px 28px;}
+  .fg-grid{grid-template-columns:repeat(2,1fr);}
+  .dl{gap:32px;padding:32px 28px;}
+  .fdb{padding:20px 28px 40px;}
+  .cl{padding:24px 28px 40px;}
+  .payl{padding:24px 28px 40px;}
+  .mpl{padding:24px 28px 40px;}
+}
 </style>
 </head>
 <body><!-- NAVBAR -->
@@ -931,24 +1142,31 @@ function go(name, pushState){
     try { history.pushState({page: name}, '', '#'+name); } catch(e) {}
     if(typeof PAGE_NAV !== 'undefined' && PAGE_NAV[name] !== undefined) navTo(PAGE_NAV[name]);
   }
-  document.querySelectorAll('.pw').forEach(p=>p.classList.remove('on'));
-  const el=document.getElementById('p-'+name);
-  if(!el){console.warn('Page not found:',name);return;}
+  document.querySelectorAll('.pw').forEach(function(p){ p.classList.remove('on'); });
+  var el = document.getElementById('p-'+name);
+  if(!el){ console.warn('Page not found:', name); return; }
   el.classList.add('on');
-  window.scrollTo({top:0,behavior:'smooth'});
-  if(name==='mypage') renderMp();
-  if(name==='cart') renderCart();
-  if(name==='payment') renderPayment();
-  if(name==='schedule'){ renderCal(); renderMatches(); }
-  if(name==='faq') renderFaq(FAQS);
-  if(name==='community'){ renderVote(); renderBoardPosts(); renderCommMatches(); }
-  if(name==='upcoming') renderUpcoming();
-  if(name==='goods') renderGoods();
-  if(name==='fighters'){renderFighters(FIGHTERS);}
-  if(name==='terms') showTermsTab('terms');
-  if(name==='notice') renderNotices();
-  if(name==='sports') renderSports();
-  if(name==='product'){ addRV(PRODS[0]); }
+  window.scrollTo({top:0, behavior:'smooth'});
+  try {
+    if(name==='mypage') renderMp();
+    if(name==='cart') renderCart();
+    if(name==='payment') renderPayment();
+    if(name==='schedule'){ renderCal(); renderMatches(); }
+    if(name==='faq') renderFaq(FAQS);
+    if(name==='community'){ renderVote(); renderBoardPosts(); renderCommMatches(); }
+    if(name==='upcoming') renderUpcoming();
+    if(name==='goods') renderGoods();
+    if(name==='fighters'){
+      renderFighters(FIGHTERS);
+      var _fcnt=document.getElementById('fighter-count');
+      if(_fcnt) _fcnt.textContent='총 '+FIGHTERS.length+'명 (계약 '+FIGHTERS.filter(function(f){return f.contract;}).length+'명)';
+    }
+    if(name==='ranking') renderRank();
+    if(name==='terms') showTermsTab('terms');
+    if(name==='notice') renderNotices();
+    if(name==='sports') renderSports();
+    if(name==='product'){ addRV(currentProduct||PRODS[0]); }
+  } catch(e){ console.error('go() render error:', name, e); }
 }
 window.addEventListener('popstate', function(e){
   const page = e.state && e.state.page ? e.state.page : 'home';
@@ -1071,27 +1289,36 @@ function doSignup(){
   }catch(ex){err.textContent='오류가 발생했습니다.';err.style.display='block';}
 }
 function prodHTML(p){
+  var PROD_IMGS={1:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop&q=80',6:'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=600&fit=crop&q=80',9:'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600&h=600&fit=crop&q=80',10:'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&h=600&fit=crop&q=80',12:'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop&q=80',4:'https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&h=600&fit=crop&q=80',13:'https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?w=600&h=600&fit=crop&q=80',14:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=600&fit=crop&q=80',15:'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=600&h=600&fit=crop&q=80',2:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop&q=80',16:'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&h=600&fit=crop&q=80',18:'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&h=600&fit=crop&q=80',3:'https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=600&h=600&fit=crop&q=80',19:'https://images.unsplash.com/photo-1612538498456-e861df91d4d0?w=600&h=600&fit=crop&q=80',20:'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=600&h=600&fit=crop&q=80',21:'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=600&fit=crop&q=80',22:'https://images.unsplash.com/photo-1500259783852-0ca9ce8a64dc?w=600&h=600&fit=crop&q=80',23:'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=600&fit=crop&q=80',24:'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=600&fit=crop&q=80',25:'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=600&fit=crop&q=80'};
+  var CAT_BG={'티셔츠':'linear-gradient(135deg,#1a0a0a,#2d1515)','후디':'linear-gradient(135deg,#0a0f1a,#152030)','포스터':'linear-gradient(135deg,#0f0a1a,#201530)','포토카드':'linear-gradient(135deg,#0a1a0f,#152d1a)','소품':'linear-gradient(135deg,#1a1205,#2d2010)','포토북':'linear-gradient(135deg,#0a0a1a,#15152d)'};
   var bm={h:'<span class="pbadge bh">🔥 HOT</span>',l:'<span class="pbadge bl">한정판</span>',n:'<span class="pbadge bn">NEW</span>'};
-  var cats={'티셔츠':'linear-gradient(135deg,#1a0a0a,#2d1515)','후디':'linear-gradient(135deg,#0a0f1a,#152030)','포스터':'linear-gradient(135deg,#0f0a1a,#201530)','포토카드':'linear-gradient(135deg,#0a1a0f,#152d1a)','소품':'linear-gradient(135deg,#1a1205,#2d2010)','포토북':'linear-gradient(135deg,#1a1005,#2d2010)'};
-  var bg=cats[p.c]||'linear-gradient(135deg,#111,#1a1118)';
   var fname=p.f.replace(' · 계약 선수','').replace(' · 무소속','').trim();
-  var fighter=FIGHTERS.find(function(f){ return f.n===fname||f.n.replace('_라이트','')===fname; });
+  var fighter=FIGHTERS.find(function(f){return f.n===fname||f.n.replace('_라이트','')===fname;});
   var fidx=fighter?FIGHTERS.indexOf(fighter):-1;
-  var storyLine=fighter&&fighter.story?fighter.story.slice(0,50)+'…':'';
-  var pfHtml=fighter&&fidx>=0
-    ?'<div class="pf" onclick="event.stopPropagation();openFighterByIdx('+fidx+')" style="cursor:pointer;display:flex;align-items:center;gap:5px;">'
-      +'<span>'+fighter.ic+'</span>'
-      +'<span style="color:var(--t2);">'+fname+'</span>'
-      +'<span style="font-size:10px;color:var(--t2);opacity:.6;">서사 보기</span>'
+  var imgUrl=PROD_IMGS[p.id];
+  var imgHtml=imgUrl
+    ?'<img class="pi-img" src="'+imgUrl+'" alt="'+p.n+'" loading="lazy" onerror="this.style.display=\'none\';this.parentNode.querySelector(\'.pi-emoji\').style.display=\'flex\'">'
+      +'<div class="pi-emoji" style="display:none;">'+p.ic+'</div>'
+    :'<div class="pi-emoji">'+p.ic+'</div>';
+  var fighterBadge=fighter
+    ?'<div class="pi-fighter" onclick="event.stopPropagation();openFighterByIdx('+fidx+')">'
+      +'<div class="pi-fighter-ic">'+fighter.ic+'</div>'
+      +'<span class="pi-fighter-nm">'+fname+'</span>'
     +'</div>'
-    :'<div class="pf">'+p.f+'</div>';
+    :'';
   return '<div class="pc" onclick="openProduct('+p.id+')">'
-    +'<div class="pi" style="background:'+bg+'">'+p.ic+(bm[p.b]||'')+'</div>'
+    +'<div class="pi" style="background:'+(CAT_BG[p.c]||'#111')+'">'
+      +imgHtml
+      +'<div class="pi-overlay"></div>'
+      +(bm[p.b]||'')
+      +fighterBadge
+    +'</div>'
     +'<div class="pb">'
       +'<div class="pn">'+p.n+'</div>'
-      +pfHtml
-      +(storyLine?'<div style="font-size:11px;color:var(--t2);line-height:1.5;margin-bottom:6px;font-style:italic;">'+storyLine+'</div>':'')
-      +'<div class="pp"><div class="pr">₩'+p.p.toLocaleString()+'</div><div class="ps">'+p.s+'</div></div>'
+      +'<div class="pp">'
+        +'<div class="pr">₩'+p.p.toLocaleString()+'</div>'
+        +'<button class="pc-cart-btn" onclick="event.stopPropagation();quickAddCart('+p.id+')">담기</button>'
+      +'</div>'
     +'</div>'
   +'</div>';
 }
@@ -1314,6 +1541,14 @@ function goSrchItem(i){
   if(r.type==='prod') openProduct(r.id);
   else if(r.type==='fighter') openFighter(r.name);
 }
+function quickAddCart(id){
+  var p=PRODS.find(function(x){return x.id===id;}); if(!p) return;
+  var ex=cartItems.find(function(i){return i.id===p.id;});
+  if(ex) ex.qty+=1;
+  else cartItems.push({id:p.id,n:p.n,ic:p.ic,p:p.p,sz:'M',cl:'블랙',qty:1});
+  updateCC();
+  toast('✓ '+p.n.slice(0,18)+'... 담겼습니다');
+}
 function addCart(){
   const sz=document.querySelector('#so .ob.on')?.textContent||'M';
   const cl=document.querySelector('#co .ob.on')?.textContent||'블랙';
@@ -1376,16 +1611,19 @@ function doWtdr(){
 }
 function filterF(){
   const fsEl=document.getElementById('fsrch');
-  const q=fsEl?fsEl.value:'';
+  const q=fsEl?fsEl.value.trim():'';
   const ac=document.querySelector('#ff .chip.on');
   const f=ac?ac.dataset.f:'전체';
   const res=FIGHTERS.filter(x=>{
-  const mq=!q||x.n.includes(q);
-  const mf=f==='전체'||x.cls===f||x.org===f;
-  return mq&&mf;
+    const mq=!q||x.n.replace('_라이트','').includes(q)||x.m.includes(q)||x.tags.some(t=>t.includes(q));
+    const mf=f==='전체'||x.cls===f||x.org===f;
+    return mq&&mf;
   });
   renderFighters(res);
-  const hf=document.getElementById('hfg'); if(hf){ hf.innerHTML=FIGHTERS.map(fighterHTML).join(''); }
+  // 검색 결과 카운트
+  var cnt=document.getElementById('fighter-count');
+  if(cnt) cnt.textContent='총 '+res.length+'명 (계약 '+res.filter(function(x){return x.contract;}).length+'명)';
+  const hf=document.getElementById('hfg'); if(hf){ hf.innerHTML=FIGHTERS.filter(function(f){return f.contract;}).slice(0,6).map(fighterHTML).join(''); }
 }
 function mpTab(t){
   ['orders','profile','delivery','withdraw'].forEach(function(x){
@@ -1400,7 +1638,7 @@ function mpTab(t){
   if(t==='orders'){
     var ords=currentUser.orders||[];
     if(!ords.length){
-      c.innerHTML=H+'구매 내역</div><div style="text-align:center;padding:40px;color:var(--t2);"><div style="font-size:36px;margin-bottom:10px;">📦</div>구매 내역이 없습니다</div>';
+      c.innerHTML=H+'구매 내역</div><div class="empty-msg"><span class="ei">📦</span><p>아직 구매 내역이 없습니다.<br>마음에 드는 굿즈를 구매해보세요!</p><br><button class="br" onclick="go(\'goods\')">굿즈 보러 가기</button></div>';
       return;
     }
     c.innerHTML=H+'구매 내역</div>'+ords.map(function(o){
@@ -1447,7 +1685,7 @@ function mpTab(t){
 function renderCart(){
   const w=document.getElementById('citems');
   if(!cartItems.length){
-  w.innerHTML='<div style="text-align:center;padding:56px;color:var(--t2);"><div style="font-size:40px;margin-bottom:10px;">🛒</div>장바구니가 비어있습니다</div>';
+  w.innerHTML='<div class="empty-msg"><span class="ei">🛒</span><p>장바구니가 비어있습니다.<br>마음에 드는 굿즈를 담아보세요!</p></div>';
   updCartTot(); return;
   }
   w.innerHTML=cartItems.map(function(it,i){
@@ -1466,8 +1704,8 @@ function renderCart(){
         +'<button onclick="rmCart('+i+')" style="font-size:12px;color:var(--t2);background:none;border:none;cursor:pointer;margin-top:7px;font-family:inherit;">삭제</button>'
       +'</div>'
     +'</div>';
-  }).join('');;
-  dd.classList.add('on');
+  }).join('');
+  updCartTot();
 }
 function trackDel(){
   const trkEl=document.getElementById('trk');
@@ -1576,7 +1814,7 @@ function renderPosts(list){
   var el=document.getElementById('posts'); if(!el) return;
   var arr=list||posts;
   if(!arr.length){
-    el.innerHTML='<div style="text-align:center;padding:48px;color:var(--t2);">게시글이 없습니다.</div>';
+    el.innerHTML='<div class="empty-msg"><span class="ei">💬</span><p>게시글이 없습니다.<br>첫 글을 작성해보세요!</p></div>';
     return;
   }
   var catColor={'자유게시판':'var(--t2)','구매 후기':'var(--gl)','굿즈 자랑':'#ff9f43','경기 토론':'var(--red)'};
@@ -1909,9 +2147,9 @@ function showReturnModal(el){
 }
 
 // 상품 옵션 선택
-function selOpt(type, val, el){
-  var parent=el?el.closest('.opt-group'):null;
-  if(parent) parent.querySelectorAll('.ob').forEach(function(b){b.classList.remove('on');});
+function selOpt(el, groupId){
+  var group=document.getElementById(groupId);
+  if(group) group.querySelectorAll('.ob').forEach(function(b){b.classList.remove('on');});
   if(el) el.classList.add('on');
 }
 
@@ -2261,6 +2499,286 @@ const VALID_PAGES=['home','goods','upcoming','ranking','fighters','fighter-detai
 const _rawPage=location.hash?location.hash.replace('#',''):'home';
 const initPage=VALID_PAGES.includes(_rawPage)?_rawPage:'home';
 
+/* ══════════════════════════════
+   누락 함수 모음
+══════════════════════════════ */
+
+var goodsSort='newest';
+var qaList=[];
+
+function renderFighters(list){
+  var el=document.getElementById('fgrid'); if(!el) return;
+  if(!list||!list.length){
+    el.innerHTML='<div class="empty-msg"><span class="ei">🥊</span><p>선수 정보가 없습니다.<br>다른 검색어나 필터를 시도해보세요.</p></div>';
+    return;
+  }
+  el.innerHTML=list.map(fighterHTML).join('');
+}
+
+function renderGoods(){
+  var el=document.getElementById('goods-grid'); if(!el) return;
+  el.innerHTML='';
+  var catEl=document.querySelector('#goods-cats .chip.on');
+  var cat=catEl?catEl.dataset.g:'전체';
+  var srchEl=document.getElementById('goods-srch');
+  var q=srchEl?srchEl.value.trim():'';
+  var list=PRODS.filter(function(p){
+    var mc=cat==='전체'||p.c===cat;
+    var mq=!q||p.n.includes(q)||p.f.includes(q);
+    return mc&&mq;
+  });
+  if(goodsSort==='price_asc') list=list.slice().sort(function(a,b){return a.p-b.p;});
+  else if(goodsSort==='price_desc') list=list.slice().sort(function(a,b){return b.p-a.p;});
+  var cnt=document.getElementById('goods-count'); if(cnt) cnt.textContent='총 '+list.length+'개';
+  if(!list.length){
+    el.innerHTML='<div class="empty-msg" style="grid-column:1/-1"><span class="ei">🥊</span><p>해당 카테고리의 상품이 없습니다.</p></div>';
+  } else {
+    el.innerHTML=list.map(prodHTML).join('');
+  }
+}
+
+function renderUpcoming(){
+  var upcoming=[
+    {ic:'🔥',n:'윤창민 RTU4 결승 기념 티셔츠',f:'윤창민 · 계약 선수',p:48000,dday:7},
+    {ic:'📸',n:'김상욱 UFC 데뷔 기념 포토북',f:'김상욱 · 계약 선수',p:42000,dday:14},
+    {ic:'🖼️',n:'조성빈 코리안 호크 한정판 포스터',f:'조성빈 · 계약 선수',p:25000,dday:21},
+    {ic:'🎽',n:'박재현 피닉스 라이즈 후디',f:'박재현 · 계약 선수',p:68000,dday:3},
+    {ic:'📖',n:'김상욱 UDT 스토리 포토북 2집',f:'김상욱 · 계약 선수',p:38000,dday:30},
+    {ic:'👕',n:'윤창민 빅하트 시즌2 티셔츠',f:'윤창민 · 계약 선수',p:44000,dday:45},
+  ];
+  var html=upcoming.map(function(u){
+    return '<div class="pc">'
+      +'<div class="pi" style="height:180px;font-size:56px;background:linear-gradient(135deg,#1a0a0a,#2d1515);">'
+        +u.ic+'<span class="pbadge bh" style="position:absolute;top:8px;left:8px;">D-'+u.dday+'</span>'
+      +'</div>'
+      +'<div class="pb">'
+        +'<div class="pn">'+u.n+'</div>'
+        +'<div class="pf">'+u.f+'</div>'
+        +'<div class="pp"><div class="pr">₩'+u.p.toLocaleString()+'</div>'
+          +'<button class="br sm" onclick="toast(\'🔔 알림이 신청되었습니다\')">알림 신청</button>'
+        +'</div>'
+      +'</div>'
+    +'</div>';
+  }).join('');
+  var el=document.getElementById('upcoming-grid'); if(el) el.innerHTML=html;
+  var prev=document.getElementById('h-upcoming-preview'); if(prev) prev.innerHTML=html.split('</div></div></div>').slice(0,4).join('</div></div></div>')+'</div></div></div>';
+  var prev2=document.getElementById('h-upcoming-preview');
+  if(prev2) prev2.innerHTML=upcoming.slice(0,4).map(function(u){
+    return '<div class="pc">'
+      +'<div class="pi" style="height:180px;font-size:56px;background:linear-gradient(135deg,#1a0a0a,#2d1515);">'
+        +u.ic+'<span class="pbadge bh" style="position:absolute;top:8px;left:8px;">D-'+u.dday+'</span>'
+      +'</div>'
+      +'<div class="pb">'
+        +'<div class="pn">'+u.n+'</div><div class="pf">'+u.f+'</div>'
+        +'<div class="pp"><div class="pr">₩'+u.p.toLocaleString()+'</div>'
+          +'<button class="br sm" onclick="toast(\'🔔 알림이 신청되었습니다\')">알림 신청</button>'
+        +'</div></div></div>';
+  }).join('');
+}
+
+function renderRank(){
+  var el=document.getElementById('rtb'); if(!el) return;
+  var data=(RNKS_DATA[rankSort]&&RNKS_DATA[rankSort][rankPeriod])||[];
+  if(!data.length){el.innerHTML='<div class="empty-msg"><span class="ei">📊</span><p>랭킹 데이터가 없습니다.</p></div>';return;}
+  var chIcon={up:'<span style="color:var(--gl);font-size:11px;">▲</span>',dn:'<span style="color:var(--red);font-size:11px;">▼</span>',eq:'<span style="color:var(--t2);font-size:11px;">─</span>'};
+  el.innerHTML='<div style="background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r10);overflow:hidden;">'
+    +data.map(function(r,i){
+      var nc=i===0?'var(--gold)':i===1?'#aaa':i===2?'#cd7f32':'var(--t2)';
+      return '<div class="rank-row">'
+        +'<div class="rank-num" style="color:'+nc+';font-size:'+(i<3?'18px':'14px')+';font-weight:700;">'+(i+1)+'</div>'
+        +'<div class="rank-img">🛒</div>'
+        +'<div class="rank-info"><div style="font-size:14px;font-weight:600;margin-bottom:2px;">'+r.n+'</div>'
+          +'<div style="font-size:12px;color:var(--t2);">'+r.f+'</div>'
+        +'</div>'
+        +'<div class="rank-stat">'+(chIcon[r.ch]||'')
+          +'<div style="font-size:14px;font-weight:700;">'+r.s.toLocaleString()+(rankSort==='sales'?'개':'회')+'</div>'
+          +'<div style="font-size:12px;color:var(--t2);">₩'+r.p.toLocaleString()+'</div>'
+        +'</div>'
+      +'</div>';
+    }).join('')
+  +'</div>';
+}
+
+function renderVote(){
+  var el=document.getElementById('votearea'); if(!el) return;
+  var total=VOTES.reduce(function(s,v){return s+v.v;},0);
+  el.innerHTML=VOTES.map(function(v,i){
+    var pct=Math.round(v.v/total*100);
+    return '<div style="margin-bottom:10px;">'
+      +'<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;">'
+        +'<span>'+v.l+'</span><span style="font-weight:700;">'+pct+'%</span>'
+      +'</div>'
+      +'<div style="height:6px;background:var(--bg5);border-radius:3px;overflow:hidden;">'
+        +'<div style="height:100%;width:'+pct+'%;background:var(--red);border-radius:3px;transition:width .5s;"></div>'
+      +'</div>'
+    +'</div>';
+  }).join('')
+  +'<button class="bo full" style="margin-top:10px;" onclick="castVote(this)">투표하기</button>';
+}
+
+function castVote(el){
+  if(!currentUser){openAuth('login');toast('로그인이 필요합니다');return;}
+  if(voted){toast('이미 투표하셨습니다');return;}
+  voted=true;
+  VOTES[0].v+=1;
+  renderVote();
+  toast('✅ 투표 완료!');
+}
+
+function renderNotices(){
+  var el=document.getElementById('notice-list');
+  if(!el){ setTimeout(renderNotices, 50); return; }
+  if(!NOTICES||!NOTICES.length){
+    el.innerHTML='<div class="empty-msg"><span class="ei">📢</span><p>공지사항이 없습니다.</p></div>';
+    return;
+  }
+  var pinned=NOTICES.filter(function(n){return n.pin;});
+  var normal=NOTICES.filter(function(n){return !n.pin;});
+  var makeRow=function(n){
+    return '<div class="ni" onclick="openNotice('+n.id+')">'
+      +(n.pin
+        ?'<span class="npin">📌 공지</span>'
+        :'<span style="width:44px;flex-shrink:0;font-size:12px;color:var(--t2);text-align:center;">일반</span>')
+      +'<div style="flex:1;min-width:0;">'
+        +'<div class="ntit" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+n.t+'</div>'
+        +'<div style="font-size:12px;color:var(--t2);margin-top:2px;">'+n.date+'</div>'
+      +'</div>'
+      +'<span style="font-size:16px;color:var(--t2);flex-shrink:0;">›</span>'
+    +'</div>';
+  };
+  el.innerHTML=pinned.concat(normal).map(makeRow).join('');
+}
+
+function renderFaq(list){
+  var el=document.getElementById('fql'); if(!el) return;
+  if(!list||!list.length){el.innerHTML='<div class="empty-msg"><span class="ei">🔍</span><p>검색 결과가 없습니다.<br>다른 키워드로 검색해보세요.</p></div>';return;}
+  el.innerHTML=list.map(function(f,i){
+    return '<div class="faq-item">'
+      +'<div class="faq-q" onclick="toggleFaq(this)">'
+        +'<span>'+f.q+'</span>'
+        +'<span class="fch">▼</span>'
+      +'</div>'
+      +'<div class="faq-a">'+f.a+'</div>'
+    +'</div>';
+  }).join('');
+}
+
+function toggleFaq(el){
+  var a=el.nextElementSibling;
+  var ch=el.querySelector('.fch');
+  a.classList.toggle('on');
+  if(ch) ch.classList.toggle('on');
+}
+
+function filterFaq(){
+  var qEl=document.getElementById('fqs');
+  var q=qEl?qEl.value.trim():'';
+  var catEl=document.querySelector('#fqcats .chip.on');
+  var cat=catEl?catEl.dataset.c:'전체';
+  var res=FAQS.filter(function(f){
+    var mc=cat==='전체'||f.c===cat;
+    var mq=!q||f.q.includes(q)||f.a.includes(q);
+    return mc&&mq;
+  });
+  renderFaq(res);
+}
+
+function srch(v){
+  var dd=document.getElementById('sdd');
+  if(!v||v.length<1){if(dd) dd.classList.remove('on');srchResults=[];return;}
+  var pRes=PRODS.filter(function(p){return p.n.includes(v)||p.f.includes(v);}).slice(0,3).map(function(p){return{type:'prod',id:p.id,label:p.ic+' '+p.n,sub:p.f};});
+  var fRes=FIGHTERS.filter(function(f){return f.n.replace('_라이트','').includes(v);}).slice(0,3).map(function(f){return{type:'fighter',name:f.n,label:f.ic+' '+f.n.replace('_라이트',''),sub:f.m};});
+  srchResults=[...pRes,...fRes];
+  if(!srchResults.length){
+    if(dd){ dd.innerHTML='<div style="padding:16px;text-align:center;color:var(--t2);font-size:13px;">검색 결과가 없습니다</div>'; dd.classList.add('on'); }
+    return;
+  }
+  if(dd){
+    dd.innerHTML=srchResults.map(function(r,i){
+      return '<div class="si" onclick="goSrchItem('+i+')">'
+        +'<div style="font-size:13px;font-weight:500;">'+r.label+'</div>'
+        +'<div style="font-size:11px;color:var(--t2);">'+r.sub+'</div>'
+      +'</div>';
+    }).join('');
+    dd.classList.add('on');
+  }
+}
+
+function mNav(el){
+  document.querySelectorAll('.mni').forEach(function(n){n.classList.remove('on');});
+  if(el) el.classList.add('on');
+}
+
+function addRV(p){
+  if(!p) return;
+  recentViewed=recentViewed.filter(function(x){return x.id!==p.id;});
+  recentViewed.unshift(p);
+  if(recentViewed.length>8) recentViewed=recentViewed.slice(0,8);
+  var el=document.getElementById('rv'); if(!el) return;
+  el.innerHTML='<div class="pg">'+recentViewed.map(function(r){
+    return prodHTML(r);
+  }).join('')+'</div>';
+}
+
+function renderMp(){
+  var av=document.getElementById('mpav');
+  var nm=document.getElementById('mpnm');
+  var em=document.getElementById('mpem');
+  var pt=document.getElementById('mppt');
+  if(currentUser){
+    if(av) av.textContent=currentUser.nick[0];
+    if(nm) nm.textContent=currentUser.nick;
+    if(em) em.textContent=currentUser.email;
+    if(pt) pt.textContent=(currentUser.point||0)+' P 보유';
+    mpTab('orders');
+  } else {
+    if(av) av.textContent='?';
+    if(nm) nm.textContent='로그인이 필요합니다';
+    if(em) em.textContent='';
+    if(pt) pt.textContent='';
+    var c=document.getElementById('mpc');
+    if(c) c.innerHTML='<div class="empty-msg"><span class="ei">🔐</span><p>로그인 후 이용 가능합니다.</p><br><button class="br" onclick="openAuth()">로그인하기</button></div>';
+  }
+}
+
+function renderPayment(){
+  var el=document.getElementById('pitems'); if(!el) return;
+  var totEl=document.getElementById('ptotals');
+  var sub=cartItems.reduce(function(s,i){return s+i.p*i.qty;},0);
+  var ship=sub>0?3000:0;
+  if(!cartItems.length && currentProduct){
+    el.innerHTML='<div style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd);">'
+      +'<div style="width:46px;height:46px;border-radius:var(--r6);background:var(--bg5);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">'+currentProduct.ic+'</div>'
+      +'<div style="flex:1;"><div style="font-size:13px;font-weight:500;">'+currentProduct.n+'</div><div style="font-size:12px;color:var(--t2);">수량: '+qty+'</div></div>'
+      +'<div style="font-size:14px;font-weight:700;color:var(--red);">₩'+(currentProduct.p*qty).toLocaleString()+'</div>'
+    +'</div>';
+    sub=currentProduct.p*qty; ship=3000;
+  } else {
+    el.innerHTML=cartItems.map(function(it){
+      return '<div style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd);">'
+        +'<div style="width:46px;height:46px;border-radius:var(--r6);background:var(--bg5);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">'+it.ic+'</div>'
+        +'<div style="flex:1;"><div style="font-size:13px;font-weight:500;">'+it.n+'</div><div style="font-size:12px;color:var(--t2);">'+it.sz+' · '+it.cl+' · '+it.qty+'개</div></div>'
+        +'<div style="font-size:14px;font-weight:700;color:var(--red);">₩'+(it.p*it.qty).toLocaleString()+'</div>'
+      +'</div>';
+    }).join('');
+  }
+  if(totEl) totEl.innerHTML='<div style="display:flex;justify-content:space-between;font-size:13px;padding:5px 0;"><span style="color:var(--t2);">상품금액</span><span>₩'+sub.toLocaleString()+'</span></div>'
+    +'<div style="display:flex;justify-content:space-between;font-size:13px;padding:5px 0;"><span style="color:var(--t2);">배송비</span><span>₩'+ship.toLocaleString()+'</span></div>'
+    +'<div style="height:1px;background:var(--bd);margin:8px 0;"></div>'
+    +'<div style="display:flex;justify-content:space-between;font-size:16px;font-weight:700;padding:5px 0;"><span>총 결제금액</span><span style="color:var(--red);">₩'+(sub+ship).toLocaleString()+'</span></div>';
+  var pptEl=document.getElementById('ppt'); if(pptEl) pptEl.textContent=(currentUser&&currentUser.point?currentUser.point:0)+' P';
+}
+
+function showTermsTab(t){
+  var content={
+    terms:'<h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">이용약관</h3><p style="color:var(--t2);line-height:2;">본 약관은 FIGHTGOODS(이하 "회사")가 제공하는 서비스의 이용 조건 및 절차, 회사와 이용자 간의 권리, 의무 및 책임 사항을 규정함을 목적으로 합니다.</p>',
+    privacy:'<h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">개인정보처리방침</h3><p style="color:var(--t2);line-height:2;">회사는 이용자의 개인정보를 소중히 여기며, 관련 법령에 따라 개인정보를 처리합니다.</p>',
+    refund:'<h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">환불/교환정책</h3><p style="color:var(--t2);line-height:2;">수령일로부터 7일 이내에 마이페이지에서 교환·반품 신청이 가능합니다. 단, 착용 또는 세탁된 상품은 반품이 불가합니다.</p>'
+  };
+  var el=document.getElementById('terms-content');
+  if(el) el.innerHTML=content[t]||'';
+}
+
 // 초기 렌더링
 loadAuth();
 renderProds('hpg', PRODS.slice(0,8));
@@ -2272,6 +2790,7 @@ renderCal();
 renderFaq(FAQS);
 renderNotices();
 renderUpcoming();
+renderSports();
 renderBoardPosts();
 renderVote();
 renderCommMatches();
