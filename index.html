@@ -912,6 +912,313 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 /* 공통 유틸 */
 .pay-tot-row:first-child { margin-top:12px; }
 
+
+/* ══════════════════════════════
+   FIGHTERS PAGE — FULL REDESIGN
+══════════════════════════════ */
+
+/* 스포트라이트 영역 */
+.fighter-spotlight {
+  display:grid; grid-template-columns:1fr 1fr;
+  background:var(--bg2); border-bottom:1px solid var(--bd);
+  min-height:380px;
+}
+.spotlight-video-wrap {
+  position:relative; background:#000; overflow:hidden;
+}
+.spotlight-video-wrap iframe {
+  position:absolute; inset:0; width:100%; height:100%; border:none;
+}
+.spotlight-info {
+  padding:40px 36px; display:flex; flex-direction:column; justify-content:center; gap:12px;
+  background:linear-gradient(135deg, var(--bg2) 0%, rgba(230,57,70,.04) 100%);
+}
+.spotlight-badge {
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:11px; font-weight:800; color:var(--red);
+  text-transform:uppercase; letter-spacing:1.5px;
+  background:var(--rg); border:1px solid rgba(230,57,70,.25);
+  padding:4px 12px; border-radius:100px; width:fit-content;
+}
+.spotlight-name {
+  font-family:var(--font-bebas); font-size:52px; letter-spacing:2px;
+  line-height:.9; color:var(--t);
+}
+.spotlight-sub {
+  font-size:13px; color:var(--t2); line-height:1.6;
+}
+.spotlight-tags { display:flex; gap:5px; flex-wrap:wrap; }
+.spotlight-stats {
+  display:flex; gap:16px; margin:4px 0;
+}
+.spotlight-stat { text-align:center; }
+.spotlight-stat-v { font-family:var(--font-bebas); font-size:28px; line-height:1; color:var(--t); }
+.spotlight-stat-l { font-size:10px; color:var(--t2); text-transform:uppercase; letter-spacing:.5px; margin-top:2px; }
+.spotlight-actions { display:flex; gap:8px; margin-top:4px; }
+
+/* 계약 선수 포토카드 그리드 */
+.fighter-contract-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:40px;
+}
+.fc-contract {
+  cursor:pointer; border-radius:16px; overflow:hidden;
+  transition:transform .2s, box-shadow .2s;
+}
+.fc-contract:hover { transform:translateY(-5px); box-shadow:0 18px 44px rgba(0,0,0,.55); }
+.fc-contract:hover img { transform:scale(1.06); }
+.fc-contract-img {
+  position:relative; aspect-ratio:3/4; background:var(--bg3);
+  border:1px solid var(--bd); border-radius:16px; overflow:hidden;
+}
+.fc-contract-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
+.fc-contract-emoji { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:72px; }
+.fc-contract-overlay { position:absolute; inset:0; background:linear-gradient(180deg, transparent 25%, rgba(0,0,0,.88) 100%); }
+.fc-contract-badge {
+  position:absolute; top:10px; right:10px;
+  background:var(--red); color:#fff;
+  font-size:10px; font-weight:800; padding:3px 9px;
+  border-radius:100px; letter-spacing:.3px;
+}
+.fc-contract-body { position:absolute; bottom:0; left:0; right:0; padding:16px 14px; }
+.fc-contract-org { font-size:10px; color:rgba(255,255,255,.6); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+.fc-contract-name { font-family:var(--font-bebas); font-size:26px; letter-spacing:1px; color:#fff; line-height:1.1; margin-bottom:6px; }
+.fc-contract-tags { display:flex; gap:4px; flex-wrap:wrap; margin-bottom:6px; }
+.fc-tag { font-size:10px; padding:2px 7px; border-radius:100px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); color:#fff; }
+.fc-contract-rec { font-size:11px; color:rgba(255,255,255,.55); }
+
+/* 구분선 */
+.fighters-divider {
+  display:flex; align-items:center; gap:14px;
+  margin:8px 0 24px; color:var(--t2); font-size:12px; font-weight:600;
+  letter-spacing:.5px; text-transform:uppercase;
+}
+.fighters-divider::before, .fighters-divider::after {
+  content:''; flex:1; height:1px; background:var(--bd);
+}
+
+/* 필터 칩 */
+.ff-chips { display:flex; gap:6px; flex-wrap:wrap; }
+
+/* 정보 제공 선수 — 리스트형 */
+.fg-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.fc-info {
+  display:flex; align-items:center; gap:12px;
+  background:var(--bg3); border:1px solid var(--bd); border-radius:12px;
+  padding:13px 15px; cursor:pointer;
+  transition:border-color .15s, background .15s, transform .15s;
+  position:relative; overflow:hidden;
+}
+.fc-info::before { content:''; position:absolute; left:0; top:0; bottom:0; width:0; background:var(--red); transition:width .15s; }
+.fc-info:hover { border-color:rgba(230,57,70,.3); background:var(--bg4); transform:translateX(2px); }
+.fc-info:hover::before { width:3px; }
+.fc-info-av {
+  width:42px; height:42px; border-radius:50%; background:var(--bg5);
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; flex-shrink:0; overflow:hidden; border:1px solid var(--bd);
+}
+.fc-info-av img { width:100%; height:100%; object-fit:cover; }
+.fc-info-body { flex:1; min-width:0; }
+.fc-info-name { font-size:13.5px; font-weight:700; margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.fc-info-meta { font-size:11px; color:var(--t2); }
+.fc-info-rec { display:flex; gap:5px; align-items:center; flex-shrink:0; font-size:12px; }
+.fc-info-w { font-weight:700; color:var(--t); }
+.fc-info-l { color:var(--t2); }
+.fc-info-arr { color:var(--t3); font-size:16px; margin-left:4px; }
+
+@media(max-width:768px){
+  .fighter-spotlight { grid-template-columns:1fr; min-height:auto; }
+  .spotlight-video-wrap { height:220px; position:relative; }
+  .spotlight-info { padding:22px 16px; gap:10px; }
+  .spotlight-name { font-size:38px; }
+  .fighter-contract-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+  .fg-grid { grid-template-columns:1fr; }
+  .fighters-divider { margin:4px 0 18px; }
+}
+@media(min-width:769px) and (max-width:1024px){
+  .fighter-contract-grid { grid-template-columns:repeat(3,1fr); }
+  .spotlight-name { font-size:42px; }
+}
+
+
+/* ══════════════════════════════
+   COMMUNITY PAGE — FULL REDESIGN
+══════════════════════════════ */
+
+/* 헤더 배너 */
+.comm-hero {
+  position:relative; overflow:hidden;
+  background:var(--bg2); border-bottom:1px solid var(--bd);
+  padding:0 40px;
+}
+.comm-hero-bg {
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse 60% 100% at 100% 50%, rgba(230,57,70,.07) 0%, transparent 65%);
+  pointer-events:none;
+}
+.comm-hero-inner {
+  position:relative; z-index:2;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:32px 0; gap:24px;
+}
+.comm-hero-text { flex:1; }
+.comm-hero-title {
+  font-family:var(--font-bebas); font-size:46px; letter-spacing:3px;
+  line-height:.92; margin:8px 0 10px;
+}
+.comm-hero-title span { color:var(--red); }
+.comm-hero-sub { font-size:13px; color:var(--t2); }
+.comm-hero-stats {
+  display:flex; align-items:center; gap:20px;
+  background:rgba(255,255,255,.03); border:1px solid var(--bd);
+  border-radius:16px; padding:18px 28px;
+}
+.comm-stat { text-align:center; }
+.comm-stat-v { font-family:var(--font-bebas); font-size:28px; line-height:1; margin-bottom:3px; }
+.comm-stat-l { font-size:10px; color:var(--t2); text-transform:uppercase; letter-spacing:.5px; }
+.comm-stat-div { width:1px; height:32px; background:var(--bd); }
+
+/* 레이아웃 */
+.comm-layout { display:grid; grid-template-columns:1fr 270px; gap:24px; align-items:start; }
+.comm-main { min-width:0; }
+
+/* 게시판 탭 — 아이콘 탭 스타일 */
+.comm-board-tabs {
+  display:flex; gap:4px; margin-bottom:16px;
+  background:var(--bg3); border:1px solid var(--bd);
+  border-radius:14px; padding:5px;
+}
+.cbt {
+  flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;
+  padding:10px 6px; border-radius:10px; border:none; background:none;
+  color:var(--t2); cursor:pointer; font-family:inherit; font-size:11px;
+  font-weight:600; transition:all .15s; white-space:nowrap;
+}
+.cbt-icon { font-size:18px; line-height:1; }
+.cbt:hover { color:var(--t); background:var(--bg4); }
+.cbt.on { background:var(--red); color:#fff; }
+.cbt-design.on { background:linear-gradient(135deg,#8e44ad,#e63946); }
+
+/* 게시글 카드 — 세로 컬러바 스타일 */
+.bp {
+  display:flex; gap:0;
+  background:var(--bg3); border:1px solid var(--bd); border-radius:14px;
+  margin-bottom:8px; overflow:hidden; cursor:pointer;
+  transition:border-color .15s, background .15s, transform .15s;
+}
+.bp:hover { border-color:var(--bd2); background:var(--bg4); transform:translateX(2px); }
+.bp-left {
+  width:4px; flex-shrink:0;
+  background:currentColor; border-right:none;
+  border-color:inherit;
+  /* color bar using border-left trick */
+  background:transparent;
+  border-left:3px solid;
+  border-radius:14px 0 0 14px;
+  margin-left:-1px;
+}
+.bp-content { flex:1; padding:14px 16px; min-width:0; }
+.bp-top { display:flex; align-items:center; gap:7px; margin-bottom:7px; }
+.bp-cat-badge { font-size:10px; font-weight:800; padding:2px 8px; border-radius:4px; flex-shrink:0; letter-spacing:.3px; }
+.bp-hot { font-size:10px; font-weight:800; color:var(--red); background:var(--rg); padding:2px 7px; border-radius:4px; border:1px solid rgba(230,57,70,.2); }
+.bp-time { font-size:11px; color:var(--t2); margin-left:auto; flex-shrink:0; }
+.bp-title { font-size:14px; font-weight:700; line-height:1.4; margin-bottom:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.bp-preview { font-size:12px; color:var(--t2); line-height:1.5; margin-bottom:10px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.bp-footer { display:flex; align-items:center; gap:8px; }
+.bp-author-av {
+  width:20px; height:20px; border-radius:50%;
+  background:var(--red); color:#fff; font-size:10px; font-weight:800;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.bp-author { font-size:12px; font-weight:600; color:var(--t); flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.bp-stat { display:flex; align-items:center; gap:3px; font-size:12px; color:var(--t2); flex-shrink:0; }
+.bp-stat-icon { font-size:11px; }
+.bp-like-stat { cursor:pointer; }
+.bp-like-stat.liked { color:var(--red); }
+
+/* 사이드바 */
+.comm-sidebar { display:flex; flex-direction:column; gap:12px; position:sticky; top:calc(var(--nh)+12px); }
+.side-card { background:var(--bg3); border:1px solid var(--bd); border-radius:14px; padding:16px; }
+
+/* 투표 카드 */
+.side-card-vote { background:linear-gradient(135deg,var(--bg3),rgba(230,57,70,.04)); }
+.vote-card-label { font-size:10px; color:var(--red); font-weight:800; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:6px; }
+.vote-card-question { font-size:14px; font-weight:700; margin-bottom:14px; line-height:1.4; }
+.vote-item { margin-bottom:10px; }
+.vote-item-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:5px; }
+.vote-item-label { font-size:12.5px; font-weight:500; }
+.vote-item-lead { font-weight:700; }
+.vote-item-pct { font-size:13px; font-weight:700; color:var(--t2); }
+.vote-item-pct-lead { color:var(--red); }
+.vote-track { height:7px; background:var(--bg5); border-radius:4px; overflow:hidden; margin-bottom:3px; }
+.vote-fill { height:100%; background:var(--bd2); border-radius:4px; transition:width .5s ease; }
+.vote-fill-lead { background:linear-gradient(90deg,var(--red),rgba(230,57,70,.6)); }
+.vote-count { font-size:10px; color:var(--t2); text-align:right; }
+.vote-btn {
+  width:100%; margin-top:10px; padding:9px; border-radius:10px;
+  background:var(--red); color:#fff; font-size:12px; font-weight:700;
+  border:none; cursor:pointer; font-family:inherit; transition:opacity .15s;
+}
+.vote-btn:hover { opacity:.85; }
+
+/* 승부 예측 카드 */
+.side-card-predict { overflow:hidden; position:relative; }
+.side-card-predict::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(230,57,70,.06) 0%, transparent 70%);
+  pointer-events:none;
+}
+.predict-header { margin-bottom:14px; }
+.predict-matchup {
+  display:grid; grid-template-columns:1fr auto 1fr;
+  align-items:center; gap:8px; margin-bottom:12px;
+  background:var(--bg4); border-radius:12px; padding:14px 10px;
+}
+.predict-fighter { text-align:center; }
+.predict-fighter-ic { font-size:28px; margin-bottom:4px; }
+.predict-fighter-name { font-size:11px; font-weight:700; color:var(--t2); }
+.predict-vs { font-family:var(--font-bebas); font-size:18px; color:var(--t3); text-align:center; }
+.predict-btns { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+.predict-btn {
+  padding:9px 6px; border-radius:10px; border:1px solid var(--bd);
+  background:var(--bg4); color:var(--t2); font-size:11.5px; font-weight:600;
+  cursor:pointer; font-family:inherit; transition:all .15s; text-align:center;
+}
+.predict-btn:hover, .predict-btn.on { border-color:var(--red); color:var(--red); background:var(--rg); }
+.pred-result { font-size:12px; color:var(--t2); text-align:center; padding:8px 0; }
+
+/* Q&A 카드 */
+.qa-card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+.qa-card-fighter { display:flex; align-items:center; gap:10px; }
+.qa-fighter-ic { font-size:28px; }
+.qa-card-name { font-size:13px; font-weight:700; }
+.qa-card-badge { font-size:10px; color:var(--red); background:var(--rg); border:1px solid rgba(230,57,70,.2); padding:3px 8px; border-radius:100px; font-weight:700; white-space:nowrap; }
+.qa-item { background:var(--bg4); border-radius:10px; padding:11px 13px; margin-bottom:10px; }
+.qa-text { font-size:12.5px; line-height:1.6; margin-bottom:7px; }
+.qa-meta { display:flex; justify-content:space-between; align-items:center; }
+.qa-author { font-size:11px; color:var(--t2); }
+.qa-like { font-size:12px; color:var(--t2); background:none; border:none; cursor:pointer; font-family:inherit; display:flex; align-items:center; gap:3px; transition:color .15s; }
+.qa-like:hover { color:var(--red); }
+.qa-form { margin-bottom:9px; }
+.qa-input { margin-bottom:8px; }
+
+@media(max-width:768px){
+  .comm-hero { padding:0 16px; }
+  .comm-hero-inner { flex-direction:column; padding:24px 0; gap:16px; align-items:flex-start; }
+  .comm-hero-title { font-size:34px; }
+  .comm-hero-stats { width:100%; justify-content:space-around; padding:14px; }
+  .comm-layout { grid-template-columns:1fr; }
+  .comm-sidebar { position:static; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .side-card-vote, .side-card-predict, .side-card-qa { grid-column:span 2; }
+  .comm-board-tabs { overflow-x:auto; scrollbar-width:none; }
+  .comm-board-tabs::-webkit-scrollbar { display:none; }
+  .cbt { min-width:72px; }
+}
+@media(min-width:769px) and (max-width:1024px){
+  .comm-layout { grid-template-columns:1fr 240px; }
+  .comm-hero { padding:0 28px; }
+  .comm-hero-title { font-size:38px; }
+}
+
 </style>
 </head>
 <body><!-- NAVBAR -->
@@ -987,10 +1294,73 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 </div><!-- RANKING -->
 <div class="pw" id="p-ranking"><div class="sec"><div class="sh"><div class="sl">종합 랭킹</div><div class="st">인기 굿즈 순위</div><button class="sm" onclick="go('goods');navTo('굿즈 전체')">굿즈 전체 보기 →</button></div><div style="display:flex;gap:12px;margin-bottom:18px;align-items:center;"><div class="tabs"><button class="tab on" onclick="tabOn(this,this.parentNode);rankSort='sales';renderRank()">판매량순</button><button class="tab" onclick="tabOn(this,this.parentNode);rankSort='views';renderRank()">조회수순</button></div><div style="display:flex;gap:6px;"><button class="chip on" onclick="chipOn(this,'.pchip');rankPeriod='daily';renderRank()">일간</button><button class="chip pchip" onclick="chipOn(this,'.pchip');rankPeriod='weekly';renderRank()">주간</button><button class="chip pchip" onclick="chipOn(this,'.pchip');rankPeriod='monthly';renderRank()">월간</button></div></div><div id="rtb"></div></div>
 </div><!-- FIGHTERS -->
-<div class="pw" id="p-fighters"><div class="sec"><div class="sh"><div class="sl">선수 정보</div><div class="st">전체 선수 정보</div></div><div class="fighter-legend">
-  <span class="legend-item legend-contract">🛒 계약 선수</span>
-  <span class="legend-item legend-info">📋 정보 제공</span>
-</div><div class="fighter-search-bar"><input id="fsrch" class="search-input" placeholder="🔍 선수 이름 검색" oninput="filterF()"><div style="display:flex;gap:6px;flex-wrap:wrap;" id="ff"><button class="chip on" data-f="전체" onclick="chipOn(this,'#ff .chip');filterF()">전체</button><button class="chip" data-f="플라이급" onclick="chipOn(this,'#ff .chip');filterF()">플라이급</button><button class="chip" data-f="밴텀급" onclick="chipOn(this,'#ff .chip');filterF()">밴텀급</button><button class="chip" data-f="페더급" onclick="chipOn(this,'#ff .chip');filterF()">페더급</button><button class="chip" data-f="라이트급" onclick="chipOn(this,'#ff .chip');filterF()">라이트급</button><button class="chip" data-f="웰터급" onclick="chipOn(this,'#ff .chip');filterF()">웰터급</button><button class="chip" data-f="미들급" onclick="chipOn(this,'#ff .chip');filterF()">미들급</button><button class="chip" data-f="헤비급" onclick="chipOn(this,'#ff .chip');filterF()">헤비급</button><button class="chip" data-f="UFC" onclick="chipOn(this,'#ff .chip');filterF()">UFC</button><button class="chip" data-f="블랙컴뱃" onclick="chipOn(this,'#ff .chip');filterF()">블랙컴뱃</button><button class="chip" data-f="ZFN" onclick="chipOn(this,'#ff .chip');filterF()">ZFN</button><button class="chip" data-f="로드FC" onclick="chipOn(this,'#ff .chip');filterF()">로드FC</button><button class="chip" data-f="무소속" onclick="chipOn(this,'#ff .chip');filterF()">무소속</button></div></div><div class="fg-grid" id="fgrid"></div></div>
+<div class="pw" id="p-fighters">
+  <!-- 스포트라이트 영상 -->
+  <div class="fighter-spotlight">
+    <div class="spotlight-video-wrap">
+      <iframe
+        id="spotlight-yt"
+        src="https://www.youtube.com/embed/LZEzEiKTP1Y?autoplay=0&rel=0&modestbranding=1"
+        title="김상욱 Road to UFC 하이라이트"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+    <div class="spotlight-info">
+      <div class="spotlight-badge">🔥 주목 선수</div>
+      <div class="spotlight-name">김상욱</div>
+      <div class="spotlight-sub">Road to UFC 결승 KO승 · 2026.01.31</div>
+      <div class="spotlight-tags">
+        <span class="ftag">UDT파이터</span>
+        <span class="ftag">강철부대</span>
+        <span class="ftag">Road to UFC</span>
+      </div>
+      <div class="spotlight-stats">
+        <div class="spotlight-stat"><div class="spotlight-stat-v">9</div><div class="spotlight-stat-l">승</div></div>
+        <div class="spotlight-stat"><div class="spotlight-stat-v">1</div><div class="spotlight-stat-l">패</div></div>
+        <div class="spotlight-stat"><div class="spotlight-stat-v">89%</div><div class="spotlight-stat-l">피니시</div></div>
+      </div>
+      <div class="spotlight-actions">
+        <button class="br sm" onclick="openFighter('김상욱')">선수 상세 →</button>
+        <button class="bo sm" onclick="openGoods()">🛒 굿즈 보기</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec sec-nt">
+    <!-- 계약 선수 섹션 -->
+    <div class="fighters-section-label">
+      <div class="sh" style="margin-bottom:16px;">
+        <div class="sl">계약 선수</div>
+        <div class="st">굿즈 판매 중</div>
+      </div>
+    </div>
+    <div class="fighter-contract-grid" id="fgrid-contract"></div>
+
+    <!-- 구분선 -->
+    <div class="fighters-divider">
+      <span>전체 선수</span>
+    </div>
+
+    <!-- 검색 + 필터 -->
+    <div class="fighter-search-bar">
+      <input id="fsrch" class="search-input" placeholder="🔍 이름 검색" oninput="filterF()">
+      <div class="ff-chips" id="ff">
+        <button class="chip on" data-f="전체" onclick="chipOn(this,'#ff .chip');filterF()">전체</button>
+        <button class="chip" data-f="플라이급" onclick="chipOn(this,'#ff .chip');filterF()">플라이급</button>
+        <button class="chip" data-f="밴텀급" onclick="chipOn(this,'#ff .chip');filterF()">밴텀급</button>
+        <button class="chip" data-f="페더급" onclick="chipOn(this,'#ff .chip');filterF()">페더급</button>
+        <button class="chip" data-f="라이트급" onclick="chipOn(this,'#ff .chip');filterF()">라이트급</button>
+        <button class="chip" data-f="웰터급" onclick="chipOn(this,'#ff .chip');filterF()">웰터급</button>
+        <button class="chip" data-f="미들급" onclick="chipOn(this,'#ff .chip');filterF()">미들급</button>
+        <button class="chip" data-f="UFC" onclick="chipOn(this,'#ff .chip');filterF()">UFC</button>
+        <button class="chip" data-f="무소속" onclick="chipOn(this,'#ff .chip');filterF()">무소속</button>
+      </div>
+    </div>
+    <div class="fg-grid" id="fgrid"></div>
+  </div>
 </div><!-- FIGHTER DETAIL -->
 <div class="pw" id="p-fighter-detail"><div class="bc"><span onclick="go('fighters');navTo('선수 정보')">선수 정보</span><span class="sep">›</span><span style="color:var(--t2);">박준용</span></div><div class="fdh"><div class="fdtop"><div class="fdav">🥊</div><div><div class="fdnm">박준용</div><div style="font-size:13px;color:var(--t3);margin-bottom:14px;">UFC · 미들급 · 데뷔 2019.10.05</div><div class="srow2"><div class="sbox"><div class="sv2">12</div><div class="slb">승</div></div><div class="sbox"><div class="sv2">3</div><div class="slb">패</div></div><div class="sbox"><div class="sv2">0</div><div class="slb">무</div></div><div class="sbox"><div class="sv2">77%</div><div class="slb">피니시율</div></div></div><div style="font-size:12px;background:rgba(255,255,255,0.05);border:1px solid var(--bd2);border-radius:8px;padding:10px 14px;color:var(--t3);">ℹ️ 이 선수는 정보 제공 선수입니다. 굿즈 계약 선수는 <span style="color:var(--red);cursor:pointer;" onclick="go('fighters')">선수 목록</span>에서 확인하세요.</div></div></div></div><div class="fdb"><div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:22px;">성장 타임라인</div><div class="tl-item"><div class="tl-dot"></div><div><div style="font-size:11px;color:var(--t3);">2019</div><div style="font-size:15px;font-weight:500;margin:3px 0 5px;">UFC 데뷔</div><div style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:7px;">2019년 10월 UFC 무대에 올라 꾸준한 경기력으로 이름을 알리기 시작했다.</div></div></div><div class="tl-item"><div class="tl-dot"></div><div><div style="font-size:11px;color:var(--t3);">2022</div><div style="font-size:15px;font-weight:500;margin:3px 0 5px;">연속 승리 행진</div><div style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:7px;">미들급에서 꾸준히 연승을 이어가며 UFC 랭킹 진입을 노리기 시작했다.</div></div></div><div class="tl-item"><div class="tl-dot hi"></div><div><div style="font-size:11px;color:var(--t3);">2025 🏆</div><div style="font-size:15px;font-weight:500;margin:3px 0 5px;">UFC 10승 달성</div><div style="font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:7px;">한국 선수 최다승을 향해 달려가는 아이언 터틀. UFC 랭킹 진입이 코앞이다.</div></div></div></div><div><div class="gbox"><div class="sec-title">박준용 선수 정보</div><div style="font-size:12px;color:var(--t3);line-height:1.8;margin-bottom:14px;">
           현재 IP 계약이 체결되지 않은 선수입니다.<br>
@@ -1188,102 +1558,160 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
     <div id="mpc"></div>
   </div>
 </div><!-- COMMUNITY -->
-<div class="pw" id="p-community"><div class="sec">
-  <div class="sh"><div class="sl">커뮤니티</div><div class="st">팬 커뮤니티</div></div>
-  <div class="comm-layout">
-
-    <!-- 메인: 게시판 -->
-    <div>
-      <!-- 게시판 탭 -->
-      <div class="tabs">
-        <button class="tab on" onclick="tabOn(this,this.parentNode);setBoard('자유게시판')">자유게시판</button>
-        <button class="tab" onclick="tabOn(this,this.parentNode);setBoard('구매 후기')">구매 후기</button>
-        <button class="tab" onclick="tabOn(this,this.parentNode);setBoard('굿즈 자랑')">굿즈 자랑</button>
-        <button class="tab" onclick="tabOn(this,this.parentNode);setBoard('경기 토론')">경기 토론</button><button class="tab" onclick="tabOn(this,this.parentNode);openDesignContest()">🎨 디자인 공모</button>
+<div class="pw" id="p-community">
+  <!-- 커뮤니티 헤더 배너 -->
+  <div class="comm-hero">
+    <div class="comm-hero-bg"></div>
+    <div class="comm-hero-inner">
+      <div class="comm-hero-text">
+        <div class="sl">팬 커뮤니티</div>
+        <div class="comm-hero-title">FIGHTGOODS<br><span>COMMUNITY</span></div>
+        <div class="comm-hero-sub">경기, 굿즈, 선수 이야기를 팬들과 나눠보세요</div>
       </div>
-
-      <!-- 정렬 + 내 글 + 글쓰기 -->
-      <div class="board-toolbar">
-        <div class="sort-chips" id="sort-chips">
-          <button class="chip on" onclick="sortP('r',this)">최신순</button>
-          <button class="chip" onclick="sortP('l',this)">인기순</button>
-        </div>
-        <button class="chip" id="my-posts-btn" onclick="toggleMyPosts(this)">내 글</button>
-        <button class="br sm write-btn" onclick="toggleWrite()">✏️ 글쓰기</button>
+      <div class="comm-hero-stats">
+        <div class="comm-stat"><div class="comm-stat-v" id="cs-posts">247</div><div class="comm-stat-l">게시글</div></div>
+        <div class="comm-stat-div"></div>
+        <div class="comm-stat"><div class="comm-stat-v">1.2K</div><div class="comm-stat-l">팬</div></div>
+        <div class="comm-stat-div"></div>
+        <div class="comm-stat"><div class="comm-stat-v">🔴</div><div class="comm-stat-l">실시간</div></div>
       </div>
-
-      <!-- 글쓰기 폼 -->
-      <div id="wf" style="display:none;" class="write-form">
-        <div class="write-form-title">새 글 작성</div>
-        <div class="write-cats">
-          <button class="chip on" id="wcat-btn-자유게시판" onclick="selectWriteCat('자유게시판',this)">자유게시판</button>
-          <button class="chip" id="wcat-btn-구매 후기" onclick="selectWriteCat('구매 후기',this)">구매 후기</button>
-          <button class="chip" id="wcat-btn-굿즈 자랑" onclick="selectWriteCat('굿즈 자랑',this)">굿즈 자랑</button>
-          <button class="chip" id="wcat-btn-경기 토론" onclick="selectWriteCat('경기 토론',this)">경기 토론</button>
-        </div>
-        <input id="wt" class="fi write-title-input" placeholder="제목을 입력하세요">
-        <textarea id="wb" class="fi write-body-input" placeholder="내용을 입력하세요"></textarea>
-        <div class="form-actions">
-          <button class="bo sm" onclick="toggleWrite()">취소</button>
-          <button class="br sm" onclick="submitPost()">등록</button>
-        </div>
-      </div>
-
-      <!-- 게시글 목록 / 상세 -->
-      <div id="posts-list">
-        <div id="posts"></div>
-      </div>
-      <div id="post-detail" style="display:none;"></div>
     </div>
+  </div>
 
-    <!-- 사이드바 -->
-    <div class="comm-sidebar">
-      <div class="side-card">
-        <div class="side-card-head">
-          <span class="sl">빅경기 결과</span>
-          <button class="sm" onclick="go('schedule')">전체 →</button>
+  <div class="sec sec-nt">
+    <div class="comm-layout">
+
+      <!-- ── 메인 게시판 ── -->
+      <div class="comm-main">
+
+        <!-- 게시판 탭 -->
+        <div class="comm-board-tabs">
+          <button class="cbt on" data-cat="자유게시판" onclick="commTab(this);setBoard('자유게시판')">
+            <span class="cbt-icon">💬</span><span>자유게시판</span>
+          </button>
+          <button class="cbt" data-cat="경기 토론" onclick="commTab(this);setBoard('경기 토론')">
+            <span class="cbt-icon">🥊</span><span>경기 토론</span>
+          </button>
+          <button class="cbt" data-cat="구매 후기" onclick="commTab(this);setBoard('구매 후기')">
+            <span class="cbt-icon">🛒</span><span>구매 후기</span>
+          </button>
+          <button class="cbt" data-cat="굿즈 자랑" onclick="commTab(this);setBoard('굿즈 자랑')">
+            <span class="cbt-icon">⭐</span><span>굿즈 자랑</span>
+          </button>
+          <button class="cbt cbt-design" onclick="commTab(this);openDesignContest()">
+            <span class="cbt-icon">🎨</span><span>디자인 공모</span>
+          </button>
         </div>
-        <div id="comm-matches"></div>
-      </div>
-      <div class="side-card">
-        <div class="sl sl-mb">팬 투표</div>
-        <div class="side-card-title">다음 韓 UFC 우승자는?</div>
-        <div id="votearea"></div>
-      </div>
-      <div class="side-card">
-        <div class="sl sl-mb">승부 예측</div>
-        <div class="side-card-title">김상욱 vs 차기 도전자</div>
-        <div class="predict-grid">
-          <button class="bo full" id="pred-w" onclick="predict('w')">🐸 김상욱</button>
-          <button class="bo full" id="pred-l" onclick="predict('l')">🌍 도전자</button>
+
+        <!-- 툴바 -->
+        <div class="board-toolbar">
+          <div class="sort-chips" id="sort-chips">
+            <button class="chip on" onclick="sortP('r',this)">최신</button>
+            <button class="chip" onclick="sortP('l',this)">인기</button>
+          </div>
+          <button class="chip" id="my-posts-btn" onclick="toggleMyPosts(this)">내 글</button>
+          <button class="br sm write-btn" onclick="toggleWrite()">✏️ 글쓰기</button>
         </div>
-        <div id="pred-result" class="pred-result"></div>
-      </div>
-      <div class="side-card">
-        <div class="sl sl-mb">Q&amp;A</div>
-        <div class="side-card-title">김상욱에게 질문</div>
-        <div class="qa-item">
-          <div class="qa-text">"Road to UFC 결승까지 올라갔을 때 기분이 어땠나요?"</div>
-          <div class="qa-meta">
-            <span>fan_kim</span>
-            <button id="qa-like-btn" class="qa-like" onclick="qaLike(this)">❤️ <span id="qa-like-cnt">142</span></button>
+
+        <!-- 글쓰기 폼 -->
+        <div id="wf" style="display:none;" class="write-form">
+          <div class="write-form-title">새 글 작성</div>
+          <div class="write-cats">
+            <button class="chip on" id="wcat-btn-자유게시판" onclick="selectWriteCat('자유게시판',this)">자유게시판</button>
+            <button class="chip" id="wcat-btn-구매 후기" onclick="selectWriteCat('구매 후기',this)">구매 후기</button>
+            <button class="chip" id="wcat-btn-굿즈 자랑" onclick="selectWriteCat('굿즈 자랑',this)">굿즈 자랑</button>
+            <button class="chip" id="wcat-btn-경기 토론" onclick="selectWriteCat('경기 토론',this)">경기 토론</button>
+          </div>
+          <input id="wt" class="fi write-title-input" placeholder="제목을 입력하세요">
+          <textarea id="wb" class="fi write-body-input" placeholder="내용을 입력하세요"></textarea>
+          <div class="form-actions">
+            <button class="bo sm" onclick="toggleWrite()">취소</button>
+            <button class="br sm" onclick="submitPost()">등록</button>
           </div>
         </div>
-        <div id="qa-form" style="display:none;" class="qa-form">
-          <input id="qa-input" class="fi qa-input" placeholder="질문을 입력하세요">
-          <div style="display:flex;gap:7px;justify-content:flex-end;">
-            <button class="bo sm" onclick="document.getElementById('qa-form').style.display='none'">취소</button>
-            <button class="br sm" onclick="submitQA()">등록</button>
+
+        <!-- 게시글 목록 / 상세 -->
+        <div id="posts-list"><div id="posts"></div></div>
+        <div id="post-detail" style="display:none;"></div>
+      </div>
+
+      <!-- ── 사이드바 ── -->
+      <div class="comm-sidebar">
+
+        <!-- 빅경기 결과 -->
+        <div class="side-card">
+          <div class="side-card-head">
+            <span class="sl">빅경기 결과</span>
+            <button class="sm" onclick="go('schedule')">전체 →</button>
           </div>
+          <div id="comm-matches"></div>
         </div>
-        <button class="bo full" onclick="if(!currentUser){openAuth('login');toast('로그인이 필요합니다');}else{document.getElementById('qa-form').style.display='block';}">질문 남기기</button>
+
+        <!-- 팬 투표 — 시각화 강화 -->
+        <div class="side-card side-card-vote">
+          <div class="vote-card-label">팬 투표</div>
+          <div class="vote-card-question">다음 韓 UFC 우승자는?</div>
+          <div id="votearea"></div>
+        </div>
+
+        <!-- 승부 예측 -->
+        <div class="side-card side-card-predict">
+          <div class="predict-header">
+            <span class="sl">승부 예측</span>
+          </div>
+          <div class="predict-matchup">
+            <div class="predict-fighter">
+              <div class="predict-fighter-ic">🐸</div>
+              <div class="predict-fighter-name">김상욱</div>
+            </div>
+            <div class="predict-vs">VS</div>
+            <div class="predict-fighter">
+              <div class="predict-fighter-ic">🌍</div>
+              <div class="predict-fighter-name">차기 도전자</div>
+            </div>
+          </div>
+          <div class="predict-btns">
+            <button class="predict-btn" id="pred-w" onclick="predict('w')">김상욱 승</button>
+            <button class="predict-btn" id="pred-l" onclick="predict('l')">도전자 승</button>
+          </div>
+          <div id="pred-result" class="pred-result"></div>
+        </div>
+
+        <!-- 선수 Q&A -->
+        <div class="side-card side-card-qa">
+          <div class="qa-card-header">
+            <div class="qa-card-fighter">
+              <div class="qa-fighter-ic">🐸</div>
+              <div>
+                <div class="sl" style="margin-bottom:2px;">선수 Q&amp;A</div>
+                <div class="qa-card-name">김상욱에게 질문</div>
+              </div>
+            </div>
+            <div class="qa-card-badge">~06.15</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-text">"Road to UFC 결승까지 올라갔을 때 기분이 어땠나요?"</div>
+            <div class="qa-meta">
+              <span class="qa-author">fan_kim</span>
+              <button id="qa-like-btn" class="qa-like" onclick="qaLike(this)">❤️ <span id="qa-like-cnt">142</span></button>
+            </div>
+          </div>
+          <div id="qa-form" style="display:none;" class="qa-form">
+            <input id="qa-input" class="fi qa-input" placeholder="질문을 입력하세요">
+            <div class="form-actions">
+              <button class="bo sm" onclick="document.getElementById('qa-form').style.display='none'">취소</button>
+              <button class="br sm" onclick="submitQA()">등록</button>
+            </div>
+          </div>
+          <button class="bo full" onclick="if(!currentUser){openAuth('login');toast('로그인이 필요합니다');}else{document.getElementById('qa-form').style.display='block';}">질문 남기기</button>
+        </div>
+
       </div>
     </div>
   </div>
 </div>
 
 <!-- TERMS -->
-</div>
 <div class="pw" id="p-terms"><div class="sec" style="max-width:800px;"><div class="sh"><div class="sl">법적 고지</div><div class="st">이용약관 &amp; 정책</div></div><div class="tabs"><button class="tab on" onclick="tabOn(this,this.parentNode);showTermsTab('terms')">이용약관</button><button class="tab" onclick="tabOn(this,this.parentNode);showTermsTab('privacy')">개인정보처리방침</button><button class="tab" onclick="tabOn(this,this.parentNode);showTermsTab('refund')">환불/교환정책</button></div><div id="terms-content"></div></div>
 </div><!-- NOTICE -->
 <div class="pw" id="p-notice"><div class="sec"><div class="sh"><div class="sl">공지사항</div><div class="st">공지사항</div></div><div style="max-width:760px;" id="notice-list"></div></div>
@@ -1976,30 +2404,39 @@ function homeFighterCard(f){
 }
 
 function fighterHTML(f){
-  var displayN=f.n.replace('_라이트','').replace('_W','');
+  var dn=f.n.replace('_라이트','').replace('_W','');
   var idx=FIGHTERS.indexOf(f);
-  var goodsBadge=f.contract
-    ?'<div class="fg-cnt" style="color:var(--red);font-weight:700;margin-top:4px;">🛒 굿즈 '+f.g+'개</div>'
-    :'<div class="fg-cnt" style="opacity:.45;margin-top:4px;">정보 제공</div>';
-  var avatarHtml=f.photos&&f.photos.length
-    ?'<div class="fav" style="overflow:hidden;border-radius:50%;background:var(--bg4);border:none;flex-shrink:0;">'
-      +'<img src="'+f.photos[0].url+'" style="width:100%;height:100%;object-fit:cover;" loading="lazy">'
+  var ph=f.photos&&f.photos[0]?f.photos[0].url:'';
+  if(f.contract){
+    // 계약 선수 — 포토카드 스타일
+    return '<div class="fc-contract" onclick="openFighterByIdx('+idx+')">'
+      +'<div class="fc-contract-img">'
+        +(ph?'<img src="'+ph+'" alt="'+dn+'" loading="lazy">':'<div class="fc-contract-emoji">'+f.ic+'</div>')
+        +'<div class="fc-contract-overlay"></div>'
+        +'<div class="fc-contract-badge">🛒 굿즈 '+f.g+'개</div>'
+        +'<div class="fc-contract-body">'
+          +'<div class="fc-contract-org">'+f.org+' · '+f.cls+'</div>'
+          +'<div class="fc-contract-name">'+dn+'</div>'
+          +'<div class="fc-contract-tags">'+f.tags.slice(0,2).map(function(t){return '<span class="fc-tag">'+t+'</span>';}).join('')+'</div>'
+          +'<div class="fc-contract-rec">'+f.w+'승 '+f.l+'패 · 피니시율 '+f.fp+'</div>'
+        +'</div>'
       +'</div>'
-    :'<div class="fav">'+f.ic+'</div>';
-  return '<div class="fc" onclick="openFighterByIdx('+idx+')">'
-    +avatarHtml
-    +'<div class="fi2">'
-      +'<div class="fn">'+displayN+'</div>'
-      +'<div class="fm">'+f.m+'</div>'
-      +'<div class="frec">'
-        +'<div class="frs"><div class="frv">'+f.w+'</div><div class="frl">승</div></div>'
-        +'<div class="frs"><div class="frv">'+f.l+'</div><div class="frl">패</div></div>'
-        +'<div class="frs"><div class="frv">'+f.fp+'</div><div class="frl">피니시</div></div>'
+    +'</div>';
+  } else {
+    // 정보 제공 선수 — 리스트형
+    return '<div class="fc-info" onclick="openFighterByIdx('+idx+')">'
+      +'<div class="fc-info-av">'+(ph?'<img src="'+ph+'" alt="'+dn+'" loading="lazy">':f.ic)+'</div>'
+      +'<div class="fc-info-body">'
+        +'<div class="fc-info-name">'+dn+'</div>'
+        +'<div class="fc-info-meta">'+f.org+' · '+f.cls+'</div>'
       +'</div>'
-      +'<div class="ftags">'+f.tags.slice(0,2).map(function(t){return'<span class="ftag">'+t+'</span>';}).join('')+'</div>'
-      +goodsBadge
-    +'</div>'
-  +'</div>';
+      +'<div class="fc-info-rec">'
+        +'<span class="fc-info-w">'+f.w+'W</span>'
+        +'<span class="fc-info-l">'+f.l+'L</span>'
+      +'</div>'
+      +'<div class="fc-info-arr">›</div>'
+    +'</div>';
+  }
 }
 function openFighterByIdx(idx){
   var f=FIGHTERS[idx];
@@ -2214,20 +2651,16 @@ function doWtdr(){
   doLogout(); toast('탈퇴가 처리되었습니다');
 }
 function filterF(){
-  const fsEl=document.getElementById('fsrch');
-  const q=fsEl?fsEl.value.trim():'';
-  const ac=document.querySelector('#ff .chip.on');
-  const f=ac?ac.dataset.f:'전체';
-  const res=FIGHTERS.filter(x=>{
-    const mq=!q||x.n.replace('_라이트','').includes(q)||x.m.includes(q)||x.tags.some(t=>t.includes(q));
-    const mf=f==='전체'||x.cls===f||x.org===f;
-    return mq&&mf;
+  var q=(document.getElementById('fsrch')||{value:''}).value.trim().toLowerCase();
+  var wcEl=document.querySelector('#ff .chip.on');
+  var wc=wcEl?wcEl.dataset.f:'전체';
+  var list=FIGHTERS.filter(function(f){
+    var dn=f.n.replace('_라이트','').replace('_W','').toLowerCase();
+    var mq=!q||dn.includes(q)||f.tags.some(function(t){return t.toLowerCase().includes(q);});
+    var mw=wc==='전체'||(f.cls&&f.cls.includes(wc))||(f.org&&f.org.includes(wc))||f.tags.includes(wc);
+    return mq&&mw;
   });
-  renderFighters(res);
-  // 검색 결과 카운트
-  var cnt=document.getElementById('fighter-count');
-  if(cnt) cnt.textContent='총 '+res.length+'명 (계약 '+res.filter(function(x){return x.contract;}).length+'명)';
-  const hf=document.getElementById('hfg'); if(hf){ hf.innerHTML=FIGHTERS.filter(function(f){return f.contract;}).slice(0,6).map(fighterHTML).join(''); }
+  renderFighters(list);
 }
 function mpTab(t){
   ['orders','profile','delivery','withdraw'].forEach(function(x){
@@ -2366,6 +2799,10 @@ function schTab(t){
   if(t==='res') renderMatches();
 }
 function likeP(e,id){ e.stopPropagation(); if(!currentUser){toast('로그인이 필요합니다');return;} const p=posts.find(x=>x.id===id); if(p){p.l++;renderPosts();} }
+function commTab(btn){
+  document.querySelectorAll('.cbt').forEach(function(b){b.classList.remove('on');});
+  if(btn) btn.classList.add('on');
+}
 function renderBoardPosts(sortType){
   if(sortType) postSortMode=sortType;
   var filtered = currentBoard==='전체'
@@ -2384,24 +2821,36 @@ function renderPosts(list){
   var el=document.getElementById('posts'); if(!el) return;
   var arr=list||posts;
   if(!arr.length){
-    el.innerHTML='<div class="empty-msg"><span class="ei">💬</span><p>게시글이 없습니다.<br>첫 글을 작성해보세요!</p></div>';
+    el.innerHTML='<div class="empty-msg"><span class="ei">💬</span><p>첫 글을 작성해보세요!</p></div>';
     return;
   }
-  var CAT_COLOR={'자유게시판':'var(--t2)','구매 후기':'var(--gl)','굿즈 자랑':'#ff9f43','경기 토론':'var(--red)'};
-  var CAT_BG={'구매 후기':'rgba(76,175,125,.1)','굿즈 자랑':'rgba(255,159,67,.1)','경기 토론':'rgba(230,57,70,.08)','자유게시판':'rgba(255,255,255,.04)'};
+  var CAT={
+    '자유게시판':{color:'var(--t2)',bg:'rgba(255,255,255,.05)',icon:'💬'},
+    '구매 후기':{color:'var(--gl)',bg:'rgba(76,175,125,.1)',icon:'🛒'},
+    '굿즈 자랑':{color:'#ff9f43',bg:'rgba(255,159,67,.1)',icon:'⭐'},
+    '경기 토론':{color:'var(--red)',bg:'rgba(230,57,70,.1)',icon:'🥊'}
+  };
   el.innerHTML=arr.map(function(p){
-    var cc=CAT_COLOR[p.cat]||'var(--t2)', cb=CAT_BG[p.cat]||'rgba(255,255,255,.04)';
-    return '<div class="board-post" onclick="openPost('+p.id+')">'
-      +'<div class="bp-head">'
-        +'<span class="bp-cat" style="color:'+cc+';background:'+cb+';">'+p.cat+'</span>'
-        +'<span class="bp-time">'+p.tm+'</span>'
+    var c=CAT[p.cat]||CAT['자유게시판'];
+    var isHot=p.l>=30;
+    return '<div class="bp" onclick="openPost('+p.id+')">'
+      +'<div class="bp-left" style="border-color:'+c.color+';">'
+        +'<span class="bp-cat-icon">'+c.icon+'</span>'
       +'</div>'
-      +'<div class="bp-title">'+p.t+'</div>'
-      +'<div class="bp-preview">'+p.b.slice(0,80)+(p.b.length>80?'…':'')+'</div>'
-      +'<div class="bp-footer">'
-        +'<span class="bp-author">'+p.a+'</span>'
-        +'<span class="bp-stat">💬 '+(p.comments?p.comments.length:p.cm)+'</span>'
-        +'<span class="bp-stat bp-like'+(p.liked?' liked':'')+'" onclick="event.stopPropagation();likePost('+p.id+',this)">❤️ '+p.l+'</span>'
+      +'<div class="bp-content">'
+        +'<div class="bp-top">'
+          +'<span class="bp-cat-badge" style="color:'+c.color+';background:'+c.bg+';">'+p.cat+'</span>'
+          +(isHot?'<span class="bp-hot">🔥 HOT</span>':'')
+          +'<span class="bp-time">'+p.tm+'</span>'
+        +'</div>'
+        +'<div class="bp-title">'+p.t+'</div>'
+        +'<div class="bp-preview">'+p.b.slice(0,60)+(p.b.length>60?'…':'')+'</div>'
+        +'<div class="bp-footer">'
+          +'<span class="bp-author-av">'+p.a.slice(0,1).toUpperCase()+'</span>'
+          +'<span class="bp-author">'+p.a+'</span>'
+          +'<span class="bp-stat"><span class="bp-stat-icon">💬</span>'+(p.comments?p.comments.length:p.cm)+'</span>'
+          +'<span class="bp-stat bp-like-stat'+(p.liked?' liked':'')+'" onclick="event.stopPropagation();likePost('+p.id+',this)"><span class="bp-stat-icon">❤️</span>'+p.l+'</span>'
+        +'</div>'
       +'</div>'
     +'</div>';
   }).join('');
@@ -3068,12 +3517,21 @@ var goodsSort='newest';
 var qaList=[];
 
 function renderFighters(list){
-  var el=document.getElementById('fgrid'); if(!el) return;
-  if(!list||!list.length){
-    el.innerHTML='<div class="empty-msg"><span class="ei">🥊</span><p>선수 정보가 없습니다.<br>다른 검색어나 필터를 시도해보세요.</p></div>';
-    return;
+  // 계약 선수 그리드 (포토카드)
+  var contractEl=document.getElementById('fgrid-contract');
+  var contract=list.filter(function(f){return f.contract;});
+  if(contractEl){
+    contractEl.innerHTML=contract.length
+      ? contract.map(fighterHTML).join('')
+      : '<div class="empty-msg"><span class="ei">🤝</span><p>계약 선수가 없습니다.</p></div>';
   }
-  el.innerHTML=list.map(fighterHTML).join('');
+  // 전체 목록 (정보 제공 포함)
+  var el=document.getElementById('fgrid'); if(!el) return;
+  var fcnt=document.getElementById('fighter-count');
+  if(fcnt) fcnt.textContent='총 '+list.length+'명';
+  el.innerHTML=list.length
+    ? list.map(fighterHTML).join('')
+    : '<div class="empty-msg"><span class="ei">🔍</span><p>검색 결과가 없습니다.</p></div>';
 }
 
 function renderGoods(){
@@ -3173,20 +3631,22 @@ function renderRank(){
 function renderVote(){
   var el=document.getElementById('votearea'); if(!el) return;
   var total=VOTES.reduce(function(s,v){return s+v.v;},0);
+  var maxIdx=VOTES.reduce(function(mx,x,xi){return x.v>VOTES[mx].v?xi:mx;},0);
   el.innerHTML=VOTES.map(function(v,i){
     var pct=total?Math.round(v.v/total*100):0;
-    var leading=i===VOTES.reduce(function(mx,x,xi){return x.v>VOTES[mx].v?xi:mx;},0);
-    return '<div class="vote-row">'
-      +'<div class="vote-label-row">'
-        +'<span class="vote-label">'+v.l+'</span>'
-        +'<span class="vote-pct'+(leading?' vote-pct-lead':'')+'">'+pct+'%</span>'
+    var isLead=i===maxIdx;
+    return '<div class="vote-item">'
+      +'<div class="vote-item-head">'
+        +'<span class="vote-item-label'+(isLead?' vote-item-lead':'')+'">'+v.l+'</span>'
+        +'<span class="vote-item-pct'+(isLead?' vote-item-pct-lead':'')+'">'+pct+'%</span>'
       +'</div>'
-      +'<div class="vote-bar-bg">'
-        +'<div class="vote-bar'+(leading?' vote-bar-lead':'')+'" style="width:'+pct+'%"></div>'
+      +'<div class="vote-track">'
+        +'<div class="vote-fill'+(isLead?' vote-fill-lead':'')+'" style="width:'+pct+'%"></div>'
       +'</div>'
+      +'<div class="vote-count">'+v.v+'표</div>'
     +'</div>';
   }).join('')
-  +'<button class="bo full vote-cast-btn" onclick="castVote()">투표하기</button>';
+  +'<button class="vote-btn" onclick="castVote(this)">'+(voted?'✅ 투표 완료':'투표하기')+'</button>';
 }
 
 function castVote(el){
@@ -3351,10 +3811,8 @@ function _initAll(){
     if(_hfgEl) _hfgEl.innerHTML=FIGHTERS.filter(function(f){return f.contract;}).slice(0,6).map(homeFighterCard).join('');
   }, 'hfg');
   _safeCall(function(){ renderFighters(FIGHTERS); }, 'renderFighters');
-  _safeCall(function(){
-    var _fcnt=document.getElementById('fighter-count');
-    if(_fcnt) _fcnt.textContent='총 '+FIGHTERS.length+'명 (계약 '+FIGHTERS.filter(function(f){return f.contract;}).length+'명)';
-  }, 'fighter-count');
+  _safeCall(function(){ var _fcnt=document.getElementById('fighter-count'); if(_fcnt) _fcnt.textContent='총 '+FIGHTERS.length+'명'; }, 'fighter-count');
+
   _safeCall(function(){ renderRank(); }, 'renderRank');
   _safeCall(function(){ renderCal(); }, 'renderCal');
   _safeCall(function(){ renderFaq(FAQS); }, 'renderFaq');
