@@ -91,9 +91,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .rb-cta{display:flex;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--bd)}
 .pg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .pc{background:var(--bg3);border:1px solid var(--bd);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,border-color .2s}
-.pc:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(0,0,0,.55);border-color:rgba(230,57,70,.3)}
+.pc:hover{border-color:rgba(230,57,70,.3);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.35)}
 .pc:hover .pi-img,.upc-card:hover .upc-img img{transform:scale(1.07)}
-.pi{height:210px;background:#111;position:relative;overflow:hidden}
+.pi{aspect-ratio:1/1;background:#111;position:relative;overflow:hidden}
 .pi-img,.upc-img img,.hfc-img img,.fc-contract-img img,.hi-feat-thumb img{width:100%;display:block;transition:transform .4s ease;height:100%;object-fit:cover}
 .pi-emoji{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px}
 .pi-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.7) 100%);pointer-events:none;z-index:1}
@@ -104,7 +104,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .bh,.cbt.on,.scht.on{background:var(--red);color:#fff}
 .bl{background:var(--gold);color:#000}
 .bn{background:var(--gl);color:#000}
-.pb{padding:13px 13px 14px}
+.pb{padding:14px 14px 16px}
 .pn{font-size:13px;font-weight:600;line-height:1.4;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:keep-all}
 .pp,.upc-foot{gap:6px;align-items:center;display:flex;justify-content:space-between}
 .pr,.frv{font-size:15px;line-height:1.2;font-weight:800}
@@ -125,7 +125,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .story-fighter-card:hover img,.hfc:hover .hfc-img img,.fc-contract:hover img{transform:scale(1.06)}
 .story-fighter-card img{transition:transform .4s ease}
 .fg-grid,.fd-photos-grid{grid-template-columns:repeat(3,1fr);gap:8px;display:grid}
-.fc{background:var(--bg3);border:1px solid var(--bd);border-radius:14px;padding:16px;cursor:pointer;transition:border-color .15s,background .15s,transform .15s;display:flex;gap:13px;position:relative;overflow:hidden}
+.fc{background:var(--bg3);border:1px solid var(--bd);border-radius:14px;padding:16px;cursor:pointer;transition:border-color .15s,background .15s,transform .15s;display:flex;gap:12px;position:relative;overflow:hidden}
 .fc::before,.board-post::before,.fc-info::before{bottom:0;content:'';top:0;transition:width .15s;position:absolute;width:0;background:var(--red);left:0}
 .fc:hover,.fc-info:hover{background:var(--bg4);transform:translateX(2px);border-color:rgba(230,57,70,.3)}
 .fc:hover::before,.board-post:hover::before,.fc-info:hover::before{width:3px}
@@ -171,7 +171,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .ps2{background:var(--bg3);border:1px solid var(--bd);border-radius:10px;padding:13px 14px;margin-bottom:14px}
 .pr2{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;line-height:1.5}
 .pr2 .pl,.srow .sl2,.crow .ck,.muted,.legend-info,.mr-fighter-name-dim,.fc-info-l,.res-loser .res-fighter-name,.txt-muted{color:var(--t2)}
-.pr2.tot{font-size:14px;font-weight:700;padding-top:8px;margin-top:5px;border-top:1px solid var(--bd)}
+.pr2.tot{font-size:14px;font-weight:700;line-height:1.3;padding-top:8px;margin-top:5px;border-top:1px solid var(--bd)}
 .brow,.order-actions{gap:7px;display:flex}
 .bbuy{flex:2;padding:13px;background:var(--red);color:#fff;font-size:13px;font-weight:700;border:none;border-radius:10px;cursor:pointer;font-family:inherit;transition:opacity .15s}
 .bcart{flex:1;padding:13px;background:transparent;color:var(--t);font-size:13px;border:1px solid var(--bd);border-radius:10px;cursor:pointer;font-family:inherit;transition:all .15s}
@@ -204,8 +204,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .mmi.on{color:var(--red);font-weight:700}
 .board-post{background:var(--bg3);border:1px solid var(--bd);border-radius:14px;padding:17px 18px;margin-bottom:7px;cursor:pointer;transition:border-color .15s,background .15s;position:relative;overflow:hidden}
 .board-post:hover{border-color:var(--bd2);background:var(--bg4)}
-.faq-item{background:var(--bg3);border:1px solid var(--bd);border-radius:10px;margin-bottom:5px;overflow:hidden;transition:border-color .15s}
-.faq-q{padding:15px 18px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13.5px;font-weight:600;transition:background .1s;line-height:1.5}
+.faq-item{background:var(--bg3);border:1px solid var(--bd);border-radius:12px;margin-bottom:5px;overflow:hidden;transition:border-color .15s}
+.faq-q{padding:16px 18px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:600;line-height:1.5;align-items:center;font-size:13.5px;font-weight:600;transition:background .1s;line-height:1.5}
 .faq-a{padding:0 14px;max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s;font-size:13px;color:var(--t2);line-height:1.9}
 .faq-a.on{max-height:200px;padding:10px 18px 16px}
 .fch{transition:transform .25s;color:var(--t3);font-size:11px}
@@ -236,7 +236,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .mprod{display:flex;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd);cursor:pointer;transition:all .15s}
 .mpimg{width:40px;height:40px;border-radius:8px;background:var(--bg5);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
 .mpn{font-size:12px;margin-bottom:2px;transition:color .15s;line-height:1.4}
-.mpp,.rank-price{font-weight:700;color:var(--red);font-size:13px}
+.mpp,.rank-price{font-weight:700;color:var(--red);font-size:13px;line-height:1}
 .rev-item{background:var(--bg3);border:1px solid var(--bd);border-radius:10px;padding:14px 15px;margin-bottom:8px}
 .rev-top{display:flex;align-items:center;gap:8px;margin-bottom:7px}
 .ubtn{display:flex;align-items:center;gap:5px;padding:5px 11px;border-radius:8px;background:var(--bg3);border:1px solid var(--bd);cursor:pointer;font-size:11px;font-family:inherit;transition:border-color .15s}
@@ -268,12 +268,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .highlight-info{padding:16px}
 .highlight-title{font-size:14px;font-weight:600;margin-bottom:4px}
 .highlight-meta,.cart-item-opt{font-size:12px;margin-bottom:10px;color:var(--t2)}
-.stars{color:var(--star);font-size:14px}
+.stars{color:var(--star);font-size:14px;line-height:1}
 .rating-num{font-size:14px;font-weight:700;line-height:1;margin-left:2px}
 .rating-cnt,.mp-email,.comment-time,.mr-event,.order-date,.notice-modal-date,.contest-info-sub,small, .small,.hi-feat-meta{font-size:12px;color:var(--t2)}
 .prod-meta{font-size:12px;color:var(--t2);line-height:1.8}
 .rev-avatar{width:28px;height:28px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
-.rev-name,.comment-author,.post-author,.fd-profile-val{font-weight:600;font-size:13px}
+.rev-name,.comment-author,.post-author,.fd-profile-val{font-weight:600;font-size:13px;line-height:1.5}
 .stars-sm{color:var(--star);font-size:12px}
 .rev-date{font-size:11px;color:var(--t2);margin-left:auto}
 .rev-body,.comm-hero-sub{line-height:1.7;color:var(--t2);font-size:13px}
@@ -282,7 +282,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .pay-label{font-size:13px;font-weight:700;color:var(--t2);margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .point-badge{background:var(--rg);color:var(--red);font-size:11px;font-weight:700;padding:2px 8px;border-radius:100px;border:1px solid rgba(230,57,70,.2)}
 .mp-name{font-size:15px;font-weight:700;line-height:1.3;margin-bottom:3px}
-.mp-point{font-size:13px;color:var(--red);font-weight:700;margin-top:6px}
+.mp-point{font-size:13px;color:var(--red);font-weight:700;line-height:1;margin-top:6px}
 .comm-sidebar{display:flex;flex-direction:column;gap:12px;position:sticky;top:calc(var(--nh)+12px)}
 .side-card{background:var(--bg3);border:1px solid var(--bd);border-radius:14px;padding:16px}
 .side-card-head,.post-detail-head{margin-bottom:12px;align-items:center;gap:8px;display:flex}
@@ -298,7 +298,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .sports-banner{margin-top:40px;background:var(--bg3);border:1px solid var(--bd);border-radius:16px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
 .sports-banner-label,.vote-card-label{letter-spacing:1.5px;color:var(--red);margin-bottom:6px;text-transform:uppercase;font-weight:800;font-size:10px}
 .sports-banner-title{font-family:var(--font-bebas);font-size:20px;letter-spacing:1px;margin-bottom:4px}
-.sports-banner-sub,.match-loser,.fd-sticky-label,.txt-sm-muted{color:var(--t2);font-size:13px}
+.sports-banner-sub,.match-loser,.fd-sticky-label,.txt-sm-muted{color:var(--t2);font-size:13px;line-height:1.6}
 .fighter-legend{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap}
 .legend-item{display:flex;align-items:center;gap:5px;font-size:12px;padding:4px 10px;border-radius:100px;border:1px solid var(--bd)}
 .legend-contract,.mr-status-live{color:var(--red);border-color:rgba(230,57,70,.25);background:var(--rg)}
@@ -320,7 +320,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .match-row-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
 .match-org,.predict-fighter-name{font-weight:700;font-size:11px;color:var(--t2)}
 .match-row-result{display:flex;align-items:center;gap:7px;margin-bottom:3px}
-.match-winner,.qa-card-name{font-weight:700;font-size:13px}
+.match-winner,.qa-card-name{font-weight:700;font-size:13px;line-height:1.4}
 .match-method{font-size:11px;background:var(--bg4);border:1px solid var(--bd);border-radius:4px;padding:1px 7px;color:var(--t2)}
 .comment-item{padding:12px 0;border-bottom:1px solid var(--bd)}
 .comment-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
@@ -328,7 +328,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .comment-body{font-size:13px;line-height:1.65}
 .back-btn{display:flex;align-items:center;gap:5px;background:none;border:none;color:var(--t2);font-size:13px;cursor:pointer;font-family:inherit;margin-bottom:18px;padding:0;transition:color .15s}
 .post-detail-card{background:var(--bg3);border:1px solid var(--bd);border-radius:16px;padding:22px;margin-bottom:14px}
-.confirm-sub{font-size:13px;color:var(--t2);margin-bottom:4px}
+.confirm-sub{font-size:13px;color:var(--t2);line-height:1.6;margin-bottom:4px}
 .site-footer{border-top:1px solid var(--bd);padding:36px 48px;background:var(--bg2)}
 .footer-top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--bd)}
 .footer-logo{font-family:var(--font-bebas);font-size:20px;letter-spacing:3px;margin-bottom:6px}
@@ -339,7 +339,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .faq-search-input{flex:1;background:none;border:none;outline:none;color:var(--t);font-size:14px;font-family:inherit}
 .qa-input,.mb8{margin-bottom:8px}
 .upc-card{background:var(--bg3);border:1px solid var(--bd);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease, border-color .2s}
-.upc-card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.55);border-color:rgba(230,57,70,.3)}
+.upc-card:hover{border-color:rgba(230,57,70,.25);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.3)}
 .upc-img{position:relative;height:220px;overflow:hidden;background:#111}
 .upc-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.75) 100%);pointer-events:none}
 .upc-dday{position:absolute;top:12px;left:12px;z-index:3;padding:6px 11px;border-radius:10px;border:1px solid;text-align:center;backdrop-filter:blur(12px)}
@@ -350,7 +350,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .upc-body{padding:14px 14px 15px}
 .upc-cat{font-size:10px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;opacity:.8}
 .upc-name{font-size:13px;font-weight:600;line-height:1.4;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.upc-price{font-size:15px;font-weight:800}
+.upc-price{font-size:15px;font-weight:800;line-height:1}
 .upc-alarm-btn{padding:6px 12px;border-radius:8px;border:1px solid var(--bd);background:transparent;color:var(--t2);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;flex-shrink:0}
 .match-banner{position:relative;border-radius:20px;overflow:hidden;background:var(--bg3);border:1px solid var(--bd);cursor:pointer;transition:border-color .2s}
 .match-banner-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 100% at 50% 0%, rgba(230,57,70,.08) 0%, transparent 70%);pointer-events:none}
@@ -369,7 +369,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .match-vs-text{font-family:var(--font-bebas);font-size:26px;color:var(--t3);margin:6px 0}
 .match-round,.pre-hero-badge span{font-weight:600;color:var(--t2);font-size:13px}
 .match-banner-actions{display:flex;gap:10px;justify-content:center;padding-top:22px;border-top:1px solid var(--bd)}
-.match-banner-actions .bo, .match-banner-actions .br{font-size:14px;padding:11px 24px;border-radius:11px;font-weight:700}
+.match-banner-actions .bo, .match-banner-actions .br{font-size:14px;padding:11px 24px;border-radius:10px;font-weight:700}
 .fighter-scroll{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .hfc{border-radius:16px;overflow:hidden;cursor:pointer}
 .hfc-img{position:relative;aspect-ratio:3/4;background:var(--bg4);border:1px solid var(--bd);border-radius:16px;overflow:hidden;transition:transform .2s, box-shadow .2s, border-color .2s}
@@ -378,7 +378,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .hfc-overlay{position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(0,0,0,.85) 100%);pointer-events:none}
 .hfc-body{position:absolute;bottom:0;left:0;right:0;padding:18px 16px}
 .hfc-org,.pre-upcoming-badge{letter-spacing:1.5px;color:var(--red);text-transform:uppercase;margin-bottom:4px;font-weight:800;font-size:10px}
-.hfc-name{font-family:var(--font-bebas);font-size:24px;letter-spacing:1px;color:#fff;line-height:1.1;margin-bottom:6px}
+.hfc-name{font-family:var(--font-bebas);font-size:26px;letter-spacing:1.5px;color:#fff;line-height:1.1;margin-bottom:6px}
 .hfc-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:5px}
 .hfc-tag{font-size:10px;padding:2px 7px;border-radius:100px;background:rgba(230,57,70,.2);border:1px solid rgba(230,57,70,.35);color:#fff}
 .hfc-goods{font-size:11px;font-weight:700;color:var(--red)}
@@ -437,7 +437,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .tl-year,.pre-fighter-nickname{margin-bottom:3px;font-size:11px;color:var(--t2)}
 .tl-event{font-size:14px;font-weight:600;margin-bottom:2px}
 .tl-desc{font-size:13px;color:var(--t2);line-height:1.6;margin-top:2px}
-.faq-search-bar{display:flex;align-items:center;gap:9px;background:var(--bg3);border:1px solid var(--bd2);border-radius:10px;padding:11px 16px;margin-bottom:14px}
+.faq-search-bar{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--bd2);border-radius:10px;padding:11px 16px;margin-bottom:14px}
 .ni:hover{background:var(--bg3);padding:14px 8px}
 .ntype{width:40px;flex-shrink:0;font-size:11px;color:var(--t2);text-align:center}
 .ni-date{font-size:11.5px;color:var(--t2);margin-top:2px}
@@ -473,12 +473,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .pay-tot-row{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;color:var(--t2)}
 .pay-tot-row:first-child{margin-top:12px;border-top:1px solid var(--bd);padding-top:14px}
 .pay-tot-final{font-size:15px;font-weight:800;color:var(--t);padding-top:10px;margin-top:4px;border-top:1px solid var(--bd)}
-.hsc-card{width:100%;max-width:340px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px;backdrop-filter:blur(12px);cursor:pointer;transition:border-color .2s, background .2s}
+.hsc-card{width:100%;max-width:340px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:22px;backdrop-filter:blur(12px);cursor:pointer;transition:border-color .2s, background .2s}
 .hsc-card:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2)}
 .hsc-ic{font-size:48px;margin-bottom:10px}
 .hsc-sub{font-size:11px;color:var(--red);font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
-.hsc-name{font-family:var(--font-bebas);font-size:26px;letter-spacing:1px;margin-bottom:8px}
-.hsc-story{font-size:12px;color:var(--t2);line-height:1.65;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.hsc-name{font-family:var(--font-bebas);font-size:32px;letter-spacing:2px;line-height:1;margin-bottom:8px}
+.hsc-story{font-size:13px;color:var(--t2);line-height:1.8;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .hsc-btns{display:flex;gap:7px;margin-bottom:12px}
 .hsc-dots{display:flex;gap:5px}
 .share-sheet{background:var(--bg3);border:1px solid var(--bd2);border-radius:16px;padding:22px}
@@ -499,7 +499,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .spotlight-actions{display:flex;gap:8px;margin-top:4px}
 .fighter-contract-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:40px}
 .fc-contract{cursor:pointer;border-radius:16px;overflow:hidden;transition:transform .2s, box-shadow .2s}
-.fc-contract:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.55)}
+.fc-contract:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.45);border-color:rgba(230,57,70,.2)}
 .fc-contract-img{position:relative;aspect-ratio:3/4;background:var(--bg4);border:1px solid var(--bd);border-radius:16px;overflow:hidden}
 .fc-contract-emoji{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:72px}
 .fc-contract-overlay{position:absolute;inset:0;background:linear-gradient(180deg, transparent 25%, rgba(0,0,0,.88) 100%)}
@@ -738,7 +738,7 @@ textarea.fi{resize:vertical;min-height:90px}
 .pre-fill-b{background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.6));width:0}
 .pre-stat-val{font-size:12px;font-weight:700;width:36px;flex-shrink:0}
 .pre-card-b .pre-analysis-label,.pre-card-b .pre-stat-val{color:var(--gold)}
-.hi-feat-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:18px;overflow:hidden;border:1px solid var(--bd);background:var(--bg3)}
+.hi-feat-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:16px;overflow:hidden;border:1px solid var(--bd);background:var(--bg3)}
 .hi-feat-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(230,57,70,.9);display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;transition:transform .15s}
 .hi-feat-thumb:hover .hi-feat-play{transform:translate(-50%,-50%) scale(1.12)}
 .hi-feat-badge{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.75);color:#fff;font-size:11px;font-weight:700;padding:4px 11px;border-radius:100px;backdrop-filter:blur(4px)}
@@ -782,6 +782,53 @@ a:focus-visible,div[onclick]:focus-visible{outline:2px solid var(--red);outline-
 @media(max-width:768px){.filter-chips{gap:5px}.filter-chips .chip{font-size:11.5px;padding:5px 11px}.terms-wrap{padding:0}.sh{margin-bottom:20px}.sec{padding:28px 16px}}
 @media(max-width:768px){.pre-hero{min-height:auto}.pre-hero-inner{padding:24px 16px 20px}.pre-hero-vs{gap:12px}.pre-hero-photo{width:72px;height:72px}.pre-hero-name{font-size:24px}.hi-feat-wrap{grid-template-columns:1fr}.hi-feat-info{padding:18px 16px}.hi-grid{grid-template-columns:1fr}.pre-stat-name{width:56px;font-size:11px}}
 @media(min-width:769px) and (max-width:1024px){.hi-grid{grid-template-columns:repeat(2,1fr)}.pre-hero-photo{width:88px;height:88px}.pre-hero-name{font-size:28px}}
+
+.rank-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:22px}
+.pi-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.pc:hover .pi-img{transform:scale(1.05)}
+.sfc-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.story-fighter-card:hover .sfc-img{transform:scale(1.06)}
+.sfc-emoji{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px;background:var(--bg4)}
+.sfc-grad{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.88) 100%);pointer-events:none}
+.sfc-info{position:absolute;bottom:0;left:0;right:0;padding:20px 16px}
+.sfc-org{font-size:10px;color:var(--red);font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px}
+.sfc-name{font-family:var(--font-bebas);font-size:30px;letter-spacing:2px;color:#fff;line-height:1;margin-bottom:8px}
+.sfc-tag{font-size:10px;padding:3px 9px;border-radius:100px;background:rgba(230,57,70,.22);border:1px solid rgba(230,57,70,.4);color:rgba(255,255,255,.9)}
+.upc-dday{position:absolute;top:12px;left:12px;border-radius:8px;padding:5px 10px;border:1px solid;text-align:center;backdrop-filter:blur(4px)}
+.upc-dday-hot{background:rgba(230,57,70,.2);border-color:rgba(230,57,70,.5)}
+.upc-dday-hot .upc-dday-num{color:var(--red)}
+.upc-dday-soon{background:rgba(201,168,76,.15);border-color:rgba(201,168,76,.45)}
+.upc-dday-soon .upc-dday-num{color:var(--gold)}
+.upc-dday-near{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18)}
+.upc-dday-near .upc-dday-num,.upc-dday-far .upc-dday-num{color:rgba(255,255,255,.7)}
+.upc-dday-far{background:rgba(0,0,0,.4);border-color:rgba(255,255,255,.1)}
+.upc-dday-num{font-family:var(--font-bebas);font-size:20px;line-height:1;display:block;letter-spacing:1px}
+.upc-dday-label{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.5px;display:block;margin-top:1px}
+.hfc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.hfc:hover .hfc-img img{transform:scale(1.05)}
+
+.bp-left-자유게시판{border-color:var(--t2)}
+.bp-left-구매-후기{border-color:var(--gl)}
+.bp-left-굿즈-자랑{border-color:#ff9f43}
+.bp-left-경기-토론{border-color:var(--red)}
+
+/* 검색 입력 */
+.search-input{line-height:1.4}
+/* 별점 */
+.stars-sm{font-size:12px;line-height:1;color:var(--star)}
+/* 파이터 서사 카드 hover */
+.story-fighter-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.5)}
+/* 빈 상태 아이콘 */
+.ei{font-size:36px;display:block;margin-bottom:10px;opacity:.35}
+/* 공지 카드 */
+.notice-card:hover{border-color:var(--bd2);transform:translateY(-1px)}
+/* select 요소 */
+select.fi{cursor:pointer}
+/* 텍스트 줄임 공통 */
+.text-clamp-1{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.text-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* 반응형 pg 그리드 — 모바일 2열 */
+@media(max-width:600px){.pg{grid-template-columns:repeat(2,1fr);gap:10px}}
 </style>
 </head><body><nav><div class="logo" onclick="go('home')">FIGHT<em>GOODS</em></div><div class="nav-links"><button class="nl on" onclick="go('home');nav(this)">굿즈 홈</button><button class="nl" onclick="go('ranking');nav(this)">종합 랭킹</button><button class="nl" onclick="go('goods');nav(this)">굿즈 전체</button><button class="nl" onclick="go('upcoming');nav(this)">출시 예정</button><button class="nl" onclick="go('fighters');nav(this)">선수 정보</button><button class="nl" onclick="go('schedule');nav(this)">경기 정보</button><button class="nl" onclick="go('sports');nav(this)">스포츠용품</button><button class="nl" onclick="go('community');nav(this)">커뮤니티</button><button class="nl" onclick="go('notice');nav(this)">공지사항</button><button class="nl" onclick="go('faq');nav(this)">고객지원</button><button class="nl" onclick="go('mypage');nav(this)">마이페이지</button></div><div class="nav-r"><div class="srch-wrap"><div class="srch-box"><span>🔍</span><input id="si" placeholder="검색" oninput="srch(this.value)" onfocus="srch(this.value)" onblur="setTimeout(closeSrch,200)" onkeydown="if(event.key==='Enter'&&srchResults.length){goSrchItem(0);}"></div><div class="srch-dd" id="sdd"></div></div><div class="cart-btn" onclick="go('cart')">🛒 장바구니 <div class="cb" id="cc">0</div></div><div id="nauth"></div></div></nav><div class="ov" id="aov"><div class="modal"><button class="mc" onclick="closeAuth()">&#x2715;</button><div class="fd-stat-title">FIGHTGOODS</div><div class="fd-debut">MMA 서사 기반 굿즈 플랫폼</div><div class="mtabs"><button class="mt on" id="tlog" onclick="atab('login')">로그인</button><button class="mt" id="tsig" onclick="atab('signup')">회원가입</button></div><div id="flog"><div class="fg"><div class="fl">이메일</div><input class="fi" id="le" type="email" placeholder="이메일 입력"></div><div class="fg"><div class="fl">비밀번호</div><input class="fi" id="lp" type="password" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')doLogin()"><div id="lerr" class="fh err" style="display:none;"></div></div><div style="display:flex;justify-content:space-between;margin-bottom:14px;"><label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--t3);cursor:pointer;"><input type="checkbox"> 로그인 상태 유지</label><span class="txt-link-sm" onclick="showFindPw()">비밀번호 찾기</span></div><button class="br full" onclick="doLogin()">로그인</button><div class="mdiv">소셜 로그인</div><div class="social-row"><button class="sb" onclick="socialLogin('카카오')">카카오</button><button class="sb" onclick="socialLogin('구글')">구글</button><button class="sb" onclick="socialLogin('네이버')">네이버</button></div></div><div id="fsig" style="display:none;"><div class="fg"><div class="fl">이메일</div><input class="fi" id="se" type="email" placeholder="이메일 입력" oninput="chkEmail(this.value)"><div id="seh" class="fh"></div></div><div class="fg"><div class="fl">닉네임</div><input class="fi" id="sn" placeholder="닉네임 (2~10자)" oninput="chkNick(this.value)"><div id="snh" class="fh"></div></div><div class="fg"><div class="fl">비밀번호</div><input class="fi" id="sp" type="password" placeholder="영문+숫자+특수문자 8자 이상" oninput="chkPw(this.value)"><div id="pwbar" class="yt-progress"></div><div id="sph" class="fh"></div></div><div class="fg"><div class="fl">비밀번호 확인</div><input class="fi" id="sp2" type="password" placeholder="비밀번호 재입력" oninput="chkPw2(this.value)"><div id="sp2h" class="fh"></div></div><div class="mb-sm"><label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;margin-bottom:7px;"><input type="checkbox" id="agr"> 이용약관 및 개인정보처리방침 동의 <span class="txt-red">(필수)</span> <span class="txt-red txt-link-sm" onclick="closeAuth();go('terms')">내용 보기</span></label><label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;"><input type="checkbox"> 마케팅 수신 동의 (선택)</label></div><div id="serr" class="fh err" style="display:none;margin-bottom:9px;"></div><button class="br full" onclick="doSignup()">회원가입</button></div></div></div><div class="pw on" id="p-home"><div class="hero"><div class="hero-bg"></div><div class="hero-content"><div class="hero-badge"><div class="hero-dot"></div><span id="hero-badge-text">계약 선수 신규 굿즈 출시</span></div><div class="hero-title">선수의<br><span class="accent">서사를</span><br>입어라</div><div class="hero-sub">경기 뒤에 남는 건 기록이 아니라 감동.<br>그 순간을 담은 굿즈, 지금 바로 만나보세요.</div><div class="hero-btns"><button class="br" onclick="go('goods');navTo('굿즈 전체')">굿즈 전체 보기</button><button class="bo" onclick="go('upcoming');navTo('출시 예정')">출시 예정 보기</button><button class="bo" onclick="go('sports');navTo('스포츠용품')">🥊 스포츠용품</button></div></div><div class="hero-visual"><div id="hero-story-card" class="hsc-card" onclick="heroCardClick()"> <div id="hsc-ic" class="hsc-ic">🐸</div> <div id="hsc-sub" class="hsc-sub">🔥 계약 선수</div> <div id="hsc-name" class="hsc-name">김상욱</div> <div id="hsc-story" class="hsc-story"></div> <div class="hsc-btns"> <button class="br sm" onclick="event.stopPropagation();heroCardGoGoods()">굿즈 보기</button> <button class="bo sm" onclick="event.stopPropagation();heroCardGoFighter()">서사 →</button> </div> <div class="hsc-dots" id="hsc-dots"></div></div></div></div><div class="sec sec-nt"> <div class="sh"><div class="sh-title lg"><span class="sl">파이터 서사</span><div class="st">그들이 여기까지 온 이유</div></div><button class="sm" onclick="go('fighters');navTo('선수 정보')">전체 선수 →</button></div> <div class="story-grid" id="home-story-grid"></div></div><div class="sec"><div class="sh"><div class="sh-title lg"><span class="sl">인기 굿즈</span><div class="st">지금 가장 핫한 굿즈</div></div><button class="sm" onclick="go('goods');navTo('굿즈 전체')">전체 보기 →</button></div><div class="filter-chips" id="pf"><button class="chip on" data-c="전체" onclick="filterP(this)">전체</button><button class="chip" data-c="티셔츠" onclick="filterP(this)">티셔츠</button><button class="chip" data-c="포스터" onclick="filterP(this)">포스터</button><button class="chip" data-c="포토카드" onclick="filterP(this)">포토카드</button><button class="chip" data-c="후디" onclick="filterP(this)">후디</button></div><div class="pg" id="hpg"></div></div><div class="sec sec-nt"><div class="sh"><div class="sh-title lg"><span class="sl">출시 예정</span><div class="st">곧 만나볼 굿즈</div></div><button class="sm" onclick="go('upcoming');navTo('출시 예정')">전체 보기 →</button></div><div class="pg" id="h-upcoming-preview"></div></div><div class="sec sec-nt"> <div class="sh"><div class="sh-title lg"><span class="sl">최근 경기</span><div class="st">방금 끝난 경기</div></div><button class="sm" onclick="go('schedule')">전체 결과 →</button></div> <div class="match-banner" onclick="go('schedule')"> <div class="match-banner-bg"></div> <div class="match-banner-inner"> <div class="match-banner-meta"> <span class="match-live-dot"></span> <span class="match-live-label">방금 종료</span> <span class="match-event-name">Road to UFC 결승 · 2026.01.31</span> </div> <div class="match-banner-vs"> <div class="match-fighter match-fighter-win"> <div class="match-fighter-img"> <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=300&h=300&fit=crop&q=80" alt="김상욱" loading="lazy"> </div> <div class="match-fighter-name">김상욱</div> <div class="match-fighter-info">라이트급 · 무소속</div> </div> <div class="match-result-center"> <div class="match-method-badge">KO 승</div> <div class="match-vs-text">VS</div> <div class="match-round">1R 2:34</div> </div> <div class="match-fighter"> <div class="match-fighter-img match-fighter-img-dim"> <img src="https://images.unsplash.com/photo-1549476464-37392f717541?w=300&h=300&fit=crop&q=80" alt="돔 마르 판" loading="lazy"> </div> <div class="match-fighter-name">돔 마르 판</div> <div class="match-fighter-info">라이트급</div> </div> </div> <div class="match-banner-actions"> <button class="bo sm" onclick="event.stopPropagation();openFighter('김상욱')">선수 스토리</button> <button class="br sm" onclick="event.stopPropagation();openProduct(1)">🛒 굿즈 보기</button> </div> </div> </div></div><div class="sec sec-nt"> <div class="sh"><div class="sh-title lg"><span class="sl">선수 서사</span><div class="st">그들의 이야기</div></div><button class="sm" onclick="go('fighters')">전체 보기 →</button></div> <div class="fighter-scroll" id="hfg"></div></div><div class="sec sec-nt"><div class="sh"><div class="sh-title"><span class="sl">최근 본 상품</span><div class="st">다시 보기</div></div></div><div id="rv"><div class="empty-rv"><div class="empty-rv-icon">👀</div>아직 본 상품이 없어요</div></div></div></div><div class="pw" id="p-goods"><div class="sec"><div class="sh"><div class="sh-title"><span class="sl">굿즈 전체</span><div class="st">카테고리별 굿즈</div></div><button class="sm" onclick="go('ranking');navTo('종합 랭킹')">종합 랭킹 보기 →</button></div><div class="filter-chips" id="goods-cats"><button class="chip on" data-g="전체" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">전체</button><button class="chip" data-g="티셔츠" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">👕 티셔츠</button><button class="chip" data-g="후디" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">🎽 후디</button><button class="chip" data-g="포스터" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">🖼️ 포스터</button><button class="chip" data-g="포토카드" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">📸 포토카드</button><button class="chip" data-g="소품" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">☕ 소품</button><button class="chip" data-g="포토북" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">📖 포토북</button></div><div class="sort-bar"><input id="goods-srch" class="search-input" placeholder="🔍 상품명 · 선수명 검색" oninput="renderGoods()"><div class="tabs"><button class="tab on" onclick="tabOn(this,this.parentNode);goodsSort='newest';renderGoods()">최신순</button><button class="tab" onclick="tabOn(this,this.parentNode);goodsSort='price_asc';renderGoods()">낮은가격</button><button class="tab" onclick="tabOn(this,this.parentNode);goodsSort='price_desc';renderGoods()">높은가격</button></div><span id="goods-count" class="result-count"></span></div><div class="pg" id="goods-grid"></div></div></div><div class="pw" id="p-upcoming"><div class="sec"><div class="sh"><div class="sh-title"><span class="sl">출시 예정</span><div class="st">곧 만나볼 굿즈</div></div></div><div class="pg" id="upcoming-grid"></div></div></div><div class="pw" id="p-ranking"><div class="sec"><div class="sh"><div class="sh-title"><span class="sl">종합 랭킹</span><div class="st">인기 굿즈 순위</div></div><button class="sm" onclick="go('goods');navTo('굿즈 전체')">굿즈 전체 보기 →</button></div><div class="sort-bar"><div class="tabs"><button class="tab on" onclick="tabOn(this,this.parentNode);rankSort='sales';renderRank()">판매량순</button><button class="tab" onclick="tabOn(this,this.parentNode);rankSort='views';renderRank()">조회수순</button></div><div style="display:flex;gap:6px;"><button class="chip on" onclick="chipOn(this,'.pchip');rankPeriod='daily';renderRank()">일간</button><button class="chip pchip" onclick="chipOn(this,'.pchip');rankPeriod='weekly';renderRank()">주간</button><button class="chip pchip" onclick="chipOn(this,'.pchip');rankPeriod='monthly';renderRank()">월간</button></div></div><div id="rtb"></div></div></div><div class="pw" id="p-fighters"> <div class="fighter-spotlight"> <div class="spotlight-video-wrap"> <iframe
 id="spotlight-yt"
@@ -1951,9 +1998,10 @@ function renderPosts(list){
  };
  el.innerHTML=arr.map(function(p){
   var c=CAT[p.cat]||CAT['자유게시판'];
+  var catKey=p.cat.replace(/ /g,'-');
   var isHot=p.l>=30;
   return '<div class="bp" onclick="openPost('+p.id+')">'
-   +'<div class="bp-left" style="border-color:'+c.color+';">'
+   +'<div class="bp-left bp-left-'+catKey+'">'
     +'<span class="bp-cat-icon">'+c.icon+'</span>'
    +'</div>'
    +'<div class="bp-content">'
@@ -2381,18 +2429,19 @@ function renderHomeStoryGrid(){
  el.innerHTML=fighters.map(function(f){
   var fidx=FIGHTERS.indexOf(f);
   var dn=f.n.replace('_라이트','').replace('_W','');
-  var PH=f.photos&&f.photos[0]?f.photos[0].url:'';
+  var ph=f.photos&&f.photos[0]?f.photos[0].url:'';
   return '<div onclick="openFighterByIdx('+fidx+')" class="story-fighter-card">'
-   +(PH?'<img src="'+PH+'" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">':'<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px;">'+f.ic+'</div>')
-   +'<div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.85) 100%);pointer-events:none;"></div>'
-   +'<div style="position:absolute;bottom:0;left:0;right:0;padding:20px 16px;">'
-    +'<div style="font-size:10px;color:var(--red);font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">'+f.org+'</div>'
-    +'<div style="font-family:var(--font-bebas);font-size:26px;letter-spacing:1px;color:#fff;margin-bottom:4px;">'+dn+'</div>'
-    +(f.tags[0]?'<span style="font-size:10px;padding:2px 8px;border-radius:100px;background:rgba(230,57,70,.25);border:1px solid rgba(230,57,70,.4);color:#fff;">'+f.tags[0]+'</span>':'')
+   +(ph?'<img src="'+ph+'" class="sfc-img" alt="'+dn+'" loading="lazy">':'<div class="sfc-emoji">'+f.ic+'</div>')
+   +'<div class="sfc-grad"></div>'
+   +'<div class="sfc-info">'
+    +'<div class="sfc-org">'+f.org+'</div>'
+    +'<div class="sfc-name">'+dn+'</div>'
+    +(f.tags[0]?'<span class="sfc-tag">'+f.tags[0]+'</span>':'')
    +'</div>'
   +'</div>';
  }).join('');
 }
+
 
 function shareContent(type, id, name){
  var url=location.origin+location.pathname+'#'+(type||'')+(id?'-'+id:'');
@@ -2668,21 +2717,17 @@ function renderUpcoming(){
   {img:'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=600&fit=crop&q=80',n:'김상욱 UDT 스토리 포토북 2집',f:'김상욱',p:38000,dday:30,cat:'포토북'},
   {img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop&q=80',n:'윤창민 빅하트 시즌2 티셔츠',f:'윤창민',p:44000,dday:45,cat:'티셔츠'},
  ];
- var makeCard=function(u,big){
-  var urgent=u.dday<=7;
-  var soon=u.dday<=14;
-  var dcolor=urgent?'#e63946':soon?'#c9a84c':'rgba(255,255,255,.5)';
-  var dbg=urgent?'rgba(230,57,70,.15)':soon?'rgba(201,168,76,.12)':'rgba(0,0,0,.5)';
-  var dborder=urgent?'rgba(230,57,70,.5)':soon?'rgba(201,168,76,.4)':'rgba(255,255,255,.15)';
-  return '<div class="upc-card'+(big?' upc-card-big':'')+'">'
+ var makeCard=function(u){
+  var urgency=u.dday<=3?'upc-dday-hot':u.dday<=7?'upc-dday-soon':u.dday<=14?'upc-dday-near':'upc-dday-far';
+  return '<div class="upc-card">'
    +'<div class="upc-img">'
     +'<img src="'+u.img+'" alt="'+u.n+'" loading="lazy">'
     +'<div class="upc-overlay"></div>'
-    +'<div class="upc-dday" style="background:'+dbg+';border-color:'+dborder+';">'
-     +'<span class="upc-dday-num" style="color:'+dcolor+';">D-'+u.dday+'</span>'
+    +'<div class="upc-dday '+urgency+'">'
+     +'<span class="upc-dday-num">D-'+u.dday+'</span>'
      +'<span class="upc-dday-label">출시</span>'
     +'</div>'
-    +(urgent?'<div class="upc-hot-badge">🔥 SOON</div>':'')
+    +(u.dday<=7?'<div class="upc-hot-badge">🔥 SOON</div>':'')
     +'<div class="upc-fighter">'+u.f+'</div>'
    +'</div>'
    +'<div class="upc-body">'
@@ -2695,11 +2740,11 @@ function renderUpcoming(){
    +'</div>'
   +'</div>';
  };
- var el=document.getElementById('upcoming-grid');
- if(el) el.innerHTML=upcoming.map(function(u,i){ return makeCard(u, false); }).join('');
+ el.innerHTML=upcoming.map(makeCard).join('');
  var prev=document.getElementById('h-upcoming-preview');
- if(prev) prev.innerHTML=upcoming.slice(0,4).map(function(u){ return makeCard(u, false); }).join('');
+ if(prev) prev.innerHTML=upcoming.slice(0,4).map(makeCard).join('');
 }
+
 
 function renderRank(){
  var el=document.getElementById('rtb'); if(!el) return;
@@ -2714,15 +2759,15 @@ function renderRank(){
    var rankDisp=i<3?medals[i]:'<span style="font-size:14px;font-weight:800;color:var(--t2);">'+(i+1)+'</span>';
    return '<div class="rank-row" onclick="'+( prod?'openProduct('+prod.id+')':'' )+'">'
     +'<div class="rank-num">'+rankDisp+'</div>'
-    +'<div class="rank-img" class="rank-img-cover">'
+    +'<div class="rank-img rank-img-cover">'
      +(imgUrl?'<img src="'+imgUrl+'"  loading="lazy">'
-      :'<div >'+(prod?prod.ic:'🛒')+'</div>')
+      :'<div class="rank-img-placeholder">'+(prod?prod.ic:'🛒')+'</div>')
     +'</div>'
     +'<div class="rank-info">'
      +'<div class="rank-name">'+r.n+'</div>'
      +'<div class="rank-fighter">'+r.f+'</div>'
     +'</div>'
-    +'<div class="rank-stat" class="rank-right">'
+    +'<div class="rank-stat rank-right">'
      +'<div class="rank-stat-top">'+(chIcon[r.ch]||'')+' '+r.s.toLocaleString()+(rankSort==='sales'?'개':'회')+'</div>'
      +'<div class="rank-price">₩'+r.p.toLocaleString()+'</div>'
     +'</div>'
