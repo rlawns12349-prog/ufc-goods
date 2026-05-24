@@ -666,6 +666,7 @@ function go(name, pushState){
   if(name==='community'){ renderVote(); renderBoardPosts(); }
   if(name==='upcoming') renderUpcoming();
   if(name==='goods') renderGoods();
+  if(name==='fighters'){renderFighters(FIGHTERS);setTimeout(function(){_delegateFighterClick('fgrid');},50);}
   if(name==='terms') showTermsTab('terms');
   if(name==='notice') renderNotices();
   if(name==='product'){ addRV(PRODS[0]); }
@@ -828,8 +829,7 @@ function fighterHTML(f){
       +'<img src="'+f.photos[0].url+'" style="width:100%;height:100%;object-fit:cover;" loading="lazy">'
       +'</div>'
     :'<div class="fav">'+f.ic+'</div>';
-  var n2=displayN.replace(/'/g,"");
-  return'<div class="fc" onclick="openFighter(&quot;'+f.n+'&quot;)">'
+  return'<div class="fc" data-fighter="'+f.n+'" style="cursor:pointer;">'
     +avatarHtml
     +'<div class="fi2">'
       +'<div class="fn">'+displayN+'</div>'
@@ -1056,7 +1056,7 @@ function filterF(){
   return mq&&mf;
   });
   renderFighters(res);
-  const hf=document.getElementById('hfg'); if(hf) hf.innerHTML=FIGHTERS.map(fighterHTML).join('');
+  const hf=document.getElementById('hfg'); if(hf){ hf.innerHTML=FIGHTERS.map(fighterHTML).join(''); _delegateFighterClick('hfg'); }
 }
 function mpTab(t){
   ['orders','profile','delivery','withdraw'].forEach(x=>{ const e=document.getElementById('mm-'+x); if(e) e.classList.toggle('on',x===t); });
@@ -1093,7 +1093,16 @@ function renderCart(){
 }
 function renderFighters(list){
   const e=document.getElementById('fgrid'); if(!e) return;
-  e.innerHTML=list.length?list.map(fighterHTML).join(''):'<div style="grid-column:span 3;text-align:center;padding:40px;color:var(--t3);">검색 결과가 없습니다</div>';
+  e.innerHTML=list.length?list.map(fighterHTML).join(''):'<div style="grid-column:span 3;text-align:center;padding:40px;color:var(--t2);">검색 결과가 없습니다</div>';
+}
+function _delegateFighterClick(containerId){
+  var el=document.getElementById(containerId);
+  if(!el||el._hasFighterDelegate) return;
+  el._hasFighterDelegate=true;
+  el.addEventListener('click',function(e){
+    var card=e.target.closest('[data-fighter]');
+    if(card) openFighter(card.dataset.fighter);
+  });
 }
 function renderMp(){
   const av=document.getElementById('mpav'),nm=document.getElementById('mpnm'),em=document.getElementById('mpem'),pt=document.getElementById('mppt');
@@ -1432,8 +1441,11 @@ if(upPrev){
     +'</div>';
   }).join('');
 }
-document.getElementById('hfg').innerHTML=FIGHTERS.filter(f=>f.contract).slice(0,6).map(fighterHTML).join('');
+const _hfgEl=document.getElementById('hfg');
+if(_hfgEl){_hfgEl.innerHTML=FIGHTERS.filter(f=>f.contract).slice(0,6).map(fighterHTML).join('');_delegateFighterClick('hfg');}
 renderFighters(FIGHTERS);
+_delegateFighterClick('fgrid');
+_delegateFighterClick('hfg');
 renderRank();
 renderCal();
 renderFaq(FAQS);
