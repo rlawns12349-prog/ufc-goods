@@ -2466,21 +2466,29 @@ var qaList=[];
 // ── 끝 ───────────────────────────────────────────
 
 // 초기 렌더링
-loadAuth();
-renderProds('hpg', PRODS.slice(0,8));
-var _hfgEl=document.getElementById('hfg');
-if(_hfgEl) _hfgEl.innerHTML=FIGHTERS.filter(function(f){return f.contract;}).slice(0,6).map(fighterHTML).join('');
-renderFighters(FIGHTERS);
-renderRank();
-renderCal();
-renderFaq(FAQS);
-renderNotices();
-renderUpcoming();
-renderBoardPosts();
-renderVote();
-renderCommMatches();
-initHeroCarousel();
-renderHomeStoryGrid();
+(function(){
+  var steps = [
+    ['loadAuth',           function(){ loadAuth(); }],
+    ['renderProds',        function(){ renderProds('hpg', PRODS.slice(0,8)); }],
+    ['hfg',                function(){ var e=document.getElementById('hfg'); if(e) e.innerHTML=FIGHTERS.filter(function(f){return f.contract;}).slice(0,6).map(fighterHTML).join(''); }],
+    ['renderFighters',     function(){ renderFighters(FIGHTERS); }],
+    ['renderRank',         function(){ renderRank(); }],
+    ['renderCal',          function(){ renderCal(); }],
+    ['renderFaq',          function(){ renderFaq(FAQS); }],
+    ['renderNotices',      function(){ renderNotices(); }],
+    ['renderUpcoming',     function(){ renderUpcoming(); }],
+    ['renderBoardPosts',   function(){ renderBoardPosts(); }],
+    ['renderVote',         function(){ renderVote(); }],
+    ['renderCommMatches',  function(){ renderCommMatches(); }],
+    ['renderSports',       function(){ renderSports(); }],
+    ['initHeroCarousel',   function(){ initHeroCarousel(); }],
+    ['renderHomeStoryGrid',function(){ renderHomeStoryGrid(); }],
+  ];
+  steps.forEach(function(s){
+    try { s[1](); }
+    catch(e){ console.error('[Init] ' + s[0] + ' 에러:', e.message); }
+  });
+})();
 
 // 초기 페이지 이동
 go(initPage, false);
