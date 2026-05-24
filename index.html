@@ -821,6 +821,141 @@ color:var(--t3);font-size:9px;transition:color .2s;
 .label-red{ font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.5px; }
 .tl-goods-btn{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--rg);border:1px solid rgba(230,57,70,.3);border-radius:5px;font-size:11px;color:var(--red);font-weight:600;cursor:pointer;}
 .tl-goods-btn:hover{background:rgba(230,57,70,.2);}
+
+/* ── 마이크로 인터랙션 & 애니메이션 ── */
+
+/* 페이지 전환 fade */
+.pw{animation:none;}
+.pw.on{animation:pageIn .25s ease;}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+/* 카드 stagger 등장 */
+.pg .pc{opacity:0;animation:cardIn .35s ease forwards;}
+.pg .pc:nth-child(1){animation-delay:.04s;}
+.pg .pc:nth-child(2){animation-delay:.08s;}
+.pg .pc:nth-child(3){animation-delay:.12s;}
+.pg .pc:nth-child(4){animation-delay:.16s;}
+.pg .pc:nth-child(5){animation-delay:.20s;}
+.pg .pc:nth-child(6){animation-delay:.24s;}
+.pg .pc:nth-child(7){animation-delay:.28s;}
+.pg .pc:nth-child(8){animation-delay:.32s;}
+@keyframes cardIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+/* 버튼 ripple 효과 */
+.br,.bo{position:relative;overflow:hidden;}
+.br::after,.bo::after{
+  content:'';position:absolute;inset:0;
+  background:rgba(255,255,255,.1);
+  transform:scale(0);border-radius:inherit;
+  transition:transform .4s;
+}
+.br:active::after,.bo:active::after{transform:scale(2.5);opacity:0;}
+
+/* 선수 카드 hover 서사 미리보기 */
+.fc{overflow:hidden;position:relative;}
+.fc .fm{
+  transition:color .2s;
+  max-height:1.4em;overflow:hidden;
+  transition:max-height .3s ease;
+}
+.fc:hover .fm{color:var(--t2);}
+
+/* 랭킹 카드 shimmer */
+.rank-row::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:transparent;transition:background .2s;
+}
+.rank-row:hover::before{background:var(--red);}
+.rank-row{position:relative;}
+
+/* 히어로 텍스트 글로우 */
+.hero-title .accent{
+  text-shadow:0 0 60px rgba(230,57,70,.3);
+}
+
+/* 상품 카드 이미지 zoom */
+.pc .pi{transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
+.pc:hover .pi{transform:scale(1.03);}
+
+/* 토스트 개선 */
+.toast{
+  border-left:3px solid var(--red);
+  font-size:13px;
+}
+
+/* 탭 언더라인 슬라이드 */
+.tab{position:relative;}
+.tab::after{
+  content:'';position:absolute;bottom:-3px;left:50%;right:50%;
+  height:2px;background:var(--red);
+  transition:left .2s,right .2s;
+}
+.tab.on::after{left:8px;right:8px;}
+
+/* 칩 hover */
+.chip{position:relative;}
+.chip:hover:not(.on){background:var(--bg4);}
+
+/* 선수 상세 헤더 배경 */
+.fdh{
+  background:
+    linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%),
+    radial-gradient(ellipse 80% 60% at 50% 0%,rgba(230,57,70,.06) 0%,transparent 70%);
+}
+
+/* 출시예정 D-day 카운트다운 강조 */
+.dday-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:32px;color:var(--red);
+  text-shadow:0 0 20px rgba(230,57,70,.4);
+  line-height:1;
+}
+
+/* 경기 결과 승자 강조 */
+.rf.win .rn{
+  background:linear-gradient(90deg,var(--red),var(--red2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* 입력 포커스 효과 */
+.fi:focus,.fi-full:focus{
+  box-shadow:0 0 0 3px rgba(230,57,70,.15);
+  border-color:var(--red) !important;
+}
+
+/* 스크롤바 커스텀 */
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--bd2);border-radius:2px;}
+::-webkit-scrollbar-thumb:hover{background:var(--bd3);}
+
+/* 선택 색상 */
+::selection{background:rgba(230,57,70,.25);color:var(--t);}
+
+/* 출시예정 카드 개선 */
+.pc.upcoming-card .pi{
+  background:linear-gradient(135deg,#0a0a14 0%,#1a0a0a 100%);
+  position:relative;overflow:hidden;
+}
+.pc.upcoming-card .pi::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(230,57,70,.08) 0%,transparent 70%);
+}
+
+/* 커뮤니티 게시글 hover */
+.board-post{position:relative;}
+.board-post::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:0;
+  background:var(--red);transition:width .2s;border-radius:8px 0 0 8px;
+}
+.board-post:hover::before{width:3px;}
+
+/* 네비 active indicator 개선 */
+.nl.on{
+  color:var(--t);
+  font-weight:600;
+}
 </style>
 </head>
 <body><!-- NAVBAR -->
@@ -828,7 +963,7 @@ color:var(--t3);font-size:9px;transition:color .2s;
 </nav><!-- AUTH MODAL -->
 <div class="ov" id="aov"><div class="modal"><button class="mc" onclick="closeAuth()">&#x2715;</button><div style="font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;margin-bottom:3px;">FIGHTGOODS</div><div style="font-size:13px;color:var(--t3);margin-bottom:22px;">MMA 서사 기반 굿즈 플랫폼</div><div class="mtabs"><button class="mt on" id="tlog" onclick="atab('login')">로그인</button><button class="mt" id="tsig" onclick="atab('signup')">회원가입</button></div><!-- LOGIN --><div id="flog"><div class="fg"><div class="fl">이메일</div><input class="fi" id="le" type="email" placeholder="이메일 입력"></div><div class="fg"><div class="fl">비밀번호</div><input class="fi" id="lp" type="password" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')doLogin()"><div id="lerr" class="fh err" style="display:none;"></div></div><div style="display:flex;justify-content:space-between;margin-bottom:14px;"><label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--t3);cursor:pointer;"><input type="checkbox"> 로그인 상태 유지</label><span style="font-size:12px;color:var(--t3);cursor:pointer;" onclick="showFindPw()">비밀번호 찾기</span></div><button class="br full" onclick="doLogin()">로그인</button><div class="mdiv">소셜 로그인</div><div class="social-row"><button class="sb" onclick="socialLogin('카카오')">카카오</button><button class="sb" onclick="socialLogin('구글')">구글</button><button class="sb" onclick="socialLogin('네이버')">네이버</button></div></div><!-- SIGNUP --><div id="fsig" style="display:none;"><div class="fg"><div class="fl">이메일</div><input class="fi" id="se" type="email" placeholder="이메일 입력" oninput="chkEmail(this.value)"><div id="seh" class="fh"></div></div><div class="fg"><div class="fl">닉네임</div><input class="fi" id="sn" placeholder="닉네임 (2~10자)" oninput="chkNick(this.value)"><div id="snh" class="fh"></div></div><div class="fg"><div class="fl">비밀번호</div><input class="fi" id="sp" type="password" placeholder="영문+숫자+특수문자 8자 이상" oninput="chkPw(this.value)"><div id="pwbar" style="height:4px;border-radius:2px;margin-top:5px;width:0;transition:width .3s,background .3s;"></div><div id="sph" class="fh"></div></div><div class="fg"><div class="fl">비밀번호 확인</div><input class="fi" id="sp2" type="password" placeholder="비밀번호 재입력" oninput="chkPw2(this.value)"><div id="sp2h" class="fh"></div></div><div style="margin-bottom:13px;"><label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;margin-bottom:7px;"><input type="checkbox" id="agr"> 이용약관 및 개인정보처리방침 동의 <span style="color:var(--red);">(필수)</span> <span style="color:var(--red);cursor:pointer;font-size:11px;" onclick="closeAuth();go('terms')">내용 보기</span></label><label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;"><input type="checkbox"> 마케팅 수신 동의 (선택)</label></div><div id="serr" class="fh err" style="display:none;margin-bottom:9px;"></div><button class="br full" onclick="doSignup()">회원가입</button></div></div>
 </div><!-- HOME -->
-<div class="pw on" id="p-home"><!-- ① 히어로: 굿즈 중심 --><div class="hero"><div class="hero-bg"></div><div class="hero-content"><div class="hero-badge"><div class="hero-dot"></div>계약 선수 신규 굿즈 출시</div><div class="hero-title">선수의<br><span class="accent">서사를</span><br>입어라</div><div class="hero-sub">경기 뒤에 남는 건 기록이 아니라 감동.<br>그 순간을 담은 굿즈, 지금 바로 만나보세요.</div><div class="hero-btns"><button class="br" onclick="go('goods');navTo('굿즈 전체')">굿즈 전체 보기</button><button class="bo" onclick="go('upcoming');navTo('출시 예정')">출시 예정 보기</button></div></div><div class="hero-visual"><div class="hero-gfx"><div class="hero-ring"></div><div class="hero-ring"></div><div class="hero-ring"></div><div class="hero-icon" style="filter:drop-shadow(0 0 40px rgba(230,57,70,.4))">👕</div></div></div></div><!-- ② 인기 굿즈 --><div class="sec"><div class="sh"><div class="sl">인기 굿즈</div><div class="st">지금 가장 핫한 굿즈</div><button class="sm" onclick="go('goods');navTo('굿즈 전체')">전체 보기 →</button></div><div style="display:flex;gap:8px;margin-bottom:18px;" id="pf"><button class="chip on" data-c="전체" onclick="filterP(this)">전체</button><button class="chip" data-c="티셔츠" onclick="filterP(this)">티셔츠</button><button class="chip" data-c="포스터" onclick="filterP(this)">포스터</button><button class="chip" data-c="포토카드" onclick="filterP(this)">포토카드</button><button class="chip" data-c="후디" onclick="filterP(this)">후디</button></div><div class="pg" id="hpg"></div></div><!-- ③ 출시 예정 미리보기 --><div class="sec" style="padding-top:0;"><div class="sh"><div class="sl">출시 예정</div><div class="st">곧 만나볼 굿즈</div><button class="sm" onclick="go('upcoming');navTo('출시 예정')">전체 보기 →</button></div><div class="pg" id="h-upcoming-preview"></div></div><!-- ④ 최근 경기 결과 배너 --><div class="sec" style="padding-top:0;"><div class="sh"><div class="sl">최근 경기</div><div class="st">방금 끝난 경기</div><button class="sm" onclick="go('schedule');navTo('경기 정보');setTimeout(()=>{tabOn(document.querySelectorAll('#p-schedule .tab')[1],document.querySelector('#p-schedule .tabs'));schTab('res');},50)">전체 결과 →</button></div><div class="rb" onclick="go('schedule');navTo('경기 정보');setTimeout(()=>{tabOn(document.querySelectorAll('#p-schedule .tab')[1],document.querySelector('#p-schedule .tabs'));schTab('res');},50)" style="margin:0 0 0;"><div class="rb-top"><span class="rb-badge">방금 종료</span><span style="font-size:13px;color:var(--t2);">Road to UFC 결승 · 2026.01.31</span></div><div class="rb-main"><div class="rf win"><div class="rn">김상욱</div><div class="ro">라이트급 · 무소속</div></div><div class="rc"><div class="rm">KO 승</div><div class="rd">1라운드 2분 34초</div><div style="font-size:20px;color:var(--t3);margin:6px 0;">VS</div></div><div class="rf"><div class="rn">돔 마르 판</div><div class="ro">라이트급</div></div></div><div class="rb-cta"><button class="bo" onclick="event.stopPropagation();openFighter('김상욱')">선수 스토리 보기</button><button class="br" onclick="event.stopPropagation();openProduct(1)">🛒 김상욱 굿즈 보기 →</button></div></div></div><!-- ⑤ 선수 서사 --><div class="sec" style="padding-top:0;"><div class="sh"><div class="sl">선수 서사</div><div class="st">그들의 이야기</div><button class="sm" onclick="go('fighters');navTo('선수 정보')">전체 보기 →</button></div><div class="fg-grid" id="hfg"></div></div><!-- ⑥ 최근 본 상품 --><div class="sec" style="padding-top:0;"><div class="sh"><div class="sl">최근 본 상품</div><div class="st">다시 보기</div></div><div id="rv"><div style="text-align:center;padding:36px;color:var(--t3);"><div style="font-size:36px;margin-bottom:8px;">👀</div>아직 본 상품이 없어요</div></div></div></div><!-- GOODS ALL -->
+<div class="pw on" id="p-home"><!-- ① 히어로: 굿즈 중심 --><div class="hero"><div class="hero-bg"></div><div class="hero-content"><div class="hero-badge"><div class="hero-dot"></div><span id="hero-badge-text">계약 선수 신규 굿즈 출시</span></div><div class="hero-title">선수의<br><span class="accent">서사를</span><br>입어라</div><div class="hero-sub">경기 뒤에 남는 건 기록이 아니라 감동.<br>그 순간을 담은 굿즈, 지금 바로 만나보세요.</div><div class="hero-btns"><button class="br" onclick="go('goods');navTo('굿즈 전체')">굿즈 전체 보기</button><button class="bo" onclick="go('upcoming');navTo('출시 예정')">출시 예정 보기</button></div></div><div class="hero-visual"><div class="hero-gfx"><div class="hero-ring"></div><div class="hero-ring"></div><div class="hero-ring"></div><div class="hero-icon" style="filter:drop-shadow(0 0 40px rgba(230,57,70,.4))">👕</div></div></div></div><!-- ② 인기 굿즈 --><div class="sec"><div class="sh"><div class="sl">인기 굿즈</div><div class="st">지금 가장 핫한 굿즈</div><button class="sm" onclick="go('goods');navTo('굿즈 전체')">전체 보기 →</button></div><div style="display:flex;gap:8px;margin-bottom:18px;" id="pf"><button class="chip on" data-c="전체" onclick="filterP(this)">전체</button><button class="chip" data-c="티셔츠" onclick="filterP(this)">티셔츠</button><button class="chip" data-c="포스터" onclick="filterP(this)">포스터</button><button class="chip" data-c="포토카드" onclick="filterP(this)">포토카드</button><button class="chip" data-c="후디" onclick="filterP(this)">후디</button></div><div class="pg" id="hpg"></div></div><!-- ③ 출시 예정 미리보기 --><div class="sec" style="padding-top:0;"><div class="sh"><div class="sl">출시 예정</div><div class="st">곧 만나볼 굿즈</div><button class="sm" onclick="go('upcoming');navTo('출시 예정')">전체 보기 →</button></div><div class="pg" id="h-upcoming-preview"></div></div><!-- ④ 최근 경기 결과 배너 --><div class="sec" style="padding-top:0;"><div class="sh"><div class="sl">최근 경기</div><div class="st">방금 끝난 경기</div><button class="sm" onclick="go('schedule');navTo('경기 정보');setTimeout(()=>{tabOn(document.querySelectorAll('#p-schedule .tab')[1],document.querySelector('#p-schedule .tabs'));schTab('res');},50)">전체 결과 →</button></div><div class="rb" onclick="go('schedule');navTo('경기 정보');setTimeout(()=>{tabOn(document.querySelectorAll('#p-schedule .tab')[1],document.querySelector('#p-schedule .tabs'));schTab('res');},50)" style="margin:0 0 0;"><div class="rb-top"><span class="rb-badge">방금 종료</span><span style="font-size:13px;color:var(--t2);">Road to UFC 결승 · 2026.01.31</span></div><div class="rb-main"><div class="rf win"><div class="rn">김상욱</div><div class="ro">라이트급 · 무소속</div></div><div class="rc"><div class="rm">KO 승</div><div class="rd">1라운드 2분 34초</div><div style="font-size:20px;color:var(--t3);margin:6px 0;">VS</div></div><div class="rf"><div class="rn">돔 마르 판</div><div class="ro">라이트급</div></div></div><div class="rb-cta"><button class="bo" onclick="event.stopPropagation();openFighter('김상욱')">선수 스토리 보기</button><button class="br" onclick="event.stopPropagation();openProduct(1)">🛒 김상욱 굿즈 보기 →</button></div></div></div><!-- ⑤ 선수 서사 --><div class="sec" style="padding-top:0;"><div class="sh"><div class="sl">선수 서사</div><div class="st">그들의 이야기</div><button class="sm" onclick="go('fighters');navTo('선수 정보')">전체 보기 →</button></div><div class="fg-grid" id="hfg"></div></div><!-- ⑥ 최근 본 상품 --><div class="sec" style="padding-top:0;"><div class="sh"><div class="sl">최근 본 상품</div><div class="st">다시 보기</div></div><div id="rv"><div style="text-align:center;padding:36px;color:var(--t3);"><div style="font-size:36px;margin-bottom:8px;">👀</div>아직 본 상품이 없어요</div></div></div></div><!-- GOODS ALL -->
 <div class="pw" id="p-goods"><div class="sec"><div class="sh"><div class="sl">굿즈 전체</div><div class="st">카테고리별 굿즈</div><button class="sm" onclick="go('ranking');navTo('종합 랭킹')">종합 랭킹 보기 →</button></div><!-- 카테고리 필터 --><div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;" id="goods-cats"><button class="chip on" data-g="전체" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">전체</button><button class="chip" data-g="티셔츠" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">👕 티셔츠</button><button class="chip" data-g="후디" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">🎽 후디</button><button class="chip" data-g="포스터" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">🖼️ 포스터</button><button class="chip" data-g="포토카드" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">📸 포토카드</button><button class="chip" data-g="소품" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">☕ 소품</button><button class="chip" data-g="포토북" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">📖 포토북</button></div><!-- 정렬 + 검색 --><div style="display:flex;gap:10px;align-items:center;margin-bottom:22px;flex-wrap:wrap;"><input id="goods-srch" placeholder="🔍 상품명 · 선수명 검색" oninput="renderGoods()" style="padding:8px 12px;background:var(--bg3);border:1px solid var(--bd2);border-radius:8px;color:var(--t);font-size:13px;font-family:inherit;outline:none;width:200px;"><div class="tabs" style="margin-bottom:0;"><button class="tab on" onclick="tabOn(this,this.parentNode);goodsSort='newest';renderGoods()">최신순</button><button class="tab" onclick="tabOn(this,this.parentNode);goodsSort='price_asc';renderGoods()">낮은가격</button><button class="tab" onclick="tabOn(this,this.parentNode);goodsSort='price_desc';renderGoods()">높은가격</button></div><span id="goods-count" style="font-size:13px;color:var(--t3);margin-left:auto;"></span></div><div class="pg" id="goods-grid"></div></div>
 </div><!-- UPCOMING -->
 <div class="pw" id="p-upcoming"><div class="sec"><div class="sh"><div class="sl">출시 예정</div><div class="st">곧 만나볼 굿즈</div></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;" id="upcoming-grid"></div></div>
@@ -1589,9 +1724,25 @@ function schTab(t){
 }
 let postSortR=true;
 function renderPosts(list){
-  const el=document.getElementById('posts'); if(!el) return;
-  el.innerHTML=(list||posts).map(p=>`
-  <div class="board-post"><div style="font-size:15px;font-weight:500;margin-bottom:5px;">${p.t}</div><div style="font-size:13px;color:var(--t3);margin-bottom:11px;line-height:1.6;">${p.b}</div><div style="display:flex;align-items:center;gap:14px;font-size:12px;color:var(--t3);"><span>${p.a}</span><span>${p.tm}</span><span style="margin-left:auto;display:flex;gap:11px;"><button onclick="likeP(event,${p.id})" style="background:none;border:none;color:var(--t3);cursor:pointer;font-size:12px;font-family:inherit;">❤️ ${p.l}</button><span>💬 ${p.cm}</span></span></div></div>`).join('');
+  var el=document.getElementById('posts');if(!el)return;
+  var arr=list||posts;
+  if(!arr.length){el.innerHTML='<div style="text-align:center;padding:48px;color:var(--t3);">게시글이 없습니다.</div>';return;}
+  var catColor={'자유게시판':'var(--t3)','구매 후기':'var(--gl)','굿즈 자랑':'#ff9f43','경기 토론':'var(--red)'};
+  var catBg={'구매 후기':'rgba(76,175,125,.1)','굿즈 자랑':'rgba(255,159,67,.1)','경기 토론':'var(--rg)','자유게시판':'var(--bg5)'};
+  el.innerHTML=arr.map(function(p){
+    var cc=catColor[p.cat]||'var(--t3)';
+    var cb=catBg[p.cat]||'var(--bg5)';
+    var catBadge=p.cat?'<span style="padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;color:'+cc+';background:'+cb+';">'+p.cat+'</span>':'';
+    return'<div class="board-post">'
+      +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">'+catBadge+'<span style="font-size:11px;color:var(--t3);margin-left:auto;">'+p.tm+'</span></div>'
+      +'<div style="font-size:14px;font-weight:500;margin-bottom:5px;line-height:1.4;">'+p.t+'</div>'
+      +'<div style="font-size:12px;color:var(--t3);margin-bottom:10px;">'+p.b.slice(0,80)+(p.b.length>80?'...':'')+'</div>'
+      +'<div style="display:flex;align-items:center;gap:10px;font-size:11px;color:var(--t3);">'
+        +'<span style="font-weight:500;color:var(--t2);">'+p.a+'</span>'
+        +'<span style="margin-left:auto;">❤️ '+p.l+'</span><span>💬 '+(p.cm||0)+'</span>'
+      +'</div>'
+    +'</div>';
+  }).join('');
 }
 function likeP(e,id){ e.stopPropagation(); if(!currentUser){toast('로그인이 필요합니다');return;} const p=posts.find(x=>x.id===id); if(p){p.l++;renderPosts();} }
 function toggleWrite(){ if(!currentUser){openAuth('login');toast('로그인이 필요합니다');return;} const f=document.getElementById('wf'); f.style.display=f.style.display==='none'?'block':'none'; }
@@ -1662,11 +1813,35 @@ const UPCOMING = [
   {n:'김상욱 UDT 스토리 포토북', f:'김상욱', dday:30, ic:'📖', p:38000, notified:false},
 ];
 function renderUpcoming() {
-  const el = document.getElementById('upcoming-grid');
+  var el = document.getElementById('upcoming-grid');
   if (!el) return;
-  el.innerHTML = UPCOMING.map((u,i) => `
-  <div class="pc"><div class="pi" style="flex-direction:column;gap:8px;"><span style="font-size:48px;">${u.ic}</span><span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--red);">D-${u.dday}</span></div><div class="pb"><div class="pn">${u.n}</div><div class="pf">${u.f} · 계약 선수</div><div style="height:1px;background:var(--bd);margin:10px 0;"></div><div style="display:flex;align-items:center;justify-content:space-between;"><div class="pr">₩${u.p.toLocaleString()}</div><button id="ubtn-${i}" onclick="toggleNotify(${i})" style="padding:6px 14px;border-radius:7px;background:var(--red);color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:inherit;">알림 신청</button></div></div></div>`).join('');
+  el.innerHTML = UPCOMING.map(function(u,i) {
+    var ddayLabel = u.dday <= 0 ? 'TODAY' : 'D-'+u.dday;
+    var ddayColor = u.dday <= 3 ? 'var(--red)' : u.dday <= 7 ? '#ff9f43' : 'var(--t2)';
+    return '<div class="pc upcoming-card">'
+      +'<div class="pi" style="height:200px;flex-direction:column;gap:6px;">'
+        +'<span style="font-size:56px;position:relative;z-index:1;">'+u.ic+'</span>'
+        +'<div style="position:relative;z-index:1;text-align:center;">'
+          +'<div class="dday-num" style="color:'+ddayColor+'">'+ddayLabel+'</div>'
+          +'<div style="font-size:10px;color:var(--t3);letter-spacing:1px;">출시 예정</div>'
+        +'</div>'
+      +'</div>'
+      +'<div class="pb">'
+        +'<div class="pn">'+u.n+'</div>'
+        +'<div class="pf" style="color:var(--red);">🛒 '+u.f+' · 계약 선수</div>'
+        +'<div style="height:1px;background:var(--bd);margin:10px 0;"></div>'
+        +'<div style="display:flex;align-items:center;justify-content:space-between;">'
+          +'<div class="pr">₩'+u.p.toLocaleString()+'</div>'
+          +'<button id="ubtn-'+i+'" onclick="toggleNotify('+i+')" '
+            +'style="padding:5px 12px;border-radius:6px;background:'+(u.notified?'var(--gl)':'var(--red)')+';color:#fff;font-size:11px;font-weight:700;border:none;cursor:pointer;font-family:inherit;transition:background .2s;">'
+            +(u.notified?'✓ 신청 완료':'🔔 알림 신청')
+          +'</button>'
+        +'</div>'
+      +'</div>'
+    +'</div>';
+  }).join('');
 }
+
 function toggleHomeNotify(btn,i){
   if(!currentUser){openAuth('login');toast('로그인이 필요합니다');return;}
   UPCOMING[i].notified=!UPCOMING[i].notified;
