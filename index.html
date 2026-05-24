@@ -2315,27 +2315,30 @@ function renderUpcoming(){
   var el=document.getElementById('upcoming-grid');
   var prev=document.getElementById('h-upcoming-preview');
   var items=UPCOMING_DATA.map(function(u){
-    return '<div style="background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r14);padding:24px;cursor:pointer;">'
+    var html2='<div style="background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r14);padding:24px;cursor:pointer;">'
       +'<div style="font-size:64px;text-align:center;margin-bottom:14px;">'+u.ic+'</div>'
       +'<div style="font-size:11px;color:var(--red);font-weight:700;margin-bottom:6px;text-transform:uppercase;">'+u.f+'</div>'
       +'<div style="font-size:16px;font-weight:700;margin-bottom:8px;line-height:1.4;">'+u.n+'</div>'
       +'<div style="font-size:13px;color:var(--t2);margin-bottom:14px;line-height:1.7;">'+u.desc+'</div>'
       +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">'
         +'<div><div style="font-size:12px;color:var(--t2);">출시 예정</div><div style="font-size:14px;font-weight:700;">'+u.date+'</div></div>'
-        +'<div style="text-align:center;"><div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--red);">D-'+u.dday+'</div><div style="font-size:11px;color:var(--t2);">'+u.badge+'</div></div>'
+        +'<div style="text-align:center;"><div style="font-family:var(--font-bebas,serif);font-size:32px;color:var(--red);">D-'+u.dday+'</div><div style="font-size:11px;color:var(--t2);">'+u.badge+'</div></div>'
       +'</div>'
-      +'<button class="br full" onclick="event.stopPropagation();toast('🔔 출시 알림이 신청되었습니다')">출시 알림 신청</button>'
+      +'<button class="br full" onclick="toast(String.fromCodePoint(128276)+\" 출시 알림이 신청되었습니다\")">출시 알림 신청</button>'
     +'</div>';
+    return html2;
   });
   if(el) el.innerHTML=items.join('');
   if(prev) prev.innerHTML=UPCOMING_DATA.map(function(u){
-    return '<div class="pc"><div class="pi" style="background:linear-gradient(135deg,#0f0a1a,#201530);">'+u.ic+'</div>'
+    return '<div class="pc">'
+      +'<div class="pi" style="background:linear-gradient(135deg,#0f0a1a,#201530);">'+u.ic+'</div>'
       +'<div class="pb"><div class="pn">'+u.n+'</div><div class="pf">'+u.f+'</div>'
-      +'<div class="pp"><div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--red);">D-'+u.dday+'</div>'
-      +'<button class="br sm" onclick="event.stopPropagation();toast('🔔 알림 완료')">알림신청</button></div>'
+      +'<div class="pp"><div style="font-family:var(--font-bebas,serif);font-size:20px;color:var(--red);">D-'+u.dday+'</div>'
+      +'<button class="br sm" onclick="toast(\'알림 신청 완료\')">알림신청</button></div>'
       +'</div></div>';
   }).join('');
 }
+
 function renderFaq(faqData){
   var el=document.getElementById('fql');if(!el)return;
   var q=(document.getElementById('fqs')||{value:''}).value.toLowerCase();
@@ -2423,7 +2426,7 @@ function renderHomeStoryGrid(){
       +'<div style="display:flex;gap:12px;margin-bottom:12px;">'
         +'<div style="font-size:40px;">'+f.ic+'</div>'
         +'<div><div style="font-size:11px;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:3px;">'+f.org+' · '+f.cls+'</div>'
-        +'<div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;">'+dn+'</div>'
+        +'<div style="font-family:var(--font-bebas,serif);font-size:22px;letter-spacing:1px;">'+dn+'</div>'
         +'<div style="font-size:12px;color:var(--t2);font-style:italic;">'+f.subtitle+'</div></div>'
       +'</div>'
       +'<div style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">'+f.story+'</div>'
