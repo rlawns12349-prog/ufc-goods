@@ -1660,6 +1660,14 @@ let currentUser=null;
 function go(name, pushState){
   if(pushState !== false) {
     try { history.pushState({page: name}, '', '#'+name); } catch(e) {}
+    // 페이지에 맞는 nav 탭 자동 활성화
+    const PAGE_NAV = {
+      'home':'굿즈 홈','ranking':'종합 랭킹','goods':'굿즈 전체',
+      'upcoming':'출시 예정','fighters':'선수 정보','fighter-detail':'선수 정보',
+      'schedule':'경기 정보','community':'커뮤니티','notice':'공지사항',
+      'faq':'고객지원','mypage':'마이페이지'
+    };
+    if(PAGE_NAV[name] !== undefined) navTo(PAGE_NAV[name]);
   }
   document.querySelectorAll('.pw').forEach(p=>p.classList.remove('on'));
   const el=document.getElementById('p-'+name);
@@ -1682,7 +1690,15 @@ function go(name, pushState){
 window.addEventListener('popstate', function(e){
   const page = e.state && e.state.page ? e.state.page : 'home';
   go(page, false);
-  navTo('');
+  // 페이지에 맞는 nav 탭 활성화
+  const PAGE_NAV = {
+    'home':'굿즈 홈','ranking':'종합 랭킹','goods':'굿즈 전체',
+    'upcoming':'출시 예정','fighters':'선수 정보','fighter-detail':'선수 정보',
+    'schedule':'경기 정보','community':'커뮤니티','notice':'공지사항',
+    'faq':'고객지원','mypage':'마이페이지','cart':'','payment':'',
+    'confirm':'','product':'','terms':''
+  };
+  navTo(PAGE_NAV[page]||'');
 });
 function nav(el){
   document.querySelectorAll('.nl').forEach(n=>n.classList.remove('on'));
