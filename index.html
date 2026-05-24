@@ -866,7 +866,7 @@ color:var(--t3);font-size:9px;transition:color .2s;
 </div><!-- FOOTER -->
 <footer style="border-top:1px solid var(--bd);padding:40px 64px;background:var(--bg2);"><div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;"><div><div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;margin-bottom:8px;">FIGHT<em style="color:var(--red);font-style:normal;">GOODS</em></div><div style="font-size:12px;color:var(--t3);line-height:1.8;">MMA 선수의 서사를 담은 굿즈 플랫폼</div></div><div style="display:flex;gap:20px;font-size:12px;color:var(--t3);"><span style="cursor:pointer;" onclick="go('terms')">이용약관</span><span style="cursor:pointer;" onclick="go('terms')">개인정보처리방침</span><span style="cursor:pointer;" onclick="go('terms')">환불정책</span></div></div><div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--bd);font-size:11px;color:var(--t4);">© 2025 FIGHTGOODS. All rights reserved.</div></footer><!-- FIND PW MODAL -->
 <div class="ov" id="findpw-modal"><div class="modal"><button class="mc" onclick="document.getElementById('findpw-modal').classList.remove('on')">&#x2715;</button><div style="font-size:22px;font-weight:700;margin-bottom:6px;">비밀번호 재설정</div><div style="font-size:13px;color:var(--t3);margin-bottom:22px;">가입한 이메일로 재설정 링크를 발송합니다.</div><div class="fg"><div class="fl">이메일</div><input class="fi" id="fpw-email" type="email" placeholder="가입 이메일 입력"></div><div id="fpw-msg" class="fh" style="margin-bottom:12px;"></div><button class="br full" onclick="doFindPw()">재설정 링크 발송</button></div>
-</div><div class="toast" id="tst"></div><script>const OV_CSS=OV_CSS;
+</div><div class="toast" id="tst"></div><script>const OV_CSS='position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:400;display:flex;align-items:center;justify-content:center;';
 const PRODS=[
   {id:1, n:'김상욱 프로그맨 시그니처 티셔츠',     f:'김상욱 · 계약 선수', p:45000,ic:'👕',b:'h',s:'재고 12개',c:'티셔츠',contract:true},
   {id:6, n:'조성빈 코리안 호크 티셔츠',            f:'조성빈 · 계약 선수', p:42000,ic:'👕',b:'n',s:'재고 20개',c:'티셔츠',contract:true},
@@ -894,9 +894,9 @@ const PRODS=[
   {id:24,n:'김상욱 UDT 스토리 포토북',            f:'김상욱 · 계약 선수', p:38000,ic:'📖',b:'l',s:'한정 100권',c:'포토북',contract:true},
   {id:25,n:'윤창민 빅하트 시즌1 포토북',          f:'윤창민 · 계약 선수', p:35000,ic:'📖',b:'n',s:'한정 80권', c:'포토북',contract:true},
 ];
-const PH1=PH1;
-const PH2=PH2;
-const PH3=PH3;
+const PH1='https://images.unsplash.com/photo-1549476464-37392f717541?w=600&h=400&fit=crop&q=80';
+const PH2='https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&h=400&fit=crop&q=80';
+const PH3='https://images.unsplash.com/photo-1517438476312-10d79c077509?w=600&h=400&fit=crop&q=80';
 const FIGHTERS=[
 {ic:'🦋',n:'박현성',m:'플라이급 · UFC · 데뷔 2018',w:10,l:2,fp:'90%',tags:['마음의 평화','RTU 시즌1 우승'],g:0,org:'UFC',cls:'플라이급',contract:false,story:'Road to UFC 시즌1 우승 후 UFC 정식 계약.'},
 {ic:'🐯',n:'최동훈',m:'플라이급 · 블랙컴뱃 · 데뷔 2019',w:7,l:1,fp:'71%',tags:['타이거','더블지FC 챔프'],g:2,org:'블랙컴뱃',cls:'플라이급',contract:true,story:'더블지FC 플라이급 챔피언 출신. 블랙컴뱃에서 4연승 중.'},
