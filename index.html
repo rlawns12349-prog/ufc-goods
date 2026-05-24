@@ -147,8 +147,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .pg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
 .pc{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r10);overflow:hidden;cursor:pointer;transition:border-color .2s,transform .2s;}
 .pc:hover{border-color:var(--bd2);transform:translateY(-3px);}
-.pc:hover .pi{transform:scale(1.03);}
+.pc:hover 
 .pi{height:240px;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:80px;position:relative;overflow:hidden;transition:transform .35s ease;}
+.pc:hover .pi{transform:scale(1.03);}
 .pi::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.3) 100%);pointer-events:none;}
 .pbadge{position:absolute;top:8px;right:8px;z-index:1;padding:2px 7px;border-radius:4px;font-size:11px;font-weight:700;text-transform:uppercase;}
 .bh{background:var(--red);color:#fff;}
@@ -867,18 +868,23 @@ function renderSports(){
   var cnt=document.getElementById('sports-count'); if(cnt) cnt.textContent='총 '+list.length+'개';
   var bm={hot:'<span class="pbadge bh">🔥 HOT</span>',best:'<span class="pbadge bl">BEST</span>'};
   el.innerHTML=list.map(function(s){
-    return '<div class="pc" data-sid="'+s.id+'">'
-      +'<div class="pi" style="height:220px;font-size:80px;background:var(--bg4);flex-direction:column;gap:6px;">'+s.ic+(bm[s.badge]||'')
-      +'<div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:1px;text-transform:uppercase;">'+s.cat+'</div>'
+    var badge=bm[s.badge]||'';
+    var card='<div class="pc" data-sid="'+s.id+'">'
+      +'<div class="pi" style="height:220px;font-size:76px;background:var(--bg4);flex-direction:column;gap:4px;">'
+        +badge
+        +'<span>'+s.ic+'</span>'
+        +'<div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:1px;text-transform:uppercase;">'+s.cat+'</div>'
       +'</div>'
       +'<div class="pb" style="padding:11px 13px;">'
         +'<div style="font-size:10px;color:var(--t2);margin-bottom:3px;font-weight:600;letter-spacing:.5px;">'+s.brand+'</div>'
         +'<div class="pn" style="font-size:12px;margin-bottom:6px;">'+s.n+'</div>'
-        +'<div class="pp"><div class="pr">₩'+s.p.toLocaleString()+'</div>'
+        +'<div class="pp">'
+          +'<div class="pr">₩'+s.p.toLocaleString()+'</div>'
           +'<button class="br sm" data-sid="'+s.id+'" onclick="event.stopPropagation();addSportsCart(this.dataset.sid)">담기</button>'
         +'</div>'
       +'</div>'
     +'</div>';
+    return card;
   }).join('');
   _initSportsGrid();
 }
@@ -2389,10 +2395,12 @@ function toggleFaq(el){
 function filterFaq(){renderFaq(FAQS);}
 
 function renderNotices(){
-  var el=document.getElementById('notice-list');if(!el)return;
+  var el=document.getElementById('notice-list'); if(!el) return;
+  if(!NOTICES||!NOTICES.length){ el.innerHTML='<div style="text-align:center;padding:40px;color:var(--t2);">공지사항이 없습니다.</div>'; return; }
   el.innerHTML=NOTICES.map(function(n){
+    var pinBadge=n.pin?'<span class="npin">공지</span>':'<span style="width:28px;flex-shrink:0;"></span>';
     return '<div class="ni" onclick="openNotice('+n.id+')">'
-      +(n.pin?'<span class="npin">공지</span>':'<span style="width:28px;flex-shrink:0;"></span>')
+      +pinBadge
       +'<div style="flex:1;"><div class="ntit">'+n.t+'</div><div style="font-size:12px;color:var(--t2);">'+n.date+'</div></div>'
       +'<span style="font-size:12px;color:var(--t2);">›</span>'
     +'</div>';
