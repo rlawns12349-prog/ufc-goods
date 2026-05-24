@@ -1178,6 +1178,7 @@ function openFighterByIdx(idx){
 function openFighter(name){
   var f=FIGHTERS.find(function(x){return x.n===name;})||FIGHTERS[0];
   var fd=document.getElementById('p-fighter-detail');
+  var fidx=FIGHTERS.indexOf(f);
   if(!fd){go('fighter-detail');return;}
   var displayName=f.n.replace('_라이트','').replace('_W','');
   var contractBox=f.contract
@@ -2252,6 +2253,33 @@ function submitDesignEntryConfirm(el){ var contestId=el.dataset.cid;
 }
 
 function closeModal(el){ var m=el.closest('[data-modal]')||el.closest('div[style*="position:fixed"]'); if(m) m.remove(); }
+
+/* ── 초기화 ── */
+const VALID_PAGES=['home','goods','upcoming','ranking','fighters','fighter-detail',
+  'schedule','product','cart','payment','confirm','mypage','community',
+  'terms','notice','faq','sports'];
+const _rawPage=location.hash?location.hash.replace('#',''):'home';
+const initPage=VALID_PAGES.includes(_rawPage)?_rawPage:'home';
+
+// 초기 렌더링
+loadAuth();
+renderProds('hpg', PRODS.slice(0,8));
+var _hfgEl=document.getElementById('hfg');
+if(_hfgEl) _hfgEl.innerHTML=FIGHTERS.filter(function(f){return f.contract;}).slice(0,6).map(fighterHTML).join('');
+renderFighters(FIGHTERS);
+renderRank();
+renderCal();
+renderFaq(FAQS);
+renderNotices();
+renderUpcoming();
+renderBoardPosts();
+renderVote();
+renderCommMatches();
+initHeroCarousel();
+renderHomeStoryGrid();
+
+// 초기 페이지 이동
+go(initPage, false);
 </script>
 </body>
 </html>
