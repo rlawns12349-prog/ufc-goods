@@ -125,10 +125,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .pg .pc:nth-child(6){animation-delay:.24s}
 .pg .pc:nth-child(7){animation-delay:.28s}
 .pg .pc:nth-child(8){animation-delay:.32s}
-.story-fighter-card{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;aspect-ratio:3/4;background:var(--bg4);border:1px solid var(--bd);transition:transform .2s,box-shadow .2s}
-.story-fighter-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,.6)}
-.story-fighter-card:hover img,.hfc:hover .hfc-img img,.fc-contract:hover img{transform:scale(1.06)}
-.story-fighter-card img{transition:transform .4s ease}
 .fg-grid,.fd-photos-grid{grid-template-columns:repeat(3,1fr);gap:8px;display:grid}
 .fc{background:var(--bg3);border:1px solid var(--bd);border-radius:14px;padding:16px;cursor:pointer;transition:all .15s;display:flex;gap:12px;position:relative;overflow:hidden}
 .fc::before,.board-post::before,.fc-info::before{bottom:0;content:'';top:0;transition:width .15s;position:absolute;width:0;background:var(--red);left:0}
@@ -485,7 +481,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:
 .hsc-name{font-family:var(--font-bebas);font-size:32px;letter-spacing:2px;line-height:1;margin-bottom:8px}
 .hsc-story{font-size:13px;color:var(--t2);line-height:1.8;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .hsc-btns{display:flex;gap:8px;margin-bottom:12px}
-.hsc-dots{display:flex;gap:5px}
 .share-sheet{background:var(--bg3);border:1px solid var(--bd2);border-radius:16px;padding:22px}
 .share-title{font-size:15px;font-weight:700;margin-bottom:5px}
 .share-sub{font-size:13px;color:var(--t2);margin-bottom:16px}
@@ -791,12 +786,11 @@ a:focus-visible,div[onclick]:focus-visible{outline:2px solid var(--red);outline-
 .rank-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:22px}
 .pi-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
 .sfc-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
-.story-fighter-card:hover .sfc-img{transform:scale(1.05)}
 .sfc-emoji{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px;background:var(--bg4)}
 .sfc-grad{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.88) 100%);pointer-events:none}
 .sfc-info{position:absolute;bottom:0;left:0;right:0;padding:20px 16px}
 .sfc-org{font-size:10px;color:var(--red);font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px}
-.sfc-name{font-family:var(--font-bebas);font-size:30px;letter-spacing:2px;color:#fff;line-height:1;margin-bottom:8px}
+.sfc-name{font-family:var(--font-bebas);font-size:30px;letter-spacing:2px;color:#fff;line-height:1;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
 .sfc-tag{font-size:10px;padding:3px 9px;border-radius:100px;background:rgba(230,57,70,.22);border:1px solid rgba(230,57,70,.4);color:rgba(255,255,255,.9)}
 .upc-dday{position:absolute;top:12px;left:12px;border-radius:8px;padding:5px 10px;border:1px solid;text-align:center;backdrop-filter:blur(4px)}
 .upc-dday-hot{background:rgba(230,57,70,.2);border-color:rgba(230,57,70,.5)}
@@ -821,7 +815,6 @@ a:focus-visible,div[onclick]:focus-visible{outline:2px solid var(--red);outline-
 /* 별점 */
 .stars-sm{font-size:12px;line-height:1;color:var(--star)}
 /* 파이터 서사 카드 hover */
-.story-fighter-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.5)}
 /* 빈 상태 아이콘 */
 .ei{font-size:36px;display:block;margin-bottom:10px;opacity:.35}
 /* 공지 카드 */
@@ -1039,13 +1032,24 @@ textarea.fi{resize:vertical;min-height:90px}
 .pc:hover .pi-img,.upc-card:hover .upc-img img{transform:scale(1.04)}
 .comment-item:last-child{border-bottom:none}
 .comment-like.liked,.post-like-btn.liked{color:var(--red)}
-.sfc-name{text-shadow:0 2px 8px rgba(0,0,0,.5)}
-.hsc-dots{display:flex;gap:6px;justify-content:center;margin-top:14px}
 .sh .sm{flex-shrink:0;align-self:flex-end}
 .pw.on{animation:fadeUp .22s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 html{scroll-behavior:smooth}
 :focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:4px}
+
+
+.story-fighter-card{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;aspect-ratio:3/4;background:var(--bg4);border:1px solid var(--bd);transition:transform .2s,box-shadow .2s}
+.story-fighter-card img{transition:transform .4s ease}
+.story-fighter-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.5)}
+.story-fighter-card:hover img,.hfc:hover .hfc-img img,.fc-contract:hover img{transform:scale(1.05)}
+
+.hsc-dots{display:flex;gap:6px;justify-content:center;margin-top:14px}
+/* 스포츠용품 상세 */
+.sports-desc-box{background:var(--bg4);border:1px solid var(--bd);border-radius:12px;padding:16px 18px}
+.sports-desc-brand{font-size:12px;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.sports-desc-text{font-size:14px;color:var(--t2);line-height:1.8;margin-bottom:10px}
+.sports-desc-cat{font-size:12px;color:var(--t2);padding-top:10px;border-top:1px solid var(--bd)}
 </style>
 </head><body><nav><div class="logo" onclick="go('home')">FIGHT<em>GOODS</em></div><div class="nav-links"><button class="nl on" onclick="go('home');nav(this)">굿즈 홈</button><button class="nl" onclick="go('ranking');nav(this)">종합 랭킹</button><button class="nl" onclick="go('goods');nav(this)">굿즈 전체</button><button class="nl" onclick="go('upcoming');nav(this)">출시 예정</button><button class="nl" onclick="go('fighters');nav(this)">선수 정보</button><button class="nl" onclick="go('schedule');nav(this)">경기 정보</button><button class="nl" onclick="go('sports');nav(this)">스포츠용품</button><button class="nl" onclick="go('community');nav(this)">커뮤니티</button><button class="nl" onclick="go('notice');nav(this)">공지사항</button><button class="nl" onclick="go('faq');nav(this)">고객지원</button><button class="nl" onclick="go('mypage');nav(this)">마이페이지</button></div><div class="nav-r"><div class="srch-wrap"><div class="srch-box"><span>🔍</span><input id="si" placeholder="검색" oninput="srch(this.value)" onfocus="srch(this.value)" onblur="setTimeout(closeSrch,200)" onkeydown="if(event.key==='Enter'&&srchResults.length){goSrchItem(0);}"></div><div class="srch-dd" id="sdd"></div></div><div class="cart-btn" onclick="go('cart')">🛒 장바구니 <div class="cb" id="cc">0</div></div><div id="nauth"></div></div></nav><div class="ov" id="aov"><div class="modal"><button class="mc" onclick="closeAuth()">&#x2715;</button><div class="fd-stat-title">FIGHTGOODS</div><div class="fd-debut">MMA 서사 기반 굿즈 플랫폼</div><div class="mtabs"><button class="mt on" id="tlog" onclick="atab('login')">로그인</button><button class="mt" id="tsig" onclick="atab('signup')">회원가입</button></div><div id="flog"><div class="fg"><div class="fl">이메일</div><input class="fi" id="le" type="email" placeholder="이메일 입력"></div><div class="fg"><div class="fl">비밀번호</div><input class="fi" id="lp" type="password" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')doLogin()"><div id="lerr" class="fh err" style="display:none;"></div></div><div style="display:flex;justify-content:space-between;margin-bottom:14px;"><label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--t3);cursor:pointer;"><input type="checkbox"> 로그인 상태 유지</label><span class="txt-link-sm" onclick="showFindPw()">비밀번호 찾기</span></div><button class="br full" onclick="doLogin()">로그인</button><div class="mdiv">소셜 로그인</div><div class="social-row"><button class="sb" onclick="socialLogin('카카오')">카카오</button><button class="sb" onclick="socialLogin('구글')">구글</button><button class="sb" onclick="socialLogin('네이버')">네이버</button></div></div><div id="fsig" style="display:none;"><div class="fg"><div class="fl">이메일</div><input class="fi" id="se" type="email" placeholder="이메일 입력" oninput="chkEmail(this.value)"><div id="seh" class="fh"></div></div><div class="fg"><div class="fl">닉네임</div><input class="fi" id="sn" placeholder="닉네임 (2~10자)" oninput="chkNick(this.value)"><div id="snh" class="fh"></div></div><div class="fg"><div class="fl">비밀번호</div><input class="fi" id="sp" type="password" placeholder="영문+숫자+특수문자 8자 이상" oninput="chkPw(this.value)"><div id="pwbar" class="yt-progress"></div><div id="sph" class="fh"></div></div><div class="fg"><div class="fl">비밀번호 확인</div><input class="fi" id="sp2" type="password" placeholder="비밀번호 재입력" oninput="chkPw2(this.value)"><div id="sp2h" class="fh"></div></div><div class="mb-sm"><label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;margin-bottom:7px;"><input type="checkbox" id="agr"> 이용약관 및 개인정보처리방침 동의 <span class="txt-red">(필수)</span> <span class="txt-red txt-link-sm" onclick="closeAuth();go('terms')">내용 보기</span></label><label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;"><input type="checkbox"> 마케팅 수신 동의 (선택)</label></div><div id="serr" class="fh err" style="display:none;margin-bottom:9px;"></div><button class="br full" onclick="doSignup()">회원가입</button></div></div></div><div class="pw on" id="p-home"><div class="hero"><div class="hero-bg"></div><div class="hero-content"><div class="hero-badge"><div class="hero-dot"></div><span id="hero-badge-text">계약 선수 신규 굿즈 출시</span></div><div class="hero-title">선수의<br><span class="accent">서사를</span><br>입어라</div><div class="hero-sub">경기 뒤에 남는 건 기록이 아니라 감동.<br>그 순간을 담은 굿즈, 지금 바로 만나보세요.</div><div class="hero-btns"><button class="br" onclick="go('goods');navTo('굿즈 전체')">굿즈 전체 보기</button><button class="bo" onclick="go('upcoming');navTo('출시 예정')">출시 예정 보기</button><button class="bo" onclick="go('sports');navTo('스포츠용품')">🥊 스포츠용품</button></div></div><div class="hero-visual"><div id="hero-story-card" class="hsc-card" onclick="heroCardClick()"> <div id="hsc-ic" class="hsc-ic">🐸</div> <div id="hsc-sub" class="hsc-sub">🔥 계약 선수</div> <div id="hsc-name" class="hsc-name">김상욱</div> <div id="hsc-story" class="hsc-story"></div> <div class="hsc-btns"> <button class="br sm" onclick="event.stopPropagation();heroCardGoGoods()">굿즈 보기</button> <button class="bo sm" onclick="event.stopPropagation();heroCardGoFighter()">서사 →</button> </div> <div class="hsc-dots" id="hsc-dots"></div></div></div></div><div class="sec sec-nt"> <div class="sh"><div class="sh-title lg"><span class="sl">파이터 서사</span><div class="st">그들이 여기까지 온 이유</div></div><button class="sm" onclick="go('fighters');navTo('선수 정보')">전체 선수 →</button></div> <div class="story-grid" id="home-story-grid"></div></div><div class="sec"><div class="sh"><div class="sh-title lg"><span class="sl">인기 굿즈</span><div class="st">지금 가장 핫한 굿즈</div></div><button class="sm" onclick="go('goods');navTo('굿즈 전체')">전체 보기 →</button></div><div class="filter-chips" id="pf"><button class="chip on" data-c="전체" onclick="filterP(this)">전체</button><button class="chip" data-c="티셔츠" onclick="filterP(this)">티셔츠</button><button class="chip" data-c="포스터" onclick="filterP(this)">포스터</button><button class="chip" data-c="포토카드" onclick="filterP(this)">포토카드</button><button class="chip" data-c="후디" onclick="filterP(this)">후디</button></div><div class="pg" id="hpg"></div></div><div class="sec sec-nt"><div class="sh"><div class="sh-title lg"><span class="sl">출시 예정</span><div class="st">곧 만나볼 굿즈</div></div><button class="sm" onclick="go('upcoming');navTo('출시 예정')">전체 보기 →</button></div><div class="pg" id="h-upcoming-preview"></div></div><div class="sec sec-nt"> <div class="sh"><div class="sh-title lg"><span class="sl">최근 경기</span><div class="st">방금 끝난 경기</div></div><button class="sm" onclick="go('schedule')">전체 결과 →</button></div> <div class="match-banner" onclick="go('schedule')"> <div class="match-banner-bg"></div> <div class="match-banner-inner"> <div class="match-banner-meta"> <span class="match-live-dot"></span> <span class="match-live-label">방금 종료</span> <span class="match-event-name">Road to UFC 결승 · 2026.01.31</span> </div> <div class="match-banner-vs"> <div class="match-fighter match-fighter-win"> <div class="match-fighter-img"> <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=300&h=300&fit=crop&q=80" alt="김상욱" loading="lazy"> </div> <div class="match-fighter-name">김상욱</div> <div class="match-fighter-info">라이트급 · 무소속</div> </div> <div class="match-result-center"> <div class="match-method-badge">KO 승</div> <div class="match-vs-text">VS</div> <div class="match-round">1R 2:34</div> </div> <div class="match-fighter"> <div class="match-fighter-img match-fighter-img-dim"> <img src="https://images.unsplash.com/photo-1549476464-37392f717541?w=300&h=300&fit=crop&q=80" alt="돔 마르 판" loading="lazy"> </div> <div class="match-fighter-name">돔 마르 판</div> <div class="match-fighter-info">라이트급</div> </div> </div> <div class="match-banner-actions"> <button class="bo sm" onclick="event.stopPropagation();openFighter('김상욱')">선수 스토리</button> <button class="br sm" onclick="event.stopPropagation();openProduct(1)">🛒 굿즈 보기</button> </div> </div> </div></div><div class="sec sec-nt"> <div class="sh"><div class="sh-title lg"><span class="sl">선수 서사</span><div class="st">그들의 이야기</div></div><button class="sm" onclick="go('fighters')">전체 보기 →</button></div> <div class="fighter-scroll" id="hfg"></div></div><div class="sec sec-nt"><div class="sh"><div class="sh-title"><span class="sl">최근 본 상품</span><div class="st">다시 보기</div></div></div><div id="rv"><div class="empty-rv"><div class="empty-rv-icon">👀</div>아직 본 상품이 없어요</div></div></div></div><div class="pw" id="p-goods"><div class="sec"><div class="sh"><div class="sh-title"><span class="sl">굿즈 전체</span><div class="st">카테고리별 굿즈</div></div><button class="sm" onclick="go('ranking');navTo('종합 랭킹')">종합 랭킹 보기 →</button></div><div class="filter-chips" id="goods-cats"><button class="chip on" data-g="전체" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">전체</button><button class="chip" data-g="티셔츠" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">👕 티셔츠</button><button class="chip" data-g="후디" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">🎽 후디</button><button class="chip" data-g="포스터" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">🖼️ 포스터</button><button class="chip" data-g="포토카드" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">📸 포토카드</button><button class="chip" data-g="소품" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">☕ 소품</button><button class="chip" data-g="포토북" onclick="chipOn(this,'#goods-cats .chip');renderGoods()">📖 포토북</button></div><div class="sort-bar"><input id="goods-srch" class="search-input" placeholder="🔍 상품명 · 선수명 검색" oninput="renderGoods()"><div class="tabs"><button class="tab on" onclick="tabOn(this,this.parentNode);goodsSort='newest';renderGoods()">최신순</button><button class="tab" onclick="tabOn(this,this.parentNode);goodsSort='price_asc';renderGoods()">낮은가격</button><button class="tab" onclick="tabOn(this,this.parentNode);goodsSort='price_desc';renderGoods()">높은가격</button></div><span id="goods-count" class="result-count"></span></div><div class="pg" id="goods-grid"></div></div></div><div class="pw" id="p-upcoming"><div class="sec"><div class="sh"><div class="sh-title"><span class="sl">출시 예정</span><div class="st">곧 만나볼 굿즈</div></div></div><div class="pg" id="upcoming-grid"></div></div></div><div class="pw" id="p-ranking"><div class="sec"><div class="sh"><div class="sh-title"><span class="sl">종합 랭킹</span><div class="st">인기 굿즈 순위</div></div><button class="sm" onclick="go('goods');navTo('굿즈 전체')">굿즈 전체 보기 →</button></div><div class="sort-bar"><div class="tabs"><button class="tab on" onclick="tabOn(this,this.parentNode);rankSort='sales';renderRank()">판매량순</button><button class="tab" onclick="tabOn(this,this.parentNode);rankSort='views';renderRank()">조회수순</button></div><div style="display:flex;gap:6px;"><button class="chip on" onclick="chipOn(this,'.pchip');rankPeriod='daily';renderRank()">일간</button><button class="chip pchip" onclick="chipOn(this,'.pchip');rankPeriod='weekly';renderRank()">주간</button><button class="chip pchip" onclick="chipOn(this,'.pchip');rankPeriod='monthly';renderRank()">월간</button></div></div><div id="rtb"></div></div></div><div class="pw" id="p-fighters"> <div class="fighter-spotlight"> <div class="spotlight-video-wrap"> <iframe
 id="spotlight-yt"
@@ -1297,10 +1301,13 @@ function _initSportsGrid(){
   g._sdel=true;
   g.addEventListener('click',function(e){
    var card=e.target.closest('[data-sid]');
-   if(card&&!e.target.closest('button')) toast('🛒 상세 페이지 준비 중');
+   if(card&&!e.target.closest('button')){
+    openSportsProduct(card.dataset.sid);
+   }
   });
  }
 }
+
 function addSportsCart(id){
  var s=SPORTS_DATA.find(function(x){return x.id===id;}); if(!s) return;
  var ex=cartItems.find(function(i){return i.id===s.id;});
@@ -1309,6 +1316,68 @@ function addSportsCart(id){
  updateCC();
  toast('✓ 장바구니에 담겼습니다');
 }
+
+function openSportsProduct(sid){
+ var s=SPORTS_DATA.find(function(x){return x.id===sid;}); if(!s) return;
+ // currentProduct 형식에 맞게 변환
+ currentProduct={
+  id:s.id, n:s.n, f:s.brand+' · 스포츠용품', p:s.p, ic:s.ic,
+  b:s.b||'n', c:s.cat, s:s.s||'재고 있음', desc:s.desc,
+  isSports:true, sid:s.id
+ };
+ qty=1;
+ var _dtag=document.querySelector('.dtag');
+ var _dnm=document.querySelector('.dnm');
+ var _dpr=document.getElementById('dpr');
+ var _mimg=document.getElementById('mimg');
+ var _qv=document.getElementById('qv');
+ var _psub=document.getElementById('psub');
+ var _ptot=document.getElementById('ptot');
+ if(_dtag){ _dtag.textContent='🥊 '+s.brand+' · 스포츠용품'; _dtag.onclick=null; }
+ if(_dnm) _dnm.textContent=s.n;
+ if(_dpr) _dpr.textContent='₩'+s.p.toLocaleString();
+ if(_mimg) _mimg.textContent=s.ic;
+ if(_qv) _qv.textContent='1';
+ if(_psub) _psub.textContent='₩'+s.p.toLocaleString();
+ if(_ptot) _ptot.textContent='₩'+(s.p+3000).toLocaleString();
+ // 브레드크럼
+ var bc=document.querySelector('#p-product .bc');
+ if(bc) bc.innerHTML='<span onclick="go(\'sports\');navTo(\'스포츠용품\')">스포츠용품</span>'
+  +'<span class="sep">›</span>'
+  +'<span class="txt-muted">'+s.n+'</span>';
+ // 옵션 영역 — 스포츠용품 전용
+ var so=document.getElementById('so');
+ var co=document.getElementById('co');
+ var solabel=so?so.previousElementSibling:null;
+ var colabel=co?co.previousElementSibling:null;
+ // 사이즈 → 수량 선택으로 전환
+ if(solabel) solabel.textContent='사이즈';
+ if(so) so.innerHTML='<button class="ob on" onclick="selOpt(this,\'so\')">FREE</button><button class="ob" onclick="selOpt(this,\'so\')">S</button><button class="ob" onclick="selOpt(this,\'so\')">M</button><button class="ob" onclick="selOpt(this,\'so\')">L</button>';
+ // 색상 → 없으면 숨기기
+ if(colabel) colabel.style.display='none';
+ if(co){ co.style.display='none'; }
+ // 제품 설명
+ var pstory=document.getElementById('product-fighter-story');
+ if(pstory){
+  pstory.style.display='block';
+  pstory.innerHTML='<div class="sports-desc-box">'
+   +'<div class="sports-desc-brand">🥊 '+s.brand+'</div>'
+   +'<div class="sports-desc-text">'+s.desc+'</div>'
+   +'<div class="sports-desc-cat">카테고리: '+s.cat+'</div>'
+  +'</div>';
+ }
+ // 이미지 (Unsplash)
+ var SPORTS_IMGS={'s1':'https://images.unsplash.com/photo-1549476464-37392f717541?w=600&h=600&fit=crop&q=80','s2':'https://images.unsplash.com/photo-1517438476312-10d79c077509?w=600&h=600&fit=crop&q=80','s5':'https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&h=600&fit=crop&q=80','s9':'https://images.unsplash.com/photo-1483721310020-03333e577078?w=600&h=600&fit=crop&q=80','s13':'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop&q=80','s22':'https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=600&h=600&fit=crop&q=80','s26':'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=600&fit=crop&q=80'};
+ var imgUrl=SPORTS_IMGS[s.id];
+ if(_mimg){
+  if(imgUrl){ _mimg.innerHTML='<img src="'+imgUrl+'" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" loading="lazy">'; }
+  else { _mimg.textContent=s.ic; }
+ }
+ // 리뷰 숨기기 (스포츠는 자체 리뷰 없음)
+ addRV(currentProduct);
+ go('product');
+}
+
 
 const DPOST=[
  {id:1,t:'김상욱 Road to UFC 결승 진짜 소름...', b:'프로그맨이 결승까지 올라가다니 ㄷㄷ 굿즈 바로 질렀음. 1라운드 KO로 끝낼 줄은 몰랐는데 진짜 역대급 경기였음', a:'fight_fan',l:47,cm:3,tm:'방금',cat:'자유게시판',comments:[{id:1,a:'mma_kr',t:'나도 바로 후디 샀다 ㅋㅋ',tm:'2분 전',l:8,liked:false},{id:2,a:'ufc_watch',t:'1라운드 2:34 그 카운터 진짜...',tm:'5분 전',l:12,liked:false},{id:3,a:'fanboy99',t:'다음 경기가 더 기대됨',tm:'8분 전',l:5,liked:false}],liked:false},
@@ -1369,7 +1438,7 @@ function go(name, pushState){
   if(name==='ranking') renderRank();
   if(name==='terms') showTermsTab('terms');
   if(name==='notice') renderNotices();
-  if(name==='sports') renderSports();
+  if(name==='sports'){ renderSports(); _restoreProductOpts(); }
   if(name==='product'){ addRV(currentProduct||PRODS[0]); }
  } catch(e){ console.error('go() render error:', name, e); }
 }
@@ -3174,6 +3243,13 @@ function initStatBars(){
  document.querySelectorAll('[data-pct]').forEach(function(el){
   setTimeout(function(){ el.style.width=el.dataset.pct; },50);
  });
+}
+
+function _restoreProductOpts(){
+ var co=document.getElementById('co');
+ var colabel=co?co.previousElementSibling:null;
+ if(colabel) colabel.style.display='';
+ if(co) co.style.display='';
 }
 function _initAll(){
  loadAuth();
