@@ -945,7 +945,6 @@ function go(name, pushState){
   if(name==='upcoming') renderUpcoming();
   if(name==='goods') renderGoods();
   if(name==='fighters'){renderFighters(FIGHTERS);}
-  if(name==='ranking') renderRank();
   if(name==='terms') showTermsTab('terms');
   if(name==='notice') renderNotices();
   if(name==='sports') renderSports();
@@ -1386,6 +1385,7 @@ function filterF(){
   return mq&&mf;
   });
   renderFighters(res);
+  const hf=document.getElementById('hfg'); if(hf){ hf.innerHTML=FIGHTERS.map(fighterHTML).join(''); }
 }
 function mpTab(t){
   ['orders','profile','delivery','withdraw'].forEach(function(x){
@@ -1466,8 +1466,8 @@ function renderCart(){
         +'<button onclick="rmCart('+i+')" style="font-size:12px;color:var(--t2);background:none;border:none;cursor:pointer;margin-top:7px;font-family:inherit;">삭제</button>'
       +'</div>'
     +'</div>';
-  }).join('');
-  updCartTot();
+  }).join('');;
+  dd.classList.add('on');
 }
 function trackDel(){
   const trkEl=document.getElementById('trk');
@@ -1908,7 +1908,12 @@ function showReturnModal(el){
   toast('교환·반품 신청이 접수되었습니다. CS팀이 연락드립니다.');
 }
 
-function selOpt(el,groupId){var g=document.getElementById(groupId);if(g)g.querySelectorAll('.ob').forEach(function(b){b.classList.remove('on');});if(el)el.classList.add('on');}
+// 상품 옵션 선택
+function selOpt(type, val, el){
+  var parent=el?el.closest('.opt-group'):null;
+  if(parent) parent.querySelectorAll('.ob').forEach(function(b){b.classList.remove('on');});
+  if(el) el.classList.add('on');
+}
 
 // 경기 알람 토글
 function toggleMatchAlarm(el){
@@ -2267,7 +2272,6 @@ renderCal();
 renderFaq(FAQS);
 renderNotices();
 renderUpcoming();
-renderSports();
 renderBoardPosts();
 renderVote();
 renderCommMatches();
@@ -2276,45 +2280,6 @@ renderHomeStoryGrid();
 
 // 초기 페이지 이동
 go(initPage, false);
-
-// ── 누락 함수 ──
-function renderFighters(list){var el=document.getElementById('fgrid');if(el)el.innerHTML=(list||FIGHTERS).map(fighterHTML).join('');}
-function renderMp(){var e;if(!currentUser){e=document.getElementById('mpav');if(e)e.textContent='?';e=document.getElementById('mpnm');if(e)e.textContent='로그인이 필요합니다';e=document.getElementById('mpem');if(e)e.textContent='';e=document.getElementById('mppt');if(e)e.textContent='';return;}e=document.getElementById('mpav');if(e)e.textContent=currentUser.nick[0];e=document.getElementById('mpnm');if(e)e.textContent=currentUser.nick;e=document.getElementById('mpem');if(e)e.textContent=currentUser.email;e=document.getElementById('mppt');if(e)e.textContent=(currentUser.point||0)+' P';}
-function renderRank(){var el=document.getElementById('rtb');if(!el)return;var data=RNKS_DATA[rankSort][rankPeriod];var medals=['🥇','🥈','🥉'];var ch={up:'<span style="color:var(--gl)">▲</span>',dn:'<span style="color:var(--red)">▼</span>',eq:'<span style="color:var(--t3)">−</span>'};el.innerHTML='<div style="background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r10);overflow:hidden;">'+data.map(function(r,i){return'<div class="rank-row" onclick="openGoods()"><div class="rank-num">'+(medals[i]||(i+1))+'</div><div class="rank-img">🏆</div><div class="rank-info"><div style="font-size:14px;font-weight:600;">'+r.n+'</div><div style="font-size:12px;color:var(--t2);">'+r.f+'</div></div><div class="rank-stat">'+(ch[r.ch]||'')+'<div style="font-size:14px;font-weight:700;color:var(--red);">'+(rankSort==='sales'?r.s.toLocaleString()+'개':r.v.toLocaleString()+'회')+'</div><div style="font-size:12px;color:var(--t2);">₩'+r.p.toLocaleString()+'</div></div></div>';}).join('')+'</div>';}
-var goodsSort='newest';
-function renderGoods(){var el=document.getElementById('goods-grid');if(!el)return;var ac=document.querySelector('#goods-cats .chip.on');var cat=ac?ac.dataset.g:'전체';var q=(document.getElementById('goods-srch')||{value:''}).value.toLowerCase();var list=PRODS.filter(function(p){return(cat==='전체'||p.c===cat)&&(!q||p.n.toLowerCase().includes(q)||p.f.toLowerCase().includes(q));});if(goodsSort==='price_asc')list=list.slice().sort(function(a,b){return a.p-b.p;});else if(goodsSort==='price_desc')list=list.slice().sort(function(a,b){return b.p-a.p;});var cnt=document.getElementById('goods-count');if(cnt)cnt.textContent='총 '+list.length+'개';el.innerHTML=list.map(prodHTML).join('');}
-var UPCOMING_DATA=[{ic:'🥊',f:'김상욱',n:'김상욱 UFC 데뷔 기념 에디션',desc:'UFC 공식 데뷔를 기념하는 한정판 굿즈 세트',date:'2025.07.01',dday:44,badge:'한정판'},{ic:'🦁',f:'윤창민',n:'윤창민 시즌2 포토북',desc:'RTU4 여정을 담은 공식 포토북',date:'2025.06.15',dday:28,badge:'예약판매'},{ic:'🐉',f:'조성빈',n:'코리안 호크 시그니처 컬렉션',desc:'조성빈 선수의 첫 번째 공식 굿즈 컬렉션',date:'2025.08.01',dday:75,badge:'NEW'}];
-function renderUpcoming(){
-  var el=document.getElementById('upcoming-grid');
-  var prev=document.getElementById('h-upcoming-preview');
-  function alarmBtn(){return '<button class="br full" onclick="toast(this.dataset.msg)" data-msg="알림 신청 완료">출시 알림 신청</button>';}
-  var h=UPCOMING_DATA.map(function(u){
-    return '<div style="background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r14);padding:24px;">'
-      +'<div style="font-size:64px;text-align:center;margin-bottom:14px;">'+u.ic+'</div>'
-      +'<div style="font-size:11px;color:var(--red);font-weight:700;margin-bottom:6px;text-transform:uppercase;">'+u.f+'</div>'
-      +'<div style="font-size:16px;font-weight:700;margin-bottom:8px;">'+u.n+'</div>'
-      +'<div style="font-size:13px;color:var(--t2);margin-bottom:14px;">'+u.desc+'</div>'
-      +'<div style="display:flex;justify-content:space-between;margin-bottom:14px;">'
-        +'<div><div style="font-size:12px;color:var(--t2);">출시 예정</div><div style="font-size:14px;font-weight:700;">'+u.date+'</div></div>'
-        +'<div style="text-align:center;"><div style="font-size:32px;color:var(--red);font-weight:700;">D-'+u.dday+'</div><div style="font-size:11px;color:var(--t2);">'+u.badge+'</div></div>'
-      +'</div>'+alarmBtn()
-    +'</div>';
-  });
-  if(el)el.innerHTML=h.join('');
-  if(prev)prev.innerHTML=UPCOMING_DATA.map(function(u){return'<div class="pc"><div class="pi" style="background:linear-gradient(135deg,#0f0a1a,#201530);">'+u.ic+'</div><div class="pb"><div class="pn">'+u.n+'</div><div class="pf">'+u.f+'</div><div class="pp"><div style="font-size:20px;color:var(--red);font-weight:700;">D-'+u.dday+'</div><button class="br sm" onclick="toast(this.dataset.msg)" data-msg="알림 완료">알림신청</button></div></div></div>';}).join('');
-}
-function renderFaq(faqData){var el=document.getElementById('fql');if(!el)return;var q=(document.getElementById('fqs')||{value:''}).value.toLowerCase();var ac=document.querySelector('#fqcats .chip.on');var cat=ac?ac.dataset.c:'전체';var list=(faqData||FAQS).filter(function(f){return(cat==='전체'||f.c===cat)&&(!q||f.q.toLowerCase().includes(q)||f.a.toLowerCase().includes(q));});if(!list.length){el.innerHTML='<div style="text-align:center;padding:32px;color:var(--t2);">검색 결과 없음</div>';return;}el.innerHTML=list.map(function(f){return'<div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>'+f.q+'</span><span class="fch">▼</span></div><div class="faq-a">'+f.a+'</div></div>';}).join('');}
-function toggleFaq(el){var a=el.nextElementSibling,c=el.querySelector('.fch');if(a)a.classList.toggle('on');if(c)c.classList.toggle('on');}
-function filterFaq(){renderFaq(FAQS);}
-function renderNotices(){var el=document.getElementById('notice-list');if(!el)return;el.innerHTML=NOTICES.map(function(n){return'<div class="ni" onclick="openNotice('+n.id+')">'+(n.pin?'<span class="npin">공지</span>':'<span style="width:28px;flex-shrink:0;"></span>')+'<div style="flex:1;"><div class="ntit">'+n.t+'</div><div style="font-size:12px;color:var(--t2);">'+n.date+'</div></div><span style="font-size:12px;color:var(--t2);">›</span></div>';}).join('');}
-function renderVote(){var el=document.getElementById('votearea');if(!el)return;var total=VOTES.reduce(function(s,v){return s+v.v;},0)||1;el.innerHTML=VOTES.map(function(v){var pct=Math.round(v.v/total*100);return'<div style="margin-bottom:10px;"><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;"><span>'+v.l+'</span><span style="font-weight:700;color:var(--red);">'+pct+'%</span></div><div style="height:6px;background:var(--bg4);border-radius:3px;overflow:hidden;"><div style="height:100%;width:'+pct+'%;background:var(--red);border-radius:3px;"></div></div></div>';}).join('')+'<button class="bo full" style="margin-top:12px;" onclick="castVote(this)">'+(typeof voted!=='undefined'&&voted?'투표 완료':'투표하기')+'</button>';}
-function castVote(el){if(!currentUser){openAuth('login');return;}if(voted){toast('이미 투표했습니다');return;}voted=true;VOTES[0].v+=1;renderVote();toast('투표 완료');}
-function showTermsTab(tab){var el=document.getElementById('terms-content');if(!el)return;var c={terms:'<p style="color:var(--t2);line-height:2;padding:20px 0;">제1조 본 약관은 FIGHTGOODS 서비스 이용에 관한 조건을 규정합니다.<br><br>제2조 회원은 약관에 동의함으로써 서비스를 이용합니다.<br><br>제3조 계약 선수 굿즈 판매는 IP 계약에 근거합니다.</p>',privacy:'<p style="color:var(--t2);line-height:2;padding:20px 0;">수집 항목: 이메일, 닉네임, 주문정보<br><br>수집 목적: 서비스 제공<br><br>보유 기간: 회원 탈퇴 시까지</p>',refund:'<p style="color:var(--t2);line-height:2;padding:20px 0;">교환/반품: 수령 후 7일 이내<br><br>불량품: 30일 이내 무료 교환<br><br>단순 변심: 미개봉 상태에서만 가능</p>'};el.innerHTML=c[tab]||'';}
-function renderPayment(){var pp=document.getElementById('ppt');if(pp)pp.textContent=(currentUser&&currentUser.point||0)+' P';var pit=document.getElementById('pitems');if(pit){pit.innerHTML=cartItems.length?cartItems.map(function(it){return'<div class="osi"><div class="osimg">'+it.ic+'</div><div style="flex:1;"><div style="font-size:13px;font-weight:500;">'+it.n+'</div><div style="font-size:12px;color:var(--t2);">'+it.sz+' · '+it.cl+' · '+it.qty+'개</div></div><div style="font-size:13px;font-weight:700;color:var(--red);">₩'+(it.p*it.qty).toLocaleString()+'</div></div>';}).join(''):'<div style="color:var(--t2);">장바구니가 비어있습니다.</div>';}var pt=document.getElementById('ptotals');if(pt){var sub=cartItems.reduce(function(s,i){return s+i.p*i.qty;},0),ship=sub>0?3000:0;pt.innerHTML='<div class="srow"><span style="color:var(--t2);">상품금액</span><span>₩'+sub.toLocaleString()+'</span></div><div class="srow"><span style="color:var(--t2);">배송비</span><span>₩'+ship.toLocaleString()+'</span></div><div class="sdiv"></div><div style="display:flex;justify-content:space-between;font-size:15px;font-weight:700;"><span>합계</span><span style="color:var(--red);">₩'+(sub+ship-cartDisc).toLocaleString()+'</span></div>';}}
-function addRV(p){if(!p)return;recentViewed=recentViewed.filter(function(x){return x.id!==p.id;});recentViewed.unshift(p);recentViewed=recentViewed.slice(0,6);var rv=document.getElementById('rv');if(!rv)return;rv.innerHTML='<div class="pg">'+recentViewed.map(prodHTML).join('')+'</div>';}
-var qaList=[];
-function renderHomeStoryGrid(){var el=document.getElementById('home-story-grid');if(!el)return;var fighters=FIGHTERS.filter(function(f){return f.contract&&f.story&&f.subtitle;}).slice(0,4);el.innerHTML=fighters.map(function(f){var fidx=FIGHTERS.indexOf(f),dn=f.n.replace('_라이트','').replace('_W','');var tags=f.tags.slice(0,2).map(function(t){return'<span style="font-size:11px;padding:2px 8px;border-radius:100px;background:var(--rg);color:var(--red);">'+t+'</span>';}).join('');return'<div class="story-card" onclick="openFighterByIdx('+fidx+')">'+'<div style="display:flex;gap:12px;margin-bottom:12px;"><div style="font-size:40px;">'+f.ic+'</div><div><div style="font-size:11px;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:3px;">'+f.org+' · '+f.cls+'</div><div style="font-size:22px;font-weight:700;letter-spacing:1px;">'+dn+'</div><div style="font-size:12px;color:var(--t2);font-style:italic;">'+f.subtitle+'</div></div></div>'+'<div style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">'+f.story+'</div>'+'<div style="display:flex;justify-content:space-between;"><div style="display:flex;gap:4px;">'+tags+'</div><span style="font-size:12px;color:var(--t2);">서사 보기 →</span></div></div>';}).join('');}
-// ── 끝 ──
 </script>
 </body>
 </html>
